@@ -19,16 +19,17 @@
       <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Research</h2>
       <ul class="space-y-3 list-none">
         <li>
-          <strong>MissionControl</strong> — designing a production-grade multi-agent orchestration
-          framework. The core question: what does it take to run a fleet of AI agents with the same
-          operational discipline you'd apply to a distributed microservices system? Task durability,
-          mesh-based inter-agent coordination, tiered memory, and real observability — not demos.
+          <strong>MissionControl</strong> — building a production-grade multi-agent orchestration
+          framework. The core design question: what does it take to run agent fleets with real
+          operational rigor? Current focus is task durability, mesh-based inter-agent messaging,
+          and evaluation frameworks that catch failure modes before they reach production.
+          Delivering agent skills, sub-agents, and MCP integrations as first-class artifacts.
         </li>
         <li>
-          <strong>Agent memory architecture</strong> — building and operating a hybrid memory system
-          (knowledge graph + structured vault) for Aria, my personal AI system. The practical
-          constraints of running this at production fidelity inform how I think about memory in
-          enterprise agent deployments.
+          <strong>Agent evaluation</strong> — developing methods for measuring agentic system
+          reliability in enterprise contexts, where failure modes are often subtle and the
+          cost of errors is real. Most existing evals assume clean inputs and well-specified
+          tasks. Production doesn't look like that.
         </li>
       </ul>
     </section>
@@ -37,10 +38,11 @@
       <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Client Work</h2>
       <ul class="space-y-3 list-none">
         <li>
-          Principal Forward Deployed Engineer at <strong>Alteryx</strong>. Current focus is helping
-          enterprises move from isolated AI pilots to agent-native workflows that integrate with
-          production data infrastructure. The gap between proof-of-concept and operational
-          deployment is where most enterprise AI value gets stranded.
+          Principal Forward Deployed Engineer at <strong>Alteryx</strong>. Embedded with
+          strategic enterprise customers building production AI applications — shipping working
+          systems, not decks. Current engagements involve agent-native workflows in organizations
+          navigating complex legacy infrastructure and real data governance constraints.
+          Codifying what works into repeatable deployment patterns for the broader practice.
         </li>
       </ul>
     </section>
@@ -49,17 +51,19 @@
       <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Thinking About</h2>
       <ul class="space-y-3 list-none">
         <li>
-          What the right abstraction layer for enterprise agent orchestration actually looks like —
-          and why most current frameworks are either too low-level for adoption or too opinionated
-          to survive contact with real enterprise architecture.
+          What the right abstraction layer for enterprise agent orchestration looks like —
+          and why the gap between "it works in a notebook" and "it runs in production" is
+          still so wide for most organizations deploying LLMs at scale.
         </li>
         <li>
-          The organizational conditions that determine whether enterprise AI deployments compound
-          over time or decay. This is fundamentally a people and process question, not a model one.
+          How frontier model capability improvements are changing the economics and architecture
+          of agentic systems. The answer is shifting faster than most enterprise deployment
+          patterns can keep up with.
         </li>
         <li>
-          How frontier model capability improvements are reshaping the economics of agentic
-          systems — and what that means for the infrastructure layer being built on top of them.
+          The organizational conditions that determine whether enterprise AI deployments
+          compound or decay. High agency and the ability to navigate ambiguity in complex
+          organizations matter as much as the technical implementation.
         </li>
       </ul>
     </section>
@@ -68,9 +72,8 @@
       <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Writing</h2>
       <ul class="space-y-3 list-none">
         <li>
-          Getting the writing habit back. Aria drafts; I edit; we ship. The goal is to turn
-          the research and client pattern-matching into writing that's useful to people building
-          and deploying AI systems.
+          Turning the research and field pattern-matching into writing that's useful for
+          practitioners building and deploying AI systems. Aria drafts; I edit; we ship.
         </li>
       </ul>
     </section>
