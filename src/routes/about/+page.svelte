@@ -4,7 +4,7 @@
 
 <MetaTags
   title="About"
-  description="Enterprise AI leader, multi-agent systems architect, and writer. Principal Forward Deployed Engineer at Alteryx."
+  description="Enterprise AI leader, multi-agent systems architect, and writer. Principal Forward Deployed Engineer at Alteryx. Based in Boulder, CO."
   path="/about"
 />
 

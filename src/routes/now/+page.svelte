@@ -11,7 +11,7 @@
 <main class="mx-auto max-w-2xl px-6 py-16">
   <header class="mb-4">
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Now</h1>
-    <p class="mt-2 text-sm" style="color: var(--color-text-muted);">Updated May 2026 · Aurora, CO</p>
+    <p class="mt-2 text-sm" style="color: var(--color-text-muted);">Updated May 2026 · Boulder, CO</p>
   </header>
 
   <div class="mt-10 space-y-8 text-base leading-relaxed" style="color: var(--color-text);">
