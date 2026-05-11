@@ -1,23 +1,90 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'Cascadia Code', monospace;
+}
+
 :root {
-	color-scheme: light dark;
-}
-
-html {
-	font-family:
-		ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-body {
-	@apply bg-white text-zinc-900;
+  color-scheme: light dark;
+  --color-bg: #fafaf8;
+  --color-bg-subtle: #f0efe9;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-accent: #b8860b;
+  --color-border: #e2e2dc;
+  --color-code-bg: #f0efe9;
+  /* Prism token colors — light */
+  --token-comment: #6b7280;
+  --token-keyword: #b8860b;
+  --token-string: #166534;
+  --token-number: #1d4ed8;
+  --token-function: #9d174d;
+  --token-punctuation: #6b7280;
+  --token-default: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
-	body {
-		@apply bg-zinc-950 text-zinc-100;
-	}
+  :root {
+    --color-bg: #0a0a0a;
+    --color-bg-subtle: #141414;
+    --color-text: #e8e8e8;
+    --color-text-muted: #8a8a8a;
+    --color-accent: #d4a853;
+    --color-border: #2a2a2a;
+    --color-code-bg: #141414;
+    /* Prism token colors — dark */
+    --token-comment: #6b7280;
+    --token-keyword: #d4a853;
+    --token-string: #86efac;
+    --token-number: #93c5fd;
+    --token-function: #f9a8d4;
+    --token-punctuation: #9ca3af;
+    --token-default: #e8e8e8;
+  }
 }
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Prism syntax highlighting */
+pre[class*='language-'],
+code[class*='language-'] {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  color: var(--token-default);
+  background: var(--color-code-bg);
+  border-radius: 0.5rem;
+}
+pre[class*='language-'] {
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+}
+:not(pre) > code[class*='language-'] {
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: var(--token-comment); font-style: italic; }
+.token.keyword, .token.atrule, .token.rule { color: var(--token-keyword); }
+.token.string, .token.attr-value, .token.char { color: var(--token-string); }
+.token.number, .token.boolean, .token.constant { color: var(--token-number); }
+.token.function { color: var(--token-function); }
+.token.class-name, .token.builtin { color: var(--token-keyword); }
+.token.operator, .token.punctuation, .token.entity { color: var(--token-punctuation); }
+.token.property, .token.tag, .token.selector { color: var(--token-default); }
+.token.important { font-weight: bold; }

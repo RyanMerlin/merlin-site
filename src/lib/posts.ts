@@ -6,14 +6,23 @@ export type PostMeta = {
 	created: string;
 	tags: string[];
 	summary?: string;
+	wordCount: number;
 };
 
 type RawModule = {
-	metadata: Omit<PostMeta, 'slug'> & Record<string, unknown>;
+	metadata: Omit<PostMeta, 'slug' | 'wordCount'> & Record<string, unknown>;
 	default: typeof SvelteComponent;
 };
 
 const modules = import.meta.glob<RawModule>('/src/posts/*.md', { eager: true });
+const rawModules = import.meta.glob<string>('/src/posts/*.md', { query: '?raw', eager: true });
+
+function countWords(path: string): number {
+	const mod = rawModules[path] as unknown as { default: string } | string | undefined;
+	const raw = typeof mod === 'string' ? mod : (mod as { default: string } | undefined)?.default ?? '';
+	const body = raw.replace(/^---[\s\S]*?---/, '');
+	return body.trim().split(/\s+/).filter(Boolean).length;
+}
 
 function toMeta(path: string, mod: RawModule): PostMeta {
 	const slug = path.split('/').pop()!.replace(/\.md$/, '');
@@ -23,7 +32,8 @@ function toMeta(path: string, mod: RawModule): PostMeta {
 		title: (m.title as string) ?? slug,
 		created: (m.created as string) ?? '1970-01-01',
 		tags: Array.isArray(m.tags) ? (m.tags as string[]) : [],
-		summary: m.summary as string | undefined
+		summary: m.summary as string | undefined,
+		wordCount: countWords(path)
 	};
 }
 
@@ -40,4 +50,8 @@ export async function loadPost(slug: string) {
 	const mod = modules[path];
 	if (!mod) throw new Error(`Post not found: ${slug}`);
 	return { meta: toMeta(path, mod), Component: mod.default };
+}
+
+export function readingTime(wordCount: number): string {
+	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 }

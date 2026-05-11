@@ -1,52 +1,51 @@
 <script lang="ts">
-	import { posts } from '$lib/posts';
+  import { posts, readingTime } from '$lib/posts';
+  import MetaTags from '$lib/components/MetaTags.svelte';
 
-	function formatDate(iso: string) {
-		const d = new Date(iso);
-		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-	}
+  function formatDate(iso: string) {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
 </script>
 
-<svelte:head>
-	<title>Merlin</title>
-	<meta name="description" content="Notes from Merlin on AI agents, homelab, and other things worth writing about." />
-</svelte:head>
+<MetaTags path="/" />
 
 <main class="mx-auto max-w-2xl px-6 py-16">
-	<header class="mb-16">
-		<h1 class="text-3xl font-semibold tracking-tight">Merlin</h1>
-		<p class="mt-2 text-sm text-zinc-500">
-			Notes on AI agents, homelab infrastructure, and things worth writing down.
-		</p>
-	</header>
+  <header class="mb-16">
+    <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
+    <p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
+      I build AI agents and the infrastructure that runs them.<br />
+      I write about what I learn along the way.
+    </p>
+  </header>
 
-	{#if posts.length === 0}
-		<p class="text-zinc-500 italic">No posts yet.</p>
-	{:else}
-		<ul class="space-y-8">
-			{#each posts as post (post.slug)}
-				<li>
-					<article>
-						<a href="/posts/{post.slug}" class="group block">
-							<h2
-								class="text-xl font-medium text-zinc-900 group-hover:text-zinc-600 dark:text-zinc-100 dark:group-hover:text-zinc-400"
-							>
-								{post.title}
-							</h2>
-							<div class="mt-1 flex items-center gap-3 text-xs text-zinc-500">
-								<time datetime={post.created}>{formatDate(post.created)}</time>
-								{#if post.tags.length}
-									<span>·</span>
-									<span>{post.tags.slice(0, 3).join(', ')}</span>
-								{/if}
-							</div>
-							{#if post.summary}
-								<p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{post.summary}</p>
-							{/if}
-						</a>
-					</article>
-				</li>
-			{/each}
-		</ul>
-	{/if}
+  {#if posts.length === 0}
+    <p style="color: var(--color-text-muted);" class="italic">No posts yet.</p>
+  {:else}
+    <ul class="space-y-10">
+      {#each posts as post (post.slug)}
+        <li>
+          <article>
+            <a href="/posts/{post.slug}" class="group block">
+              <h2 class="text-lg font-medium transition-colors" style="color: var(--color-text);">
+                {post.title}
+              </h2>
+              <div class="mt-1.5 flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+                <time datetime={post.created}>{formatDate(post.created)}</time>
+                <span>·</span>
+                <span>{readingTime(post.wordCount)}</span>
+                {#if post.tags.length}
+                  <span>·</span>
+                  <span>{post.tags.slice(0, 3).join(', ')}</span>
+                {/if}
+              </div>
+              {#if post.summary}
+                <p class="mt-2 text-sm leading-relaxed" style="color: var(--color-text-muted);">{post.summary}</p>
+              {/if}
+            </a>
+          </article>
+        </li>
+      {/each}
+    </ul>
+  {/if}
 </main>
