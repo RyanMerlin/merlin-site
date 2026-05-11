@@ -4,7 +4,7 @@
 
 <MetaTags
   title="About"
-  description="AI engineer, infrastructure builder, and occasional writer. Based in Aurora, Colorado."
+  description="Enterprise AI leader, multi-agent systems architect, and writer. Principal Forward Deployed Engineer at Alteryx."
   path="/about"
 />
 
@@ -15,43 +15,51 @@
 
   <div class="space-y-6 text-base leading-relaxed" style="color: var(--color-text);">
     <p>
-      I'm Ryan — an AI and data engineer based in Aurora, Colorado. I spend my days helping enterprises
-      deploy AI in ways that actually work, and my nights building the systems I wish existed.
+      I'm Ryan — an AI leader with 17+ years at the intersection of enterprise strategy and
+      engineering execution. I work on the problems that emerge when organizations try to move
+      from AI experimentation to AI operations at scale.
     </p>
 
     <p>
-      My day job is Principal Forward Deployed Engineer at Alteryx, where I work directly with customers
-      on their hardest AI and data platform problems. Before that I was their Worldwide Lead for Cloud & AI
-      Professional Services — same mission, more airports. Earlier in my career I worked in data science and
-      engineering at Comcast, TransUnion, DIRECTV, and AT&T, which gave me a healthy appreciation for what
-      it takes to make AI work at scale in organizations that have been around longer than the internet.
+      Currently Principal Forward Deployed Engineer at Alteryx, I work directly with enterprise
+      customers on their most complex AI and data platform challenges — the kind where the
+      technical problem is solvable but the path to production requires navigating organizational
+      complexity, legacy infrastructure, and competing priorities simultaneously. Before this role
+      I led Alteryx's Worldwide Cloud & AI Professional Services practice, building the delivery
+      capability and technical playbooks that the field runs on today.
     </p>
 
     <p>
-      Academically I have a PhD and MA in Economics and Organizational Psychology from Claremont Graduate
-      University, and a BS in Business Management from CU Boulder. The social science background shapes how
-      I think about AI systems — the technical problems are usually tractable; the human and organizational
-      ones are where things get interesting.
+      My background spans the full stack of enterprise AI: early career in data science and
+      engineering at AT&T, DIRECTV, TransUnion, and Comcast gave me fluency with what
+      large-scale AI deployment actually requires. My PhD and MA in Economics and Organizational
+      Psychology from Claremont Graduate University shaped how I diagnose why AI initiatives
+      fail — it's rarely the model.
     </p>
 
     <p>
-      Outside of work I'm building <strong>MissionControl</strong>, a multi-agent orchestration system, and
-      <strong>Aria</strong>, my personal AI orchestrator that runs on my homelab. The homelab itself is an
-      RKE2 Kubernetes cluster with self-hosted LLM inference — I prefer to own my compute where I can.
-      I also do a fair amount of investing research, which has become an interesting testbed for AI-assisted
-      analysis.
+      My independent research focus is <strong>agentic systems</strong> — specifically, what it
+      takes to build AI agents that are reliable enough to trust with consequential work.
+      I'm developing <strong>MissionControl</strong>, a multi-agent orchestration framework
+      designed around production-grade concerns: task durability, inter-agent coordination,
+      persistent memory, and observability. The research informs both my writing and my
+      client work.
     </p>
 
     <p>
-      I have two dogs, Dexter and Grace, who have strong opinions about my work schedule.
+      I also run <strong>Aria</strong>, a personal AI system that manages my research,
+      publishing, and analysis workflows. Building and operating Aria is how I stay honest
+      about the gap between what agentic AI systems promise and what they actually deliver
+      today.
     </p>
 
     <p>
-      If you want longer-form thinking, I publish on
+      I write about enterprise AI strategy, agent architecture, and the operational realities
+      of deploying AI in production. Longer pieces go to
       <a href="https://substack.com/@ryanmerlin" target="_blank" rel="noopener noreferrer"
          class="underline decoration-1 underline-offset-2 transition-colors"
          style="color: var(--color-accent);">Substack</a>.
-      This site is where shorter pieces land.
+      This site is where the shorter, faster thinking lands.
     </p>
   </div>
 </main>

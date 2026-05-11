@@ -14,8 +14,8 @@
   <header class="mb-16">
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
     <p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
-      I build AI agents and the infrastructure that runs them.<br />
-      I write about what I learn along the way.
+      Enterprise AI, agentic systems, and the gap between what AI promises and what it delivers.<br />
+      Principal FDE at Alteryx. Building MissionControl.
     </p>
   </header>
 
