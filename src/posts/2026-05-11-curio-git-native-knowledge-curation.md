@@ -8,7 +8,7 @@
   };
 </script>
 
-![Curio — Curated Intelligence Operator](/images/curio-hero.png)
+<img src="/images/curio-hero.png" alt="Curio — Curated Intelligence Operator" style="width: 50%; display: block; margin: 0 auto 2rem;" />
 
 Every enterprise AI project I've worked on eventually hits the same wall. Not a model wall. Not a data wall. A knowledge wall.
 
@@ -66,7 +66,7 @@ A few choices shaped the design more than anything else.
 
 ## The Service Layer
 
-The CLI is the foundation, but the real deployment target is a Cloud Run service that wraps it. The service handles multi-workspace registration (separate knowledge bases for different teams or use cases), asynchronous job execution via Pub/Sub, a per-workspace audit stream, and a Git materializer that clones repositories to local mirrors and creates isolated worktrees for concurrent curation jobs.
+The CLI is the foundation, but the real deployment target is a containerized service that wraps it. The service handles multi-workspace registration (separate knowledge bases for different teams or use cases), asynchronous job execution, a per-workspace audit stream, and a Git materializer that clones repositories to local mirrors and creates isolated worktrees for concurrent curation jobs.
 
 This is the layer that turns Curio from a personal productivity tool into an enterprise-grade system. One instance, multiple knowledge bases, fully auditable job history, concurrent processing without state conflicts.
 
