@@ -50,7 +50,7 @@
     </p>
 
     <p>
-      I hold a PhD and MA in Economics and Organizational Psychology from Claremont Graduate
+      PhD trained in Economics and Organizational Psychology from Claremont Graduate
       University, and a BS in Business Management from CU Boulder. The social science training
       shapes how I think about AI adoption: the hard problems in enterprise AI are almost
       always about people and process, not models.
