@@ -1,42 +1,9 @@
-# sv
+# ryanmerlin.com
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal site and writing home for [Ryan Merlin](https://ryanmerlin.com).
 
-## Creating a project
+I'm an AI developer and forward deployed engineer — embedded with enterprise organizations shipping production AI systems. My independent research is focused on [MissionControl](https://github.com/RyanMerlin/missioncontrol) — a multi-agent orchestration framework built around what actually matters in production: task durability, inter-agent coordination, and evaluation frameworks that catch failure modes before they reach customers.
 
-If you're seeing this, you've probably already done this step. Congrats!
+The writing here covers enterprise AI, agent architecture, and the operational gap between what frontier models promise and what organizations can ship. Longer pieces go to [Substack](https://substack.com/@ryanmerlin).
 
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-bun x sv@0.15.3 create --template minimal --types ts --add prettier eslint mdsvex tailwindcss="plugins:typography" sveltekit-adapter="adapter:static" --install bun merlin-site
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+**Stack:** SvelteKit · mdsvex · Tailwind CSS 4 · Cloudflare Pages · deployed via GitHub Actions
