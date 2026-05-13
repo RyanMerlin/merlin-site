@@ -15,7 +15,7 @@
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
     <p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
       Enterprise AI, agentic systems, and the gap between what AI promises and what it delivers.<br />
-      Principal FDE. Building MissionControl.
+      Principal FDE. Building enterprise and personal AI systems.
     </p>
   </header>
 
