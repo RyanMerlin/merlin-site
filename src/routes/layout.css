@@ -14,12 +14,12 @@
   --color-bg-subtle: #f0efe9;
   --color-text: #1a1a1a;
   --color-text-muted: #6b6b6b;
-  --color-accent: #b8860b;
+  --color-accent: #e75b2a;
   --color-border: #e2e2dc;
   --color-code-bg: #f0efe9;
   /* Prism token colors — light */
   --token-comment: #6b7280;
-  --token-keyword: #b8860b;
+  --token-keyword: #e75b2a;
   --token-string: #166534;
   --token-number: #1d4ed8;
   --token-function: #9d174d;
@@ -33,12 +33,12 @@
     --color-bg-subtle: #141414;
     --color-text: #e8e8e8;
     --color-text-muted: #8a8a8a;
-    --color-accent: #d4a853;
+    --color-accent: #e75b2a;
     --color-border: #2a2a2a;
     --color-code-bg: #141414;
     /* Prism token colors — dark */
     --token-comment: #6b7280;
-    --token-keyword: #d4a853;
+    --token-keyword: #e75b2a;
     --token-string: #86efac;
     --token-number: #93c5fd;
     --token-function: #f9a8d4;
