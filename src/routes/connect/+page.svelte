@@ -3,6 +3,15 @@
 
   const links = [
     {
+      platform: 'GitHub',
+      handle: 'RyanMerlin',
+      url: 'https://github.com/RyanMerlin',
+      description:
+        'Open source work with applied AI, multi-agent orchestration, enterprise scaling, and supporting tooling.',
+      cta: 'View repos',
+      icon: 'github',
+    },
+    {
       platform: 'Substack',
       handle: '@ryanmerlin',
       url: 'https://substack.com/@ryanmerlin',
@@ -28,15 +37,6 @@
         'Professional background, career updates, and shorter takes on enterprise AI and the field.',
       cta: 'Connect',
       icon: 'linkedin',
-    },
-    {
-      platform: 'GitHub',
-      handle: 'RyanMerlin',
-      url: 'https://github.com/RyanMerlin',
-      description:
-        'Open source work including MissionControl (multi-agent orchestration) and supporting tooling.',
-      cta: 'View repos',
-      icon: 'github',
     },
   ];
 </script>
