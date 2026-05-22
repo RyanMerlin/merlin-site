@@ -31,8 +31,8 @@
   :root {
     --color-bg: #0a0a0a;
     --color-bg-subtle: #141414;
-    --color-text: #e8e8e8;
-    --color-text-muted: #8a8a8a;
+    --color-text: #b8b8b8;
+    --color-text-muted: #6e6e6e;
     --color-accent: #e75b2a;
     --color-border: #2a2a2a;
     --color-code-bg: #141414;
@@ -43,7 +43,7 @@
     --token-number: #93c5fd;
     --token-function: #f9a8d4;
     --token-punctuation: #9ca3af;
-    --token-default: #e8e8e8;
+    --token-default: #b8b8b8;
   }
 }
 
