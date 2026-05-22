@@ -58,9 +58,14 @@ let api_key = client.resolve("/providers/openai/OPENAI_API_KEY").await?;
 
 // Write back a derived credential (upsert semantics)
 client.set("/providers/google/OAUTH_REFRESH_TOKEN", &new_token, None).await?;
+```
 
-// Exec a subprocess with secrets injected as env vars
-// aria secrets inject --map '{"OPENAI_API_KEY":"/providers/openai/OPENAI_API_KEY"}' -- python3 server.py
+Subprocess injection works the same way from the CLI:
+
+```bash
+aria secrets inject \
+  --map 'OPENAI_API_KEY=/providers/openai/OPENAI_API_KEY' \
+  -- python3 server.py
 ```
 
 A few design choices worth noting.
