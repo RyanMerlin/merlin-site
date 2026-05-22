@@ -26,6 +26,7 @@ export const GET: RequestHandler = () => {
     <description>${SITE_DESCRIPTION}</description>
     <language>en-us</language>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${items}
   </channel>
 </rss>`;

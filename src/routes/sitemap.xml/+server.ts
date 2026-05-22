@@ -15,6 +15,7 @@ export const GET: RequestHandler = () => {
   <url>
     <loc>${SITE_URL}${path}</loc>
     <changefreq>${path === '' ? 'weekly' : 'monthly'}</changefreq>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
   </url>`
     )
     .join('');
