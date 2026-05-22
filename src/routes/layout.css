@@ -17,6 +17,7 @@
   --color-accent: #e75b2a;
   --color-border: #e2e2dc;
   --color-code-bg: #f0efe9;
+  --color-code-border: var(--color-border);
   /* Prism token colors — light */
   --token-comment: #6b7280;
   --token-keyword: #e75b2a;
@@ -83,7 +84,7 @@ body {
   flex-direction: column;
 }
 
-/* Prism syntax highlighting */
+/* Prism syntax highlighting — 2026-05-22 */
 pre[class*='language-'],
 code[class*='language-'] {
   font-family: var(--font-mono);
