@@ -45,6 +45,28 @@
     --token-punctuation: #9ca3af;
     --token-default: #b8b8b8;
   }
+
+  /* Override Tailwind Typography prose-invert defaults — zinc sets headings/bold/links/code to #fff */
+  .prose {
+    --tw-prose-invert-body: #b8b8b8;
+    --tw-prose-invert-headings: #d0d0d0;
+    --tw-prose-invert-lead: #a0a0a0;
+    --tw-prose-invert-links: #b8b8b8;
+    --tw-prose-invert-bold: #d0d0d0;
+    --tw-prose-invert-counters: #808080;
+    --tw-prose-invert-bullets: #505050;
+    --tw-prose-invert-hr: #2a2a2a;
+    --tw-prose-invert-quotes: #a0a0a0;
+    --tw-prose-invert-quote-borders: #2a2a2a;
+    --tw-prose-invert-captions: #6e6e6e;
+    --tw-prose-invert-kbd: #d0d0d0;
+    --tw-prose-invert-kbd-shadows: rgb(255 255 255 / 5%);
+    --tw-prose-invert-code: #b8b8b8;
+    --tw-prose-invert-pre-code: #b8b8b8;
+    --tw-prose-invert-pre-bg: #141414;
+    --tw-prose-invert-th-borders: #2a2a2a;
+    --tw-prose-invert-td-borders: #1e1e1e;
+  }
 }
 
 html {
