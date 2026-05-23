@@ -21,9 +21,9 @@
         <li>
           <strong>MissionControl</strong> — building a production-grade multi-agent orchestration
           framework. The core design question: what does it take to run agent fleets with real
-          operational rigor? Current focus is task durability, mesh-based inter-agent messaging,
-          and evaluation frameworks that catch failure modes before they reach production.
-          Delivering agent skills, sub-agents, and MCP integrations as first-class artifacts.
+          operational rigor? Current focus is persistent session architecture, mesh-based
+          inter-agent coordination, and a consolidated cron/dispatch layer. Agents are first-class
+          principals with identity, inbox, and durable task state.
         </li>
         <li>
           <strong>Agent evaluation</strong> — developing methods for measuring agentic system
@@ -35,14 +35,14 @@
     </section>
 
     <section>
-      <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Client Work</h2>
+      <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Forward Deployed Work</h2>
       <ul class="space-y-3 list-none">
         <li>
-          Principal Forward Deployed Engineer at <strong>Alteryx</strong>. Embedded with
-          strategic enterprise customers building production AI applications — shipping working
+          Embedded with enterprise clients building production AI applications — shipping working
           systems, not decks. Current engagements involve agent-native workflows in organizations
           navigating complex legacy infrastructure and real data governance constraints.
-          Codifying what works into repeatable deployment patterns for the broader practice.
+          Codifying what works into repeatable deployment patterns. If you're building enterprise
+          AI systems and want a practitioner in the room, <a href="/connect" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">reach out</a>.
         </li>
       </ul>
     </section>
@@ -72,8 +72,13 @@
       <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Writing</h2>
       <ul class="space-y-3 list-none">
         <li>
-          Turning the research and field pattern-matching into writing that's useful for
-          practitioners building and deploying AI systems. Aria drafts; I edit; we ship.
+          Publishing regularly on this blog. The focus is what I'm actually building and
+          deploying — agent infrastructure, secrets management, orchestration patterns,
+          the real failure modes. Not tutorials. Field reports.
+        </li>
+        <li>
+          Also dusting off <a href="https://x.com/rmerlin" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">@rmerlin on Twitter/X</a>
+          for shorter takes and being part of the AI builder conversation.
         </li>
       </ul>
     </section>
