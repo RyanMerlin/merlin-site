@@ -3,6 +3,15 @@
 
   const links = [
     {
+      platform: 'Twitter / X',
+      handle: '@rmerlin',
+      url: 'https://x.com/rmerlin',
+      description:
+        'Short takes on AI agents, enterprise deployment, and what I\'m building. Where the conversation happens.',
+      cta: 'Follow',
+      icon: 'twitter',
+    },
+    {
       platform: 'GitHub',
       handle: 'RyanMerlin',
       url: 'https://github.com/RyanMerlin',
@@ -12,12 +21,21 @@
       icon: 'github',
     },
     {
+      platform: 'LinkedIn',
+      handle: 'ryanmerlin',
+      url: 'https://linkedin.com/in/ryanmerlin',
+      description:
+        'Professional background, career updates, and shorter takes on enterprise AI and the field.',
+      cta: 'Connect',
+      icon: 'linkedin',
+    },
+    {
       platform: 'Substack',
       handle: '@ryanmerlin',
       url: 'https://substack.com/@ryanmerlin',
       description:
-        'Long-form writing on enterprise AI, agent architecture, and the gap between what AI promises and what it delivers in production.',
-      cta: 'Read & subscribe',
+        'Get posts by email. Same writing as the blog, delivered to your inbox.',
+      cta: 'Subscribe',
       icon: 'substack',
     },
     {
@@ -29,21 +47,12 @@
       cta: 'Watch',
       icon: 'youtube',
     },
-    {
-      platform: 'LinkedIn',
-      handle: 'ryanmerlin',
-      url: 'https://linkedin.com/in/ryanmerlin',
-      description:
-        'Professional background, career updates, and shorter takes on enterprise AI and the field.',
-      cta: 'Connect',
-      icon: 'linkedin',
-    },
   ];
 </script>
 
 <MetaTags
   title="Connect"
-  description="Find Ryan Merlin on Substack, YouTube, LinkedIn, and GitHub."
+  description="Find Ryan Merlin on Twitter/X, GitHub, LinkedIn, Substack, and YouTube."
   path="/connect"
 />
 

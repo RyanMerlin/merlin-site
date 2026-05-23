@@ -21,13 +21,11 @@
     </p>
 
     <p>
-      As Principal Forward Deployed Engineer at Alteryx, I embed directly with strategic customers
-      to drive transformational AI adoption — moving organizations from isolated AI experiments to
-      production workflows that compound over time. I deliver technical artifacts including
-      agent systems, integration architectures, and deployment patterns that customers run in
-      production. Before this role I led Alteryx's Worldwide Cloud & AI Professional Services
-      practice, where I built the delivery playbooks and codified the repeatable deployment patterns
-      the field organization runs on today.
+      I embed directly with enterprise clients to drive AI adoption — moving organizations from
+      isolated experiments to production workflows that compound over time. I deliver technical
+      artifacts: agent systems, integration architectures, and deployment patterns that run in
+      production. I've built the delivery playbooks and codified the repeatable patterns that
+      field organizations run on. The job is part engineer, part translator, part operator.
     </p>
 
     <p>
@@ -59,10 +57,15 @@
     <p>
       I care about advancing AI that is genuinely useful and responsibly deployed. The writing
       here is my attempt to make the gap between AI capability and AI production narrower —
-      for practitioners who are doing the actual work. Longer pieces go to
+      for practitioners who are doing the actual work. Follow along on
+      <a href="https://x.com/rmerlin" target="_blank" rel="noopener noreferrer"
+         class="underline decoration-1 underline-offset-2 transition-colors"
+         style="color: var(--color-accent);">Twitter / X</a>
+      for shorter takes, or
       <a href="https://substack.com/@ryanmerlin" target="_blank" rel="noopener noreferrer"
          class="underline decoration-1 underline-offset-2 transition-colors"
-         style="color: var(--color-accent);">Substack</a>.
+         style="color: var(--color-accent);">subscribe via Substack</a>
+      to get posts by email.
     </p>
   </div>
 </main>
