@@ -17,7 +17,7 @@
     <a
       href="/"
       class="text-sm font-semibold tracking-tight"
-      style="color: var(--color-text);"
+      style="color: var(--color-accent);"
     >
       Ryan Merlin
     </a>
