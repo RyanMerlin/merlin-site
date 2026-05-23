@@ -38,9 +38,9 @@
 
     <p>
       My independent research focus is <strong>production agentic systems</strong>. I'm developing
-      <strong>MissionControl</strong>, a multi-agent orchestration framework built around the
-      concerns that matter in enterprise deployment: task durability, inter-agent coordination,
-      evaluation frameworks, and observability. The goal is a system where you can run a fleet
+      <strong><a href="https://github.com/RyanMerlin/edgeplane">EdgePlane</a></strong>, a multi-agent orchestration control plane built around the
+      concerns that matter in production deployment: persistent agent identity, lifecycle ownership,
+      inter-agent coordination, and operational observability. The goal is a system where you can run a fleet
       of AI agents with the same operational rigor you'd apply to production infrastructure.
       I'm also building and operating <strong>Aria</strong>, a personal AI system that handles
       research, publishing, and analysis workflows — a living testbed for the agent architectures

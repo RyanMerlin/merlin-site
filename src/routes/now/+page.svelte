@@ -19,7 +19,7 @@
       <h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Research</h2>
       <ul class="space-y-3 list-none">
         <li>
-          <strong>MissionControl</strong> — building a production-grade multi-agent orchestration
+          <strong>EdgePlane</strong> — building a production-grade multi-agent orchestration
           framework. The core design question: what does it take to run agent fleets with real
           operational rigor? Current focus is persistent session architecture, mesh-based
           inter-agent coordination, and a consolidated cron/dispatch layer. Agents are first-class

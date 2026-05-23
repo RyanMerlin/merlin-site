@@ -3,7 +3,7 @@
     title: "Persistent sessions are the unit of agent work, not requests",
     created: "2026-05-05",
     status: "published",
-    tags: ["agents", "architecture", "missioncontrol", "rust"],
+    tags: ["agents", "architecture", "edgeplane", "rust"],
     summary: "Every agent platform shipping today treats a model call as a request — short-lived, stateless, RPC. Real agents have memory, in-flight tool calls, and partial plans. The request model makes you rebuild context on every call. Sessions are the unit."
   };
 </script>
@@ -38,7 +38,7 @@ Permission flow without polling. The agent hits a tool call that requires your a
 
 ## The supervisor
 
-In MissionControl's `mc-mesh`, the persistent session supervisor lives in `acp_session_supervisor.rs`. The outer loop is straightforward:
+In EdgePlane's `edgeplaned`, the persistent session supervisor lives in `acp_session_supervisor.rs`. The outer loop is straightforward:
 
 ```rust
 pub async fn run_for_agent(cfg: AcpSupervisorConfig, registry: Arc<AttachRegistry>) {
@@ -68,7 +68,7 @@ Signals arrive at the supervisor via an mpsc channel and get translated to ACP c
 - `AgentSignal::PeerMessage` → `session/prompt` with a `[PEER MESSAGE from {agent_id}]` prefix
 - `AgentSignal::Cancel` → `session/cancel`
 
-This is how `mc signal <agent-id> --content "..."` works. The CLI creates an `AgentSignal::UserInput`, pushes it to the agent's signal channel, and the supervisor renders it as a `session/prompt` call into the running ACP session. The old approach was `tmux send-keys` — writing bytes into a terminal session and hoping the process interpreted them correctly. The signal path is typed and explicit.
+This is how `edgeplane signal <agent-id> --content "..."` works. The CLI creates an `AgentSignal::UserInput`, pushes it to the agent's signal channel, and the supervisor renders it as a `session/prompt` call into the running ACP session. The old approach was `tmux send-keys` — writing bytes into a terminal session and hoping the process interpreted them correctly. The signal path is typed and explicit.
 
 ---
 
@@ -100,11 +100,11 @@ The supervisor runs on the node where the agent process lives. The viewer might 
 ```
 Browser (Boulder)
   ↕ WebSocket (JSON-RPC frames)
-mc-controlplane
+edgeplane-controlplane
   GET /runtime/nodes/{node_id}/agents/{agent_id}/attach
   → upgrades to WebSocket → forwards frames to the node
   ↕
-mc-mesh (excalibur)
+edgeplaned (excalibur)
   attach_ws server
   ↕ ACP client handle held by the supervisor
 ```
@@ -115,10 +115,10 @@ Because ACP is JSON-RPC over text frames — not a binary terminal stream — th
 
 ## When requests are still right
 
-One-shot codegen. Single-tool retrieval. Batch classification runs where you want stateless, parallelizable, restartable invocations. The request model is correct for these. Both modes exist in MissionControl — `session_mode: task` runs the current `claude -p` headless path, `session_mode: persistent` runs the ACP supervisor. They coexist in the same `mc-mesh.yaml` config; routing is per agent.
+One-shot codegen. Single-tool retrieval. Batch classification runs where you want stateless, parallelizable, restartable invocations. The request model is correct for these. Both modes exist in EdgePlane — `session_mode: task` runs the current `claude -p` headless path, `session_mode: persistent` runs the ACP supervisor. Routing is per agent in the fleet config.
 
 The distinction is not about whether the model is capable. It's about what the agent is doing. If it's completing a discrete task in a single turn and moving on, use a request. If it's doing extended work with memory, tool state, and a human who might want to steer it mid-flight, use a session.
 
 ---
 
-The session supervisor code is at `integrations/mc-mesh/crates/mc-mesh/src/acp_session_supervisor.rs` and `replay_broadcast.rs` in the [MissionControl repo](https://github.com/RyanMerlin/missioncontrol). The next piece in this series goes into the authentication architecture — specifically, what "anonymous is not a principal" means and the failure mode it was built to prevent.
+The session supervisor code is at `acp_session_supervisor.rs` and `replay_broadcast.rs` in the [EdgePlane repo](https://github.com/RyanMerlin/edgeplane). The next piece in this series goes into the authentication architecture — specifically, what "anonymous is not a principal" means and the failure mode it was built to prevent.

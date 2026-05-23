@@ -3,12 +3,12 @@
     title: "Why agents need a control plane, not a pipeline",
     created: "2026-04-07",
     status: "published",
-    tags: ["agents", "architecture", "missioncontrol"],
+    tags: ["agents", "architecture", "edgeplane"],
     summary: "The dominant model for agent orchestration is the linear pipeline. It breaks down the moment two agents need to touch the same artifact. Here's what the alternative looks like."
   };
 </script>
 
-<img src="/images/mc-hero.png" alt="MissionControl" style="width: 50%; display: block; margin: 0 auto 2rem;" />
+<img src="/images/mc-hero.png" alt="EdgePlane" style="width: 50%; display: block; margin: 0 auto 2rem;" />
 
 Every serious attempt to build a multi-agent system converges on the same shape. You have a coordinator agent that breaks down work, a set of worker agents that execute it, and a reviewer agent that checks the output. The coordinator hands off to a worker, the worker hands off to the reviewer, the reviewer hands back corrections. It looks clean on a diagram.
 
@@ -38,10 +38,10 @@ The control plane is not the execution environment. It doesn't run your containe
 
 AI agents need the same thing. Not a workflow engine that coordinates the order of LLM calls, but a control plane that coordinates the agents themselves: their identity, their task ownership, their access to shared state, and the governance rules that determine who can approve what.
 
-In MissionControl, the split maps precisely:
+In EdgePlane, the split maps precisely:
 
-- `mc` is kubectl — the CLI surface for humans and agents, the tool you use to inspect and interact with the system
-- `mc-mesh` is kubelet — the node daemon running on every machine, managing every agent process on that machine, reporting back to the control plane
+- `edgeplane` is kubectl — the CLI surface for humans and agents, the tool you use to inspect and interact with the system
+- `edgeplaned` is kubelet — the node daemon running on every machine, managing every agent process on that machine, reporting back to the control plane
 - Missions are namespaces — scoped coordination boundaries that define knowledge domains, toolsets, permission tiers, and governance policy
 - Klusters are the work-coordination unit within a mission — where agents and humans focus together on a targeted outcome
 - Tasks are the unit of completion — missions persist indefinitely, tasks finish
@@ -52,7 +52,7 @@ That last point is worth stating plainly. **Missions don't complete — tasks do
 
 ## What the control plane buys
 
-Overlap detection before creation. Before a task or artifact is created in MissionControl, a fuzzy similarity check and a vector search run against the existing state of the mission. The agent sees the results and decides whether to proceed, merge intent with an existing task, or discard. No two agents racing to fix the same bug, no two researchers duplicating the same literature review. The collision is detected before it happens.
+Overlap detection before creation. Before a task or artifact is created in EdgePlane, a fuzzy similarity check and a vector search run against the existing state of the mission. The agent sees the results and decides whether to proceed, merge intent with an existing task, or discard. No two agents racing to fix the same bug, no two researchers duplicating the same literature review. The collision is detected before it happens.
 
 Durable ownership. Every task and artifact has an explicit owner — a stable agent identity, not a session UUID that evaporates when the process restarts. When an agent crashes and its supervisor restarts it, ownership is preserved. The task is still assigned. The artifact is still pending. The new session picks up exactly where the previous one left off.
 
@@ -72,4 +72,4 @@ If you have one agent running sequential tasks, you don't need a control plane. 
 
 ---
 
-The code is at [github.com/RyanMerlin/missioncontrol](https://github.com/RyanMerlin/missioncontrol). The `MISSIONCONTROL_PHILOSOPHY.md` in the root has the longer version of this argument. Subsequent posts will go deeper into specific pieces of the architecture — persistent sessions, the coordination tax, what "agent identity" actually means in a system with shared state.
+The code is at [github.com/RyanMerlin/edgeplane](https://github.com/RyanMerlin/edgeplane). The philosophy doc in the root has the longer version of this argument. Subsequent posts will go deeper into specific pieces of the architecture — persistent sessions, the coordination tax, what "agent identity" actually means in a system with shared state.

@@ -3,7 +3,7 @@
     title: "The coordination tax: what we got wrong about multi-agent systems",
     created: "2026-04-28",
     status: "published",
-    tags: ["agents", "architecture", "missioncontrol"],
+    tags: ["agents", "architecture", "edgeplane"],
     summary: "Multi-agent systems don't fail because the agents are stupid. They fail because the coordination cost wasn't budgeted for."
   };
 </script>
@@ -30,7 +30,7 @@ This is the swarm failure mode. It's not a model failure. It's a systems failure
 
 ## The four taxes
 
-**Identity.** Every action needs to be attributable to a stable principal — not a session UUID that changes on restart, not an anonymous caller that your database quietly filters as an empty result set. In MissionControl, every agent carries a `public_id` of the form `{name}-{8hex}` — readable, stable, and preserved across crashes and restarts. When an agent creates a task or publishes an artifact, the ownership record survives the session that created it. This sounds obvious until you've debugged a ghost-row problem caused by re-registration creating a new identity instead of updating the existing one.
+**Identity.** Every action needs to be attributable to a stable principal — not a session UUID that changes on restart, not an anonymous caller that your database quietly filters as an empty result set. In EdgePlane, every agent carries a `public_id` of the form `{name}-{8hex}` — readable, stable, and preserved across crashes and restarts. When an agent creates a task or publishes an artifact, the ownership record survives the session that created it. This sounds obvious until you've debugged a ghost-row problem caused by re-registration creating a new identity instead of updating the existing one.
 
 **Overlap.** Before a task or artifact is created, run a similarity check against existing state. Fuzzy matching catches identical intent with different wording. Vector search catches semantic overlap across different domains. Return the results to the agent before the creation completes. The agent decides — proceed, merge, discard. This check costs ~40ms. Not running it costs the time of two agents completing duplicate work and a human reconciling the results.
 
