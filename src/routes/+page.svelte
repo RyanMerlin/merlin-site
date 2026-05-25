@@ -25,7 +25,7 @@
   <header class="mb-16">
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
     <p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
-      PhD-trained in economics and psychology. 15 years building data systems inside enterprises.<br />
+      PhD foundation in economics and psychology. 16 years building data systems inside enterprises.<br />
       Now focused on agentic AI, the gap between what AI promises and what it delivers, and the organizational systems that determine which side of that gap you land on.
     </p>
   </header>
