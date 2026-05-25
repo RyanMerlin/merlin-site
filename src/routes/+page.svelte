@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { posts, topics, postTopic, readingTime } from '$lib/posts';
+  import { posts, topics, postTopic, postsByTopic, readingTime } from '$lib/posts';
   import MetaTags from '$lib/components/MetaTags.svelte';
 
   let activeTopic = $state<string | null>(null);
+  const visibleTopics = $derived(topics.filter((t) => postsByTopic(t.slug).length > 0));
 
   const filtered = $derived(
     activeTopic
@@ -25,7 +26,7 @@
   <header class="mb-16">
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
     <p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
-      PhD foundation in economics and psychology. 16 years building data systems inside enterprises.<br />
+      PhD background in economics and psychology. 16 years building data systems inside enterprises.<br />
       Now focused on agentic AI, the gap between what AI promises and what it delivers, and the organizational systems that determine which side of that gap you land on.
     </p>
   </header>
@@ -38,7 +39,7 @@
     >
       All writing
     </button>
-    {#each topics as topic (topic.slug)}
+    {#each visibleTopics as topic (topic.slug)}
       <button
         class="tab"
         class:active={activeTopic === topic.slug}
