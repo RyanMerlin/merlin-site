@@ -45,6 +45,32 @@ export const posts: PostMeta[] = Object.entries(modules)
 	.map(([path, mod]) => toMeta(path, mod))
 	.sort((a, b) => b.created.localeCompare(a.created));
 
+export type Topic = {
+	slug: string;
+	label: string;
+	color: string;
+	matchTags: string[];
+};
+
+export const topics: Topic[] = [
+	{ slug: 'ai', label: 'AI & Agents', color: '#7c9cf8', matchTags: ['ai', 'agents', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
+	{ slug: 'psychology', label: 'Psychology', color: '#a78bfa', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition'] },
+	{ slug: 'economics', label: 'Economics', color: '#34d399', matchTags: ['economics', 'markets', 'investing', 'finance'] },
+];
+
+export function postTopic(post: PostMeta): Topic | undefined {
+	for (const topic of topics) {
+		if (post.tags.some((t) => topic.matchTags.includes(t))) return topic;
+	}
+	return undefined;
+}
+
+export function postsByTopic(topicSlug: string): PostMeta[] {
+	const topic = topics.find((t) => t.slug === topicSlug);
+	if (!topic) return [];
+	return posts.filter((p) => p.tags.some((t) => topic.matchTags.includes(t)));
+}
+
 export async function loadPost(slug: string) {
 	const path = `/src/posts/${slug}.md`;
 	const mod = modules[path];

@@ -3,6 +3,7 @@
 
   const links = [
     { href: '/', label: 'writing' },
+    { href: '/topics/ai', label: 'topics' },
     { href: '/about', label: 'about' },
     { href: '/now', label: 'now' },
     { href: '/connect', label: 'connect' },
@@ -26,8 +27,8 @@
         <a
           href={link.href}
           class="text-sm transition-colors"
-          style="color: {page.url.pathname === link.href ? 'var(--color-accent)' : 'var(--color-text-muted)'};"
-          aria-current={page.url.pathname === link.href ? 'page' : undefined}
+          style="color: {(page.url.pathname === link.href || (link.href.startsWith('/topics') && page.url.pathname.startsWith('/topics'))) ? 'var(--color-accent)' : 'var(--color-text-muted)'};"
+          aria-current={(page.url.pathname === link.href || (link.href.startsWith('/topics') && page.url.pathname.startsWith('/topics'))) ? 'page' : undefined}
         >
           {link.label}
         </a>
