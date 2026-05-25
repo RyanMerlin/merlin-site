@@ -20,7 +20,7 @@
   type="article"
 />
 
-<main class="mx-auto max-w-2xl px-6 py-16">
+<main class="mx-auto max-w-3xl px-6 py-16">
   <nav class="mb-12">
     <a href="/" class="text-sm transition-colors" style="color: var(--color-text-muted);">← writing</a>
   </nav>

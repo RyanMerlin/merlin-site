@@ -14,7 +14,7 @@
 
 <MetaTags path="/topics/{data.topic.slug}" />
 
-<main class="mx-auto max-w-2xl px-6 py-16">
+<main class="mx-auto max-w-3xl px-6 py-16">
   <header class="mb-12">
     <a href="/" class="text-xs mb-4 block" style="color: var(--color-text-muted);">← all writing</a>
     <h1 class="text-2xl font-semibold tracking-tight" style="color: {data.topic.color};">

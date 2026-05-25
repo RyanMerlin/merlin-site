@@ -56,7 +56,7 @@
   path="/connect"
 />
 
-<main class="mx-auto max-w-2xl px-6 py-16">
+<main class="mx-auto max-w-3xl px-6 py-16">
   <header class="mb-12">
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Connect</h1>
     <p class="mt-3 text-base" style="color: var(--color-text-muted);">

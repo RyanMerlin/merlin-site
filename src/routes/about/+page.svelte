@@ -8,7 +8,7 @@
   path="/about"
 />
 
-<main class="mx-auto max-w-2xl px-6 py-16">
+<main class="mx-auto max-w-3xl px-6 py-16">
   <header class="mb-12">
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">About</h1>
   </header>
