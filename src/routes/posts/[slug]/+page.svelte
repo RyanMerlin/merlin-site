@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PageProps } from './$types';
   import MetaTags from '$lib/components/MetaTags.svelte';
+  import JsonLd from '$lib/components/JsonLd.svelte';
   import { posts, readingTime } from '$lib/posts';
 
   let { data }: PageProps = $props();
@@ -18,6 +19,15 @@
   description={data.meta.summary ?? ''}
   path="/posts/{data.meta.slug}"
   type="article"
+/>
+
+<JsonLd
+  title={data.meta.title}
+  description={data.meta.summary ?? ''}
+  slug={data.meta.slug}
+  created={data.meta.created}
+  tags={data.meta.tags}
+  wordCount={data.meta.wordCount}
 />
 
 <main class="mx-auto max-w-3xl px-6 py-16">
