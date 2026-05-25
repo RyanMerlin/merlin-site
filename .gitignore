@@ -2,6 +2,7 @@ node_modules
 
 # Output
 .output
+.brainstorm
 .vercel
 .netlify
 .wrangler
