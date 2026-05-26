@@ -3,15 +3,6 @@
 
   const links = [
     {
-      platform: 'Twitter / X',
-      handle: '@rmerlin',
-      url: 'https://x.com/rmerlin',
-      description:
-        'Short takes on AI agents, enterprise deployment, and what I\'m building. Where the conversation happens.',
-      cta: 'Follow',
-      icon: 'twitter',
-    },
-    {
       platform: 'GitHub',
       handle: 'RyanMerlin',
       url: 'https://github.com/RyanMerlin',
@@ -28,6 +19,15 @@
         'Professional background, career updates, and shorter takes on enterprise AI and the field.',
       cta: 'Connect',
       icon: 'linkedin',
+    },
+    {
+      platform: 'Twitter / X',
+      handle: '@rmerlin',
+      url: 'https://x.com/rmerlin',
+      description:
+        'Short takes on AI agents, enterprise deployment, and what I\'m building. Where the conversation happens.',
+      cta: 'Follow',
+      icon: 'twitter',
     },
     {
       platform: 'Substack',
