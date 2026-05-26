@@ -1,6 +1,6 @@
 <script context="module">
   export const metadata = {
-    title: "The Press Secretary in the Skull",
+    title: "Consciousness - The Press Secretary in the Skull",
     created: "2026-05-26",
     status: "published",
     tags: ["consciousness", "neuroscience", "free-will", "decision-making", "predictive-processing", "behavioral-economics"],
