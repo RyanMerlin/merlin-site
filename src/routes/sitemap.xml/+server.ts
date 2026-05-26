@@ -5,17 +5,28 @@ import type { RequestHandler } from './$types';
 export const prerender = true;
 
 export const GET: RequestHandler = () => {
-  const staticPaths = ['', '/about', '/now'];
-  const postPaths = posts.map((p) => `/posts/${p.slug}`);
-  const allPaths = [...staticPaths, ...postPaths];
+  const today = new Date().toISOString().split('T')[0];
+  const latestPostDate = posts.length ? posts[0].created.split('T')[0] : today;
 
-  const urls = allPaths
+  const staticUrls = [
+    { path: '', changefreq: 'weekly', lastmod: latestPostDate },
+    { path: '/about', changefreq: 'monthly', lastmod: today },
+    { path: '/now', changefreq: 'weekly', lastmod: today },
+  ];
+
+  const postUrls = posts.map((p) => ({
+    path: `/posts/${p.slug}`,
+    changefreq: 'monthly' as const,
+    lastmod: p.created.split('T')[0],
+  }));
+
+  const urls = [...staticUrls, ...postUrls]
     .map(
-      (path) => `
+      (u) => `
   <url>
-    <loc>${SITE_URL}${path}</loc>
-    <changefreq>${path === '' ? 'weekly' : 'monthly'}</changefreq>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <loc>${SITE_URL}${u.path}</loc>
+    <changefreq>${u.changefreq}</changefreq>
+    <lastmod>${u.lastmod}</lastmod>
   </url>`
     )
     .join('');

@@ -2,6 +2,7 @@
   import type { PageProps } from './$types';
   import MetaTags from '$lib/components/MetaTags.svelte';
   import JsonLd from '$lib/components/JsonLd.svelte';
+  import { SITE_URL } from '$lib/config';
   import { posts, readingTime } from '$lib/posts';
 
   let { data }: PageProps = $props();
@@ -19,6 +20,8 @@
   description={data.meta.summary ?? ''}
   path="/posts/{data.meta.slug}"
   type="article"
+  publishedTime={data.meta.created}
+  image="{SITE_URL}/posts/{data.meta.slug}/og.png"
 />
 
 <JsonLd
