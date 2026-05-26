@@ -89,15 +89,23 @@ This is where behavioral economics becomes not just relevant but necessary.
 
 Neuroscience challenges the *timing* of conscious authorship.  State-dependent research challenges the *neutrality* of the chooser.  Behavioral economics challenges the stability of the thing being chosen: *preference itself*.
 
-*Daniel Kahneman* and *Amos Tversky* did not show that people are stupid.  They showed something more important: **people are bounded, context-sensitive, reference-dependent, and systematically influenced by how the problem is represented.**  *Herbert Simon* had already attacked the fantasy of perfect optimization in ["A Behavioral Model of Rational Choice"](https://www.jstor.org/stable/1884852).  Kahneman and Tversky mapped the compression.
+*Daniel Kahneman* spent decades with *Amos Tversky* mapping how human judgment actually works.  In [*Thinking, Fast and Slow*](https://us.macmillan.com/books/9780374533557/thinkingfastandslow), he organized the findings into a framework that belongs at the center of this argument: *System 1* and *System 2*.  System 1 is fast, automatic, associative, effortless.  System 2 is slow, deliberate, serial, costly.  Kahneman's own summary: "System 2 believes itself to be where the action is.  But the automatic System 1 is the hero of the book."
 
-In ["Judgment under Uncertainty: Heuristics and Biases"](https://www.jstor.org/stable/1738360), they described mental shortcuts: *representativeness* (judging probability by similarity), *availability* (judging likelihood by ease of recall), *anchoring* (being pulled toward arbitrary starting points).  These are not random bugs.  They are fast, useful, low-cost ways to navigate uncertainty.  But they generate predictable distortions.
+Does that sound familiar?
+
+System 1 does most of the deciding.  System 2 thinks it is in charge but is mostly endorsing, rationalizing, and occasionally vetoing.  That is the press secretary argument in cognitive science language.  The narrator is System 2, drafting the official statement about what System 1 already decided.
+
+What Kahneman and Tversky documented empirically across decades of research, the neuroscience of consciousness is confirming at a different level of analysis.  *Libet*, *Fried*, *Gazzaniga*, the split-brain interpreter: all of it converges on the same structure.  System 1 is the unconscious machinery.  System 2 is the narrator.  The press secretary is System 2.
+
+*Herbert Simon* had already attacked the fantasy of perfect optimization in ["A Behavioral Model of Rational Choice"](https://www.jstor.org/stable/1884852).  Kahneman and Tversky showed that people are not stupid.  **They showed that people are bounded, context-sensitive, reference-dependent, and systematically influenced by how the problem is represented.**  They mapped the compression.
+
+In ["Judgment under Uncertainty: Heuristics and Biases"](https://www.jstor.org/stable/1738360), they described the shortcuts System 1 relies on: *representativeness* (judging probability by similarity), *availability* (judging likelihood by ease of recall), *anchoring* (being pulled toward arbitrary starting points).  These are not random bugs.  They are fast, useful, low-cost ways to navigate uncertainty.  But they generate predictable distortions.
 
 The connection to consciousness is direct:
 
 > **The narrator often explains the output of a heuristic as if it were the conclusion of a deliberation.**
 
-You do not experience "availability heuristic engaged."  You experience "that risk seems serious."  You do not experience "anchor insufficiently adjusted from."  You experience "that price feels about right."
+You do not experience "System 1 fired an availability heuristic."  You experience "that risk seems serious."  You do not experience "anchor insufficiently adjusted from."  You experience "that price feels about right."  System 2 narrates System 1's outputs as if they were its own conclusions.
 
 Their landmark 1979 paper, ["Prospect Theory"](https://www.jstor.org/stable/1914185), attacked expected utility theory with three ideas that matter here: *reference dependence* (outcomes are experienced as gains or losses relative to a reference point), *loss aversion* (losses loom larger than equivalent gains), and *probability weighting* (people overweight small probabilities and underweight moderate ones).
 
@@ -191,7 +199,7 @@ So consciousness is not merely a narrator.  **It is a broadcast-and-binding laye
 
 *Libet* himself did not think his work eliminated conscious agency.  He proposed that consciousness might retain a veto: even if it does not initiate action, it may stop an action already underway.  He called this *free won't*.
 
-That idea matters.  But the veto is not free.
+In Kahneman's terms, this is System 2 override of System 1.  System 1 proposes; System 2 occasionally vetoes.  That idea matters.  But the veto is not free.
 
 The [anterior cingulate cortex](https://doi.org/10.1037/0033-295X.108.3.624) is the brain's conflict monitor.  When conscious intention diverges from an automatic drive, it fires.  That firing registers subjectively as effort, tension, the feeling of having to stop yourself.  More recent work by [Shenhav, Botvinick, and Cohen](https://www.cell.com/neuron/fulltext/S0896-6273(13)00607-7) reframes the system: control is allocated when its expected benefits justify its effort, opportunity cost, and competing demands.
 
@@ -381,6 +389,7 @@ The question is not whether you have one.  The question is whether you are desig
 
 ### Behavioral economics, choice architecture, and time
 
+- Kahneman, D. (2011). [*Thinking, Fast and Slow.*](https://us.macmillan.com/books/9780374533557/thinkingfastandslow) Farrar, Straus and Giroux.
 - Simon, H.A. (1955). ["A Behavioral Model of Rational Choice."](https://www.jstor.org/stable/1884852) *Quarterly Journal of Economics*, 69(1), 99-118.
 - Tversky, A. & Kahneman, D. (1974). ["Judgment under Uncertainty: Heuristics and Biases."](https://www.jstor.org/stable/1738360) *Science*, 185(4157), 1124-1131.
 - Kahneman, D. & Tversky, A. (1979). ["Prospect Theory."](https://www.jstor.org/stable/1914185) *Econometrica*, 47(2), 263-291.
