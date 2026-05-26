@@ -2,8 +2,9 @@
   import type { PageProps } from './$types';
   import MetaTags from '$lib/components/MetaTags.svelte';
   import JsonLd from '$lib/components/JsonLd.svelte';
+  import PostCta from '$lib/components/PostCta.svelte';
   import { SITE_URL } from '$lib/config';
-  import { posts, readingTime } from '$lib/posts';
+  import { relatedPosts, readingTime } from '$lib/posts';
 
   let { data }: PageProps = $props();
 
@@ -12,7 +13,7 @@
     return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
-  const otherPosts = posts.filter(p => p.slug !== data.meta.slug).slice(0, 2);
+  const otherPosts = relatedPosts(data.meta, 2);
 </script>
 
 <MetaTags
@@ -57,9 +58,11 @@
     <data.Component />
   </article>
 
+  <PostCta />
+
   {#if otherPosts.length}
-    <div class="mt-16 pt-8" style="border-top: 1px solid var(--color-border);">
-      <p class="text-xs font-medium uppercase tracking-widest mb-6" style="color: var(--color-text-muted);">More</p>
+    <div class="mt-8 pt-8" style="border-top: 1px solid var(--color-border);">
+      <p class="text-xs font-medium uppercase tracking-widest mb-6" style="color: var(--color-text-muted);">Related</p>
       <ul class="space-y-4">
         {#each otherPosts as post}
           <li>

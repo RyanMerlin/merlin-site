@@ -78,6 +78,17 @@ export async function loadPost(slug: string) {
 	return { meta: toMeta(path, mod), Component: mod.default };
 }
 
+export function relatedPosts(current: PostMeta, count: number): PostMeta[] {
+	const scored = posts
+		.filter((p) => p.slug !== current.slug)
+		.map((p) => ({
+			post: p,
+			score: p.tags.filter((t) => current.tags.includes(t)).length,
+		}))
+		.sort((a, b) => b.score - a.score || b.post.created.localeCompare(a.post.created));
+	return scored.slice(0, count).map((s) => s.post);
+}
+
 export function readingTime(wordCount: number): string {
 	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 }
