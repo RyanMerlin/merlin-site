@@ -54,7 +54,7 @@ export type Topic = {
 
 export const topics: Topic[] = [
 	{ slug: 'ai', label: 'AI & Agents', color: '#7c9cf8', matchTags: ['ai', 'agents', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
-	{ slug: 'neuropsych', label: 'Neuropsych', color: '#a78bfa', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'consciousness', 'free-will', 'predictive-processing', 'behavioral-economics'] },
+	{ slug: 'cognitive-science', label: 'Cognitive Science', color: '#a78bfa', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'consciousness', 'free-will', 'predictive-processing', 'behavioral-economics'] },
 	{ slug: 'economics', label: 'Economics', color: '#34d399', matchTags: ['economics', 'markets', 'investing', 'finance'] },
 ];
 
