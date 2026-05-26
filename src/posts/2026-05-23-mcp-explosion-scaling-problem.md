@@ -3,18 +3,18 @@
     title: "The MCP Explosion Has a Scaling Problem",
     created: "2026-05-23",
     status: "published",
-    tags: ["mcp", "cli", "edgeplane", "agents", "architecture", "infrastructure"],
-    summary: "MCP won the tool protocol layer. That doesn't mean it should become the universal agent substrate. The scaling problem isn't that MCP failed — it's that it succeeded so fast people started using it for everything."
+    tags: ["mcp", "agents", "architecture", "infrastructure", "edgeplane"],
+    summary: "MCP won. In roughly a year, Model Context Protocol went from a clever interoperability idea to the default tool-connectivity layer for AI agents. That makes this a strange time to argue that many agent systems should use MCP less."
   };
 </script>
 
 MCP won.
 
-In roughly a year, Model Context Protocol went from a clever interoperability idea to the default tool-connectivity layer for AI agents. Anthropic donated MCP to the Linux Foundation's Agentic AI Foundation. The project reported more than 97 million monthly SDK downloads, 10,000 active servers, and first-class support across major AI platforms.
+In roughly a year, Model Context Protocol went from a clever interoperability idea to the default tool-connectivity layer for AI agents. Anthropic [donated MCP to the Linux Foundation's Agentic AI Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation). The project reported [more than 97 million monthly SDK downloads, 10,000 active servers](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/), and first-class support across major AI platforms.
 
 That is an extraordinary adoption curve.
 
-It also makes this a strange time to argue that many agent systems should use MCP less.
+It also makes this a strange time to argue that many agent systems should use MCP *less*.
 
 The case is not against MCP. MCP solved a real problem: standardized tool access across models, clients, frameworks, and applications. The case is against treating MCP as the default answer to every integration problem.
 
@@ -30,15 +30,12 @@ For most of 2024, the agent ecosystem argued about frameworks. LangChain, AutoGe
 
 That was the wrong abstraction.
 
-What emerged instead is a protocol stack.
+What emerged instead is a **protocol stack**.
 
-MCP handles tool connectivity: agent to tool, model to API, assistant to application context.
-
-A2A handles agent-to-agent task exchange across vendors and organizational boundaries. Google launched A2A with more than 50 technology partners, including Salesforce, SAP, Atlassian, ServiceNow, and others.
-
-ACP and BeeAI explored structured inter-agent collaboration, especially for asynchronous, auditable workflows.
-
-Microsoft Agent Framework 1.0 went generally available with enterprise-grade multi-agent orchestration, multi-provider model support, and interoperability through A2A and MCP.
+- **[MCP](https://modelcontextprotocol.io)** handles tool connectivity: agent to tool, model to API, assistant to application context
+- **[A2A](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)** handles agent-to-agent task exchange across vendors and organizational boundaries. Google launched A2A with more than 50 technology partners, including Salesforce, SAP, Atlassian, ServiceNow, and others
+- **[ACP](https://agentcommunicationprotocol.dev)** and **[BeeAI](https://beeai.dev)** explored structured inter-agent collaboration, especially for asynchronous, auditable workflows
+- **[Microsoft Agent Framework 1.0](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/)** went generally available with enterprise-grade multi-agent orchestration, multi-provider model support, and interoperability through A2A and MCP
 
 This is the right direction. The future is not one framework. It is layered interoperability.
 
@@ -46,7 +43,7 @@ But layering only works when each layer is used for the right job.
 
 MCP connects agents to tools.
 
-That does not mean every agent operation should become an MCP tool.
+*That does not mean every agent operation should become an MCP tool.*
 
 ## MCP's hidden cost model
 
@@ -56,17 +53,17 @@ A server advertises capabilities. The client loads tool definitions. The model c
 
 That is a major win.
 
-The cost is that tool availability usually has to be represented to the model before the model can use the tool. Descriptions, schemas, argument shapes, names, annotations, and usage guidance all compete for context. Wire twenty MCP servers into a fleet agent with five tools each and you are paying 10,000–30,000 tokens of schema overhead before the agent has done anything.
+The cost is that tool availability usually has to be represented to the model *before* the model can use the tool. Descriptions, schemas, argument shapes, names, annotations, and usage guidance all compete for context.
 
 At small scale, this is invisible.
 
 At fleet scale, it becomes architectural.
 
-The official MCP client documentation is explicit about the problem: loading every tool definition into the model context upfront wastes tokens, increases latency, and degrades model performance. It recommends progressive discovery and programmatic tool calling as mitigation patterns.
+The [official MCP client documentation](https://modelcontextprotocol.io/docs/develop/clients/client-best-practices) is explicit about the problem: loading every tool definition into the model context upfront wastes tokens, increases latency, and degrades model performance. It recommends **progressive discovery** and **programmatic tool calling** as mitigation patterns.
 
 That recommendation is important because it reveals the real issue.
 
-The ecosystem is now building machinery to avoid the cost of exposing too many tools through MCP at once.
+> The ecosystem is now building machinery to avoid the cost of exposing too many tools through MCP at once.
 
 Tool retrieval. Dynamic tool loading. RAG over tool definitions. Capability filtering. Router tools. Namespaces. Progressive discovery. Programmatic tool calls.
 
@@ -74,11 +71,9 @@ These are useful techniques. They are also evidence that MCP's naive scaling mod
 
 The more MCP succeeds, the more important this becomes.
 
-A world with 50 tools is manageable.
-
-A world with 500 tools needs routing.
-
-A world with 5,000 possible integrations needs a different default assumption.
+- A world with **50 tools** is manageable
+- A world with **500 tools** needs routing
+- A world with **5,000 possible integrations** needs a different default assumption
 
 ## The mistake: using MCP as the operational substrate
 
@@ -100,15 +95,13 @@ Those are not the same problem.
 
 If an agent is operating a Kubernetes cluster, restarting a local service, checking fleet health, sending a signal to a sibling agent, reading a known status file, or invoking a specific workflow, the model may not need a full schema in context every turn.
 
-It may need a stable command surface.
+It may need a **stable command surface**.
 
-This is especially true for persistent agents with defined roles.
+This is especially true for persistent agents with defined roles:
 
-A research agent does not need every infrastructure operation in its prompt.
-
-An infrastructure agent does not need every publishing workflow loaded as a tool.
-
-A publisher agent does not need the whole control plane schema sitting in context before it writes a post.
+- A research agent does not need every infrastructure operation in its prompt
+- An infrastructure agent does not need every publishing workflow loaded as a tool
+- A publisher agent does not need the whole control plane schema sitting in context before it writes a post
 
 Production agents usually have jobs. Jobs imply bounded interfaces.
 
@@ -118,7 +111,7 @@ It is weaker when the operational surface is known, deterministic, and better ke
 
 ## The alternative: CLI as agent substrate
 
-There is an older design pattern that maps surprisingly well to agents: a CLI binary as the primary operational substrate.
+There is an older design pattern that maps surprisingly well to agents: a **CLI binary** as the primary operational substrate.
 
 In EdgePlane, the primary interface is `edgeplane`, a compiled Rust binary. Agents call it through subprocess execution. Humans call it from a terminal. Timers call it from automation. System services call it from scripts.
 
@@ -130,27 +123,22 @@ edgeplane exec kubectl.get-pods --json
 edgeplane signal research-agent --content "run /briefing"
 ```
 
-The context cost model inverts.
+**The context cost model inverts.**
 
 With MCP, the agent often pays upfront by loading tool definitions before it knows which tool it needs.
 
-With a CLI substrate, the agent pays only when it calls the command.
+With a CLI substrate, the agent pays only when it calls the command:
 
-No global schema warmup. No context-window tax for tools that will not be used. No requirement that the host runtime support MCP initialization. No special dependency on one agent framework.
+- No global schema warmup
+- No context-window tax for tools that will not be used
+- No requirement that the host runtime support MCP initialization
+- No special dependency on one agent framework
 
-And every runtime can use it. Claude Code, Gemini CLI, OpenAI Agents SDK, Microsoft Agent Framework, shell scripts, cron, systemd, and human operators all know how to execute a subprocess. That universality means you never write a host-specific integration — the same binary works everywhere, with the same behavior, regardless of which agent framework is calling it.
+Claude Code, Gemini CLI, OpenAI Agents SDK, Microsoft Agent Framework, shell scripts, cron, systemd, and human operators can all execute a subprocess.
 
-A CLI binary is not glamorous. But infrastructure usually converges around boring interfaces for good reasons.
+That universality matters.
 
-They are inspectable.
-
-They are scriptable.
-
-They are testable.
-
-They are composable.
-
-They survive framework churn.
+A CLI binary is not glamorous. But infrastructure usually converges around boring interfaces for good reasons. They are inspectable. They are scriptable. They are testable. They are composable. They survive framework churn.
 
 ## MCP still belongs in the system
 
@@ -162,17 +150,16 @@ That distinction is the point.
 
 `edgeplane serve` can expose EdgePlane operations as MCP tools when an agent genuinely benefits from in-context tool discovery and model-mediated selection.
 
-But that should be a deliberate choice, not the default integration path.
+But that should be a **deliberate choice**, not the default integration path.
 
-The CLI is the operational substrate.
-
-MCP is the model-facing tool surface.
+- The **CLI** is the operational substrate
+- **MCP** is the model-facing tool surface
 
 Those are different layers.
 
-When the model needs to discover and reason over tools, use MCP.
+When the model needs to *discover and reason over* tools, use MCP.
 
-When the agent already knows the operation it needs to perform, call the substrate directly.
+When the agent already *knows* the operation it needs to perform, call the substrate directly.
 
 ## The capability discovery tradeoff
 
@@ -192,11 +179,10 @@ edgeplane capabilities --agent research
 
 That means the CLI substrate needs a capability catalog. It needs structured output. It needs stable naming. It needs documentation that agents can consume. It needs role-scoped discovery.
 
-The difference is when discovery happens.
+The difference is *when* discovery happens.
 
-MCP often discovers at initialization.
-
-A CLI substrate can discover on demand.
+- **MCP** often discovers at initialization
+- **A CLI substrate** can discover on demand
 
 That is a better fit for agents with bounded operational roles.
 
@@ -216,29 +202,20 @@ That default will not scale indefinitely.
 
 Not because MCP is bad.
 
-Because context is not free.
+**Because context is not free.**
 
-Every tool definition competes with task context, memory, retrieved evidence, user instructions, intermediate reasoning, and output quality.
+Every tool definition competes with task context, memory, retrieved evidence, user instructions, intermediate reasoning, and output quality. Every extra tool increases the search space the model has to navigate. Every server added to a runtime increases initialization, policy, trust, and observability complexity.
 
-Every extra tool increases the search space the model has to navigate.
+The [official guidance](https://modelcontextprotocol.io/docs/develop/clients/client-best-practices) already points toward selective exposure and progressive discovery.
 
-Every server added to a runtime increases initialization, policy, trust, and observability complexity.
+But the deeper architectural move is to stop assuming every operation belongs in the context-facing layer at all:
 
-The official guidance already points toward selective exposure and progressive discovery.
-
-But the deeper architectural move is to stop assuming every operation belongs in the context-facing layer at all.
-
-Some operations should be exposed to the model.
-
-Some should be available to the agent runtime.
-
-Some should be hidden behind deterministic workflows.
-
-Some should be policy-gated.
-
-Some should be callable only by operators or peer agents.
-
-Some should never enter the context window.
+- Some operations should be **exposed to the model**
+- Some should be **available to the agent runtime**
+- Some should be **hidden behind deterministic workflows**
+- Some should be **policy-gated**
+- Some should be **callable only by operators or peer agents**
+- Some should **never enter the context window**
 
 That is not a tooling distinction. It is an infrastructure distinction.
 
@@ -248,20 +225,16 @@ The mature agent stack should look something like this:
 
 | Layer | Best fit | Failure mode when overused |
 |---|---|---|
-| MCP | In-context tool discovery and model-mediated tool use | Tool overload, context bloat, latency, degraded selection |
-| A2A | Cross-agent task exchange across boundaries | Overkill for local deterministic operations |
-| ACP-style workflows | Structured, auditable collaboration | Too heavyweight for simple local calls |
+| [MCP](https://modelcontextprotocol.io) | In-context tool discovery and model-mediated tool use | Tool overload, context bloat, latency, degraded selection |
+| [A2A](https://a2a-protocol.org) | Cross-agent task exchange across boundaries | Overkill for local deterministic operations |
+| [ACP](https://agentcommunicationprotocol.dev)-style workflows | Structured, auditable collaboration | Too heavyweight for simple local calls |
 | CLI substrate | Deterministic operational control | Weak discovery unless capabilities are cataloged |
 | Runtime daemon | Lifecycle, identity, supervision, signaling | Framework lock-in if not standardized |
 | Policy layer | Authorization, trust, provenance, constraints | Unsafe execution if bypassed |
 
 This is the distinction EdgePlane is trying to make concrete.
 
-MCP is not the substrate.
-
-A2A is not the substrate.
-
-The framework is not the substrate.
+MCP is not the substrate. A2A is not the substrate. The framework is not the substrate.
 
 The substrate is the thing that lets agents, humans, services, and automation operate the same system through a stable, deterministic interface.
 
@@ -285,17 +258,13 @@ To:
 
 That is the question MCP's popularity has made urgent.
 
-If the operation requires model reasoning over an unknown tool, MCP is a good fit.
+- If the operation requires **model reasoning** over an unknown tool → MCP
+- If the operation is **deterministic control** of a known system → CLI or runtime API
+- If the operation **crosses organizational boundaries** → A2A
+- If the operation needs **structured audit semantics** → ACP-style workflows
+- If the operation concerns **lifecycle, supervision, identity, or signaling** → below all of them
 
-If the operation is deterministic control of a known system, a CLI or runtime API may be better.
-
-If the operation crosses organizational boundaries, A2A may be right.
-
-If the operation needs structured audit semantics, ACP-style workflows may be right.
-
-If the operation concerns lifecycle, supervision, identity, or signaling, it belongs below all of them.
-
-## Use the right layer
+## The point
 
 MCP won the tool protocol layer.
 
@@ -313,4 +282,4 @@ Use a substrate when the agent needs operational control.
 
 The scaling problem is not that MCP failed.
 
-The scaling problem is that MCP succeeded so quickly that people started using it for everything.
+*The scaling problem is that MCP succeeded so quickly that people started using it for everything.*
