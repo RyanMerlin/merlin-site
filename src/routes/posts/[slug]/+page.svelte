@@ -50,7 +50,7 @@
     </div>
   </header>
 
-  <article class="prose prose-zinc dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight max-w-none" style="font-family: var(--font-sans);">
+  <article class="prose prose-zinc dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight max-w-none prose-lg prose-p:leading-relaxed" style="font-family: var(--font-sans); --tw-prose-body: var(--color-text); --tw-prose-headings: var(--tw-prose-invert-headings, #dedad5);">
     <data.Component />
   </article>
 
