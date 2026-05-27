@@ -11,7 +11,7 @@
 
 <nav
   class="sticky top-0 z-10 border-b"
-  style="border-color: var(--color-border); background-color: color-mix(in srgb, var(--color-bg) 90%, transparent); backdrop-filter: blur(8px);"
+  style="border-color: var(--color-border); background-color: var(--color-bg-subtle); backdrop-filter: blur(8px);"
 >
   <div class="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
     <a
