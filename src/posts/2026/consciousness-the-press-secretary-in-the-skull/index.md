@@ -72,7 +72,7 @@ The lesson is not "testosterone makes people rich."  Hormonal effects are contex
 
 This is the *hot-cold empathy gap*.  You do not merely choose differently when you are hungry, afraid, lonely, or depleted.  You also mispredict how different future-you will become under those states.
 
-The [oxytocin trust study](https://www.nature.com/articles/nature03701) (Kosfeld, Heinrichs, Zak et al., 2005) added another dimension.  Administer a neuropeptide and people hand over more of their own money to strangers in an economic game.  They do not report feeling different.  They do not notice anything has changed.  They simply trust more, and then they explain *why* they trusted, as if the explanation came first.
+The [Kosfeld, Heinrichs, and Zak oxytocin trust study](https://www.nature.com/articles/nature03701) added another dimension.  Administer a neuropeptide and people hand over more of their own money to strangers in an economic game.  They do not report feeling different.  They do not notice anything has changed.  They simply trust more, and then they explain *why* they trusted, as if the explanation came first.
 
 > Molecules do not issue commands.  **They tilt landscapes.**  They change which options feel salient, safe, urgent, disgusting, attractive, or worth the risk.
 
@@ -240,7 +240,7 @@ Even if the story began as a rationalization, once remembered, rehearsed, and so
 
 This is where agency returns, but not as a ghost in the machine.  Agency returns as recursive model-editing.
 
-[Implementation intentions](https://www.sciencedirect.com/science/chapter/bookseries/pii/S0065260106380021) (Gollwitzer and Sheeran) show consciousness shaping future automaticity: "If situation X occurs, then I will do Y."  This is not heroic willpower.  It is precompiled agency.  [Precommitment devices](https://pubmed.ncbi.nlm.nih.gov/12009041/) (Ariely and Wertenbroch) show people voluntarily restricting future options to protect longer-term goals from future impulses.
+[Gollwitzer and Sheeran's implementation intentions research](https://www.sciencedirect.com/science/chapter/bookseries/pii/S0065260106380021) shows consciousness shaping future automaticity: "If situation X occurs, then I will do Y."  This is not heroic willpower.  It is precompiled agency.  [Ariely and Wertenbroch's precommitment devices work](https://pubmed.ncbi.nlm.nih.gov/12009041/) shows people voluntarily restricting future options to protect longer-term goals from future impulses.
 
 > **Consciousness may lose at the moment of impulse.  But it can write code before the impulse arrives.**
 
@@ -349,65 +349,3 @@ It is something more useful: **a recursive control system that learns from the s
 
 The question is not whether you have one.  The question is whether you are designing it, or letting it design itself.
 
----
-
-## References
-
-### Neuroscience, consciousness, and volition
-
-- Libet, B., Gleason, C.A., Wright, E.W., & Pearl, D.K. (1983). ["Time of conscious intention to act."](https://pubmed.ncbi.nlm.nih.gov/6640273/) *Brain*, 106(3), 623-642.
-- Soon, C.S., Brass, M., Heinze, H.J., & Haynes, J.D. (2008). ["Unconscious determinants of free decisions."](https://www.nature.com/articles/nn.2112) *Nature Neuroscience*, 11, 543-545.
-- Schurger, A., Sitt, J.D., & Dehaene, S. (2012). ["An accumulator model for spontaneous neural activity."](https://www.pnas.org/doi/10.1073/pnas.1210467109) *PNAS*, 109(42), E2904-E2913.
-- Fried, I., Mukamel, R., & Kreiman, G. (2011). ["Internally generated preactivation of single neurons."](https://www.cell.com/neuron/fulltext/S0896-6273(10)01082-2) *Neuron*, 69(3), 548-562.
-- Maoz, U. et al. (2019). ["Neural precursors of decisions that matter."](https://elifesciences.org/articles/39787) *eLife*.
-- Dehaene, S. & Changeux, J.P. (2011). ["Experimental and theoretical approaches to conscious processing."](https://www.cell.com/neuron/fulltext/S0896-6273(11)00258-3) *Neuron*, 70(2), 200-227.
-- Menon, V. (2023). ["20 years of the default mode network."](https://www.cell.com/neuron/fulltext/S0896-6273(23)00308-2) *Neuron*, 111(16), 2469-2487.
-- Friston, K. (2010). ["The free-energy principle: a unified brain theory?"](https://www.nature.com/articles/nrn2787) *Nature Reviews Neuroscience*, 11, 127-138.
-- Clark, A. (2013). ["Whatever next? Predictive brains, situated agents."](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/whatever-next-predictive-brains-situated-agents-and-the-future-of-cognitive-science/33542C736E17E3D1D44E8D03BE5F4CD9) *Behavioral and Brain Sciences*, 36(3), 181-204.
-
-### State, affect, and control
-
-- Coates, J.M. & Herbert, J. (2008). ["Endogenous steroids and financial risk taking."](https://www.pnas.org/doi/10.1073/pnas.0704025105) *PNAS*, 105(16), 6167-6172.
-- Loewenstein, G. (1996). ["Out of Control: Visceral Influences on Behavior."](https://www.sciencedirect.com/science/article/pii/S074959789690028X) *Organizational Behavior and Human Decision Processes*, 65(3), 272-292.
-- Kosfeld, M. et al. (2005). ["Oxytocin increases trust in humans."](https://www.nature.com/articles/nature03701) *Nature*, 435, 673-676.
-- Botvinick, M.M. et al. (2001). ["Conflict monitoring and cognitive control."](https://doi.org/10.1037/0033-295X.108.3.624) *Psychological Review*, 108(3), 624-652.
-- Shenhav, A., Botvinick, M.M., & Cohen, J.D. (2013). ["The Expected Value of Control."](https://www.cell.com/neuron/fulltext/S0896-6273(13)00607-7) *Neuron*, 79(2), 217-240.
-- Hagger, M.S. et al. (2016). ["A multilab preregistered replication of the ego-depletion effect."](https://pmc.ncbi.nlm.nih.gov/articles/PMC8186735/) *Perspectives on Psychological Science*, 11(4), 546-573.
-- Inzlicht, M. & Schmeichel, B.J. (2012). ["What is ego depletion?"](https://journals.sagepub.com/doi/abs/10.1177/1745691612454134) *Perspectives on Psychological Science*, 7(5), 450-463.
-- Wegner, D.M. (1994). ["Ironic processes of mental control."](https://scholar.harvard.edu/dwegner/publications/ironic-processes-mental-control) *Psychological Review*, 101(1), 34-52.
-- Hayes, S.C. et al. (2006). ["Acceptance and commitment therapy."](https://pubmed.ncbi.nlm.nih.gov/16300724/) *Behaviour Research and Therapy*, 44(1), 1-25.
-
-### Narrative, confabulation, and self-explanation
-
-- Gazzaniga, M.S. (2000). ["Cerebral specialization and interhemispheric communication."](https://academic.oup.com/brain/article/123/7/1293/380106) *Brain*, 123(7), 1293-1326.
-- Nisbett, R.E. & Wilson, T.D. (1977). ["Telling More Than We Can Know."](https://home.csulb.edu/~cwallis/382/readings/482/nisbett%20saying%20more.pdf) *Psychological Review*, 84(3), 231-259.
-- Johansson, P. et al. (2005). ["Failure to detect mismatches between intention and outcome."](https://www.science.org/doi/10.1126/science.1111709) *Science*, 310(5745), 116-119.
-- Bechara, A. et al. (1994). ["Insensitivity to future consequences."](https://www.sciencedirect.com/science/article/abs/pii/0010027794900183) *Cognition*, 50(1-3), 7-15.
-- Maia, T.V. & McClelland, J.L. (2004). ["A reexamination of the somatic marker hypothesis."](https://pmc.ncbi.nlm.nih.gov/articles/PMC528759/) *PNAS*, 101(45), 16075-16080.
-- Haidt, J. (2001). ["The Emotional Dog and Its Rational Tail."](https://doi.apa.org/doi/10.1037/0033-295X.108.4.814) *Psychological Review*, 108(4), 814-834.
-- Dennett, D.C. (1991). *Consciousness Explained.* Little, Brown and Company.
-
-### Behavioral economics, choice architecture, and time
-
-- Kahneman, D. (2011). [*Thinking, Fast and Slow.*](https://us.macmillan.com/books/9780374533557/thinkingfastandslow) Farrar, Straus and Giroux.
-- Simon, H.A. (1955). ["A Behavioral Model of Rational Choice."](https://www.jstor.org/stable/1884852) *Quarterly Journal of Economics*, 69(1), 99-118.
-- Tversky, A. & Kahneman, D. (1974). ["Judgment under Uncertainty: Heuristics and Biases."](https://www.jstor.org/stable/1738360) *Science*, 185(4157), 1124-1131.
-- Kahneman, D. & Tversky, A. (1979). ["Prospect Theory."](https://www.jstor.org/stable/1914185) *Econometrica*, 47(2), 263-291.
-- Tversky, A. & Kahneman, D. (1981). ["The Framing of Decisions."](https://psych.hanover.edu/classes/Cognition/Papers/tversky81.pdf) *Science*, 211(4481), 453-458.
-- Kahneman, D., Knetsch, J.L., & Thaler, R.H. (1990). ["Experimental Tests of the Endowment Effect."](https://www.jstor.org/stable/2937761) *Journal of Political Economy*, 98(6), 1325-1348.
-- Thaler, R.H. (1985). ["Mental Accounting and Consumer Choice."](https://www.jstor.org/stable/183904) *Marketing Science*, 4(3), 199-214.
-- Samuelson, W. & Zeckhauser, R. (1988). ["Status Quo Bias in Decision Making."](https://link.springer.com/article/10.1007/BF00055564) *Journal of Risk and Uncertainty*, 1, 7-59.
-- Johnson, E.J. & Goldstein, D. (2003). ["Do Defaults Save Lives?"](https://www.dangoldstein.com/papers/DefaultsScience.pdf) *Science*, 302(5649), 1338-1339.
-- Madrian, B.C. & Shea, D.F. (2001). ["The Power of Suggestion."](https://www.nber.org/papers/w7682) *Quarterly Journal of Economics*, 116(4), 1149-1187.
-- Laibson, D. (1997). ["Golden Eggs and Hyperbolic Discounting."](https://academic.oup.com/qje/article-abstract/112/2/443/1870925) *Quarterly Journal of Economics*, 112(2), 443-478.
-
-### Behavior change, nudging, and digital choice architecture
-
-- Gollwitzer, P.M. & Sheeran, P. (2006). ["Implementation Intentions and Goal Achievement."](https://www.sciencedirect.com/science/chapter/bookseries/pii/S0065260106380021) *Advances in Experimental Social Psychology*, 38, 69-119.
-- Ariely, D. & Wertenbroch, K. (2002). ["Procrastination, Deadlines, and Performance."](https://pubmed.ncbi.nlm.nih.gov/12009041/) *Psychological Science*, 13(3), 219-224.
-- Mertens, S. et al. (2022). ["The effectiveness of nudging."](https://www.pnas.org/doi/pdf/10.1073/pnas.2107346118) *PNAS*, 119(1).
-- Maier, M. et al. (2022). ["No evidence for nudging after adjusting for publication bias."](https://pmc.ncbi.nlm.nih.gov/articles/PMC9351501/) *PNAS*, 119(31).
-- DellaVigna, S. & Linos, E. (2022). ["RCTs to Scale."](https://www.nber.org/papers/w27594) *Econometrica*, 90(1), 81-116.
-- Stanford Behavior Design Lab. ["Fogg Behavior Model."](https://behaviordesign.stanford.edu/resources/fogg-behavior-model)
-- TikTok Newsroom. ["How TikTok recommends videos #ForYou."](https://newsroom.tiktok.com/how-tiktok-recommends-videos-for-you?lang=en)
-- Netflix Help Center. ["How Netflix's Recommendations System Works."](https://help.netflix.com/en/node/100639)

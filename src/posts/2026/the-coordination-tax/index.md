@@ -32,7 +32,7 @@ Meanwhile, agents three and four are working on adjacent modules.  Neither knows
 
 **Identity tax: every action must be attributable to a stable principal.**  Not a session UUID that changes on restart, not an anonymous caller that your database quietly filters as an empty result set.  In [EdgePlane](https://github.com/RyanMerlin/edgeplane), every agent carries a `public_id` of the form `{name}-{8hex}`, readable, stable, and preserved across crashes and restarts.  When an agent creates a task or publishes an artifact, the ownership record survives the session that created it.  This sounds obvious until you've debugged a ghost-row problem caused by re-registration creating a new identity instead of updating the existing one.
 
-**Overlap tax: before creating a task or artifact, check whether it already exists.**  Fuzzy matching catches identical intent with different wording.  Vector search catches semantic overlap across different domains.  Return the results to the agent before the creation completes.  The agent decides: proceed, merge, or discard.  This check costs ~40ms.  Not running it costs the time of two agents completing duplicate work and a human reconciling the results.[^overlap]
+**Overlap tax: before creating a task or artifact, check whether it already exists.**  Fuzzy matching catches identical intent with different wording.  Vector search catches semantic overlap across different domains.  Return the results to the agent before the creation completes.  The agent decides: proceed, merge, or discard.  This check costs ~40ms.  Not running it costs the time of two agents completing duplicate work and a human reconciling the results, per benchmarking in [Silo-Bench](https://arxiv.org/pdf/2603.01045) and [When Coordination Is Avoidable](https://arxiv.org/pdf/2602.18673) (2026), which document token duplication and duplicate work inefficiencies of 53–86% across major multi-agent frameworks when coordination primitives are absent.
 
 **Governance tax: sensitive mutations need an approval path.**  Not every mutation: creating a task doesn't need a sign-off, but publishing an artifact to the Git record of record should.  The governance model is versioned (`draft → active → rollback`), mission-scoped (different missions can have different approval requirements), and enforced at the API boundary with HMAC-signed approval tokens.  The point is not bureaucracy.  *"The agent requested it, it was approved by this principal at this timestamp, and here is the cryptographic token proving it"* is an audit trail.  "The agent did it" is not.
 
@@ -79,21 +79,3 @@ The coordination tax doesn't scale with organization size.  It scales with the n
 Building agent systems without coordination primitives is like building a database without transactions.  You can do it.  Things will appear to work.  Until two concurrent writes corrupt state you can't recover, and you spend a week figuring out which "commit" to trust.
 
 The next piece in this series: [Persistent sessions are the unit of agent work, not requests](https://ryanmerlin.com/posts/2026-05-05-persistent-sessions-unit-of-agent-work).  Why treating a model call as an RPC is the wrong abstraction for long-running agents, and what the supervisor loop actually looks like.
-
----
-
-## References
-
-[^overlap]: Recent benchmarking on multi-agent coordination overhead documents that token duplication and duplicate work create inefficiencies of 53–86% across major multi-agent frameworks when coordination primitives are absent. See [Silo-Bench: A Scalable Environment for Evaluating Distributed Coordination in Multi-Agent LLM Systems](https://arxiv.org/pdf/2603.01045) (2026) and [When Coordination Is Avoidable: A Monotonicity Analysis of Organizational Tasks](https://arxiv.org/pdf/2602.18673) (2026).
-
-1. [Introducing the Model Context Protocol (Anthropic)](https://www.anthropic.com/news/model-context-protocol)
-2. [MCP joins the Agentic AI Foundation (Model Context Protocol Blog)](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/)
-3. [Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation)
-4. [Announcing Version 1.0 (A2A Protocol)](https://a2a-protocol.org/latest/announcing-1.0/)
-5. [A2A: A New Era of Agent Interoperability (Google Developers Blog)](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)
-6. [Agent Communication Protocol (IBM Research)](https://research.ibm.com/projects/agent-communication-protocol)
-7. [AGNTCY: Internet of Agents](https://agntcy.org/)
-8. [Agent Connect Protocol Specification (AGNTCY)](https://spec.acp.agntcy.org/)
-9. [Microsoft Agent Framework Version 1.0](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/)
-10. [Silo-Bench: Evaluating Distributed Coordination in Multi-Agent LLM Systems](https://arxiv.org/pdf/2603.01045) (arXiv 2026)
-11. [When Coordination Is Avoidable: A Monotonicity Analysis of Organizational Tasks](https://arxiv.org/pdf/2602.18673) (arXiv 2026)
