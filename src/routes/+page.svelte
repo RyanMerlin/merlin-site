@@ -26,8 +26,8 @@
   <header class="mb-16">
     <h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
     <p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
-      PhD background in economics and psychology. 16 years building data systems inside enterprises.<br />
-      Now focused on agentic AI, the gap between what AI promises and what it delivers, and the organizational systems that determine which side of that gap you land on.
+      16 years deploying data systems, ML, and analytics inside enterprises across finance, telecom, marketing, and credit. PhD trained in economics and organizational psychology.<br />
+      Now focused on what actually happens when AI hits production: the organizational adaptation, the verification gap, and the infrastructure that determines whether deployments compound or decay.
     </p>
   </header>
 

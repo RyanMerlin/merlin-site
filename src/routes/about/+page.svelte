@@ -15,49 +15,58 @@
 
   <div class="space-y-6 text-base leading-relaxed" style="color: var(--color-text);">
     <p>
-      I'm Ryan — a Forward Deployed Engineer and applied AI researcher based in Boulder, Colorado.
-      I work at the intersection of frontier AI capabilities and enterprise production systems,
-      with a focus on building agentic applications that solve real business problems.
+      I'm Ryan. I've spent 16 years deploying data systems, machine learning, and analytics
+      inside large enterprises. The work has spanned finance, telecom, media, marketing, HR,
+      and credit at organizations including Comcast, TransUnion, DIRECTV, and AT&T. Different
+      industries, different teams, same fundamental challenge: making complex technology
+      produce actual business results in organizations that weren't built for it.
     </p>
 
     <p>
-      I embed directly with enterprise clients to drive AI adoption — moving organizations from
-      isolated experiments to production workflows that compound over time. I deliver technical
-      artifacts: agent systems, integration architectures, and deployment patterns that run in
-      production. I've built the delivery playbooks and codified the repeatable patterns that
-      field organizations run on. The job is part engineer, part translator, part operator.
+      That background shapes everything I do now. I embed directly with enterprise clients
+      to drive AI adoption, moving organizations from isolated experiments to production
+      workflows that compound. The deliverables are working systems: agent architectures,
+      integration patterns, automation pipelines, and deployment playbooks. The job is part
+      engineer, part translator, part operator. The hardest part is rarely the model. It is
+      usually the organizational adaptation around the model.
     </p>
 
     <p>
-      Earlier in my career I worked across data science and engineering at Comcast, TransUnion,
-      DIRECTV, and AT&T — enterprise environments spanning media, financial services, and
-      telecommunications. That background gives me fluency with the organizational dynamics,
-      legacy infrastructure, and competing priorities that determine whether AI deployments
-      succeed or stall. Most failures aren't technical.
+      The domains I've worked across, analytics, business process automation, financial
+      modeling, customer operations, and engineering, give me a lens that most pure-infrastructure
+      people lack. AI adoption is not just a software development story. The same verification
+      gap, the same organizational learning curve, and the same tension between output volume
+      and quality show up everywhere AI enters production work. Code is the most instrumented
+      version. It is not the only one.
     </p>
 
     <p>
       My independent research focus is <strong>production agentic systems</strong>. I'm developing
-      <strong><a href="https://github.com/RyanMerlin/edgeplane">EdgePlane</a></strong>, a multi-agent orchestration control plane built around the
-      concerns that matter in production deployment: persistent agent identity, lifecycle ownership,
-      inter-agent coordination, and operational observability. The goal is a system where you can run a fleet
-      of AI agents with the same operational rigor you'd apply to production infrastructure.
-      I'm also building and operating <strong>Aria</strong>, a personal AI system that handles
-      research, publishing, and analysis workflows — a living testbed for the agent architectures
-      I write about.
+      <strong><a href="https://github.com/RyanMerlin/edgeplane">EdgePlane</a></strong>, an
+      open-source control plane for AI agent fleets, built around the concerns that matter
+      in production: persistent identity, lifecycle ownership, inter-agent coordination,
+      and operational observability. Documentation at
+      <a href="https://edgeplane.ai" target="_blank" rel="noopener noreferrer"
+         class="underline decoration-1 underline-offset-2 transition-colors"
+         style="color: var(--color-accent);">edgeplane.ai</a>.
+      I also build and operate <strong>Aria</strong>, a personal AI system that handles
+      research, publishing, and analysis workflows. It is a living testbed for the
+      agent patterns I write about.
     </p>
 
     <p>
       PhD trained in Economics and Organizational Psychology from Claremont Graduate
-      University, and a BS in Business Management from CU Boulder. The social science training
-      shapes how I think about AI adoption: the hard problems in enterprise AI are almost
-      always about people and process, not models.
+      University, and a BS in Business Management from CU Boulder. The social science
+      background is not decorative. It shapes how I think about AI adoption, persuasion,
+      decision-making under uncertainty, and why the hard problems in enterprise AI are
+      almost always about people and process, not models.
     </p>
 
     <p>
-      I care about advancing AI that is genuinely useful and responsibly deployed. The writing
-      here is my attempt to make the gap between AI capability and AI production narrower —
-      for practitioners who are doing the actual work. Follow along on
+      The writing here is for practitioners doing the actual work. Not tutorials.
+      Field reports, research synthesis, and honest assessments of what works, what
+      does not, and why the gap between AI demos and production systems persists.
+      Follow along on
       <a href="https://x.com/rmerlin" target="_blank" rel="noopener noreferrer"
          class="underline decoration-1 underline-offset-2 transition-colors"
          style="color: var(--color-accent);">Twitter / X</a>
