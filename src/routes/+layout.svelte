@@ -14,7 +14,7 @@
 </svelte:head>
 
 <Nav />
-<div class="pt-12">
+<div class="flex-1 overflow-y-auto">
 {@render children()}
-</div>
 <Footer />
+</div>

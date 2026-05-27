@@ -10,7 +10,7 @@
 </script>
 
 <nav
-  class="fixed top-0 left-0 right-0 z-10 border-b"
+  class="shrink-0 border-b"
   style="border-color: var(--color-border); background-color: var(--color-bg-subtle); backdrop-filter: blur(8px);"
 >
   <div class="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
