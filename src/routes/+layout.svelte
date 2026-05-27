@@ -14,5 +14,7 @@
 </svelte:head>
 
 <Nav />
+<div class="pt-12">
 {@render children()}
+</div>
 <Footer />
