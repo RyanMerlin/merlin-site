@@ -14,8 +14,8 @@ type RawModule = {
 	default: typeof SvelteComponent;
 };
 
-const modules = import.meta.glob<RawModule>('/src/posts/*.md', { eager: true });
-const rawModules = import.meta.glob<string>('/src/posts/*.md', { query: '?raw', eager: true });
+const modules = import.meta.glob<RawModule>('/src/posts/**/index.md', { eager: true });
+const rawModules = import.meta.glob<string>('/src/posts/**/index.md', { query: '?raw', eager: true });
 
 function countWords(path: string): number {
 	const mod = rawModules[path] as unknown as { default: string } | string | undefined;
@@ -25,7 +25,8 @@ function countWords(path: string): number {
 }
 
 function toMeta(path: string, mod: RawModule): PostMeta {
-	const slug = path.split('/').pop()!.replace(/\.md$/, '');
+	const parts = path.split('/');
+	const slug = parts[parts.length - 2];
 	const m = mod.metadata ?? {};
 	return {
 		slug,
@@ -72,9 +73,12 @@ export function postsByTopic(topicSlug: string): PostMeta[] {
 }
 
 export async function loadPost(slug: string) {
-	const path = `/src/posts/${slug}.md`;
-	const mod = modules[path];
-	if (!mod) throw new Error(`Post not found: ${slug}`);
+	const match = Object.entries(modules).find(([path]) => {
+		const parts = path.split('/');
+		return parts[parts.length - 2] === slug;
+	});
+	if (!match) throw new Error(`Post not found: ${slug}`);
+	const [path, mod] = match;
 	return { meta: toMeta(path, mod), Component: mod.default };
 }
 
