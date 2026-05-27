@@ -28,7 +28,9 @@ The framing is useful.
 
 The default timeline is the dangerous part.
 
-The question is not whether AI-assisted development creates a productivity dip.  The question is whether the dip lasts three months, twelve months, or long enough that leadership cuts funding, reduces headcount, or declares failure before the organization has made the complementary investments required for the upside.
+The question is not whether AI creates a productivity dip.  The question is whether the dip lasts three months, twelve months, or long enough that leadership cuts funding, reduces headcount, or declares failure before the organization has made the complementary investments required for the upside.
+
+DORA frames this around software development because that is the domain they study.  But the same dynamic plays out everywhere AI enters production work: business process automation, analytics pipelines, customer operations, content generation, financial modeling.  The mechanism is the same.  AI increases the volume of output before the organization has upgraded the verification, integration, and governance systems that must absorb it.  Code is the most instrumented version of this story.  It is not the only version.
 
 That is where the J-curve becomes a fork.
 
@@ -56,7 +58,7 @@ If leadership treats DORA's default as an expectation rather than a scenario, th
 
 The empirical record on AI coding productivity is not contradictory because the researchers are incompetent.  It is contradictory because they are measuring different work under different conditions.
 
-DORA's own 2024 data showed the tension early.  A 25 percentage point increase in AI adoption was associated with higher perceived documentation quality, code quality, and code review speed.  It was also associated with a 1.5% decrease in delivery throughput and a 7.2% decrease in delivery stability.  In other words: developers felt some things getting better while system-level delivery outcomes worsened.[^dora-2024]
+DORA's own 2024 data showed the tension early.  A 25% increase in AI adoption was associated with higher perceived documentation quality, code quality, and code review speed.  It was also associated with a 1.5% decrease in delivery throughput and a 7.2% decrease in delivery stability.  In other words: developers felt some things getting better while system-level delivery outcomes worsened.[^dora-2024]
 
 [METR](https://metr.org)'s controlled experiment made that perception gap explicit.  Sixteen experienced developers completed 246 tasks in their own open-source repositories, randomly assigned to use or not use AI tools.  With AI tools, they took 19% longer.  Before the study, they expected AI to save 24% of their time.  Afterward, they still believed AI had sped them up by about 20%.[^metr]
 
@@ -84,7 +86,9 @@ Again, this is not causal proof that AI created every downstream issue.  It is v
 
 But it is directionally consistent with what engineers are reporting elsewhere: AI increases output before organizations have upgraded the verification system that must absorb that output.
 
-[Sonar](https://www.sonarsource.com)'s 2026 developer survey found that 96% of developers do not fully trust AI-generated code, yet only 48% say they always verify AI-generated code before committing it.  Sonar also found that 61% of developers agree AI often produces code that looks correct but is not reliable.[^sonar]
+The vendor telemetry that follows carries the same caveat as Faros: these companies sell code quality, security, and review tools.  They have commercial incentives to surface problems in the code their customers produce.  That does not make the data wrong, but it means the findings should be read as signal, not proof.
+
+[Sonar](https://www.sonarsource.com)'s 2026 developer survey found that 96% of developers do not fully trust AI-generated code, yet only 48% say they always verify AI-generated code before committing it.  Sonar also found that 53% of developers agree AI often produces code that looks correct but is not reliable.[^sonar]
 
 That is the verification tax in compressed form: developers know the output is untrustworthy, but delivery pressure pushes them toward partial verification.
 
@@ -284,7 +288,7 @@ The board-level message should be this:
 
 > AI-assisted development has real upside, but the return depends on funding the adaptation period.  The productivity dip is not wasted time; it is the investment phase in new verification, delivery, and operating capabilities.  Organizations that underinvest during the dip are likely to see more code, more rework, and more incidents rather than durable productivity gains.
 
-Budget for twelve to eighteen months, not three.
+Based on the evidence above, my working estimate is twelve to eighteen months, not three.
 
 Months one through six are the calibration phase.  Developers learn where AI helps, where it lies, and how to review its output.  Productivity may look flat or negative if you measure verified delivery rather than code volume.
 
@@ -344,7 +348,7 @@ The tuition is real.  But tuition is not the same as graduation.
 
 The organizations that finish the course will not be the ones that generated the most code.
 
-They will be the ones that learned how to verify, integrate, operate, and improve software at AI speed without losing engineering judgment.
+They will be the ones that learned how to verify, integrate, operate, and improve at AI speed without losing the human judgment that makes the output worth anything.
 
 ---
 
@@ -374,7 +378,7 @@ They will be the ones that learned how to verify, integrate, operate, and improv
 
 [^apiiro]: Apiiro, "4x Velocity, 10x Vulnerabilities: AI Coding Assistants Are Shipping More Risks." <https://apiiro.com/blog/4x-velocity-10x-vulnerabilities-ai-coding-assistants-are-shipping-more-risks/>.
 
-[^curl]: Daniel Stenberg, "The Curl Bug Bounty Is Over." <https://daniel.haxx.se/blog/2026/01/26/the-curl-bug-bounty-is-over/>. Secondary coverage: BleepingComputer, "Curl ending bug bounty program after flood of AI slop reports." <https://www.bleepingcomputer.com/news/security/curl-ending-bug-bounty-program-after-flood-of-ai-slop-reports/>.
+[^curl]: Daniel Stenberg, "The End of the Curl Bug Bounty." <https://daniel.haxx.se/blog/2026/01/26/the-end-of-the-curl-bug-bounty/>. Secondary coverage: BleepingComputer, "Curl ending bug bounty program after flood of AI slop reports." <https://www.bleepingcomputer.com/news/security/curl-ending-bug-bounty-program-after-flood-of-ai-slop-reports/>.
 
 [^netbsd]: NetBSD, "Commit Guidelines." <https://www.netbsd.org/developers/commit-guidelines.html>.
 
