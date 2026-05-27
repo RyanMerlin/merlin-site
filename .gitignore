@@ -22,3 +22,6 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Co-located post images copied to static/ by remark plugin at build time
+static/images/*/

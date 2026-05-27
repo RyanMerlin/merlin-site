@@ -22,7 +22,7 @@ That input is not a detail.  It is the model.
 
 The 2026 DORA report on AI-assisted software development is not a hype memo.  It is a serious attempt to answer a hard management question: how should engineering leaders reason about the return on AI when the first-order effects are tangled with learning costs, verification costs, platform maturity, quality risk, and organizational redesign?  The report proposes an ROI framework and calculator that map AI adoption through capabilities, DORA delivery metrics, and ultimately financial outcomes.  It also names the pattern many practitioners already feel: AI adoption follows a *J-curve*.  Productivity drops before it rises.[^dora-roi]
 
-![DORA's J-Curve of AI value realization — productivity dips before it rises, driven by learning costs, verification tax, and pipeline adaptation](/images/2026-05-25-ai-productivity-dip-longer-deeper-diverging/dora-j-curve.png)
+![DORA's J-Curve of AI value realization — productivity dips before it rises, driven by learning costs, verification tax, and pipeline adaptation](./dora-j-curve.png)
 
 DORA's explanation for the dip is right.  Teams spend time learning new workflows.  Developers must review AI-generated code because trustworthiness is not free.  Downstream systems, review, test, security, CI/CD, and incident response, must absorb more output.  DORA calls this "the tuition cost of transformation."[^dora-roi]
 
@@ -146,7 +146,7 @@ Others treat the trough as evidence that AI failed, or worse, use AI output as j
 
 That is how the J becomes a K.
 
-![The J-Curve becomes a K — disciplined adoption rises above baseline while unmanaged adoption continues to decline](/images/2026-05-25-ai-productivity-dip-longer-deeper-diverging/k-curve-fork.png)
+![The J-Curve becomes a K — disciplined adoption rises above baseline while unmanaged adoption continues to decline](./k-curve-fork.png)
 
 ## The upper branch is not just "more AI"
 
