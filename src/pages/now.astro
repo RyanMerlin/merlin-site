@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EdgePlaneSchematic from '../components/EdgePlaneSchematic.tsx';
 ---
 
 <Base title="Now" description="What I'm currently focused on." path="/now">
@@ -40,40 +41,7 @@ import Base from '../layouts/Base.astro';
 						identity, an inbox, and durable task state.
 					</p>
 
-					<p class="mt-4 text-sm font-semibold uppercase tracking-widest" style="color: var(--color-text-muted);">Built on a few core ideas</p>
-					<ul class="mt-2 space-y-2 list-none text-[0.97rem]">
-						<li>
-							<strong>A control plane, not a pipeline.</strong> Most multi-agent systems are execution
-							graphs that model what runs in what order. EdgePlane borrows the split that container
-							orchestration settled on: a coordination layer that owns identity, desired state, and
-							health, kept separate from the agents doing the work.
-						</li>
-						<li>
-							<strong>Persistent sessions as the unit of work.</strong> An agent is an addressable,
-							resumable principal, not a stateless request. It can be steered while it is already
-							working, attached to live, and restarted without pretending the prior run never happened.
-						</li>
-						<li>
-							<strong>Overlap detection before work begins.</strong> A fuzzy and vector similarity pass
-							runs against the current state of a mission before any task or artifact is created, so two
-							agents never quietly duplicate findings or collide on the same file.
-						</li>
-						<li>
-							<strong>Durable ownership that survives crashes.</strong> Every task and artifact has a
-							stable owner identity rather than a session that evaporates on restart, so a recovered
-							agent picks up exactly where the previous one left off.
-						</li>
-						<li>
-							<strong>A governed publication path.</strong> Work products move from working state to
-							operational state to a committed memory of record, with the full chain of custody preserved
-							at each layer.
-						</li>
-						<li>
-							<strong>Missions accumulate, tasks complete.</strong> A mission is a perpetual coordination
-							scope; a task is the unit of completion. The command surface and the node daemon mirror the
-							kubectl and kubelet split.
-						</li>
-					</ul>
+					<EdgePlaneSchematic client:visible />
 				</div>
 
 				<ul class="mt-6 space-y-3 list-none">
