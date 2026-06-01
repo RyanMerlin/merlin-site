@@ -1,0 +1,7 @@
+# Astro immutable assets — content-hashed filenames (CSS/JS/images), safe to cache forever
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML — always revalidate
+/*
+  Cache-Control: public, max-age=0, must-revalidate

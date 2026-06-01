@@ -1,12 +1,10 @@
-<script context="module">
-  export const metadata = {
-    title: "Consciousness - The Press Secretary in the Skull",
-    created: "2026-05-26",
-    status: "published",
-    tags: ["consciousness", "neuroscience", "free-will", "decision-making", "predictive-processing", "behavioral-economics"],
-    summary: "Consciousness is not usually the first mover in moment-to-moment choice.  It is a late-binding narrative control layer that converts action into reasons, reasons into identity, and identity into constraints on future action.  Locally late.  Globally causal."
-  };
-</script>
+---
+title: "Consciousness - The Press Secretary in the Skull"
+created: "2026-05-26"
+status: "published"
+tags: ["consciousness","neuroscience","free-will","decision-making","predictive-processing","behavioral-economics"]
+summary: "Consciousness is not usually the first mover in moment-to-moment choice.  It is a late-binding narrative control layer that converts action into reasons, reasons into identity, and identity into constraints on future action.  Locally late.  Globally causal."
+---
 
 Think about the last decision you made today.  What to eat.  Whether to answer that text now or later.  Which tab to open first.
 

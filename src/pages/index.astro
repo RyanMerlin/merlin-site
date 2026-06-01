@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import TopicFilter, { type FilterItem } from '../components/TopicFilter.tsx';
+import { getPosts, topics, postTopic, postsByTopic } from '../lib/posts';
+
+const posts = await getPosts();
+
+const items: FilterItem[] = posts.map((p) => {
+	const topic = postTopic(p);
+	return {
+		slug: p.slug,
+		title: p.title,
+		created: p.created,
+		summary: p.summary,
+		wordCount: p.wordCount,
+		topicSlug: topic?.slug ?? null,
+		topicLabel: topic?.label ?? null,
+		topicColor: topic?.color ?? null
+	};
+});
+
+const visibleTopics = topics.filter((t) => postsByTopic(posts, t.slug).length > 0);
+---
+
+<Base path="/">
+	<main class="mx-auto max-w-3xl px-6 py-16">
+		<header class="mb-16">
+			<h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
+			<p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
+				16 years deploying data systems, ML, and analytics inside enterprises across finance,
+				telecom, marketing, and credit. PhD trained in economics and organizational psychology.<br />
+				Now focused on what actually happens when AI hits production: the organizational adaptation,
+				the verification gap, and the infrastructure that determines whether deployments compound or
+				decay.
+			</p>
+		</header>
+
+		<TopicFilter client:load items={items} topics={visibleTopics} />
+	</main>
+</Base>

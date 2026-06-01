@@ -1,12 +1,10 @@
-<script context="module">
-  export const metadata = {
-    title: "The Coordination Tax",
-    created: "2026-04-28",
-    status: "published",
-    tags: ["agents", "edgeplane", "coordination", "multi-agent", "architecture"],
-    summary: "Multi-agent systems don't fail because the agents are stupid. They fail because the coordination cost wasn't budgeted for. Identity, overlap, governance, and audit are taxes that compound silently until you get an incident."
-  };
-</script>
+---
+title: "The Coordination Tax"
+created: "2026-04-28"
+status: "published"
+tags: ["agents","edgeplane","coordination","multi-agent","architecture"]
+summary: "Multi-agent systems don't fail because the agents are stupid. They fail because the coordination cost wasn't budgeted for. Identity, overlap, governance, and audit are taxes that compound silently until you get an incident."
+---
 
 Multi-agent systems don't fail because the agents are stupid.  The models are good.  The tools work.  The individual agent, given a well-scoped task and clean context, will produce reasonable output most of the time.
 

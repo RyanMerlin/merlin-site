@@ -1,12 +1,10 @@
-<script context="module">
-  export const metadata = {
-    title: "Why Agents Need a Control Plane, Not a Pipeline",
-    created: "2026-04-07",
-    status: "published",
-    tags: ["agents", "architecture", "edgeplane", "orchestration", "control-plane"],
-    summary: "Every serious attempt to build a multi-agent system converges on the same shape. Then you try to run two workers in parallel, and everything breaks."
-  };
-</script>
+---
+title: "Why Agents Need a Control Plane, Not a Pipeline"
+created: "2026-04-07"
+status: "published"
+tags: ["agents","architecture","edgeplane","orchestration","control-plane"]
+summary: "Every serious attempt to build a multi-agent system converges on the same shape. Then you try to run two workers in parallel, and everything breaks."
+---
 
 Every serious attempt to build a multi-agent system converges on the same shape.  You have a coordinator agent that breaks down work, a set of worker agents that execute it, and a reviewer agent that checks the output.  The coordinator hands off to a worker, the worker hands off to the reviewer, the reviewer hands back corrections.  It looks clean on a diagram.
 

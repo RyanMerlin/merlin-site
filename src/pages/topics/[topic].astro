@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, topics, postsByTopic, readingTime } from '../../lib/posts';
+
+export async function getStaticPaths() {
+	return topics.map((topic) => ({ params: { topic: topic.slug }, props: { topic } }));
+}
+
+const { topic } = Astro.props;
+const allPosts = await getPosts();
+const topicPosts = postsByTopic(allPosts, topic.slug);
+
+function formatDate(iso: string): string {
+	const d = new Date(iso);
+	return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<Base path={`/topics/${topic.slug}`}>
+	<main class="mx-auto max-w-3xl px-6 py-16">
+		<header class="mb-12">
+			<a href="/" class="text-xs mb-4 block" style="color: var(--color-text-muted);">← all writing</a>
+			<h1 class="text-2xl font-semibold tracking-tight" style={`color: ${topic.color};`}>
+				{topic.label}
+			</h1>
+			<p class="mt-2 text-sm" style="color: var(--color-text-muted);">
+				{topicPosts.length} post{topicPosts.length !== 1 ? 's' : ''}
+				· <a href={`/topics/${topic.slug}/feed.xml`} style="color: var(--color-accent);">RSS</a>
+			</p>
+		</header>
+
+		{
+			topicPosts.length === 0 ? (
+				<p style="color: var(--color-text-muted);" class="italic">
+					No posts in this topic yet.
+				</p>
+			) : (
+				<ul class="space-y-10">
+					{topicPosts.map((post) => (
+						<li>
+							<article>
+								<a href={`/posts/${post.slug}`} class="group block">
+									<h2 class="text-lg font-medium transition-colors" style="color: var(--color-text);">
+										{post.title}
+									</h2>
+									<div class="mt-1.5 flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+										<time datetime={post.created}>{formatDate(post.created)}</time>
+										<span>·</span>
+										<span>{readingTime(post.wordCount)}</span>
+									</div>
+									{post.summary && (
+										<p class="mt-2 text-sm leading-relaxed" style="color: var(--color-text-muted);">
+											{post.summary}
+										</p>
+									)}
+								</a>
+							</article>
+						</li>
+					))}
+				</ul>
+			)
+		}
+	</main>
+</Base>

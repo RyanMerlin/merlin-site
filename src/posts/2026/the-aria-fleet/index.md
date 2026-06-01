@@ -1,12 +1,10 @@
-<script context="module">
-  export const metadata = {
-    title: "The Aria fleet: six agents, one operator",
-    created: "2026-04-21",
-    status: "published",
-    tags: ["agents", "edgeplane", "infrastructure", "aria"],
-    summary: "Six persistent Claude Code sessions, scoped to different domains, coordinating through EdgePlane. Here's what it looks like in practice."
-  };
-</script>
+---
+title: "The Aria fleet: six agents, one operator"
+created: "2026-04-21"
+status: "published"
+tags: ["agents","edgeplane","infrastructure","aria"]
+summary: "Six persistent Claude Code sessions, scoped to different domains, coordinating through EdgePlane. Here's what it looks like in practice."
+---
 
 The most common question I get about EdgePlane isn't about the architecture.  It's "what does it actually look like to run it?"  Fair question.  So here's the concrete answer: what I'm running, how it's wired, what it replaced, and what the migration to a proper control plane looks like from the inside.
 

@@ -1,0 +1,381 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'Cascadia Code', monospace;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Color palette
+   Anchor: #e75b2a (rust orange)
+   Complement: #4a9eda (steel blue — links, interactive)
+   Warm off-white body: #c2bfba
+   Headings: #dedad5 (warm near-white, not stark)
+   Bold emphasis: #e75b2a (rust orange — matches accent/highlighting)
+   Links: #4d8ef7 (cobalt blue — cool contrast, clearly interactive)
+   Blockquote bg: slight warm tint of bg
+   References zone: distinct sunken zone
+   ───────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: light dark;
+  --color-bg: #fafaf8;
+  --color-bg-subtle: #f0efe9;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-accent: #e75b2a;
+  --color-link: #2563eb;
+  --color-link-hover: #4d8ef7;
+  --color-bold: #b8451e;
+  --color-border: #e2e2dc;
+  --color-blockquote-bg: #f5f2ee;
+  --color-blockquote-border: #e75b2a;
+  --color-code-bg: #f0efe9;
+  --color-code-border: var(--color-border);
+  --color-ref-bg: #f5f2ee;
+  --color-ref-border: #e2e2dc;
+  /* Prism token colors — light */
+  --token-comment: #6b7280;
+  --token-keyword: #e75b2a;
+  --token-string: #166534;
+  --token-number: #1d4ed8;
+  --token-function: #9d174d;
+  --token-punctuation: #6b7280;
+  --token-default: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f0e0d;
+    --color-bg-subtle: #1a1917;
+    --color-text: #c2bfba;
+    --color-text-muted: #706c67;
+    --color-accent: #e75b2a;
+    --color-link: #4d8ef7;
+    --color-link-hover: #6ba3ff;
+    --color-bold: #b8451e;
+    --color-border: #2e2b28;
+    --color-blockquote-bg: #1a1714;
+    --color-blockquote-border: #e75b2a;
+    --color-code-bg: #181614;
+    --color-ref-bg: #141210;
+    --color-ref-border: #2e2b28;
+    /* Prism token colors — dark */
+    --token-comment: #7a7570;
+    --token-keyword: #e87a50;
+    --token-string: #86efac;
+    --token-number: #93c5fd;
+    --token-function: #f9a8d4;
+    --token-punctuation: #9ca3af;
+    --token-default: #c2bfba;
+  }
+
+  /* Override Tailwind Typography prose-invert defaults */
+  .prose {
+    --tw-prose-invert-body: #c2bfba;
+    --tw-prose-invert-headings: #dedad5;
+    --tw-prose-invert-lead: #a8a49f;
+    --tw-prose-invert-links: #e8855a;
+    --tw-prose-invert-bold: #e8a87c;
+    --tw-prose-invert-counters: #908c87;
+    --tw-prose-invert-bullets: #706c67;
+    --tw-prose-invert-hr: #2e2b28;
+    --tw-prose-invert-quotes: #c2bfba;
+    --tw-prose-invert-quote-borders: #e75b2a;
+    --tw-prose-invert-captions: #706c67;
+    --tw-prose-invert-kbd: #dedad5;
+    --tw-prose-invert-kbd-shadows: rgb(255 255 255 / 5%);
+    --tw-prose-invert-code: #c2bfba;
+    --tw-prose-invert-pre-code: #c2bfba;
+    --tw-prose-invert-pre-bg: #181614;
+    --tw-prose-invert-th-borders: #2e2b28;
+    --tw-prose-invert-td-borders: #201e1c;
+  }
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Article prose overrides ──────────────────────────── */
+
+/* Paragraph spacing and line height — open up for readability */
+.prose p {
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+/* Links — clearly distinct from body, underline on hover only */
+.prose a {
+  color: var(--color-link);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-link) 35%, transparent);
+  transition: color 0.15s, border-color 0.15s;
+}
+.prose a:hover {
+  color: var(--color-link-hover);
+  border-bottom-color: var(--color-link-hover);
+}
+
+/* Italics — warm sand for terms and names */
+.prose em {
+  color: #d4b06a;
+  font-style: italic;
+}
+
+/* Bold — rust orange, reserved for key claims */
+.prose strong {
+  color: var(--color-bold);
+  font-weight: 600;
+}
+
+/* Blockquotes — left border + tinted background, central tension statements */
+.prose blockquote {
+  background-color: var(--color-blockquote-bg);
+  border-left: 3px solid var(--color-blockquote-border);
+  border-radius: 0 4px 4px 0;
+  padding: 0.875rem 1.25rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: normal;
+  color: var(--color-text);
+}
+.prose blockquote p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+.prose blockquote > :first-child { margin-top: 0; }
+.prose blockquote > :last-child { margin-bottom: 0; }
+
+/* Headings — spacing and size hierarchy (color handled by prose variables) */
+.prose h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.prose h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Bullet lists — better spacing, visible markers */
+.prose ul {
+  padding-left: 1.5rem;
+}
+.prose ul li {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  padding-left: 0.25rem;
+  line-height: 1.75;
+}
+.prose ul > li::marker {
+  color: var(--color-accent);
+  opacity: 0.7;
+}
+
+/* Ordered lists */
+.prose ol li {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.75;
+}
+.prose ol > li::marker {
+  color: var(--color-text-muted);
+}
+
+/* Tables — clean borders, alternating rows, distinct header */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.prose thead th {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 2px solid var(--color-border);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.prose tbody tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--color-bg-subtle) 60%, transparent);
+}
+.prose tbody td {
+  padding: 0.5rem 0.875rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Inline code — warm tint, not stark white */
+.prose :not(pre) > code {
+  background-color: var(--color-code-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  color: var(--color-text);
+}
+/* Remove prose plugin default backtick decoration */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+/* Footnote references in body — smaller, muted */
+.prose sup a,
+.prose a[data-footnote-ref] {
+  font-size: 0.75em;
+  color: var(--color-text-muted);
+  border-bottom: none;
+  vertical-align: super;
+  text-decoration: none;
+}
+.prose sup a:hover,
+.prose a[data-footnote-ref]:hover {
+  color: var(--color-link-hover);
+}
+
+/* References / footnotes section — sunken zone with visual separation */
+.prose .footnotes,
+.prose section[data-footnotes],
+.prose [id^='footnote'] {
+  margin-top: 3rem;
+  padding: 1.5rem 1.75rem;
+  background-color: var(--color-ref-bg);
+  border: 1px solid var(--color-ref-border);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+.prose .footnotes h2,
+.prose section[data-footnotes] h2 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.prose .footnotes ol,
+.prose section[data-footnotes] ol {
+  padding-left: 1.25rem;
+  margin: 0;
+}
+.prose .footnotes li,
+.prose section[data-footnotes] li {
+  margin: 0.3rem 0;
+}
+.prose .footnotes a,
+.prose section[data-footnotes] a {
+  color: var(--color-text-muted);
+  border-bottom-color: transparent;
+  word-break: break-all;
+}
+.prose .footnotes a:hover,
+.prose section[data-footnotes] a:hover {
+  color: var(--color-link-hover);
+  border-bottom-color: var(--color-link-hover);
+}
+
+/* References heading (## References as a manual h2 above footnote definitions) */
+.prose h2#references,
+.prose h2#footnotes {
+  font-size: 0.6875rem !important;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted) !important;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Horizontal rule — subtle separator */
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2.5rem 0;
+}
+
+/* ─── Prism syntax highlighting ──────────────────────────── */
+pre[class*='language-'],
+code[class*='language-'] {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  color: var(--token-default);
+  background: var(--color-code-bg);
+  border-radius: 0.5rem;
+}
+pre[class*='language-'] {
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+}
+:not(pre) > code[class*='language-'] {
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: var(--token-comment); font-style: italic; }
+.token.keyword, .token.atrule, .token.rule { color: var(--token-keyword); }
+.token.string, .token.attr-value, .token.char { color: var(--token-string); }
+.token.number, .token.boolean, .token.constant { color: var(--token-number); }
+.token.function { color: var(--token-function); }
+.token.class-name, .token.builtin { color: var(--token-keyword); }
+.token.operator, .token.punctuation, .token.entity { color: var(--token-punctuation); }
+.token.property, .token.tag, .token.selector { color: var(--token-default); }
+.token.important { font-weight: bold; }
+
+/* ─── Home topic-filter island (TopicFilter.tsx) ─────────── */
+.tab {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab:hover { color: var(--color-text); }
+.tab.active {
+  color: var(--topic-color, var(--color-accent));
+  border-bottom-color: var(--topic-color, var(--color-accent));
+}
+.topic-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+  background: color-mix(in srgb, var(--badge-color) 15%, transparent);
+  color: var(--badge-color);
+}

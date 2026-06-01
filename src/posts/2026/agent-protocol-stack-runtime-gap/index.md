@@ -1,12 +1,10 @@
-<script context="module">
-  export const metadata = {
-    title: "The Agent Protocol Stack Has a Runtime Gap",
-    created: "2026-05-23",
-    status: "published",
-    tags: ["agents", "edgeplane", "mcp", "a2a", "acp", "infrastructure", "architecture"],
-    summary: "2026 is the year the agent protocol stack started to look real. MCP, A2A, ACP, and AGNTCY define how agents communicate. None of them define what a persistent agent is at the infrastructure layer."
-  };
-</script>
+---
+title: "The Agent Protocol Stack Has a Runtime Gap"
+created: "2026-05-23"
+status: "published"
+tags: ["agents","edgeplane","mcp","a2a","acp","infrastructure","architecture"]
+summary: "2026 is the year the agent protocol stack started to look real. MCP, A2A, ACP, and AGNTCY define how agents communicate. None of them define what a persistent agent is at the infrastructure layer."
+---
 
 2026 is the year the agent protocol stack started to look real.
 

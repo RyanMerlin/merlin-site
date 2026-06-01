@@ -1,12 +1,10 @@
-<script context="module">
-  export const metadata = {
-    title: "Building first-class secrets management into an AI agent",
-    created: "2026-05-22",
-    status: "published",
-    tags: ["infisical", "secrets", "rust", "agents", "security"],
-    summary: "The .env file is a collaboration tool for human engineers. It was never meant to be a security primitive. When you run an always-on agent fleet, that distinction stops being theoretical."
-  };
-</script>
+---
+title: "Building first-class secrets management into an AI agent"
+created: "2026-05-22"
+status: "published"
+tags: ["infisical","secrets","rust","agents","security"]
+summary: "The .env file is a collaboration tool for human engineers. It was never meant to be a security primitive. When you run an always-on agent fleet, that distinction stops being theoretical."
+---
 
 The `.env` file is a collaboration tool for human engineers.  It was never meant to be a security primitive.  When you run an always-on agent fleet, that distinction stops being theoretical.
 

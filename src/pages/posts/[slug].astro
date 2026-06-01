@@ -1,0 +1,104 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCta from '../../components/PostCta.astro';
+import { getPosts, relatedPosts, readingTime } from '../../lib/posts';
+import { SITE_URL, SITE_AUTHOR } from '../../lib/config';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('posts', (e) => !e.data.status || e.data.status === 'published');
+	return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const allPosts = await getPosts();
+const meta = allPosts.find((p) => p.slug === entry.id)!;
+const otherPosts = relatedPosts(allPosts, meta, 2);
+
+function formatDate(iso: string): string {
+	const d = new Date(iso);
+	return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+const ogImage = `${SITE_URL}/og/${meta.slug}.png`;
+
+const jsonLd = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	headline: meta.title,
+	description: meta.summary ?? '',
+	url: `${SITE_URL}/posts/${meta.slug}`,
+	datePublished: meta.created,
+	dateModified: meta.created,
+	author: { '@type': 'Person', name: SITE_AUTHOR, url: SITE_URL },
+	publisher: { '@type': 'Person', name: SITE_AUTHOR, url: SITE_URL },
+	keywords: meta.tags,
+	wordCount: meta.wordCount
+});
+---
+
+<Base
+	title={meta.title}
+	description={meta.summary ?? ''}
+	path={`/posts/${meta.slug}`}
+	type="article"
+	publishedTime={meta.created}
+	image={ogImage}
+>
+	<script type="application/ld+json" slot="head" set:html={jsonLd} />
+
+	<main class="mx-auto max-w-3xl px-6 py-16">
+		<nav class="mb-12">
+			<a href="/" class="text-sm transition-colors" style="color: var(--color-text-muted);">← writing</a>
+		</nav>
+
+		<header class="mb-10" style="border-bottom: 1px solid var(--color-border); padding-bottom: 2rem;">
+			<h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">
+				{meta.title}
+			</h1>
+			<div class="mt-3 flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+				<time datetime={meta.created}>{formatDate(meta.created)}</time>
+				<span>·</span>
+				<span>{readingTime(meta.wordCount)}</span>
+				{
+					meta.tags.length > 0 && (
+						<>
+							<span>·</span>
+							<span>{meta.tags.join(', ')}</span>
+						</>
+					)
+				}
+			</div>
+		</header>
+
+		<article
+			class="prose prose-zinc dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight max-w-none prose-lg prose-p:leading-relaxed"
+			style="font-family: var(--font-sans); --tw-prose-body: var(--color-text); --tw-prose-headings: var(--tw-prose-invert-headings, #dedad5);"
+		>
+			<Content />
+		</article>
+
+		<PostCta />
+
+		{
+			otherPosts.length > 0 && (
+				<div class="mt-8 pt-8" style="border-top: 1px solid var(--color-border);">
+					<p class="text-xs font-medium uppercase tracking-widest mb-6" style="color: var(--color-text-muted);">
+						Related
+					</p>
+					<ul class="space-y-4">
+						{otherPosts.map((post) => (
+							<li>
+								<a href={`/posts/${post.slug}`} class="text-sm" style="color: var(--color-text);">
+									{post.title}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			)
+		}
+	</main>
+</Base>
