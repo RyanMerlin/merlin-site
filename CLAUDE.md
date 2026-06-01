@@ -46,11 +46,14 @@ Body markdown here.
 
 Relative image paths (`./img.png`) go through Astro's image pipeline (→ hashed WebP). Only posts with `status: published` (or no `status`) appear on the homepage. For a rare absolute-path image, put the file in `public/images/` and reference `/images/<file>.png`.
 
+**`evidence.md` (optional, never rendered):** a bundle may carry a sibling `src/posts/<year>/<slug>/evidence.md` holding the post's research provenance (discourse position, so-what test, verified sources). The content collection globs `**/index.md` only, so `evidence.md` lives in the repo as provenance but is never built, routed, or served. It is the published home of a post's vault `drafts/<slug>-evidence.md` scaffold.
+
 ## Files
 
 | Path | Purpose |
 |------|---------|
 | `src/posts/<year>/<slug>/index.md` | Post page bundles (markdown + colocated images) |
+| `src/posts/<year>/<slug>/evidence.md` | Optional research provenance; globbed out (`**/index.md` only) — never rendered |
 | `src/content.config.ts` | Content collection: glob loader + Zod schema |
 | `src/lib/posts.ts` | `getPosts()` + topic / related / reading-time helpers (`getCollection`) |
 | `src/pages/index.astro` | Homepage; mounts the `TopicFilter` React island |
