@@ -1,7 +1,11 @@
-# Astro immutable assets — content-hashed filenames (CSS/JS/images), safe to cache forever
+# Astro emits content-hashed filenames under /_astro/ (JS, fonts, images) — safe to
+# cache forever. HTML is intentionally NOT given a rule here: Cloudflare Pages already
+# serves it as `public, max-age=0, must-revalidate` by default, so deploys are picked
+# up immediately.
+#
+# Do NOT add a broad `/*` Cache-Control rule. Cloudflare Pages COMBINES the headers of
+# every matching rule, so `/*` concatenates onto `/_astro/*` and produces a corrupt
+# asset header with two max-age values (max-age=31536000 ... , max-age=0). Keep the
+# only Cache-Control rule scoped to the immutable asset path.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
-
-# HTML — always revalidate
-/*
-  Cache-Control: public, max-age=0, must-revalidate
