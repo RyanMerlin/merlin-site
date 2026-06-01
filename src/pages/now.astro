@@ -6,25 +6,82 @@ import Base from '../layouts/Base.astro';
 	<main class="mx-auto max-w-3xl px-6 py-16">
 		<header class="mb-4">
 			<h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Now</h1>
-			<p class="mt-2 text-sm" style="color: var(--color-text-muted);">Updated May 2026 · Boulder, CO</p>
+			<p class="mt-2 text-sm" style="color: var(--color-text-muted);">Updated June 2026 · Boulder, CO</p>
 		</header>
 
 		<div class="mt-10 space-y-8 text-base leading-relaxed" style="color: var(--color-text);">
 			<section>
 				<h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Research</h2>
-				<ul class="space-y-3 list-none">
+
+				<div class="rounded-lg p-5" style="border: 1px solid var(--color-border, rgba(127,127,127,0.2));">
+					<div class="flex items-center gap-4">
+						<img
+							src="/images/edgeplane-logo.png"
+							alt="EdgePlane logo"
+							width="52"
+							height="52"
+							class="shrink-0"
+							style="width: 52px; height: 52px;"
+						/>
+						<div>
+							<strong class="text-lg">EdgePlane</strong>
+							<div class="mt-0.5 text-sm">
+								<a href="https://edgeplane.ai" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">edgeplane.ai</a>
+								<span style="color: var(--color-text-muted);"> · </span>
+								<a href="https://github.com/RyanMerlin/edgeplane" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">GitHub</a>
+							</div>
+						</div>
+					</div>
+
+					<p class="mt-4">
+						A production-grade control plane for multi-agent fleets. The driving question is what it
+						takes to run agents with real operational rigor: the layer between a demo that works once
+						and a system you can trust in production. Agents are first-class principals with stable
+						identity, an inbox, and durable task state.
+					</p>
+
+					<p class="mt-4 text-sm font-semibold uppercase tracking-widest" style="color: var(--color-text-muted);">Built on a few core ideas</p>
+					<ul class="mt-2 space-y-2 list-none text-[0.97rem]">
+						<li>
+							<strong>A control plane, not a pipeline.</strong> Most multi-agent systems are execution
+							graphs that model what runs in what order. EdgePlane borrows the split that container
+							orchestration settled on: a coordination layer that owns identity, desired state, and
+							health, kept separate from the agents doing the work.
+						</li>
+						<li>
+							<strong>Persistent sessions as the unit of work.</strong> An agent is an addressable,
+							resumable principal, not a stateless request. It can be steered while it is already
+							working, attached to live, and restarted without pretending the prior run never happened.
+						</li>
+						<li>
+							<strong>Overlap detection before work begins.</strong> A fuzzy and vector similarity pass
+							runs against the current state of a mission before any task or artifact is created, so two
+							agents never quietly duplicate findings or collide on the same file.
+						</li>
+						<li>
+							<strong>Durable ownership that survives crashes.</strong> Every task and artifact has a
+							stable owner identity rather than a session that evaporates on restart, so a recovered
+							agent picks up exactly where the previous one left off.
+						</li>
+						<li>
+							<strong>A governed publication path.</strong> Work products move from working state to
+							operational state to a committed memory of record, with the full chain of custody preserved
+							at each layer.
+						</li>
+						<li>
+							<strong>Missions accumulate, tasks complete.</strong> A mission is a perpetual coordination
+							scope; a task is the unit of completion. The command surface and the node daemon mirror the
+							kubectl and kubelet split.
+						</li>
+					</ul>
+				</div>
+
+				<ul class="mt-6 space-y-3 list-none">
 					<li>
-						<strong>EdgePlane</strong> — building a production-grade multi-agent orchestration framework.
-						The core design question: what does it take to run agent fleets with real operational
-						rigor? Current focus is persistent session architecture, mesh-based inter-agent
-						coordination, and a consolidated cron/dispatch layer. Agents are first-class principals
-						with identity, inbox, and durable task state.
-					</li>
-					<li>
-						<strong>Agent evaluation</strong> — developing methods for measuring agentic system
-						reliability in enterprise contexts, where failure modes are often subtle and the cost of
-						errors is real. Most existing evals assume clean inputs and well-specified tasks.
-						Production doesn't look like that.
+						<strong>Agent evaluation.</strong> Developing methods for measuring agentic system
+						reliability in enterprise contexts, where failure modes are subtle and the cost of errors is
+						real. Most existing evals assume clean inputs and well-specified tasks. Production rarely
+						looks like that.
 					</li>
 				</ul>
 			</section>
@@ -33,11 +90,11 @@ import Base from '../layouts/Base.astro';
 				<h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Forward Deployed Work</h2>
 				<ul class="space-y-3 list-none">
 					<li>
-						Embedded with enterprise clients building production AI applications — shipping working
-						systems, not decks. Current engagements involve agent-native workflows in organizations
-						navigating complex legacy infrastructure and real data governance constraints. Codifying
-						what works into repeatable deployment patterns. If you're building enterprise AI systems
-						and want a practitioner in the room, <a href="/connect" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">reach out</a>.
+						Embedded with enterprise clients building production AI applications, shipping working
+						systems rather than decks. Current engagements involve agent-native workflows in
+						organizations navigating complex legacy infrastructure and real data governance
+						constraints, codifying what works into repeatable deployment patterns. If you are building
+						enterprise AI systems and want a practitioner in the room, <a href="/connect" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">reach out</a>.
 					</li>
 				</ul>
 			</section>
@@ -46,12 +103,12 @@ import Base from '../layouts/Base.astro';
 				<h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Thinking About</h2>
 				<ul class="space-y-3 list-none">
 					<li>
-						What the right abstraction layer for enterprise agent orchestration looks like — and why
-						the gap between "it works in a notebook" and "it runs in production" is still so wide for
-						most organizations deploying LLMs at scale.
+						What the right abstraction layer for enterprise agent orchestration looks like, and why the
+						gap between "it works in a notebook" and "it runs in production" is still so wide for most
+						organizations deploying LLMs at scale.
 					</li>
 					<li>
-						How frontier model capability improvements are changing the economics and architecture of
+						How frontier model capability improvements are reshaping the economics and architecture of
 						agentic systems. The answer is shifting faster than most enterprise deployment patterns can
 						keep up with.
 					</li>
@@ -67,13 +124,13 @@ import Base from '../layouts/Base.astro';
 				<h2 class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: var(--color-text-muted);">Writing</h2>
 				<ul class="space-y-3 list-none">
 					<li>
-						Publishing regularly on this blog. The focus is what I'm actually building and deploying —
-						agent infrastructure, secrets management, orchestration patterns, the real failure modes.
-						Not tutorials. Field reports.
+						Publishing regularly on this blog. The focus is what I am actually building and deploying:
+						agent infrastructure, secrets management, orchestration patterns, and the real failure
+						modes. Field reports, not tutorials.
 					</li>
 					<li>
-						Also dusting off <a href="https://x.com/rmerlin" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">@rmerlin on Twitter/X</a>
-						for shorter takes and being part of the AI builder conversation.
+						Also active on <a href="https://x.com/rmerlin" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">@rmerlin on Twitter/X</a>
+						for shorter takes and the AI builder conversation.
 					</li>
 				</ul>
 			</section>
