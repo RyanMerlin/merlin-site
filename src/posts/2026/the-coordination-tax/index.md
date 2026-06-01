@@ -76,4 +76,4 @@ The coordination tax doesn't scale with organization size.  It scales with the n
 
 Building agent systems without coordination primitives is like building a database without transactions.  You can do it.  Things will appear to work.  Until two concurrent writes corrupt state you can't recover, and you spend a week figuring out which "commit" to trust.
 
-The next piece in this series: [Persistent sessions are the unit of agent work, not requests](https://ryanmerlin.com/posts/2026-05-05-persistent-sessions-unit-of-agent-work).  Why treating a model call as an RPC is the wrong abstraction for long-running agents, and what the supervisor loop actually looks like.
+The next piece in this series: [Persistent sessions are the unit of agent work, not requests](https://ryanmerlin.com/posts/persistent-sessions-unit-of-agent-work).  Why treating a model call as an RPC is the wrong abstraction for long-running agents, and what the supervisor loop actually looks like.
