@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" description="That page does not exist." path="/404">
+	<main class="mx-auto max-w-3xl px-6 py-24 text-center">
+		<p class="font-mono text-sm uppercase tracking-[0.3em]" style="color: var(--color-accent);">404</p>
+		<h1 class="mt-5 text-3xl font-semibold tracking-tight" style="color: var(--color-text);">This route doesn't resolve.</h1>
+		<p class="mt-4 text-base leading-relaxed" style="color: var(--color-text-muted);">
+			The URL doesn't match anything here. It may have moved, or it never existed.
+		</p>
+		<div class="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm">
+			<a href="/" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">Writing</a>
+			<span style="color: var(--color-text-muted);">·</span>
+			<a href="/now" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">Now</a>
+			<span style="color: var(--color-text-muted);">·</span>
+			<a href="/connect" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">Connect</a>
+		</div>
+	</main>
+</Base>
