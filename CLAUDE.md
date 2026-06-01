@@ -1,86 +1,90 @@
 # merlin-site
 
-Static blog for Merlin. **The Aria `publisher` profile drives all content here** — humans (Merlin) approve, agents draft.
+Static blog for Merlin (ryanmerlin.com). **The Aria `publisher` profile drives all content here** — humans (Merlin) approve, agents draft.
 
 ## Stack
 
-- **SvelteKit 2** + **mdsvex** (markdown → Svelte) + **adapter-static** → static HTML/JS
-- **Tailwind CSS 4** + `@tailwindcss/typography` for prose styling
+- **Astro 5** + **React 19 islands** (`@astrojs/react`) — static-by-default; only interactive components ship JS
+- **Tailwind CSS 4** (`@tailwindcss/vite`) + `@tailwindcss/typography` for prose styling
 - **TypeScript** throughout
 - **bun** as the package manager
-- **Deploy target:** Cloudflare Pages (connect this repo in CF dashboard; no workflow needed)
+- **Deploy target:** Cloudflare Pages, direct-upload via GitHub Actions (`.github/workflows/deploy.yml` → `wrangler pages deploy dist`)
+
+Migrated from SvelteKit/mdsvex on 2026-05-31. The only React island today is the home-page topic filter (`src/components/TopicFilter.tsx`); every other page is pure static `.astro` and ships zero JavaScript.
 
 ## Content flow
 
 ```
-publisher/queue/<post>.md    (Aria vault, source of truth for drafts)
-        ↓ /publish skill — opens a PR
-src/posts/<post>.md          (this repo, source of truth for what is live)
-        ↓ git merge to main
-CF Pages build               (bun install + bun run build → upload build/)
+publisher/queue/<post>.md           (Aria vault — drafts, pending approval)
+        ↓ /pub publish  (Merlin approves: "yes, send it")
+src/posts/<year>/<slug>/index.md    (this repo — SOURCE OF TRUTH for what is live)
+        ↓ git push to main
+GitHub Action (deploy.yml)          (bun install + astro build → wrangler pages deploy dist)
         ↓
-https://merlin.pages.dev/posts/<slug>
+https://ryanmerlin.com/posts/<slug>
 ```
 
-The vault is where drafts live. **What ships is what's in `src/posts/` on `main`.** Once a post is merged here, the vault note can be archived to `publisher/published/` — but this repo is authoritative for the live site.
+The vault is where drafts originate. **What ships is what's in `src/posts/` on `main`.** This repo is authoritative for the live site.
 
-## Post format
+## Post format — page bundles
 
-Markdown with frontmatter (mdsvex-compatible):
+Each post is a folder: `src/posts/<year>/<slug>/index.md`, with colocated images alongside it. Astro's content collection (`src/content.config.ts`) globs these; the **slug is the parent folder name**.
 
 ```markdown
 ---
-title: Post title
-created: 2026-05-10
+title: "Post title"
+created: "2026-05-10"
 status: published
-tags: [tag1, tag2]
-summary: Optional one-line summary shown on the index.
+tags: ["tag1", "tag2"]
+summary: "Optional one-line summary shown on the index."
 ---
 
 Body markdown here.
+
+![alt](./colocated-image.png)
 ```
 
-Only posts with `status: published` (or no `status` field) appear on the homepage.
+Relative image paths (`./img.png`) go through Astro's image pipeline (→ hashed WebP). Only posts with `status: published` (or no `status`) appear on the homepage. For a rare absolute-path image, put the file in `public/images/` and reference `/images/<file>.png`.
 
 ## Files
 
 | Path | Purpose |
 |------|---------|
-| `src/posts/` | Markdown post files (mdsvex renders) |
-| `src/lib/posts.ts` | Loads + sorts all posts via `import.meta.glob` |
-| `src/routes/+page.svelte` | Homepage (post list) |
-| `src/routes/posts/[slug]/+page.{ts,svelte}` | Dynamic post route; prerendered |
-| `src/routes/layout.css` | Tailwind imports + base styling |
-| `scripts/pull-from-vault.sh` | Sync `publisher/published/` notes → `src/posts/` |
-| `svelte.config.js` | mdsvex preprocessor + adapter-static |
+| `src/posts/<year>/<slug>/index.md` | Post page bundles (markdown + colocated images) |
+| `src/content.config.ts` | Content collection: glob loader + Zod schema |
+| `src/lib/posts.ts` | `getPosts()` + topic / related / reading-time helpers (`getCollection`) |
+| `src/pages/index.astro` | Homepage; mounts the `TopicFilter` React island |
+| `src/pages/posts/[slug].astro` | Post route (`getStaticPaths` + `<Content />`) |
+| `src/pages/{about,now,connect}.astro` | Static pages |
+| `src/pages/topics/[topic].astro` + `.../feed.xml.ts` | Topic landing + per-topic RSS |
+| `src/pages/{feed.xml,sitemap.xml}.ts`, `src/pages/og/[slug].png.ts` | RSS, sitemap, per-post OG images (satori + resvg) |
+| `src/components/TopicFilter.tsx` | The one React island (home topic filter) |
+| `src/components/*.astro`, `src/layouts/Base.astro` | Static components + page shell |
+| `src/styles/global.css` | Tailwind imports + theme + prose styling |
+| `public/` | Static assets served at root (`_headers`, `_redirects`, favicons, `robots.txt`, `images/`) |
+| `scripts/pull-from-vault.sh` | Sync helper: vault notes → `src/posts/` (predates Astro; verify the target path before relying on it) |
 
 ## Local dev
 
 ```bash
 bun install
-bun run dev          # http://localhost:5173
-bun run build        # static output to build/
+bun run dev          # http://localhost:4321
+bun run build        # static output to dist/
 bun run preview      # serve the built site
-bun run check        # type-check + svelte-check
-bun run lint
-bun run format
+bun run check        # astro check (type-check)
 ```
 
-## Cloudflare Pages setup (do this once)
+## Deploy (already configured — no CF dashboard build)
 
-1. Push this repo to GitHub (`gh repo create merlin-site --private` or `--public`)
-2. CF dashboard → Pages → Connect to Git → pick this repo
-3. Build settings:
-   - Framework preset: **SvelteKit**
-   - Build command: `bun run build`
-   - Build output: `build`
-   - Root directory: (empty)
-4. (Optional) Bind a custom domain in the CF Pages app settings — DNS will autoconfigure if the zone is in the same CF account.
+Push to `main` triggers `.github/workflows/deploy.yml`: `bun install --frozen-lockfile` → `bun run build` → `wrangler pages deploy dist --project-name=merlin-site`. The output dir (`dist`) is declared in both `wrangler.jsonc` and the workflow. Cloudflare Pages is **direct-upload via the Action**, not a CF-side git build — there is no framework preset or build config in the CF dashboard to maintain.
+
+Rollback: `git revert` + push, or redeploy a prior build from the CF Pages dashboard (all deploys retained).
 
 ## Rules for agents working in this repo
 
-- **Never push to `main` directly.** Always PR. CF Pages auto-deploys from `main` once connected.
-- **Only commit `.md` files into `src/posts/` that have already been approved in the Aria vault.** The `/publish` skill enforces this; don't bypass.
-- **Don't add server-side features.** This is `adapter-static`. Everything must prerender.
-- **Don't add tracking, analytics, or third-party scripts** without Merlin's explicit approval.
-- Keep the design opinionated and minimal. Resist the urge to add a CMS, a comments system, or a newsletter widget — Substack handles the newsletter side.
+- **Pushing to `main` requires Merlin's explicit approval** (the publisher draft-only-autonomy rule). When approved, push **directly to `main`** — that is the deploy trigger. No PR/branch workflow is required (Merlin's convention).
+- **Only commit posts into `src/posts/` that have been approved in the Aria vault.** The `/pub publish` skill enforces this; don't bypass.
+- **Static only.** No SSR/server features beyond build-time prerendered routes. Everything must build to `dist/` as static output.
+- **SEO continuity is load-bearing.** Don't change post URLs, `public/_redirects` (the legacy 301s), `robots.txt`, or the sitemap path without weighing the impact. Search Console verification is DNS/Cloudflare-based.
+- **Don't add tracking/analytics/third-party scripts** beyond the existing GA tag without Merlin's explicit approval.
+- Keep the design opinionated and minimal. No CMS, comments, or newsletter widget — Substack handles the newsletter.
