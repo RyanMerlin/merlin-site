@@ -8,15 +8,19 @@ summary: "MCP won. In roughly a year, Model Context Protocol went from a clever 
 
 MCP won.
 
-In roughly a year, *Model Context Protocol* went from a clever interoperability idea to the default tool-connectivity layer for AI agents.  Anthropic [donated MCP to the Linux Foundation's Agentic AI Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation).  The project reported [more than 97 million monthly SDK downloads, 10,000 active servers](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/), and first-class support across major AI platforms.
+In roughly a year, *Model Context Protocol* went from a clever interoperability idea to the default tool-connectivity layer for AI agents.  In December 2025, Anthropic [donated MCP to the Agentic AI Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation), a directed fund under the Linux Foundation co-founded with Block and OpenAI.  MCP is no longer an Anthropic product.  It is vendor-neutral infrastructure, with AWS, Google, Microsoft, and Cloudflare among its backers.  At the time of the donation the project reported [more than 97 million monthly SDK downloads and roughly 10,000 active servers](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/), and the curve has only steepened since.
 
 That is an extraordinary adoption curve.
 
 It also makes this a strange time to argue that many agent systems should use MCP *less*.
 
+Except the argument is no longer contrarian.  Over the last six months the people closest to the protocol have been making the same case.  Anthropic's own engineering team published [a pattern for calling MCP tools as code](https://www.anthropic.com/engineering/code-execution-with-mcp) instead of loading their schemas into context.  Cloudflare shipped [Code Mode](https://blog.cloudflare.com/code-mode-mcp/), which exposes an entire API through two tools.  Arize ran [a head-to-head eval](https://arize.com/blog/mcp-vs-cli-skills-for-agents-what-our-eval-found-and-which-you-should-use/) and landed on "MCP plus the command line," not one or the other.
+
+So the live question is not whether to use MCP less.  That ship has sailed.  The question the shipped solutions still have not answered is the one that matters most at fleet scale: which layer should own an operation in the first place?
+
 The case is not against MCP.  MCP solved a real problem: standardized tool access across models, clients, frameworks, and applications.  The case is against treating MCP as the default answer to every integration problem.
 
-As agents move from demos into persistent production fleets, the distinction matters.
+As agents move from demos into persistent production fleets, the distinction stops being academic.
 
 MCP is excellent when a model needs in-context tool discovery and invocation.
 
@@ -31,9 +35,8 @@ That was the wrong abstraction.
 **What emerged instead is a protocol stack.**
 
 - *[MCP](https://modelcontextprotocol.io)* handles tool connectivity: agent to tool, model to API, assistant to application context
-- *[A2A](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)* handles agent-to-agent task exchange across vendors and organizational boundaries.  Google launched A2A with more than 50 technology partners, including Salesforce, SAP, Atlassian, ServiceNow, and others
-- *[ACP](https://agentcommunicationprotocol.dev)* and *[BeeAI](https://beeai.dev)* explored structured inter-agent collaboration, especially for asynchronous, auditable workflows
-- *[Microsoft Agent Framework 1.0](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/)* went generally available with enterprise-grade multi-agent orchestration, multi-provider model support, and interoperability through A2A and MCP
+- *[A2A](https://a2a-protocol.org/latest/)* handles agent-to-agent task exchange across vendors and organizational boundaries.  Google launched it in 2025 with more than 50 partners, including Salesforce, SAP, Atlassian, and ServiceNow; by 2026 it had [surpassed 150 organizations in production](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year) and moved under the Linux Foundation.  IBM's *ACP*, once a separate protocol, merged into A2A in that consolidation
+- *[Microsoft Agent Framework 1.0](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/)* went generally available in April 2026, unifying Semantic Kernel and AutoGen with multi-provider model support and interoperability through MCP and A2A
 
 This is the right direction.  The future is not one framework.  It is layered interoperability.
 
@@ -64,6 +67,8 @@ That recommendation is important because it reveals the real issue.
 > **The ecosystem is now building machinery to avoid the cost of exposing too many tools through MCP at once.**
 
 Tool retrieval.  Dynamic tool loading.  RAG over tool definitions.  Capability filtering.  Router tools.  Namespaces.  Progressive discovery.  Programmatic tool calls.
+
+The numbers are not subtle.  Anthropic's example of calling tools as code rather than loading schemas dropped one workflow from [150,000 tokens to 2,000](https://www.anthropic.com/engineering/code-execution-with-mcp).  Cloudflare's Code Mode collapsed a 2,500-endpoint surface from [1.17 million tokens to about 1,000](https://blog.cloudflare.com/code-mode-mcp/).  Claude Code now ships MCP tool search with deferred loading on by default, cutting a fifty-tool setup by roughly 85 percent.
 
 These are useful techniques.  They are also evidence that MCP's naive scaling model does not survive contact with large operational surfaces.
 
@@ -138,6 +143,18 @@ That universality matters.
 
 A CLI binary is not glamorous.  But infrastructure usually converges around boring interfaces for good reasons.  They are inspectable.  They are scriptable.  They are testable.  They are composable.  They survive framework churn.
 
+## This is the same bet, moved up a layer
+
+If this sounds like Anthropic's code-execution pattern or Cloudflare's Code Mode, that is because it is the same bet.  All three say the model should generate calls against a stable, typed interface instead of carrying every tool schema in context.
+
+The difference is where the interface lives.
+
+Code Mode and code-execution wrap tools as code inside a single agent's execution sandbox.  They are excellent at one job: shrinking the context cost of one model's tool use.  A CLI binary is not scoped to one agent's context at all.  It is one artifact that a model, a human operator, a cron timer, a systemd service, and a peer agent all call the same way, with the same permissions and the same output contract.
+
+That distinction is the whole argument.
+
+The obvious objection is fair: Claude Code already ships tool search with deferred loading, so the context-bloat problem is largely handled in-band.  True.  But tool search solves a token problem.  It does not make an operation deterministic, auditable, callable by a non-model actor, or governable by a policy layer.  Those are not context-window concerns.  They are infrastructure concerns.  Tool search decides what the model sees.  The substrate decides which layer owns the operation, and most operations in a persistent fleet are not model-discovery problems at all.
+
 ## MCP still belongs in the system
 
 This is not an anti-MCP argument.
@@ -204,7 +221,7 @@ Not because MCP is bad.
 
 Every tool definition competes with task context, memory, retrieved evidence, user instructions, intermediate reasoning, and output quality.  Every extra tool increases the search space the model has to navigate.  Every server added to a runtime increases initialization, policy, trust, and observability complexity.
 
-The [official guidance](https://modelcontextprotocol.io/docs/develop/clients/client-best-practices) already points toward selective exposure and progressive discovery.
+The [official guidance](https://modelcontextprotocol.io/docs/develop/clients/client-best-practices) already points toward selective exposure and progressive discovery.  The current spec (2025-11-25) and the protocol's own [2026 roadmap](https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/) lean the same way, prioritizing a stateless core and on-demand discovery.  The maintainers are not in denial about the scaling cost.  They are addressing it at the spec level.
 
 But the deeper architectural move is to stop assuming every operation belongs in the context-facing layer at all:
 
@@ -224,8 +241,8 @@ The mature agent stack should look something like this:
 | Layer | Best fit | Failure mode when overused |
 |---|---|---|
 | [MCP](https://modelcontextprotocol.io) | In-context tool discovery and model-mediated tool use | Tool overload, context bloat, latency, degraded selection |
-| [A2A](https://a2a-protocol.org) | Cross-agent task exchange across boundaries | Overkill for local deterministic operations |
-| [ACP](https://agentcommunicationprotocol.dev)-style workflows | Structured, auditable collaboration | Too heavyweight for simple local calls |
+| [A2A](https://a2a-protocol.org/latest/) | Cross-agent task exchange across boundaries | Overkill for local deterministic operations |
+| Auditable workflow layer | Structured, replayable, auditable collaboration | Too heavyweight for simple local calls |
 | CLI substrate | Deterministic operational control | Weak discovery unless capabilities are cataloged |
 | Runtime daemon | Lifecycle, identity, supervision, signaling | Framework lock-in if not standardized |
 | Policy layer | Authorization, trust, provenance, constraints | Unsafe execution if bypassed |
@@ -259,7 +276,7 @@ That is the question MCP's popularity has made urgent.
 - If the operation requires model reasoning over an unknown tool, use MCP
 - If the operation is deterministic control of a known system, use CLI or runtime API
 - If the operation crosses organizational boundaries, use A2A
-- If the operation needs structured audit semantics, use ACP-style workflows
+- If the operation needs structured audit semantics, use a dedicated auditable workflow layer
 - If the operation concerns lifecycle, supervision, identity, or signaling, it belongs below all of them
 
 ## The point
