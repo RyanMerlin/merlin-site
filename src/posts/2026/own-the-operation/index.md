@@ -39,9 +39,11 @@ MCP answers: how does the agent reach a capability, what schema describes the ca
 
 An operation answers: what should actually happen, which local rule applies, what failure class is this, is it retryable, what should be redacted, what receipt proves it ran, and what output can every caller depend on?
 
-Those are different questions.  When they collapse into the same artifact, agent systems get brittle.  Tool catalogs grow.  Error modes blur.  Prompts accumulate folklore.  Agents spend tokens rediscovering facts the environment already knows.  This is the same separation-of-layers point behind [The Agent Protocol Stack Has a Runtime Gap](/posts/agent-protocol-stack-runtime-gap), applied one level down, to your own operations.
+Those are different questions.  When they collapse into the same artifact, agent systems get brittle.  Tool catalogs grow.  Error modes blur.  Prompts accumulate folklore.  This is the same separation-of-layers point behind [The Agent Protocol Stack Has a Runtime Gap](/posts/agent-protocol-stack-runtime-gap), applied one level down, to your own operations.
 
-The operation should live in the narrowest deterministic interface that can do the work correctly.  For personal agents, that interface is often a CLI.
+> The operation should live at the lowest layer that can execute it deterministically and be reused by every caller.
+
+For personal agents, that layer is often a CLI.
 
 ## Progressive discovery won
 
@@ -164,9 +166,9 @@ The honest exception: if the work is inherently a long-running process with dura
 
 This is the other meaning of "workflow," and it is where the argument gets sharpest.  The ecosystem is converging on packaged agent capability: [Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) became an open standard in December 2025, and a [Claude Code plugin](https://code.claude.com/docs/en/plugins-reference) bundles skills, subagents, and hooks into one installable folder.
 
-That packaging is good.  But a skill is not the operation itself.  A skill can say: "when resolving a secret, check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt."  That helps the model behave.  It does not guarantee the operation, because a `SKILL.md` is interpreted by the model, not executed.  Burying the operation in plugin prose couples it worse than a deterministic engine would: a workflow step at least runs the same code every time.
+That packaging is good.  But a skill is not the operation itself.  A skill can tell the agent to check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt.  That helps the model behave.  It does not guarantee the behavior, because a `SKILL.md` is interpreted by the model, not executed.
 
-If the behavior lives only in prose, the agent reconstructs it every time.  Sometimes correctly.  Sometimes it skips a check, pastes stale shell from a previous run, or interprets the same 404 in the wrong layer.  A command turns the procedure into an executable affordance.
+So if the procedure lives only in prose, the agent reconstructs it every time.  Sometimes correctly.  Sometimes it skips a check, pastes stale shell, or reads the same 404 in the wrong layer.  A command turns the procedure into an executable affordance: a deterministic engine runs the same code every time.
 
 > The skill or plugin tells the agent when and why.  The CLI does the work.
 
@@ -254,9 +256,9 @@ None of this requires being anti-MCP.  In many systems the cleanest architecture
 
 ```text
 agent
-  -> MCP server
-      -> owned CLI verb
-          -> operation
+  -> MCP server          # remote access, OAuth, consent, governance
+      -> owned CLI verb  # executes the operation, returns the contract
+          -> operation   # auth, retries, policy, redaction, receipts, taxonomy
               -> APIs, files, secrets, infrastructure
 ```
 
@@ -282,11 +284,21 @@ That is why the personal toolchain matters.  Not because command lines are noble
 
 > Because repeated friction is operational knowledge, and operational knowledge should compile.
 
+## What owning the operation does not solve
+
+A command surface gives you determinism.  It does not give you safety by default.
+
+> A CLI is not a permission model.  It is a sharper knife.
+
+Owning the operation does not make shell access safe, replace sandboxing, or settle multi-tenant authorization on its own.  That still comes from capability scoping, secret isolation, policy gates, dry-runs, and receipts.  Left undisciplined, the same surface decays into a private platform tax, or into endpoint sprawl if you port APIs one-for-one.  And it is not free to keep: commands need tests, schemas, and versioning like any other code.
+
+Where the logic lives is also a security question.  A 2026 study of agentic GitHub Actions workflows, [Demystifying and Detecting Agentic Workflow Injection](https://arxiv.org/abs/2605.07135), analyzed 13,392 agentic workflows across 10,792 repositories and confirmed 496 exploitable injections, 343 of them previously unknown, where untrusted issue or pull-request text flows into an agent's prompt and back out as exfiltrated secrets.  When the auth path, the redaction rule, and the receipt live as prose inside a workflow node or a skill file, there is no hardened layer to hold a guardrail.  An owned operation with secret isolation and an audit receipt at least gives you one.
+
 ## The operation is the asset
 
 Strip away the protocol wars and the tooling fashion, and one thing is left standing: the operation.  Not the model, not the connector, not the orchestration graph.  The durable unit of work, with its auth, its retries, its failure taxonomy, its receipt, and the local judgment no vendor can see.
 
-Everything else is delivery.  MCP carries capabilities to where they are needed.  Workflows schedule them.  Skills and plugins tell the agent when to reach for them.  All of it rests on one question: where does the operation live?  Leave it in a prompt, a workflow node, or a wrapper, and the agent rediscovers it every morning.  Put it in something you own that runs the same way for every caller, and it compounds.  The agent gets less generic, because the world it can act on becomes your world, encoded in tools you made from the work itself.
+Everything else is delivery.  MCP carries capabilities to where they are needed, workflows schedule them, skills tell the agent when to reach for them.  All of it rests on one question: where does the operation live?  Leave it in a prompt, a workflow node, or a wrapper, and the agent rediscovers it every morning.  Put it in something you own that runs the same way for every caller, and it compounds: the world the agent can act on becomes your world, encoded in tools you made from the work itself.
 
 The strongest personal agent will not be the one with the biggest catalog of connectors.  It will be the one with the clearest operations layer.
 
