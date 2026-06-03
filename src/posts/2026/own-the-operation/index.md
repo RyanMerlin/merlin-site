@@ -70,7 +70,7 @@ The agent does not need the whole surface.  It needs a catalog, a drill-down pat
 
 ![Rolling discovery: the agent lists the catalog, drills into one domain, then loads the full schema for only the verb it is about to run](/diagrams/aria-rolling-discovery.svg)
 
-This is also why the CLI keeps showing up in evaluations.  [Arize ran 500 GitHub-task evaluations](https://arize.com/blog/mcp-vs-cli-skills-for-agents-what-our-eval-found-and-which-you-should-use/) across MCP, CLI skills, and bare shell.  Correctness landed in a tight band: MCP at 0.834, the shorter CLI skill at 0.833, and bare shell at 0.845.  But on the hardest tasks, MCP cost more than six times what the skills cost, took five times longer, and averaged more tool calls.  Tool fidelity fell to 0.33 because the MCP agent escaped into bash when the API surface could not express the composition it needed.
+This is also why the CLI keeps showing up in evaluations.  [Arize ran 500 GitHub-task evaluations](https://arize.com/blog/mcp-vs-cli-skills-for-agents-what-our-eval-found-and-which-you-should-use/) across MCP, CLI skills, and bare shell.  Correctness landed in a tight band: MCP at 0.834, the shorter CLI skill at 0.833, and bare shell at 0.845.  But on the hardest tasks, MCP **cost more than 6X** what the skills cost, took five times longer, and averaged more tool calls.  Tool fidelity fell to 0.33 because the MCP agent escaped into bash when the API surface could not express the composition it needed.
 
 The same eval also shows where MCP wins.  Creating a branch and opening a pull request went better through MCP because `create_branch` and `create_pull_request` existed as direct endpoint-shaped tools.  That gives us the rule:
 
