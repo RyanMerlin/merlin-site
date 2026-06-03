@@ -379,3 +379,20 @@ pre[class*='language-'] {
   background: color-mix(in srgb, var(--badge-color) 15%, transparent);
   color: var(--badge-color);
 }
+
+/* ─── Clickable content images (rehypeImageLinks) ─────────── */
+/* Override the default .prose a underline border for image links */
+.prose a.img-zoom {
+  display: block;
+  cursor: zoom-in;
+  border-bottom: none;
+}
+.prose a.img-zoom:hover {
+  border-bottom: none;
+}
+.prose a.img-zoom img {
+  transition: opacity 0.15s ease;
+}
+.prose a.img-zoom:hover img {
+  opacity: 0.92;
+}
