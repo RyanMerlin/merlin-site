@@ -2,44 +2,6 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
-/** Rehype plugin: wrap markdown content <img> with an ABSOLUTE src (e.g. a
- *  /diagrams/x.svg asset in public/) in an <a> that opens the full-size file in a
- *  new tab for native zoom. Zero dependencies — hand-walks the hast tree.
- *  GOTCHA: we only wrap absolute srcs. Colocated/optimized images (./x.png) have
- *  their src rewritten to /_astro/<hash> by Astro AFTER this plugin runs, so
- *  wrapping them here captures the unresolved relative path and yields a 404 link.
- *  Those are skipped (the <img> still renders, it just isn't click-to-zoom). */
-function rehypeImageLinks() {
-	return (tree) => {
-		const walk = (node) => {
-			if (!node.children) return;
-			node.children = node.children.map((child) => {
-				const src = child.type === 'element' ? child.properties?.src : undefined;
-				if (
-					child.tagName === 'img' &&
-					typeof src === 'string' &&
-					(src.startsWith('/') || src.startsWith('http'))
-				) {
-					return {
-						type: 'element',
-						tagName: 'a',
-						properties: {
-							href: child.properties.src,
-							target: '_blank',
-							rel: ['noopener', 'noreferrer'],
-							className: ['img-zoom'],
-						},
-						children: [child],
-					};
-				}
-				walk(child);
-				return child;
-			});
-		};
-		walk(tree);
-	};
-}
-
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ryanmerlin.com',
@@ -54,6 +16,5 @@ export default defineConfig({
 	// must-revalidate HTML and can never race. ~47KB raw / ~8KB gzipped per page.
 	build: { format: 'file', inlineStylesheets: 'always' },
 	integrations: [react()],
-	markdown: { rehypePlugins: [rehypeImageLinks] },
-	vite: { plugins: [tailwindcss()] }
+vite: { plugins: [tailwindcss()] }
 });

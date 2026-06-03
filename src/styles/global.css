@@ -380,19 +380,8 @@ pre[class*='language-'] {
   color: var(--badge-color);
 }
 
-/* ─── Clickable content images (rehypeImageLinks) ─────────── */
-/* Override the default .prose a underline border for image links */
-.prose a.img-zoom {
-  display: block;
-  cursor: zoom-in;
-  border-bottom: none;
-}
-.prose a.img-zoom:hover {
-  border-bottom: none;
-}
-.prose a.img-zoom img {
-  transition: opacity 0.15s ease;
-}
-.prose a.img-zoom:hover img {
+/* ─── Clickable content images (ImageZoom client script) ─────── */
+.prose img:hover {
   opacity: 0.92;
+  transition: opacity 0.15s ease;
 }

@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PostCta from '../../components/PostCta.astro';
+import ImageZoom from '../../components/ImageZoom.astro';
 import { getPosts, relatedPosts, readingTime } from '../../lib/posts';
 import { SITE_URL, SITE_AUTHOR } from '../../lib/config';
 
@@ -101,4 +102,5 @@ const jsonLd = JSON.stringify({
 			)
 		}
 	</main>
+	<ImageZoom />
 </Base>

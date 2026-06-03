@@ -1,0 +1,11 @@
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('article img').forEach((img) => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        const url = img.currentSrc || img.src;
+        if (url) window.open(url, '_blank', 'noopener,noreferrer');
+      });
+    });
+  });
+</script>

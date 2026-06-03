@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import ImageZoom from '../../components/ImageZoom.astro';
 import { readingTime } from '../../lib/posts';
 
 export async function getStaticPaths() {
@@ -70,4 +71,5 @@ function formatDate(iso: string): string {
 			<Content />
 		</article>
 	</main>
+	<ImageZoom />
 </Base>
