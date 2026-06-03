@@ -31,6 +31,7 @@
   --color-bg: #fafaf8;
   --color-bg-subtle: #f0efe9;
   --color-text: #1a1a1a;
+  --color-heading: #1a1a1a;
   --color-text-muted: #6b6b6b;
   --color-accent: #e75b2a;
   --color-link: #2563eb;
@@ -65,6 +66,7 @@
   --color-bg: #1a1816;            /* warm charcoal — the page */
   --color-bg-subtle: #211e1b;     /* elevated surface — nav bar, table head */
   --color-text: #cdc8c1;          /* warm off-white body (brighter, more readable) */
+  --color-heading: #e4e0d9;       /* warm near-white headings */
   --color-text-muted: #8f8981;
   --color-accent: #e75b2a;
   --color-link: #4d8ef7;
