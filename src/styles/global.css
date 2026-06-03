@@ -3,6 +3,10 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+/* Class-based dark variant so `dark:` utilities (e.g. prose-invert) follow
+   the .dark class on <html>, not the OS preference. Dark is default-on. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Geist Mono Variable', ui-monospace, 'Cascadia Code', monospace;
@@ -20,8 +24,10 @@
    References zone: distinct sunken zone
    ───────────────────────────────────────────────────────── */
 
+/* Light theme — dormant by default (no .dark on <html>); kept intact so a
+   future light/dark toggle can switch to it by removing the .dark class. */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --color-bg: #fafaf8;
   --color-bg-subtle: #f0efe9;
   --color-text: #1a1a1a;
@@ -47,53 +53,59 @@
   --token-default: #1a1a1a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1e2129;
-    --color-bg-subtle: #1a1917;
-    --color-text: #c2bfba;
-    --color-text-muted: #706c67;
-    --color-accent: #e75b2a;
-    --color-link: #4d8ef7;
-    --color-link-hover: #6ba3ff;
-    --color-bold: #b8451e;
-    --color-border: #2e2b28;
-    --color-blockquote-bg: #1a1714;
-    --color-blockquote-border: #e75b2a;
-    --color-code-bg: #181614;
-    --color-ref-bg: #141210;
-    --color-ref-border: #2e2b28;
-    /* Prism token colors — dark */
-    --token-comment: #7a7570;
-    --token-keyword: #e87a50;
-    --token-string: #86efac;
-    --token-number: #93c5fd;
-    --token-function: #f9a8d4;
-    --token-punctuation: #9ca3af;
-    --token-default: #c2bfba;
-  }
+/* ── Dark theme (DEFAULT) ──────────────────────────────────
+   Warm-coherent: every neutral lives on one warm hue (~28°) so the
+   page, nav, borders, and body text harmonize with the rust accent.
+   (The old dark bg was cool blue-gray #1e2129, which clashed with the
+   warm nav/text/borders — that hue conflict is what read as "not smooth".)
+   Surfaces step: code/refs (sunken) < page < nav/elevated.
+   Applied via .dark on <html>; remove that class to fall back to light. */
+.dark {
+  color-scheme: dark;
+  --color-bg: #1a1816;            /* warm charcoal — the page */
+  --color-bg-subtle: #211e1b;     /* elevated surface — nav bar, table head */
+  --color-text: #cdc8c1;          /* warm off-white body (brighter, more readable) */
+  --color-text-muted: #8f8981;
+  --color-accent: #e75b2a;
+  --color-link: #4d8ef7;
+  --color-link-hover: #6ba3ff;
+  --color-bold: #b8451e;
+  --color-border: #2c2825;        /* soft warm hairline */
+  --color-blockquote-bg: #1f1c19;
+  --color-blockquote-border: #e75b2a;
+  --color-code-bg: #141210;       /* sunken, darker than the page */
+  --color-ref-bg: #141210;
+  --color-ref-border: #2c2825;
+  /* Prism token colors — dark */
+  --token-comment: #8a847b;
+  --token-keyword: #e87a50;
+  --token-string: #86efac;
+  --token-number: #93c5fd;
+  --token-function: #f9a8d4;
+  --token-punctuation: #9ca3af;
+  --token-default: #cdc8c1;
+}
 
-  /* Override Tailwind Typography prose-invert defaults */
-  .prose {
-    --tw-prose-invert-body: #c2bfba;
-    --tw-prose-invert-headings: #dedad5;
-    --tw-prose-invert-lead: #a8a49f;
-    --tw-prose-invert-links: #e8855a;
-    --tw-prose-invert-bold: #e8a87c;
-    --tw-prose-invert-counters: #908c87;
-    --tw-prose-invert-bullets: #706c67;
-    --tw-prose-invert-hr: #2e2b28;
-    --tw-prose-invert-quotes: #c2bfba;
-    --tw-prose-invert-quote-borders: #e75b2a;
-    --tw-prose-invert-captions: #706c67;
-    --tw-prose-invert-kbd: #dedad5;
-    --tw-prose-invert-kbd-shadows: rgb(255 255 255 / 5%);
-    --tw-prose-invert-code: #c2bfba;
-    --tw-prose-invert-pre-code: #c2bfba;
-    --tw-prose-invert-pre-bg: #181614;
-    --tw-prose-invert-th-borders: #2e2b28;
-    --tw-prose-invert-td-borders: #201e1c;
-  }
+/* Override Tailwind Typography prose-invert defaults */
+.dark .prose {
+  --tw-prose-invert-body: #cdc8c1;
+  --tw-prose-invert-headings: #e4e0d9;
+  --tw-prose-invert-lead: #aaa49b;
+  --tw-prose-invert-links: #e8855a;
+  --tw-prose-invert-bold: #e8a87c;
+  --tw-prose-invert-counters: #938d84;
+  --tw-prose-invert-bullets: #8f8981;
+  --tw-prose-invert-hr: #2c2825;
+  --tw-prose-invert-quotes: #cdc8c1;
+  --tw-prose-invert-quote-borders: #e75b2a;
+  --tw-prose-invert-captions: #8f8981;
+  --tw-prose-invert-kbd: #e4e0d9;
+  --tw-prose-invert-kbd-shadows: rgb(255 255 255 / 5%);
+  --tw-prose-invert-code: #cdc8c1;
+  --tw-prose-invert-pre-code: #cdc8c1;
+  --tw-prose-invert-pre-bg: #141210;
+  --tw-prose-invert-th-borders: #2c2825;
+  --tw-prose-invert-td-borders: #242120;
 }
 
 html {
@@ -378,6 +390,28 @@ pre[class*='language-'] {
   margin-bottom: 0.25rem;
   background: color-mix(in srgb, var(--badge-color) 15%, transparent);
   color: var(--badge-color);
+}
+
+/* ─── Theme toggle (Nav.astro) ───────────────────────────── */
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+.theme-toggle:hover {
+  color: var(--color-text);
+}
+/* Show the sun in dark mode (click → light), the moon in light mode. */
+.theme-toggle .icon-sun {
+  display: none;
+}
+.dark .theme-toggle .icon-sun {
+  display: block;
+}
+.dark .theme-toggle .icon-moon {
+  display: none;
 }
 
 /* ─── Clickable content images (ImageZoom client script) ─────── */

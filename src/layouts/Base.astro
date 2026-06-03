@@ -27,11 +27,17 @@ const url = `${SITE_URL}${path}`;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="en" class="h-full dark">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<!-- Theme: dark by default; honor a stored light preference before paint (no flash) -->
+		<script is:inline>
+			if (localStorage.getItem('theme') === 'light') {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
 		<!-- Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFQJWLV76P"></script>
 		<script is:inline>
