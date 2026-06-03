@@ -70,7 +70,7 @@ The agent does not need the whole surface.  It needs a catalog, a drill-down pat
 
 ![Rolling discovery: the agent lists the catalog, drills into one domain, then loads the full schema for only the verb it is about to run](/diagrams/aria-rolling-discovery.svg)
 
-This is also why the CLI keeps showing up in evaluations.  [Arize ran 500 GitHub-task evaluations](https://arize.com/blog/mcp-vs-cli-skills-for-agents-what-our-eval-found-and-which-you-should-use/) across MCP, CLI skills, and bare shell.  Correctness landed in a tight band: MCP at 0.834, the shorter CLI skill at 0.833, and bare shell at 0.845.  But on the hardest tasks, MCP **cost more than 6X** what the skills cost, took five times longer, and averaged more tool calls.  Tool fidelity fell to 0.33 because the MCP agent escaped into bash when the API surface could not express the composition it needed.
+This is also why the CLI keeps showing up in evaluations.  [Arize ran 500 GitHub-task evaluations](https://arize.com/blog/mcp-vs-cli-skills-for-agents-what-our-eval-found-and-which-you-should-use/) across MCP, CLI skills, and bare shell.  Correctness landed in a tight band: MCP at 0.834, the shorter CLI skill at 0.833, and bare shell at 0.845.  But on the hardest tasks, **MCP cost more than 6X what the skills cost, took five times longer, and averaged more tool calls**.  Tool fidelity fell to 0.33 because the MCP agent escaped into bash when the API surface could not express the composition it needed.
 
 The same eval also shows where MCP wins.  Creating a branch and opening a pull request went better through MCP because `create_branch` and `create_pull_request` existed as direct endpoint-shaped tools.  That gives us the rule:
 
@@ -282,15 +282,11 @@ That is why the personal toolchain matters.  Not because command lines are noble
 
 ## Falsify it on your own system
 
-This argument should be testable.  Take ten recurring tasks from your own work, and for each, run four versions: prompt and docs only; MCP or a vendor connector; workflow automation; an owned CLI verb with JSON output.  Then measure the things that actually matter: wall-clock time, tool calls, tokens, manual interventions, wrong-layer debugging, failure-class clarity, whether sensitive data entered model context, and whether a second caller could reuse the result unchanged.
-
-The claim is not that the CLI wins every row.  It should not.  For clean remote CRUD with OAuth and consent, MCP should win.  For scheduled long-running processes with durable state, workflows should win.  For one-off work, raw shell or a vendor UI may win.  For common public tools like `gh`, the model may already know enough that a wrapper adds little.
-
-The claim is narrower and stronger:
+This should be testable, so test it.  Take ten tasks you actually repeat and run each four ways: prompt and docs only, an MCP or vendor connector, a workflow, and an owned CLI verb.  Measure what matters, not vibes: wall-clock time, tokens, manual interventions, wrong-layer debugging, whether sensitive data hit model context, and whether a second caller could reuse the result unchanged.  The CLI should not win every row.  MCP should win clean remote CRUD with OAuth; workflows should win durable long-running state; for a tool like `gh` the model may already know enough.  The claim is narrower:
 
 > **For repeated, composition-heavy, personally shaped operations, an owned command surface should reduce ambiguity, reduce repeated context, improve reuse across callers, and produce more inspectable failures than prompt-level procedure, thin remote tool wrappers, or workflow nodes that hide the operation.**
 
-What would make this wrong?  If your MCP server, workflow tool, or vendor connector already gives you the same failure contracts, progressive discovery, local-convention handling, cross-caller reuse, data-minimization boundary, testability, and token profile, keep it.  Do not build tools to satisfy an identity.  Build them where the measurements say the operation deserves to exist.
+If your connector already gives you those properties, keep it.  Build tools where the measurements say the operation deserves to exist, not to satisfy an identity.
 
 ## Start with one operation
 
