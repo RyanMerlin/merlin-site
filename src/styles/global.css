@@ -49,7 +49,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0f0e0d;
+    --color-bg: #1e2129;
     --color-bg-subtle: #1a1917;
     --color-text: #c2bfba;
     --color-text-muted: #706c67;
