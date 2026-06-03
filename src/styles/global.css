@@ -38,6 +38,12 @@
   --color-link-hover: #4d8ef7;
   --color-bold: #b8451e;
   --color-border: #e2e2dc;
+  /* Top nav — macOS-style brushed silver, slightly raised */
+  --nav-bg-top: #f9fafb;
+  --nav-bg-bottom: #e8eaee;
+  --nav-border: #d6d8dd;
+  --nav-highlight: rgb(255 255 255 / 75%);
+  --nav-shadow: rgb(15 23 42 / 6%);
   --color-blockquote-bg: #f5f2ee;
   --color-blockquote-border: #e75b2a;
   --color-code-bg: #f0efe9;
@@ -65,7 +71,7 @@
   color-scheme: dark;
   --color-bg: #1a1816;            /* warm charcoal — the page */
   --color-bg-subtle: #211e1b;     /* elevated surface — nav bar, table head */
-  --color-text: #cdc8c1;          /* warm off-white body (brighter, more readable) */
+  --color-text: #d9d4cc;          /* warm off-white body — bright, readable */
   --color-heading: #e4e0d9;       /* warm near-white headings */
   --color-text-muted: #8f8981;
   --color-accent: #e75b2a;
@@ -73,6 +79,12 @@
   --color-link-hover: #6ba3ff;
   --color-bold: #b8451e;
   --color-border: #2c2825;        /* soft warm hairline */
+  /* Top nav — subtle raised toolbar (dark tones) */
+  --nav-bg-top: #262320;
+  --nav-bg-bottom: #1c1a17;
+  --nav-border: #322e29;
+  --nav-highlight: rgb(255 255 255 / 5%);
+  --nav-shadow: rgb(0 0 0 / 28%);
   --color-blockquote-bg: #1f1c19;
   --color-blockquote-border: #e75b2a;
   --color-code-bg: #141210;       /* sunken, darker than the page */
@@ -85,12 +97,12 @@
   --token-number: #93c5fd;
   --token-function: #f9a8d4;
   --token-punctuation: #9ca3af;
-  --token-default: #cdc8c1;
+  --token-default: #d9d4cc;
 }
 
 /* Override Tailwind Typography prose-invert defaults */
 .dark .prose {
-  --tw-prose-invert-body: #cdc8c1;
+  --tw-prose-invert-body: #d9d4cc;
   --tw-prose-invert-headings: #e4e0d9;
   --tw-prose-invert-lead: #aaa49b;
   --tw-prose-invert-links: #e8855a;
@@ -98,13 +110,13 @@
   --tw-prose-invert-counters: #938d84;
   --tw-prose-invert-bullets: #8f8981;
   --tw-prose-invert-hr: #2c2825;
-  --tw-prose-invert-quotes: #cdc8c1;
+  --tw-prose-invert-quotes: #d9d4cc;
   --tw-prose-invert-quote-borders: #e75b2a;
   --tw-prose-invert-captions: #8f8981;
   --tw-prose-invert-kbd: #e4e0d9;
   --tw-prose-invert-kbd-shadows: rgb(255 255 255 / 5%);
-  --tw-prose-invert-code: #cdc8c1;
-  --tw-prose-invert-pre-code: #cdc8c1;
+  --tw-prose-invert-code: #d9d4cc;
+  --tw-prose-invert-pre-code: #d9d4cc;
   --tw-prose-invert-pre-bg: #141210;
   --tw-prose-invert-th-borders: #2c2825;
   --tw-prose-invert-td-borders: #242120;
@@ -392,6 +404,15 @@ pre[class*='language-'] {
   margin-bottom: 0.25rem;
   background: color-mix(in srgb, var(--badge-color) 15%, transparent);
   color: var(--badge-color);
+}
+
+/* ─── Top nav — macOS-style silver/raised bar ───────────── */
+.site-nav {
+  background: linear-gradient(to bottom, var(--nav-bg-top), var(--nav-bg-bottom));
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow:
+    inset 0 1px 0 var(--nav-highlight),
+    0 1px 2px var(--nav-shadow);
 }
 
 /* ─── Theme toggle (Nav.astro) ───────────────────────────── */
