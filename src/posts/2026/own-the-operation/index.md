@@ -130,7 +130,7 @@ The win is not that the command is shorter.  The win is that the operation is ex
 
 ## Why not workflows?
 
-Use workflows.  Just do not confuse orchestration with ownership.
+"Workflow" means two things in 2026: an orchestration engine, and a packaged agent workflow, a plugin or a skill.  Use both.  Just do not confuse either with ownership.
 
 Workflow systems are excellent when the process is known in advance: CI/CD, scheduled maintenance, long-running state machines, approvals, retries across services, human-in-the-loop review, and audit trails for a business process.  [GitHub Actions](https://docs.github.com/en/actions) automates software workflows inside a repository.  [Temporal](https://docs.temporal.io/tags/durable-execution) is built around durable execution, where workflow state survives failures and resumes reliably.  Tools like n8n, Zapier, Dagster, and Airflow exist because orchestration is a real need.
 
@@ -158,15 +158,15 @@ The honest exception: if the work is inherently a long-running process with dura
 
 > Workflows are control planes.  Commands are operational primitives.
 
-## Skills are maps.  Commands are machines.
+## Skills and plugins are maps.  Commands are machines.
 
-The ecosystem is also converging on reusable procedural context.  Anthropic describes [Skills](https://claude.com/blog/organization-skills-and-directory) as repeatable workflows tailored to how you work, with organization-wide management, partner-built skills, and an open standard meant to work across AI platforms.
+This is the other meaning of "workflow," and it is where the argument gets sharpest.  The ecosystem is converging on packaged agent capability: [Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) became an open standard in December 2025, and a [Claude Code plugin](https://code.claude.com/docs/en/plugins-reference) bundles skills, subagents, and hooks into one installable folder.
 
-Skills are part of the stack.  But a skill is not the operation itself.  A skill can say: "when resolving a secret, check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt."  That helps the model behave.  It does not guarantee the operation.
+That packaging is good.  But a skill is not the operation itself.  A skill can say: "when resolving a secret, check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt."  That helps the model behave.  It does not guarantee the operation, because a `SKILL.md` is interpreted by the model, not executed.  Burying the operation in plugin prose couples it worse than a deterministic engine would: a Temporal activity at least runs the same code every time.
 
 If the behavior lives only in prose, the agent reconstructs it every time.  Sometimes correctly.  Sometimes it skips a check, pastes stale shell from a previous run, or interprets the same 404 in the wrong layer.  A command turns the procedure into an executable affordance.
 
-> The skill tells the agent when and why to use it.  The CLI does the work.
+> The skill or plugin tells the agent when and why.  The CLI does the work.
 
 ## Build by osmosis
 
