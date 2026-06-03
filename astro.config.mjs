@@ -2,19 +2,23 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
-/** Rehype plugin: wrap every markdown content <img> in an <a> that opens the
- *  full-size src in a new tab. Zero dependencies — hand-walks the hast tree.
- *  Only applies to markdown-body images; layout/nav images are Astro components
- *  and are never processed by the markdown pipeline. */
+/** Rehype plugin: wrap markdown content <img> with an ABSOLUTE src (e.g. a
+ *  /diagrams/x.svg asset in public/) in an <a> that opens the full-size file in a
+ *  new tab for native zoom. Zero dependencies — hand-walks the hast tree.
+ *  GOTCHA: we only wrap absolute srcs. Colocated/optimized images (./x.png) have
+ *  their src rewritten to /_astro/<hash> by Astro AFTER this plugin runs, so
+ *  wrapping them here captures the unresolved relative path and yields a 404 link.
+ *  Those are skipped (the <img> still renders, it just isn't click-to-zoom). */
 function rehypeImageLinks() {
 	return (tree) => {
 		const walk = (node) => {
 			if (!node.children) return;
 			node.children = node.children.map((child) => {
+				const src = child.type === 'element' ? child.properties?.src : undefined;
 				if (
-					child.type === 'element' &&
 					child.tagName === 'img' &&
-					child.properties?.src
+					typeof src === 'string' &&
+					(src.startsWith('/') || src.startsWith('http'))
 				) {
 					return {
 						type: 'element',

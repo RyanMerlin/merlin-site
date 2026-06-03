@@ -280,21 +280,11 @@ That is why the personal toolchain matters.  Not because command lines are noble
 
 > Because repeated friction is operational knowledge, and operational knowledge should compile.
 
-## Falsify it on your own system
+## The operation is the asset
 
-This should be testable, so test it.  Take ten tasks you actually repeat and run each four ways: prompt and docs only, an MCP or vendor connector, a workflow, and an owned CLI verb.  Measure what matters, not vibes: wall-clock time, tokens, manual interventions, wrong-layer debugging, whether sensitive data hit model context, and whether a second caller could reuse the result unchanged.  The CLI should not win every row.  MCP should win clean remote CRUD with OAuth; workflows should win durable long-running state; for a tool like `gh` the model may already know enough.  The claim is narrower:
+Strip away the protocol wars and the tooling fashion, and one thing is left standing: the operation.  Not the model, not the connector, not the orchestration graph.  The durable unit of work, with its auth, its retries, its failure taxonomy, its receipt, and the local judgment no vendor can see.
 
-> **For repeated, composition-heavy, personally shaped operations, an owned command surface should reduce ambiguity, reduce repeated context, improve reuse across callers, and produce more inspectable failures than prompt-level procedure, thin remote tool wrappers, or workflow nodes that hide the operation.**
-
-If your connector already gives you those properties, keep it.  Build tools where the measurements say the operation deserves to exist, not to satisfy an identity.
-
-## Start with one operation
-
-Do not start by designing an agent platform.  Start with one operation you already repeat.
-
-Wrap it.  Make it emit JSON.  Give it stable exit codes and honest errors.  Add `--help`.  Add `--dry-run` if it changes state.  Leave a receipt.  Add it to `discover`, and teach the agent that discovery is the first move when it needs a capability.  Then do the next one.
-
-At some point the tool stops being a pile of wrappers and becomes an interface to your machinery.  The agent gets less generic, because the world it can act on is less generic.  It stops guessing how you work and starts using the tools you made from the work itself.
+Everything else is delivery.  MCP carries capabilities to where they are needed.  Workflows schedule them.  Skills and plugins tell the agent when to reach for them.  All of it rests on one question: where does the operation live?  Leave it in a prompt, a workflow node, or a wrapper, and the agent rediscovers it every morning.  Put it in something you own that runs the same way for every caller, and it compounds.  The agent gets less generic, because the world it can act on becomes your world, encoded in tools you made from the work itself.
 
 The strongest personal agent will not be the one with the biggest catalog of connectors.  It will be the one with the clearest operations layer.
 
