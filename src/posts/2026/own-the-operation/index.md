@@ -266,7 +266,7 @@ That gives you the protocol benefits without making the wrapper the source of op
 
 This split is also safer.  [Cloudflare](https://blog.cloudflare.com/code-mode-mcp/) notes that a shell introduces a much broader attack surface than a sandboxed isolate, and Code Mode keeps progressive discovery while executing inside that sandbox.  Do not hand every hosted agent an unrestricted shell.  Do not pretend `bash` is a permissions system.  But also do not bury your operating knowledge in a remote schema wrapper when what you need is a deterministic operation with a contract.
 
-## The vendor cannot build your Tuesday
+## Vendors can't design your daily driver
 
 A vendor can connect GitHub, Jira, Slack, Drive, Salesforce, Kubernetes, AWS, GCP, and Azure, and expose the generic verbs: list, search, create, update, delete, summarize.  That is useful.  It is not enough.
 
