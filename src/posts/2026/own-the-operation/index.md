@@ -60,10 +60,10 @@ The honest conclusion is not "MCP failed." It is sharper:
 A good CLI already works that way.
 
 ```bash
-mytool discover                                          # top-level domains
-mytool discover secrets                                  # one domain
-mytool secrets resolve --help                            # one verb
-mytool secrets resolve providers/openai/api-key --json   # one operation
+mycli discover                                          # top-level domains
+mycli discover secrets                                  # one domain
+mycli secrets resolve --help                            # one verb
+mycli secrets resolve providers/openai/api-key --json   # one operation
 ```
 
 The agent does not need the whole surface.  It needs a catalog, a drill-down path, and the schema for the verb it is about to run.
@@ -97,7 +97,7 @@ That is not an operation.  It is ceremony.  Maybe it retries.  Maybe it refreshe
 After:
 
 ```bash
-mytool secrets resolve providers/openai/api-key --json
+mycli secrets resolve providers/openai/api-key --json
 ```
 
 Now the operation exists.  It owns the auth flow, token refresh, retry policy, error taxonomy, output shape, and receipt.  The agent does not need to infer the difference between an expired credential and a missing path.  The command tells it.  (That secrets layer is its own small build, which I wrote up in [Building first-class secrets management into an AI agent](/posts/building-first-class-secrets-management-into-an-ai-agent).)
@@ -112,7 +112,7 @@ A useful command should not just return bytes.  It should return a contract.
     "class": "auth",
     "retryable": true,
     "message": "Credential expired before vault lookup.",
-    "remediation": "Run `mytool auth refresh` or allow automatic refresh."
+    "remediation": "Run `mycli auth refresh` or allow automatic refresh."
   },
   "receipt": {
     "id": "sec_20260602_184211",
@@ -130,11 +130,13 @@ The win is not that the command is shorter.  The win is that the operation is ex
 
 ## Why not workflows?
 
-"Workflow" means two things in 2026: an orchestration engine, and a packaged agent workflow, a plugin or a skill.  Use both.  Just do not confuse either with ownership.
+Workflow is one of the load-bearing ideas in modern software.  Whole categories of company are built on the workflow principle: define a process once as a sequence of steps, then let an engine schedule it, run it, retry it, and prove it ran.  But the word does not mean one thing.  It spans tools that live at very different layers.
 
-Workflow systems are excellent when the process is known in advance: CI/CD, scheduled maintenance, long-running state machines, approvals, retries across services, human-in-the-loop review, and audit trails for a business process.  [GitHub Actions](https://docs.github.com/en/actions) automates software workflows inside a repository.  [Temporal](https://docs.temporal.io/tags/durable-execution) is built around durable execution, where workflow state survives failures and resumes reliably.  Tools like n8n, Zapier, Dagster, and Airflow exist because orchestration is a real need.
+At its core it is orchestration.  [GitHub Actions](https://docs.github.com/en/actions) runs workflows inside a repository, triggered by a push or a schedule.  [Airflow](https://airflow.apache.org/), [Dagster](https://dagster.io/), and [Prefect](https://www.prefect.io/) orchestrate data pipelines as graphs of tasks with dependencies, retries, and backfills.  [Alteryx](https://www.alteryx.com/) puts the same idea on a visual canvas for analysts who join and shape data without writing code.  [n8n](https://n8n.io/) does it for moving data between SaaS apps.  Different audiences, one shape: a controlled, repeatable path through steps that are known in advance.
 
-They are not the same layer as the operation.  A workflow should decide **when** and **in what order** work happens.  A command should define **what the work is**.
+In 2026 that idea reached into agent harnesses.  [Anthropic draws the line cleanly](https://www.anthropic.com/research/building-effective-agents): a workflow orchestrates models and tools along predefined code paths, while an agent lets the model direct its own process.  Claude Code now ships a literal [workflow primitive](https://code.claude.com/docs/en/workflows).  A dynamic workflow, in research preview since May 2026, is a JavaScript script Claude writes for your task; a runtime executes it in the background and fans the work across as many as 1,000 subagents, returning only the verified result instead of the exhaust of every step.  Even there the pattern holds: the script is the orchestrator that decides what runs and in what order, and the subagents do the work.
+
+So "workflow" already spans a YAML CI file, a data graph, a visual analytics canvas, and a generated multi-agent script.  Across all of them it answers the same question.  A workflow decides **when** and **in what order** work happens, and what coordinates the steps.  A command decides **what the work is**.  Use these tools when the process is known in advance.  Just do not confuse the engine with the work it runs.
 
 Bad layering puts the substance inside the orchestrator:
 
@@ -147,14 +149,14 @@ Good layering keeps the workflow thin and the operations owned:
 
 ```bash
 workflow trigger
-  -> mytool cloud drift --stack payments-prod --json
-  -> mytool deploy explain --service api --env prod --since 30m --json
-  -> mytool incident snapshot --service checkout --include logs,metrics,traces --json
+  -> mycli cloud drift --stack payments-prod --json
+  -> mycli deploy explain --service api --env prod --since 30m --json
+  -> mycli incident snapshot --service checkout --include logs,metrics,traces --json
 ```
 
 The workflow owns scheduling, approvals, fan-out, retries between steps, and escalation.  The CLI owns the operation contract.  If an agent needs the same capability interactively, it calls the same command.  If a service needs it, it calls the same command.  If you later expose it through MCP, the wrapper calls the same command.  That is the reuse workflows do not give you by themselves.
 
-The honest exception: if the work is inherently a long-running process with durable state, use a workflow engine as the source of truth.  Do not force Temporal into a CLI-shaped box, replace CI/CD with a local binary, or rebuild Zapier because you need to move a row between two SaaS apps.  But if a workflow node becomes the only place that knows how to interpret a failed deploy, classify an IAM error, or join logs with metrics and traces, promote that logic into an operation and let the workflow call it.
+The honest exception: if the work is inherently a long-running process with durable state across restarts, approvals, and retries, use a workflow engine as the source of truth.  Do not replace CI/CD with a local binary, turn a scheduled data pipeline into a pile of shell, or rebuild n8n because you need to move a row between two SaaS apps.  But if a workflow node becomes the only place that knows how to interpret a failed deploy, classify an IAM error, or join logs with metrics and traces, promote that logic into an operation and let the workflow call it.
 
 > Workflows are control planes.  Commands are operational primitives.
 
@@ -162,7 +164,7 @@ The honest exception: if the work is inherently a long-running process with dura
 
 This is the other meaning of "workflow," and it is where the argument gets sharpest.  The ecosystem is converging on packaged agent capability: [Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) became an open standard in December 2025, and a [Claude Code plugin](https://code.claude.com/docs/en/plugins-reference) bundles skills, subagents, and hooks into one installable folder.
 
-That packaging is good.  But a skill is not the operation itself.  A skill can say: "when resolving a secret, check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt."  That helps the model behave.  It does not guarantee the operation, because a `SKILL.md` is interpreted by the model, not executed.  Burying the operation in plugin prose couples it worse than a deterministic engine would: a Temporal activity at least runs the same code every time.
+That packaging is good.  But a skill is not the operation itself.  A skill can say: "when resolving a secret, check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt."  That helps the model behave.  It does not guarantee the operation, because a `SKILL.md` is interpreted by the model, not executed.  Burying the operation in plugin prose couples it worse than a deterministic engine would: a workflow step at least runs the same code every time.
 
 If the behavior lives only in prose, the agent reconstructs it every time.  Sometimes correctly.  Sometimes it skips a check, pastes stale shell from a previous run, or interprets the same 404 in the wrong layer.  A command turns the procedure into an executable affordance.
 
@@ -186,18 +188,18 @@ So MCP is useful even when MCP is not the final interface.  The move is toolchai
 The anti-pattern is a direct port:
 
 ```bash
-mytool github list-issues --json
-mytool github get-issue --id 123 --json
-mytool github list-pull-requests --json
-mytool github create-branch --json
+mycli github list-issues --json
+mycli github get-issue --id 123 --json
+mycli github list-pull-requests --json
+mycli github create-branch --json
 ```
 
 That is endpoint sprawl wearing a terminal costume.  The target is compression:
 
 ```bash
-mytool work triage --project aria --since 7d --json
-mytool ci explain-failure --repo aria --run latest --json
-mytool release prepare --repo aria --base main --dry-run --json
+mycli work triage --project aria --since 7d --json
+mycli ci explain-failure --repo aria --run latest --json
+mycli release prepare --repo aria --base main --dry-run --json
 ```
 
 Those commands know which accounts matter, which regions are production, which labels identify a release, which alarms are noisy, and what "rollback candidate" means.  A good agent can help with that transformation, not by inventing tools from vibes, but by reading the existing implementation and proposing a smaller, sharper surface:
