@@ -10,7 +10,7 @@
 		"check": "astro check"
 	},
 	"dependencies": {
-		"@astrojs/react": "^4.4.0",
+		"@astrojs/react": "^5.0.7",
 		"@resvg/resvg-js": "^2.6.2",
 		"astro": "^5.16.0",
 		"react": "^19.2.0",
@@ -18,8 +18,8 @@
 		"satori": "^0.26.0"
 	},
 	"devDependencies": {
-		"@fontsource-variable/geist": "^5.2.8",
-		"@fontsource-variable/geist-mono": "^5.2.7",
+		"@fontsource-variable/geist": "^5.2.9",
+		"@fontsource-variable/geist-mono": "^5.2.8",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.2.2",
 		"@types/react": "^19.2.0",
