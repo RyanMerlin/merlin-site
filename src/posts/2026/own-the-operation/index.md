@@ -2,8 +2,8 @@
 title: "Own the Operation"
 created: "2026-06-02"
 status: "published"
-tags: ["agents","cli","mcp","tooling","infrastructure","operations"]
-summary: "MCP is how agent capabilities travel. It should not be where your operating knowledge lives. For personal agents, the durable leverage is an owned operations layer: CLI verbs with stable contracts, progressive discovery, honest errors, and one interface every caller can reuse."
+tags: ["agents","cli","mcp","tooling","infrastructure","operations","action-layer"]
+summary: "MCP is how agent capabilities travel. It should not be where your operating knowledge lives. For personal agents, the durable leverage is owning the action layer: an operations layer of CLI verbs with stable contracts, progressive discovery, honest errors, and one interface every caller can reuse."
 ---
 
 MCP connects agents to tools.  Workflows coordinate tools.  Skills teach models how to use tools.
@@ -11,6 +11,8 @@ MCP connects agents to tools.  Workflows coordinate tools.  Skills teach models 
 None of those automatically owns the operation.
 
 An operation is the durable unit of work: resolve this secret, explain this failed deploy, audit this cloud account, prepare this release, reconcile these receipts, summarize this incident.  It includes the auth path, retries, local conventions, failure taxonomy, output contract, safety policy, and receipt.  If that knowledge lives in a prompt, a notebook cell, a workflow node, or a thin MCP wrapper, the agent has to rediscover it every time.
+
+Lately this is the part of the stack people call the action layer, the place where an agent does things instead of merely reaching them.  That name is right about the location and quiet about the substance, because what gives an action layer any leverage is where the operation behind each action actually lives.
 
 The useful question is not whether agents should use MCP or the command line.  The answer is obviously both.
 
