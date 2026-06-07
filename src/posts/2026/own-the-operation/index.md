@@ -132,7 +132,7 @@ The win is not that the command is shorter.  The win is that the operation is ex
 
 ![One command surface, every caller: a human at a terminal, an agent through its shell, a cron job, and a background service all invoke the same JSON-speaking verb](/diagrams/aria-rs-command-surface.svg)
 
-## Why not workflows?
+## What about workflows?
 
 Workflow is one of the load-bearing ideas in modern software.  Whole categories of company are built on the workflow principle: define a process once as a sequence of steps, then let an engine schedule it, run it, retry it, and prove it ran.  But the word does not mean one thing.  It spans tools that live at very different layers.
 
@@ -160,7 +160,7 @@ workflow trigger
 
 The workflow owns scheduling, approvals, fan-out, retries between steps, and escalation.  The CLI owns the operation contract.  If an agent needs the same capability interactively, it calls the same command.  If a service needs it, it calls the same command.  If you later expose it through MCP, the wrapper calls the same command.  That is the reuse workflows do not give you by themselves.
 
-The honest exception: if the work is inherently a long-running process with durable state across restarts, approvals, and retries, use a workflow engine as the source of truth.  Do not replace CI/CD with a local binary, turn a scheduled data pipeline into a pile of shell, or rebuild n8n because you need to move a row between two SaaS apps.  But if a workflow node becomes the only place that knows how to interpret a failed deploy, classify an IAM error, or join logs with metrics and traces, promote that logic into an operation and let the workflow call it.
+The honest exception: if the work is inherently a long-running process with durable state across restarts, approvals, and retries, use a workflow engine as the source of truth. But if a workflow node becomes the only place that knows how to interpret a failed deploy, classify an IAM error, or join logs with metrics and traces, promote that logic into an operation and let the workflow call it.
 
 > Workflows are control planes.  Commands are operational primitives.
 
@@ -168,7 +168,7 @@ The honest exception: if the work is inherently a long-running process with dura
 
 This is the other meaning of "workflow," and it is where the argument gets sharpest.  The ecosystem is converging on packaged agent capability: [Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) became an open standard in December 2025, and a [Claude Code plugin](https://code.claude.com/docs/en/plugins-reference) bundles skills, subagents, and hooks into one installable folder.
 
-That packaging is good.  But a skill is not the operation itself.  A skill can tell the agent to check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt.  That helps the model behave.  It does not guarantee the behavior, because a `SKILL.md` is interpreted by the model, not executed.
+That packaging is good.  But a skill is not the operation itself.  A skill can tell the agent to check the provider, refresh credentials, distinguish expired tokens from missing paths, emit structured JSON, and leave a receipt.  That helps the model behave.  It does not guarantee the behavior, because a `SKILL.md` is *interpreted* by the model, not executed.
 
 So if the procedure lives only in prose, the agent reconstructs it every time.  Sometimes correctly.  Sometimes it skips a check, pastes stale shell, or reads the same 404 in the wrong layer.  A command turns the procedure into an executable affordance: a deterministic engine runs the same code every time.
 
@@ -244,13 +244,11 @@ The test is not whether a command feels elegant.  It is whether it reduces repea
 
 The upfront work is real.  You need the chassis before the leverage shows up: argument parsing, config loading, secret resolution, structured JSON output, stable exit codes, stable error classes, audit receipts, dry-run support, idempotency for writes, a useful `--help`, and machine-readable discovery.
 
-That is not free.  The first useful command costs more than it feels like it should.  But the chassis changes the economics of every command after it.  Adding a capability stops being "build an integration" and becomes "describe a verb." A thin wrapper over an API you already use is minutes.  A real integration is an afternoon.
-
-I used to describe this as "the hundredth command is free." That was too cute.
+That is not free.  The first useful command costs more than it feels like it should.  But the chassis changes the economics of every command after it.  Adding a capability stops being "build an integration" and becomes "describe a verb." A thin wrapper over an API you already use is minutes.  A real integration is quick and starts to pay off immediately.
 
 > The hundredth command is not free.  It is prepaid.
 
-You paid for it with the first ninety-nine decisions: one output envelope, one error taxonomy, one discovery model, one auth strategy, one audit trail, one binary every caller knows how to invoke.  The compounding is not that commands become magically cheap.  The compounding is that the surface becomes coherent.
+You paid for it with the first ninety-nine decisions: one output envelope, one error taxonomy, one discovery model, one auth strategy, one audit trail, one binary every caller knows how to invoke.  The compounding is not that commands become magically cheap.  **The compounding is that the surface becomes coherent**.
 
 ## Put MCP behind it when distribution matters
 
@@ -300,7 +298,9 @@ Where the logic lives is also a security question.  A 2026 study of agentic GitH
 
 Strip away the protocol wars and the tooling fashion, and one thing is left standing: the operation.  Not the model, not the connector, not the orchestration graph.  The durable unit of work, with its auth, its retries, its failure taxonomy, its receipt, and the local judgment no vendor can see.
 
-Everything else is delivery.  MCP carries capabilities to where they are needed, workflows schedule them, skills tell the agent when to reach for them.  All of it rests on one question: where does the operation live?  Leave it in a prompt, a workflow node, or a wrapper, and the agent rediscovers it every morning.  Put it in something you own that runs the same way for every caller, and it compounds: the world the agent can act on becomes your world, encoded in tools you made from the work itself.
+Everything else is delivery.  MCP carries capabilities to where they are needed, workflows schedule them, skills tell the agent when to reach for them.  All of it rests on one question: where does the operation live?  Leave it in a prompt, a workflow node, or a wrapper, and the agent rediscovers it every morning.  Put it in something you own that runs the same way for every caller, and it compounds: **the world the agent can act on becomes your world, encoded in tools you made from the work itself**.
+
+The first wave of context pressure hit platform teams: Cloudflare at 2,500 endpoints, enterprise stacks where every SaaS ships an MCP server.  The next wave hits individuals.  Anyone who relies on an agent seriously enough will eventually face the same problem — not because they built a platform, but because they accumulated a life: integrations, habits, accounts, local rules, workflows.  The question is not whether the surface gets large.  It does.  The question is whether the operation lives somewhere it can be owned.
 
 The strongest personal agent will not be the one with the biggest catalog of connectors.  It will be the one with the clearest operations layer.
 
