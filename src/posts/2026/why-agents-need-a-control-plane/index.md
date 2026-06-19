@@ -40,6 +40,8 @@ In 2014, [container orchestration had the same problem](https://cloud.google.com
 
 **AI agents need the same thing.**  Not a workflow engine that coordinates the order of LLM calls, but a coordination layer that owns agent identity, task ownership, access to shared state, and the governance rules that determine who can approve what.
 
+The term itself has now gone mainstream.  At [Google Cloud Next 2026](https://siliconangle.com/2026/04/22/agent-control-plane-race-hits-overdrive-next-2026-googlecloudnext/) the "agent control plane" became the explicit battleground, with Google, Microsoft, and Salesforce all racing to own it.  Read the announcements closely, though, and most of what they are shipping is a router: a nerve center that moves data between agents and calls that coordination.  That is the pipeline trap with a nicer dashboard.  Naming a layer the control plane is not the same as giving it the one job a control plane exists to do, which is owning state and deciding who touches what.
+
 This distinction matters more now than it did a year ago.  The protocol layer has matured rapidly:
 
 - *[MCP (Model Context Protocol)](https://modelcontextprotocol.io)*: Anthropic's open standard for connecting agents to tools and data, now with [over 10,000 published servers and 97 million monthly SDK downloads](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/), donated to the [Agentic AI Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation) under the Linux Foundation in December 2025
