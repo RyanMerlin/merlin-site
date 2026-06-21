@@ -8,3 +8,7 @@
 /posts/2026-05-23-mcp-explosion-scaling-problem /posts/mcp-explosion-scaling-problem 301
 /posts/2026-05-25-ai-productivity-dip-longer-deeper-diverging /posts/ai-productivity-dip-longer-deeper-diverging 301
 /posts/2026-05-26-consciousness-the-press-secretary-in-the-skull /posts/consciousness-the-press-secretary-in-the-skull 301
+
+# Legacy WordPress-era URLs still receiving traffic (404 before this) → home
+/2019/07/apache-airflow-installation-on-ubuntu-18-04-18-10/ / 301
+/2019/07/apache-airflow-installation-on-ubuntu-18-04-18-10 / 301

@@ -22,7 +22,11 @@ const items: FilterItem[] = posts.map((p) => {
 const visibleTopics = topics.filter((t) => postsByTopic(posts, t.slug).length > 0);
 ---
 
-<Base path="/">
+<Base
+	path="/"
+	title="AI Agents & Infrastructure"
+	description="Ryan Merlin on production AI agent systems: control planes, persistent sessions, and the infrastructure decisions practitioners actually face."
+>
 	<main class="mx-auto max-w-3xl px-6 py-16">
 		<header class="mb-16">
 			<h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
