@@ -7,10 +7,13 @@ export const GET: APIRoute = async () => {
 	const today = new Date().toISOString().split('T')[0];
 	const latestPostDate = posts.length ? posts[0].created.split('T')[0] : today;
 
+	// Static-page lastmod is pinned to real edit dates (not build date) so Googlebot
+	// does not see spurious churn on every deploy. Bump when the page actually changes.
 	const staticUrls = [
-		{ path: '', changefreq: 'weekly', lastmod: latestPostDate },
-		{ path: '/about', changefreq: 'monthly', lastmod: today },
-		{ path: '/now', changefreq: 'weekly', lastmod: today }
+		{ path: '/', changefreq: 'weekly', lastmod: latestPostDate },
+		{ path: '/about', changefreq: 'monthly', lastmod: '2026-06-21' },
+		{ path: '/now', changefreq: 'weekly', lastmod: '2026-06-21' },
+		{ path: '/connect', changefreq: 'monthly', lastmod: '2026-06-21' }
 	];
 
 	const postUrls = posts.map((p) => ({
