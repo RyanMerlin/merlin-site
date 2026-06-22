@@ -9,6 +9,5 @@
 /posts/2026-05-25-ai-productivity-dip-longer-deeper-diverging /posts/ai-productivity-dip-longer-deeper-diverging 301
 /posts/2026-05-26-consciousness-the-press-secretary-in-the-skull /posts/consciousness-the-press-secretary-in-the-skull 301
 
-# Legacy WordPress-era URLs still receiving traffic (404 before this) → home
-/2019/07/apache-airflow-installation-on-ubuntu-18-04-18-10/ / 301
-/2019/07/apache-airflow-installation-on-ubuntu-18-04-18-10 / 301
+# Legacy WordPress-era /2019/* URLs now return HTTP 410 Gone (functions/2019/[[path]].js)
+# so search engines drop them permanently instead of soft-404'ing a 301-to-home.
