@@ -24,6 +24,8 @@ When those two collapse into one word, you get the confusion on display this wee
 
 Make it concrete.  A browser-automation server should not lean on `Mcp-Session-Id` to remember which browser it launched.  It should hand back a `browser_id` and take it as an argument on the next call.  Then the agent runtime, not the transport, decides how that handle is stored, resumed, expired, and tied to the larger task.  The tool stays stateless, and the continuity lives where the agent already lives.
 
+![Two-panel diagram contrasting the transport session MCP removed (Mcp-Session-Id, sticky connections, hard to scale) with the agent session that matters (durable memory, identity that survives restarts, long-running tasks). Protocols move data; runtimes own state.](./stateless-mcp.png)
+
 ## We have run this experiment before
 
 If the move feels familiar, it should.  The web tier learned this lesson twenty years ago.
