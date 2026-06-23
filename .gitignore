@@ -25,3 +25,7 @@ vite.config.ts.timestamp-*
 
 # Co-located post images copied to static/ by remark plugin at build time
 static/images/*/
+
+# Research provenance — kept in the vault bundle, never published to the public repo
+src/posts/**/evidence.md
+src/drafts/**/evidence.md
