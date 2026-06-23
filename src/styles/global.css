@@ -145,6 +145,20 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* Images — cap height so tall/portrait screenshots don't take over the column.
+   The max-height only bites images taller than the cap: portrait phone shots
+   scale down and center; landscape diagrams stay full width. Click-to-zoom for
+   full size is handled by ImageZoom. */
+.prose img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 600px;
+  margin-inline: auto;
+  border-radius: 6px;
+}
+
 /* Links — clearly distinct from body, underline on hover only */
 .prose a {
   color: var(--color-link);
