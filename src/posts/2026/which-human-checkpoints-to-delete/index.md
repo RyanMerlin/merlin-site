@@ -16,6 +16,8 @@ Most of the conversation about working with agents sorts everyone onto one slide
 
 The variable that actually moves is not how much you control. It is where your control lives. There are three places it can live. Most operators recognize the climb through them, even though a mature workflow still mixes all three depending on what is at stake.
 
+![Which Human Checkpoints to Delete — permission everywhere on the left, load-bearing gates on the right](./delete-human-checkpoints.png)
+
 *On the keyboard.* You are the runtime. The agent proposes, you approve, line by line, because nothing else can catch a mistake before it lands. This is the babysitter, and it is most people, including past-me. It feels responsible and it does not survive past one agent and a short attention span. Every gate here is manual, which means every gate competes for the same scarce resource: your attention in the moment.
 
 *In the spec.* You stop hovering and start front-loading. Detailed prompts, a written plan, acceptance criteria, then you launch and hope. Harper Reed calls the spec ["the godhead"](https://harper.blog/2025/04/17/an-llm-codegen-heros-journey/), and among working engineers this is the most documented expert pattern there is. The vibe coder is the same posture with the planning deleted instead of the supervision: one prompt, accept all, find out later. Either way the spec is necessary and not sufficient. It defines intent. It does not enforce it.
