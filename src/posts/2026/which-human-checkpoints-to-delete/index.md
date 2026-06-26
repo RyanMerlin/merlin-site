@@ -8,7 +8,7 @@ summary: "Getting better at agents is not watching less. It is relocating your c
 
 I used to think getting better at agents meant the agent needed me less. Watch less, trust more, walk away while it works. That turned out to be backwards.
 
-Anthropic measured what experienced operators actually do. In its [research on agent autonomy](https://www.anthropic.com/research/measuring-agent-autonomy), users with more than 750 Claude Code sessions auto-approve a larger share of the agent's actions than newcomers, above 40 percent against roughly 20, and they interrupt the agent more often, 9 percent against 5. Both numbers climb together. **The people who trust the agent the most are also the people who stop it the most.**
+Anthropic measured what experienced operators actually do. In its [research on agent autonomy](https://www.anthropic.com/research/measuring-agent-autonomy), users with more than 750 Claude Code sessions auto-approve a larger share of the agent's actions than newcomers, above 40 percent against roughly 20, and they interrupt the agent more often, 9 percent against 5. In the comparison, both rates are higher for high-volume users. **The people who auto-approve more are also the people who stop it the most.**
 
 That is the whole thing worth explaining: not a contradiction, but a clue.
 
@@ -18,7 +18,7 @@ Most of the conversation about working with agents sorts everyone onto one slide
 
 ![Which Human Checkpoints to Delete — permission everywhere on the left, load-bearing gates on the right](./delete-human-checkpoints.png)
 
-*On the keyboard.* You are the runtime. The agent proposes, you approve, line by line, because nothing else can catch a mistake before it lands. This is the babysitter, and it is most people, including past-me. It feels responsible and it does not survive past one agent and a short attention span. Every gate here is manual, which means every gate competes for the same scarce resource: your attention in the moment.
+*On the keyboard.* You are the runtime. The agent proposes, you approve, line by line, because nothing else can catch a mistake before it lands. This is the babysitter, and it is most people, including past-me. It feels responsible and it does not scale past one agent and a short attention span. Every gate here is manual, which means every gate competes for the same scarce resource: your attention in the moment.
 
 *In the spec.* You stop hovering and start front-loading. Detailed prompts, a written plan, acceptance criteria, then you launch and hope. Harper Reed calls the spec ["the godhead"](https://harper.blog/2025/04/17/an-llm-codegen-heros-journey/), and among working engineers this is the most documented expert pattern there is. The vibe coder is the same posture with the planning deleted instead of the supervision: one prompt, accept all, find out later. Either way the spec is necessary and not sufficient. It defines intent. It does not enforce it.
 
@@ -28,9 +28,9 @@ This is the distinction that makes the Anthropic numbers stop looking paradoxica
 
 None of this makes the agent safe by magic. It makes the safety claim inspectable. A weak eval is a permission slip with nicer formatting, and the point was never to replace judgment with tests. It is to reserve judgment for the failures the tests cannot see.
 
-I built this out in *EdgePlane*, the agent orchestration layer I am shipping.  Every merge runs through nextest, Clippy with `-D warnings`, and a cargo audit pass — the agent cannot talk its way around any of them.  Exactly one action stays behind a human yes: the merge to main that triggers the container build and the production deploy.  Everything up to that boundary runs unattended, and the single gate that remains is the only one that was ever load-bearing.
+I built this out in *EdgePlane*, the agent orchestration layer I am shipping.  Every merge runs through nextest, Clippy with `-D warnings`, and a cargo audit pass — the agent cannot talk its way around any of them.  In this workflow, the remaining hard gate is the merge to main that triggers the container build and the production deploy.  Everything up to that boundary runs unattended, and in practice it is the only gate I have found to be load-bearing so far.
 
-The move from the keyboard to the harness is not adding oversight, and it is not removing it. It is relocating it, then deleting what relocation made redundant. The immature workflow approves every file edit and then lets the architecture run wild. The mature one auto-approves routine edits because tests catch regressions, then gates the architecture because nothing else will. Same operator, more trust and more intervention, aimed at different layers.
+The move from the keyboard to the harness is not adding oversight, and it is not removing it. It is relocating it, then deleting what relocation made redundant. The immature workflow approves every file edit and then lets the architecture run wild. The mature one auto-approves routine edits because tests catch the regressions you have taught them to catch, then gates the architecture because nothing else will. Same operator, more trust and more intervention, aimed at different layers.
 
 Which means the skill that separates the clean pipeline from the one drowning in approval prompts is subtraction. Ask it of every checkpoint you keep: is this load-bearing, or is it scar tissue from an incident back before you had the test that would catch it anyway? **Many manual gates are scar tissue, rational the day they were added and redundant since the day you wrote the eval.** The load-bearing ones sit closer to authority, blast radius, and irreversibility than to syntax.
 
