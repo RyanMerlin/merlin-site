@@ -8,13 +8,13 @@ summary: "Getting better at agents is not watching less. It is relocating your c
 
 I used to think getting better at agents meant the agent needed me less. Watch less, trust more, walk away while it works. That turned out to be backwards.
 
-Anthropic measured what experienced operators actually do. In its [research on agent autonomy](https://www.anthropic.com/research/measuring-agent-autonomy), users with more than 750 Claude Code sessions auto-approve a larger share of the agent's actions than newcomers, above 40 percent against roughly 20, and they interrupt the agent more often, 9 percent against 5. Both numbers climb together. The people who trust the agent the most are also the people who stop it the most.
+Anthropic measured what experienced operators actually do. In its [research on agent autonomy](https://www.anthropic.com/research/measuring-agent-autonomy), users with more than 750 Claude Code sessions auto-approve a larger share of the agent's actions than newcomers, above 40 percent against roughly 20, and they interrupt the agent more often, 9 percent against 5. Both numbers climb together. **The people who trust the agent the most are also the people who stop it the most.**
 
 That is the whole thing worth explaining: not a contradiction, but a clue.
 
 Most of the conversation about working with agents sorts everyone onto one slider, from babysit-every-step at one end to accept-all-and-pray at the other. Karpathy's ["vibe coding"](https://en.wikipedia.org/wiki/Vibe_coding) label named one pole: delegate heavily, stay loose, stop reading the diff. The operator that practitioners keep describing as minding ["a toddler that needs to be overseen"](https://fortune.com/2026/02/23/always-on-ai-agents-openclaw-claude-promise-work-while-sleeping-reality-problems-oversight-guardrails/) sits at the other. The slider is intuitive and it is wrong, because it cannot explain a person who does more of both ends at once.
 
-The variable that actually moves is not how much you control. It is where your control lives. There are three places it can live. Most operators recognize the climb through them, even though a mature workflow still mixes all three depending on what is at stake.
+**The variable that actually moves is not how much you control. It is where your control lives.** There are three places it can live. Most operators recognize the climb through them, even though a mature workflow still mixes all three depending on what is at stake.
 
 ![Which Human Checkpoints to Delete — permission everywhere on the left, load-bearing gates on the right](./delete-human-checkpoints.png)
 
@@ -32,7 +32,7 @@ I live this in a small way. The agent that drafts these posts runs unattended th
 
 The move from the keyboard to the harness is not adding oversight, and it is not removing it. It is relocating it, then deleting what relocation made redundant. The immature workflow approves every file edit and then lets the architecture run wild. The mature one auto-approves routine edits because tests catch regressions, then gates the architecture because nothing else will. Same operator, more trust and more intervention, aimed at different layers.
 
-Which means the skill that separates the clean pipeline from the one drowning in approval prompts is subtraction. Ask it of every checkpoint you keep: is this load-bearing, or is it scar tissue from an incident back before you had the test that would catch it anyway? Many manual gates are scar tissue, rational the day they were added and redundant since the day you wrote the eval. The load-bearing ones sit closer to authority, blast radius, and irreversibility than to syntax.
+Which means the skill that separates the clean pipeline from the one drowning in approval prompts is subtraction. Ask it of every checkpoint you keep: is this load-bearing, or is it scar tissue from an incident back before you had the test that would catch it anyway? **Many manual gates are scar tissue, rational the day they were added and redundant since the day you wrote the eval.** The load-bearing ones sit closer to authority, blast radius, and irreversibility than to syntax.
 
 Do the audit. List every point where you stop and check the agent by hand, and for each one name what would actually break if you deleted it.
 
