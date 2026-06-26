@@ -28,7 +28,7 @@ This is the distinction that makes the Anthropic numbers stop looking paradoxica
 
 None of this makes the agent safe by magic. It makes the safety claim inspectable. A weak eval is a permission slip with nicer formatting, and the point was never to replace judgment with tests. It is to reserve judgment for the failures the tests cannot see.
 
-I live this in a small way. The agent that drafts these posts runs unattended through source capture, drafting, revision, and a voice-fidelity score, every step. Exactly one action stays behind a human yes: publishing, the thing I cannot un-send. Everything up to the irreversible edge is automated, and the single gate that remains is the only one that was ever load-bearing.
+I built this out in *EdgePlane*, the agent orchestration layer I am shipping.  Every merge runs through nextest, Clippy with `-D warnings`, and a cargo audit pass — the agent cannot talk its way around any of them.  Exactly one action stays behind a human yes: the merge to main that triggers the container build and the production deploy.  Everything up to that boundary runs unattended, and the single gate that remains is the only one that was ever load-bearing.
 
 The move from the keyboard to the harness is not adding oversight, and it is not removing it. It is relocating it, then deleting what relocation made redundant. The immature workflow approves every file edit and then lets the architecture run wild. The mature one auto-approves routine edits because tests catch regressions, then gates the architecture because nothing else will. Same operator, more trust and more intervention, aimed at different layers.
 
