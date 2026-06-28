@@ -6,6 +6,8 @@ tags: ["ai", "vibe-coding", "security", "engineering", "agents"]
 summary: "The missing skill in AI-built software isn't syntax. It's failure literacy: knowing what can break before users discover it."
 ---
 
+![](./hero.png)
+
 *Andrej Karpathy* coined "[vibe coding](https://x.com/karpathy/status/1886192184808149383)" in February 2025.  He later reframed the broader shift as ["agentic engineering" inside *Software 3.0*](https://analyticsdrift.com/andrej-karpathy-agentic-engineering-software-3/).  That framing made the question feel like a referendum on identity.  Are you a coder, or aren't you?
 
 That's the wrong axis to optimize around.  AI has made code generation cheap.  It hasn't made failure understanding cheap.  The question isn't whether you can code.  It's whether you know what failure looks like.
@@ -13,7 +15,7 @@ That's the wrong axis to optimize around.  AI has made code generation cheap.  I
 The Linux Foundation's [2026 European tech talent data](https://www.linuxfoundation.org/blog/who-will-be-the-senior-engineers-of-2036) asks who will be the senior engineers of 2036, given that AI is absorbing the entry-level work that used to grow them.  That's the right long-term question.  The more immediate one is what the builder shipping software today already needs to know.
 
 
-## The scarce skill is failure literacy
+## The scarce skill is **failure literacy**
 
 A [developer study on AI coding workflows](https://arxiv.org/pdf/2512.14012) didn't compare developers with non-developers.  It studied experienced developers, through field observations and surveys, and found that they use control strategies around AI output: planning, supervision, decomposition, validation, and review.  The paper is evidence for what experienced developers do when AI writes code, not for what non-developers fail to do.
 

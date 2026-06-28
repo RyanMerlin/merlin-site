@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { getPosts, type PostMeta } from '../../lib/posts';
 import { SITE_AUTHOR } from '../../lib/config';
@@ -18,8 +18,29 @@ function readingTime(wordCount: number): string {
 	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 }
 
+function findHeroImage(slug: string): Buffer | null {
+	// Check for og.png first, then hero.png, in src/posts/**/<slug>/
+	for (const year of ['2025', '2026', '2027']) {
+		for (const name of ['og.png', 'hero.png']) {
+			const p = resolve(`src/posts/${year}/${slug}/${name}`);
+			if (existsSync(p)) return readFileSync(p);
+		}
+	}
+	return null;
+}
+
 export const GET: APIRoute = async ({ props }) => {
 	const post = props.post as PostMeta;
+
+	const hero = findHeroImage(post.slug);
+	if (hero) {
+		return new Response(hero, {
+			headers: {
+				'Content-Type': 'image/png',
+				'Cache-Control': 'public, max-age=31536000, immutable'
+			}
+		});
+	}
 
 	const date = new Date(post.created).toLocaleDateString('en-US', {
 		year: 'numeric',
