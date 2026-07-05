@@ -45,7 +45,8 @@ export const GET: APIRoute = async ({ props }) => {
 	const date = new Date(post.created).toLocaleDateString('en-US', {
 		year: 'numeric',
 		month: 'long',
-		day: 'numeric'
+		day: 'numeric',
+		timeZone: 'UTC'
 	});
 
 	const svg = await satori(
