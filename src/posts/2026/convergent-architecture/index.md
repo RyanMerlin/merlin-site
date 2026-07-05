@@ -63,3 +63,8 @@ So here's where I've landed, and it isn't on consciousness.
 The rhyme is real: I build the broadcast diagram on purpose, because the constraints force it.  The break is real, but it isn't shared: my version and the brain's give out for different reasons, at the same undescribed part.  The substrate objection is open: I can't prove the diagram is all there is.  And Anthropic is hedging.  Put that together and the responsible conclusion isn't "my agents are a little bit awake."  It's that resource-limited minds, wet or silicon, keep converging on the same architecture and the same failure, and **that convergence is evidence of shared constraints, not shared experience.**
 
 Which is the useful part, and it's where this goes next.  That the failures *don't* match is the whole point.  Whatever these systems are, they're blind in different places than I am, and blind for different reasons.  My access layer and the agent's are both narrow, both selective, both late, and they don't go dark in the same spots.  That turns the whole consciousness question into a practical one I can act on.  If I've got one thin, biased mind and the machine has another, the question that pays rent was never "is it awake."  It's this: how do you put two differently-blind minds together so they don't fail in the same direction at the same time?
+
+
+---
+
+*Consciousness as Architecture, a three-part series: [The Access Layer](https://ryanmerlin.com/posts/the-access-layer), Convergent Architecture (you're reading it), and [Composed Correction](https://ryanmerlin.com/posts/composed-correction).*

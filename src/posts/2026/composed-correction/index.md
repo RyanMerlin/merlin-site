@@ -47,3 +47,8 @@ I've spent three essays on the mind because I kept expecting the interesting que
 The deep version of this, error-correction as the actual product you ship and the governor you build instead of the guardrails you bolt on, is its own essay, [The Loss Function Is the Product](https://ryanmerlin.com/posts/the-loss-function-is-the-product).
 
 But the practical version fits in one question.  The next time you sit down to work with an agent, the thing to ask isn't how much to trust it.  It's how correlated the two of you are, and whether you did anything to lower it, or just assumed you were different.  Which did you build?
+
+
+---
+
+*Consciousness as Architecture, a three-part series: [The Access Layer](https://ryanmerlin.com/posts/the-access-layer), [Convergent Architecture](https://ryanmerlin.com/posts/convergent-architecture), and Composed Correction (you're reading it).*

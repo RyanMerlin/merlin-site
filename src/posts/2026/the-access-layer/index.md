@@ -81,3 +81,8 @@ I'd file all of this under fascinating and move on, except I spend my working da
 Hold the analogy at the right level, though.  A context window isn't working memory, a vector store isn't an unconscious, and a tool loop isn't a brain.  The resemblance is functional, not biological: any system with more state than it can act on at once needs a way to decide what enters the working set, what gets broadcast, and what gets to act.  That resemblance isn't evidence of consciousness.  It's evidence that resource-limited intelligent systems keep converging on the same bottleneck, the same question of what earns a place in the workspace.  I don't think I'm building conscious systems.  I'm just less sure than I used to be that the difference lives where I always assumed it did.
 
 Which is exactly where this series goes next.  If being useful and being awake keep reaching for the same architecture, then the interesting question was never whether I accidentally built a mind.  It's narrower and harder.  What does any system, wet or silicon, have to select, broadcast, remember, and hand off before we'd trust it to act?
+
+
+---
+
+*Consciousness as Architecture, a three-part series: The Access Layer (you're reading it), [Convergent Architecture](https://ryanmerlin.com/posts/convergent-architecture), and [Composed Correction](https://ryanmerlin.com/posts/composed-correction).*
