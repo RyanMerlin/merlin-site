@@ -36,11 +36,9 @@ One live account in cognitive science says that bottleneck isn't incidental.  It
 
 ## Four-ish, not four
 
-I have to be careful here, because "four" is doing rhetorical work it can't quite cash.
+I have to be careful with that four, because it's doing rhetorical work it can't quite cash.
 
-The slot picture, a fixed handful of discrete boxes, isn't settled science.  *Wei Ji Ma*, *Masud Husain*, and *Paul Bays* [argue](https://www.nature.com/articles/nn.3655) that working memory looks less like a set of slots and more like a limited resource spread across everything you're holding, so what degrades under load is the *precision* of each item rather than a clean count.  *Klaus Oberauer* and colleagues [review](https://www.psychologie.uzh.ch/dam/jcr:46565b5a-63dc-459b-8142-329b15964f6b/Oberauer.et-al.2016.PsychBull.pdf) the whole fight, decay versus resource versus interference, and make the case that mutual interference between representations explains much of what the slot story gets credit for.
-
-So hold the four loosely.  Whether the limit is best modeled as slots, shared precision, or interference is genuinely open.  The claim that survives every version of the debate is the one that matters: the access channel is small, and it stays small no matter how you explain it.  The bottleneck is real even while the mechanism is up for grabs.
+Whether the limit is really a fixed set of boxes, or a pool of attention [spread thinner](https://www.nature.com/articles/nn.3655) the more you try to hold at once, or just a pile of things [interfering](https://www.psychologie.uzh.ch/dam/jcr:46565b5a-63dc-459b-8142-329b15964f6b/Oberauer.et-al.2016.PsychBull.pdf) with each other, is a live fight among the people who study this for a living.  So hold the number loosely.  The claim that survives every version of the argument is the only one I need: the usable channel is small, and it stays small no matter which side turns out right.
 
 ## Why it feels so much bigger
 
@@ -76,7 +74,7 @@ Three caveats keep this from becoming something it isn't.  Working-memory capaci
 
 ## The part I can't put down
 
-I'd file all of this under fascinating and move on, except I spend my working days building systems that rhyme with this shape.  A finite context window, which is the beam.  A store far too big to hold in it at once, a vector index, a codebase, a memory tier, sitting in the dark outside.  A retrieval step, a ranker, that decides which few chunks get pulled into the window to steer the next move.  I didn't build any of that to imitate a brain.  I hit the same constraints a brain hits, scarce context, noisy selection, expensive action, and I made the same trades, because the trades are forced.
+I'd file all of this under fascinating and move on, except I spend my working days building AI systems that hit the exact same wall.  When you work with an AI assistant, only a small amount of text fits in front of it at any one moment.  That's its beam, and the people who build these systems call it the *context window*.  Everything else the system could draw on, whole codebases, documents, the earlier parts of your own conversation, sits outside that window in the dark, far too big to hold all at once.  So the system needs something that decides which few pieces to pull into the window for the next step, the same way your attention decides what gets handed up to your headlamp.  I didn't build any of that to imitate a brain.  I hit the same constraints a brain hits, too little room, noisy guesses about what to load, a real cost to every action, and I made the same trades, because the trades are forced.
 
 Hold the analogy at the right level, though.  A context window isn't working memory, a vector store isn't an unconscious, and a tool loop isn't a brain.  The resemblance is functional, not biological: any system with more state than it can act on at once needs a way to decide what enters the working set, what gets broadcast, and what gets to act.  That resemblance isn't evidence of consciousness.  It's evidence that resource-limited intelligent systems keep converging on the same bottleneck, the same question of what earns a place in the workspace.  I don't think I'm building conscious systems.  I'm just less sure than I used to be that the difference lives where I always assumed it did.
 
