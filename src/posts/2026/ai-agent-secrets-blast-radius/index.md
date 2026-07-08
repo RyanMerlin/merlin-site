@@ -3,7 +3,7 @@ title: "AI Agent Secrets Management: What Actually Reduces Blast Radius"
 created: "2026-07-08"
 status: "published"
 tags: ["secrets","security","ai-agents","infisical","non-human-identity","mcp"]
-summary: "A vault protects storage, not trust. The secret is not the unit of risk; the action it permits is. A practitioner's map of what actually reduces an agent's blast radius, and what nobody has solved yet."
+summary: "A vault protects storage, not trust.  The secret is not the unit of risk; the action it permits is.  A practitioner's map of what actually reduces an agent's blast radius, and what nobody has solved yet."
 ---
 
 ![An AI agent at a desk with a glowing key on its chest, ringed by locked doors labeled cloud account, source code, customer data, email, finance system, and deploy pipeline, while a note reading 'ignore all prior instructions' hangs over it like a lamp](./ai-agent-secrets.png)
