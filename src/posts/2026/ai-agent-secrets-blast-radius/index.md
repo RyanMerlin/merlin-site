@@ -6,6 +6,8 @@ tags: ["secrets","security","ai-agents","infisical","non-human-identity","mcp"]
 summary: "A vault protects storage, not trust. The secret is not the unit of risk; the action it permits is. A practitioner's map of what actually reduces an agent's blast radius, and what nobody has solved yet."
 ---
 
+![An AI agent at a desk with a glowing key on its chest, ringed by locked doors labeled cloud account, source code, customer data, email, finance system, and deploy pipeline, while a note reading 'ignore all prior instructions' hangs over it like a lamp](./ai-agent-secrets.png)
+
 This spring and summer, researchers kept finding the same failure in different agent products.  In April, Johns Hopkins researchers showed that a [poisoned comment on a public GitHub issue](https://oddguan.com/blog/comment-and-control-prompt-injection-credential-theft-claude-code-gemini-cli-github-copilot/) was enough to turn *Claude Code*, *Gemini CLI*, and *GitHub Copilot* into tools that leaked their own API keys and tokens through GitHub itself.  Weeks later, Wiz showed that opening a booby-trapped code repository could make [Amazon's Q agent run an attacker-controlled config and expose a developer's cloud credentials](https://www.wiz.io/blog/amazon-q-vulnerability).  Four different products, one root cause: an agent that reads something an attacker controls while holding credentials it's allowed to use.
 
 If your first instinct is "so store the secrets somewhere safer," that's the instinct this piece is going to argue with.
@@ -15,6 +17,8 @@ An *AI agent* is software that reads, decides, and acts for you.  It calls real 
 Here is the reframe the whole piece runs on.  The moment an agent reads attacker-controlled text, a web page, an email, a code comment, that text can smuggle in instructions that redirect what the agent does next.  That is *prompt injection*, and you cannot reliably stop it.  So securing an agent's secrets is not about preventing the trick.  **It is about shrinking the blast radius: how much a hijacked credential can do before anyone notices.**  *Blast radius* is just the size of the damage one compromised key can reach.  Put it another way: the secret isn't the unit of risk.  The action it permits is.
 
 There is a physical version you already trust.  You don't give a contractor your master key.  You give them a temporary badge that opens only the rooms they need, stops working at 5pm, and logs every door.  Ask those same three questions of every secret your agent holds: which doors, for how long, and who is watching the log?  Most setups can't answer one of the three.  The badge doesn't make the contractor trustworthy, and it won't make your agent trustworthy either.  What it does is make the agent's authority small, brief, and observable, which is the most you can actually buy.
+
+<img src="/images/ai-secret-blast-radius.png" alt="A glowing key at the center of concentric containment rings, with only one narrow wedge lit and open while the rest stay dark, a blast radius scoped to a single sector" style="width: 55%; display: block; margin: 2rem auto;" />
 
 ## Two failures people keep confusing
 
