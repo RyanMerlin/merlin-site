@@ -34,7 +34,7 @@ Why should you care about the distinction rather than leaving it to a security t
 
 So you go looking for a product to help, and you fall into the real swamp: there are dozens of them and they do not do the same job.  One distinction cuts through all of it, and it is the single most useful thing in this piece.
 
-Every product here either *issues* authority or *governs* it.
+**Every product here either *issues* authority or *governs* it.**
 
 An *issuer* mints the thing the agent uses: a stored secret, a short-lived token, an identity, a brokered call.  *HashiCorp Vault*, *Infisical*, *SPIFFE/SPIRE*, [Anthropic's Workload Identity Federation](https://claude.com/blog/workload-identity-federation), *Keycard*, *Aembit*, the big cloud platforms, these create or hand out credentials.
 
@@ -82,6 +82,6 @@ Which brings us to the thing worth ending on honestly, rather than pretending th
 
 Every layer in this piece, workload identity, short-lived tokens, brokered secrets, answers one question: is this agent who it claims to be, coming from where it claims?  None of them answers the question that actually matters the instant an agent is hijacked: should this particular action have happened at all?  The entire identity stack proves *who and from where*.  Intent, whether the thing the agent is about to do is the thing you wanted, is unproven, and the proposals to fix it, cryptographic per-hop delegation, tokens bound to a workflow, intent attestation, are competing early drafts with no convergence and no real deployment.  This is not a solved space dressed up as hard.  It is genuinely open, which is exactly why it's worth building in.
 
-It is also about to matter on a clock.  Regulation and standards pressure are moving toward *runtime traceability*, being able to reconstruct what an agent did and why at the moment it acted, not just point back at a static permission record from when a token was issued.  That is the difference between "this agent had permission" and "this agent should have done that."
+It is also about to matter on a clock.  Regulation and standards pressure are moving toward *runtime traceability*, being able to reconstruct what an agent did and why at the moment it acted, not just point back at a static permission record from when a token was issued.  **That is the difference between "this agent had permission" and "this agent should have done that."**
 
 So the reassuring part, and it's real.  You do not need a security team or an exotic stack to be ahead of most production deployments.  Give each agent its own scoped identity instead of a shared key.  Keep an audit log loud enough that misuse is visible.  Control where the agent can send data.  Then carry the one question that reorganizes everything else: does the next tool I hand this agent *mint* new authority, and if so, how little can it be, how fast can it expire, and how loudly will misuse show up?  That is not a checklist you finish.  It is the question the whole field is still trying to answer, and you are now asking it earlier than most.
