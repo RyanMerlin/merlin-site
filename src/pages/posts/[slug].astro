@@ -124,7 +124,7 @@ const jsonLd = JSON.stringify({
 
 		{
 			toc.length > 0 && (
-				<aside class="reading-toc" aria-label="Table of contents">
+				<nav class="reading-toc" aria-label="Table of contents">
 					<p class="toc-cap">On this page</p>
 					<ul>
 						{toc.map((h) => (
@@ -135,7 +135,7 @@ const jsonLd = JSON.stringify({
 							</li>
 						))}
 					</ul>
-				</aside>
+				</nav>
 			)
 		}
 	</main>
@@ -144,24 +144,59 @@ const jsonLd = JSON.stringify({
 
 <script>
 	const links = [...document.querySelectorAll('.reading-toc a, .toc-mobile a')];
-	const byId: Record<string, Element[]> = {};
-	links.forEach((a) => {
-		const id = (a.getAttribute('href') || '').slice(1);
-		(byId[id] = byId[id] || []).push(a);
-	});
-	const heads = [...document.querySelectorAll('.prose h2[id], .prose h3[id]')];
-	const setActive = (id: string) => {
-		links.forEach((a) => a.classList.remove('active'));
-		(byId[id] || []).forEach((a) => a.classList.add('active'));
-	};
-	if (heads.length) setActive(heads[0].id);
-	const obs = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((e) => {
-				if (e.isIntersecting) setActive(e.target.id);
-			});
-		},
-		{ rootMargin: '0px 0px -72% 0px', threshold: 0 }
+	const linkId = (a: Element) => (a.getAttribute('href') || '').slice(1);
+	// Move focus to the target heading on click, so keyboard/screen-reader
+	// users land inside the section rather than staying on the TOC link.
+	links.forEach((a) =>
+		a.addEventListener('click', () => {
+			const el = document.getElementById(linkId(a));
+			if (el) {
+				el.setAttribute('tabindex', '-1');
+				el.focus({ preventScroll: true });
+			}
+		})
 	);
-	heads.forEach((h) => obs.observe(h));
+	const heads = [...document.querySelectorAll('.prose h2[id], .prose h3[id]')] as HTMLElement[];
+	if (heads.length) {
+		let currentId: string | null = null;
+		const setActive = (id: string) => {
+			if (id === currentId) return;
+			currentId = id;
+			links.forEach((a) => {
+				const on = linkId(a) === id;
+				a.classList.toggle('active', on);
+				if (on) a.setAttribute('aria-current', 'location');
+				else a.removeAttribute('aria-current');
+			});
+		};
+		const visible = new Set<string>();
+		const update = () => {
+			let id: string | undefined;
+			if (visible.size) {
+				// the topmost currently-visible heading, in document order
+				id = heads.find((h) => visible.has(h.id))?.id;
+			} else {
+				// nothing in the active band: fall back to the last heading scrolled past
+				for (const h of heads) {
+					if (h.getBoundingClientRect().top < 120) id = h.id;
+					else break;
+				}
+				id = id || heads[0].id;
+			}
+			if (id) setActive(id);
+		};
+		const obs = new IntersectionObserver(
+			(entries) => {
+				for (const e of entries) {
+					const el = e.target as HTMLElement;
+					if (e.isIntersecting) visible.add(el.id);
+					else visible.delete(el.id);
+				}
+				update();
+			},
+			{ rootMargin: '-90px 0px -70% 0px', threshold: 0 }
+		);
+		heads.forEach((h) => obs.observe(h));
+		update();
+	}
 </script>

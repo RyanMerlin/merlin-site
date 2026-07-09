@@ -39,6 +39,10 @@
   --color-border: #e4ddcf;
   --color-plum: #7c5a92;           /* cognition topic accent */
   --color-rust: rgba(174, 74, 32, 0.15);  /* corner atmosphere wash */
+  /* Topic accents — light-theme values, AA-legible on paper */
+  --topic-ai: #2f58aa;
+  --topic-cog: #6d4a82;
+  --topic-econ: #8a5e12;
   /* Top nav — macOS-style brushed silver, slightly raised */
   --nav-bg-top: #f9fafb;
   --nav-bg-bottom: #e8eaee;
@@ -82,6 +86,10 @@
   --color-border: #332b22;        /* soft warm hairline */
   --color-plum: #bb96cb;          /* cognition topic accent */
   --color-rust: rgba(224, 110, 55, 0.22);  /* corner atmosphere wash */
+  /* Topic accents — dark-theme values, bright on charcoal */
+  --topic-ai: #6a8fd4;
+  --topic-cog: #bb96cb;
+  --topic-econ: #d4a24e;
   /* Top nav — subtle raised toolbar (dark tones) */
   --nav-bg-top: #241e18;
   --nav-bg-bottom: #17130f;
@@ -395,6 +403,7 @@ body {
 .prose .series-nav__list li {
   margin: 0.2rem 0;
   padding-left: 0.15rem;
+  line-height: 1.55;
 }
 .prose .series-nav__list li::marker {
   color: var(--color-text-muted);
@@ -511,6 +520,11 @@ pre[class*='language-'] {
   transition: opacity 0.15s ease;
 }
 
+/* Social icons in the top nav */
+.social-icon:hover {
+  color: var(--color-accent);
+}
+
 /* ─── Rust corner wash — warm atmosphere, top-left, site-wide ─── */
 body::before {
   content: '';
@@ -544,7 +558,7 @@ body > * {
 .reading-toc {
   display: none;
 }
-@media (min-width: 1180px) {
+@media (min-width: 84rem) {
   .reading {
     display: grid;
     grid-template-columns: 1fr minmax(0, 48rem) 1fr;
@@ -561,7 +575,7 @@ body > * {
     top: 5.5rem;
     align-self: start;
     justify-self: start;
-    width: 13.5rem;
+    width: min(13.5rem, 100%);
   }
 }
 .reading-toc .toc-cap {
@@ -618,7 +632,7 @@ body > * {
   background: var(--color-bg-subtle);
   overflow: hidden;
 }
-@media (min-width: 1180px) {
+@media (min-width: 84rem) {
   .toc-mobile {
     display: none;
   }

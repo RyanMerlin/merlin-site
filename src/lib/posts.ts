@@ -17,9 +17,9 @@ export type Topic = {
 };
 
 export const topics: Topic[] = [
-	{ slug: 'ai', label: 'AI & Agents', color: '#6a8fd4', matchTags: ['ai', 'agents', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
-	{ slug: 'cognitive-science', label: 'Cognitive Science', color: '#bb96cb', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'consciousness', 'free-will', 'predictive-processing', 'behavioral-economics'] },
-	{ slug: 'economics', label: 'Economics', color: '#d4a24e', matchTags: ['economics', 'markets', 'investing', 'finance'] }
+	{ slug: 'ai', label: 'AI & Agents', color: 'var(--topic-ai)', matchTags: ['ai', 'agents', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
+	{ slug: 'cognitive-science', label: 'Cognitive Science', color: 'var(--topic-cog)', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'consciousness', 'free-will', 'predictive-processing', 'behavioral-economics'] },
+	{ slug: 'economics', label: 'Economics', color: 'var(--topic-econ)', matchTags: ['economics', 'markets', 'investing', 'finance'] }
 ];
 
 function countWords(body: string): number {
