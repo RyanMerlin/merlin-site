@@ -365,6 +365,57 @@ body {
   margin: 2.5rem 0;
 }
 
+/* ─── Series navigation — meta box at top of a multi-part post ─── */
+.prose .series-nav {
+  margin: 0 0 2.75rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--color-ref-bg);
+  border: 1px solid var(--color-ref-border);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+}
+.prose .series-nav__label {
+  margin: 0 0 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.prose .series-nav__list {
+  margin: 0;
+  padding-left: 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+.prose .series-nav__list li {
+  margin: 0.2rem 0;
+  padding-left: 0.15rem;
+}
+.prose .series-nav__list li::marker {
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.prose .series-nav__list a {
+  color: var(--color-link);
+  text-decoration: none;
+  border-bottom: none;
+}
+.prose .series-nav__list a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+.prose .series-nav__here {
+  color: var(--color-text);
+  font-weight: 600;
+}
+.prose .series-nav__here::after {
+  content: ' (you’re here)';
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
 /* ─── Prism syntax highlighting ──────────────────────────── */
 pre[class*='language-'],
 code[class*='language-'] {

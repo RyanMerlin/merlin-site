@@ -6,6 +6,15 @@ tags: ["consciousness", "cognitive-science", "working-memory", "global-workspace
 summary: "Working memory suggests the conscious self isn't the whole mind but a small, constrained access layer: the narrow beam where a few selected states become reportable and usable."
 ---
 
+<nav class="series-nav" aria-label="Consciousness as Architecture series">
+<p class="series-nav__label">Consciousness as Architecture · a three-part series</p>
+<ol class="series-nav__list">
+<li><span class="series-nav__here">The Access Layer</span></li>
+<li><a href="/posts/convergent-architecture">Convergent Architecture</a></li>
+<li><a href="/posts/composed-correction">Composed Correction</a></li>
+</ol>
+</nav>
+
 Right now, it can feel like your whole mind is open to you.  Stay with that feeling for a second.  How many separate things are actually in it, at this exact moment?
 
 Try to hold them all at once.  A number someone just read out.  The shape of the room.  The sentence you were about to say.  That argument from an hour ago that still stings.  You can turn to each one, but you can't keep them all lit together.  Something slips out the moment something else arrives.
@@ -79,8 +88,3 @@ I'd file all of this under fascinating and move on, except I spend my working da
 Hold the analogy at the right level, though.  A context window isn't working memory, a searchable memory store isn't an unconscious, and a loop of the AI calling tools and reading back the results isn't a brain.  The resemblance is in the function, not the biology: any system holding more than it can act on at once needs a way to decide what to load in, what to share widely, and what to act on.  That resemblance isn't evidence of consciousness.  It's evidence that resource-limited intelligent systems keep converging on the same bottleneck, the same question of what earns a place in the workspace.  I don't think I'm building conscious systems.  I'm just less sure than I used to be that the difference lives where I always assumed it did.
 
 Which is exactly where this series goes next.  If being useful and being awake keep reaching for the same architecture, then the interesting question was never whether I accidentally built a mind.  It's narrower and harder.  What does any system, wet or silicon, have to select, broadcast, remember, and hand off before we'd trust it to act?
-
-
----
-
-*Consciousness as Architecture, a three-part series: The Access Layer (you're reading it), [Convergent Architecture](https://ryanmerlin.com/posts/convergent-architecture), and [Composed Correction](https://ryanmerlin.com/posts/composed-correction).*

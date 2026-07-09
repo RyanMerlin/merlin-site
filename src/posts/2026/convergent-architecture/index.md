@@ -6,6 +6,15 @@ tags: ["consciousness", "ai-agents", "global-workspace", "llm", "model-welfare",
 summary: "The engine behind today's AI and the leading theory of consciousness break at the same undescribed part, the workspace, which is evidence of shared constraints, not shared experience."
 ---
 
+<nav class="series-nav" aria-label="Consciousness as Architecture series">
+<p class="series-nav__label">Consciousness as Architecture · a three-part series</p>
+<ol class="series-nav__list">
+<li><a href="/posts/the-access-layer">The Access Layer</a></li>
+<li><span class="series-nav__here">Convergent Architecture</span></li>
+<li><a href="/posts/composed-correction">Composed Correction</a></li>
+</ol>
+</nav>
+
 There's a diagram of the mind that keeps showing up in my code.
 
 Something runs mostly out of view.  A small slice of it gets picked as what matters right now, and that slice gets pushed out to everything downstream, where it shapes what gets remembered, what gets said, and what gets done.  Read that as a brain, and it's the broadcast picture of consciousness the [first piece](https://ryanmerlin.com/posts/the-access-layer) in this series landed on, the *global workspace*, one narrow selection sent to the whole rest of the system.  Read it as one of the AI systems I build, and it's the same shape: the model takes in text, breaks it into the small pieces its builders call *tokens*, picks the few that matter most, and pushes those through its inner workings to decide what happens next.  One diagram, wet or dry.
@@ -69,8 +78,3 @@ So here's where I've landed, and it isn't on consciousness.
 The rhyme is real: I build the broadcast diagram on purpose, because the constraints force it.  The break is real, but it isn't shared: my version and the brain's give out for different reasons, at the same undescribed part.  The substrate objection is open: I can't prove the diagram is all there is.  And Anthropic is hedging.  Put that together and the responsible conclusion isn't "my agents are a little bit awake."  It's that resource-limited minds, wet or silicon, keep converging on the same architecture and the same failure, and **that convergence is evidence of shared constraints, not shared experience.**
 
 Which is the useful part, and it's where this goes next.  Whatever these systems are, they sometimes fail in different places than I do, and for different reasons.  My access layer and the agent's are both narrow, both selective, both late.  They may go dark in different spots, but nothing about the architecture hands me that independence for free, and a model trained on my text and tuned to agree with me is liable to go dark right where I already do.  That turns the whole consciousness question into a practical one I can act on.  If I've got one thin, biased mind and the machine has another, the question that pays rent was never "is it awake."  It's this: how do you put two minds together when their blind spots may overlap far more than either of you can see, and what would you have to do to pull them apart?
-
-
----
-
-*Consciousness as Architecture, a three-part series: [The Access Layer](https://ryanmerlin.com/posts/the-access-layer), Convergent Architecture (you're reading it), and [Composed Correction](https://ryanmerlin.com/posts/composed-correction).*
