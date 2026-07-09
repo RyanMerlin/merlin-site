@@ -28,28 +28,30 @@
    future light/dark toggle can switch to it by removing the .dark class. */
 :root {
   color-scheme: light;
-  --color-bg: #fafaf8;
-  --color-bg-subtle: #f0efe9;
-  --color-text: #1a1a1a;
-  --color-heading: #1a1a1a;
-  --color-text-muted: #6b6b6b;
-  --color-accent: #e75b2a;
-  --color-link: #2563eb;
-  --color-link-hover: #4d8ef7;
+  --color-bg: #faf7f0;            /* warm paper */
+  --color-bg-subtle: #f3efe6;
+  --color-text: #2a231c;
+  --color-heading: #1b1611;
+  --color-text-muted: #6c6252;
+  --color-accent: #e75b2a;         /* rust orange — emphasis + wordmark */
+  --color-link: #2f58aa;           /* softened cobalt */
+  --color-link-hover: #3a66b8;
   --color-bold: #b8451e;
-  --color-border: #e2e2dc;
+  --color-border: #e4ddcf;
+  --color-plum: #7c5a92;           /* cognition topic accent */
+  --color-rust: rgba(174, 74, 32, 0.15);  /* corner atmosphere wash */
   /* Top nav — macOS-style brushed silver, slightly raised */
   --nav-bg-top: #f9fafb;
   --nav-bg-bottom: #e8eaee;
   --nav-border: #d6d8dd;
   --nav-highlight: rgb(255 255 255 / 75%);
   --nav-shadow: rgb(15 23 42 / 6%);
-  --color-blockquote-bg: #f5f2ee;
+  --color-blockquote-bg: #f1ece1;
   --color-blockquote-border: #e75b2a;
-  --color-code-bg: #f0efe9;
+  --color-code-bg: #f1ece1;
   --color-code-border: var(--color-border);
-  --color-ref-bg: #f5f2ee;
-  --color-ref-border: #e2e2dc;
+  --color-ref-bg: #f1ece1;
+  --color-ref-border: #e1d9c9;
   /* Prism token colors — light */
   --token-comment: #6b7280;
   --token-keyword: #e75b2a;
@@ -57,7 +59,7 @@
   --token-number: #1d4ed8;
   --token-function: #9d174d;
   --token-punctuation: #6b7280;
-  --token-default: #1a1a1a;
+  --token-default: #2a231c;
 }
 
 /* ── Dark theme (DEFAULT) ──────────────────────────────────
@@ -69,27 +71,29 @@
    Applied via .dark on <html>; remove that class to fall back to light. */
 .dark {
   color-scheme: dark;
-  --color-bg: #1a1816;            /* warm charcoal — the page */
-  --color-bg-subtle: #211e1b;     /* elevated surface — nav bar, table head */
-  --color-text: #d9d4cc;          /* warm off-white body — bright, readable */
-  --color-heading: #e4e0d9;       /* warm near-white headings */
-  --color-text-muted: #8f8981;
+  --color-bg: #17130f;            /* deep warm charcoal — the page */
+  --color-bg-subtle: #1e1914;     /* elevated surface — nav bar, table head */
+  --color-text: #e8dfd1;          /* warm paper body — bright, readable */
+  --color-heading: #f6efe2;       /* warm near-white headings */
+  --color-text-muted: #a99c8a;
   --color-accent: #e75b2a;
-  --color-link: #4d8ef7;
-  --color-link-hover: #6ba3ff;
+  --color-link: #6a8fd4;          /* softened cobalt */
+  --color-link-hover: #89a7e3;
   --color-bold: #b8451e;
-  --color-border: #2c2825;        /* soft warm hairline */
+  --color-border: #332b22;        /* soft warm hairline */
+  --color-plum: #bb96cb;          /* cognition topic accent */
+  --color-rust: rgba(224, 110, 55, 0.22);  /* corner atmosphere wash */
   /* Top nav — subtle raised toolbar (dark tones) */
-  --nav-bg-top: #262320;
-  --nav-bg-bottom: #1c1a17;
-  --nav-border: #322e29;
+  --nav-bg-top: #241e18;
+  --nav-bg-bottom: #17130f;
+  --nav-border: #322c25;
   --nav-highlight: rgb(255 255 255 / 5%);
   --nav-shadow: rgb(0 0 0 / 28%);
-  --color-blockquote-bg: #1f1c19;
+  --color-blockquote-bg: #1f1913;
   --color-blockquote-border: #e75b2a;
-  --color-code-bg: #141210;       /* sunken, darker than the page */
-  --color-ref-bg: #141210;
-  --color-ref-border: #2c2825;
+  --color-code-bg: #131010;       /* sunken, darker than the page */
+  --color-ref-bg: #131010;
+  --color-ref-border: #2d2720;
   /* Prism token colors — dark */
   --token-comment: #8a847b;
   --token-keyword: #e87a50;
@@ -97,29 +101,29 @@
   --token-number: #93c5fd;
   --token-function: #f9a8d4;
   --token-punctuation: #9ca3af;
-  --token-default: #d9d4cc;
+  --token-default: #e8dfd1;
 }
 
 /* Override Tailwind Typography prose-invert defaults */
 .dark .prose {
-  --tw-prose-invert-body: #d9d4cc;
-  --tw-prose-invert-headings: #e4e0d9;
-  --tw-prose-invert-lead: #aaa49b;
-  --tw-prose-invert-links: #e8855a;
+  --tw-prose-invert-body: #e8dfd1;
+  --tw-prose-invert-headings: #f6efe2;
+  --tw-prose-invert-lead: #b9ac9a;
+  --tw-prose-invert-links: #6a8fd4;
   --tw-prose-invert-bold: #e8a87c;
-  --tw-prose-invert-counters: #938d84;
-  --tw-prose-invert-bullets: #8f8981;
-  --tw-prose-invert-hr: #2c2825;
-  --tw-prose-invert-quotes: #d9d4cc;
+  --tw-prose-invert-counters: #a99c8a;
+  --tw-prose-invert-bullets: #a99c8a;
+  --tw-prose-invert-hr: #332b22;
+  --tw-prose-invert-quotes: #e8dfd1;
   --tw-prose-invert-quote-borders: #e75b2a;
-  --tw-prose-invert-captions: #8f8981;
-  --tw-prose-invert-kbd: #e4e0d9;
+  --tw-prose-invert-captions: #a99c8a;
+  --tw-prose-invert-kbd: #f6efe2;
   --tw-prose-invert-kbd-shadows: rgb(255 255 255 / 5%);
-  --tw-prose-invert-code: #d9d4cc;
-  --tw-prose-invert-pre-code: #d9d4cc;
-  --tw-prose-invert-pre-bg: #141210;
-  --tw-prose-invert-th-borders: #2c2825;
-  --tw-prose-invert-td-borders: #242120;
+  --tw-prose-invert-code: #e8dfd1;
+  --tw-prose-invert-pre-code: #e8dfd1;
+  --tw-prose-invert-pre-bg: #131010;
+  --tw-prose-invert-th-borders: #332b22;
+  --tw-prose-invert-td-borders: #2a2620;
 }
 
 html {
@@ -506,4 +510,157 @@ pre[class*='language-'] {
 .prose img:hover {
   opacity: 0.92;
   transition: opacity 0.15s ease;
+}
+
+/* ─── Rust corner wash — warm atmosphere, top-left, site-wide ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(120% 92% at -5% -9%, var(--color-rust), transparent 62%),
+    radial-gradient(56% 44% at 0% -3%, var(--color-rust), transparent 60%);
+}
+/* Keep real content above the wash */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Reading layout: article + sticky TOC rail (posts) ─────────
+   Below 1180px the rail can't fit beside a 48rem column, so the
+   layout collapses to a single centered column and the TOC moves
+   into a "On this page" disclosure at the top of the article. */
+.reading {
+  display: block;
+}
+.reading > .reading-col {
+  min-width: 0;
+  max-width: 48rem;
+  margin-inline: auto;
+  width: 100%;
+}
+.reading-toc {
+  display: none;
+}
+@media (min-width: 1180px) {
+  .reading {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 48rem) 1fr;
+    column-gap: 2.5rem;
+  }
+  .reading > .reading-col {
+    grid-column: 2;
+    margin-inline: 0;
+  }
+  .reading-toc {
+    grid-column: 3;
+    display: block;
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+    justify-self: start;
+    width: 13.5rem;
+  }
+}
+.reading-toc .toc-cap {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--color-text-muted);
+  margin: 0 0 0.85rem;
+  padding-left: 0.85rem;
+}
+.reading-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid var(--color-border);
+}
+.reading-toc a {
+  display: block;
+  padding: 0.36rem 0 0.36rem 0.85rem;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+}
+.reading-toc a.depth-3 {
+  padding-left: 1.65rem;
+  font-size: 0.75rem;
+}
+.reading-toc a:hover {
+  color: var(--color-heading);
+}
+.reading-toc a.active {
+  color: var(--color-link);
+  border-left-color: var(--color-link);
+  font-weight: 500;
+}
+
+/* Offset anchored scroll so headings clear the sticky top */
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Mobile / narrow "On this page" disclosure */
+.toc-mobile {
+  display: block;
+  margin: 1.5rem 0 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg-subtle);
+  overflow: hidden;
+}
+@media (min-width: 1180px) {
+  .toc-mobile {
+    display: none;
+  }
+}
+.toc-mobile summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.7rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.toc-mobile summary::-webkit-details-marker {
+  display: none;
+}
+.toc-mobile summary::after {
+  content: '+';
+  color: var(--color-text-muted);
+}
+.toc-mobile[open] summary::after {
+  content: '–';
+}
+.toc-mobile ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.2rem 1rem 0.9rem 1.5rem;
+  font-size: 0.85rem;
+}
+.toc-mobile li {
+  margin: 0.35rem 0;
+}
+.toc-mobile a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.toc-mobile a.depth-3 {
+  padding-left: 0.9rem;
+  font-size: 0.8rem;
 }

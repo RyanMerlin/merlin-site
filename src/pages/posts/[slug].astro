@@ -12,7 +12,8 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 const allPosts = await getPosts();
 const meta = allPosts.find((p) => p.slug === entry.id)!;
@@ -50,7 +51,8 @@ const jsonLd = JSON.stringify({
 >
 	<script type="application/ld+json" slot="head" set:html={jsonLd} />
 
-	<main class="mx-auto max-w-3xl px-6 py-16">
+	<main class="reading px-6 py-16">
+		<div class="reading-col">
 		<nav class="mb-12">
 			<a href="/" class="text-sm transition-colors" style="color: var(--color-text-muted);">← writing</a>
 		</nav>
@@ -73,6 +75,23 @@ const jsonLd = JSON.stringify({
 				}
 			</div>
 		</header>
+
+		{
+			toc.length > 0 && (
+				<details class="toc-mobile">
+					<summary>On this page</summary>
+					<ul>
+						{toc.map((h) => (
+							<li>
+								<a href={`#${h.slug}`} class={h.depth === 3 ? 'depth-3' : undefined}>
+									{h.text}
+								</a>
+							</li>
+						))}
+					</ul>
+				</details>
+			)
+		}
 
 		<article
 			class="prose prose-zinc dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight max-w-none prose-lg prose-p:leading-relaxed"
@@ -101,6 +120,48 @@ const jsonLd = JSON.stringify({
 				</div>
 			)
 		}
+		</div>
+
+		{
+			toc.length > 0 && (
+				<aside class="reading-toc" aria-label="Table of contents">
+					<p class="toc-cap">On this page</p>
+					<ul>
+						{toc.map((h) => (
+							<li>
+								<a href={`#${h.slug}`} class={h.depth === 3 ? 'depth-3' : undefined}>
+									{h.text}
+								</a>
+							</li>
+						))}
+					</ul>
+				</aside>
+			)
+		}
 	</main>
 	<ImageZoom />
 </Base>
+
+<script>
+	const links = [...document.querySelectorAll('.reading-toc a, .toc-mobile a')];
+	const byId: Record<string, Element[]> = {};
+	links.forEach((a) => {
+		const id = (a.getAttribute('href') || '').slice(1);
+		(byId[id] = byId[id] || []).push(a);
+	});
+	const heads = [...document.querySelectorAll('.prose h2[id], .prose h3[id]')];
+	const setActive = (id: string) => {
+		links.forEach((a) => a.classList.remove('active'));
+		(byId[id] || []).forEach((a) => a.classList.add('active'));
+	};
+	if (heads.length) setActive(heads[0].id);
+	const obs = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((e) => {
+				if (e.isIntersecting) setActive(e.target.id);
+			});
+		},
+		{ rootMargin: '0px 0px -72% 0px', threshold: 0 }
+	);
+	heads.forEach((h) => obs.observe(h));
+</script>
