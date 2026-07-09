@@ -150,8 +150,8 @@ export default function EdgePlaneSchematic() {
 
 const CSS = `
 .ep {
-	--ep-blue: #4d8ef7;
-	--ep-orange: #e75b2a;
+	--ep-blue: var(--color-link);
+	--ep-orange: var(--color-accent);
 	--ep-edge: color-mix(in srgb, var(--color-text-muted) 55%, transparent);
 	--ep-ring: var(--color-text);
 	margin-top: 1.25rem;

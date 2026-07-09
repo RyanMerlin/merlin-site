@@ -59,7 +59,7 @@ export const GET: APIRoute = async ({ props }) => {
 					justifyContent: 'space-between',
 					width: '100%',
 					height: '100%',
-					background: 'linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%)',
+					background: 'linear-gradient(145deg, #17130f 0%, #0d0a07 100%)',
 					padding: '60px 64px',
 					fontFamily: 'Geist'
 				},
@@ -75,7 +75,7 @@ export const GET: APIRoute = async ({ props }) => {
 										style: {
 											fontSize: '44px',
 											fontWeight: 600,
-											color: '#e8e4df',
+											color: '#f6efe2',
 											lineHeight: 1.2,
 											letterSpacing: '-0.02em'
 										},
@@ -89,7 +89,7 @@ export const GET: APIRoute = async ({ props }) => {
 												props: {
 													style: {
 														fontSize: '22px',
-														color: '#9a9590',
+														color: '#a99c8a',
 														lineHeight: 1.4,
 														maxHeight: '90px',
 														overflow: 'hidden'
@@ -118,7 +118,7 @@ export const GET: APIRoute = async ({ props }) => {
 											display: 'flex',
 											gap: '16px',
 											fontSize: '18px',
-											color: '#6b6560'
+											color: '#7c7160'
 										},
 										children: [
 											{ type: 'span', props: { children: date } },
@@ -133,7 +133,7 @@ export const GET: APIRoute = async ({ props }) => {
 										style: {
 											fontSize: '20px',
 											fontWeight: 500,
-											color: '#7c9cf8'
+											color: '#e75b2a'
 										},
 										children: SITE_AUTHOR
 									}

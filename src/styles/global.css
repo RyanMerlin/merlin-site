@@ -12,15 +12,13 @@
 }
 
 /* ─────────────────────────────────────────────────────────
-   Color palette
-   Anchor: #e75b2a (rust orange)
-   Complement: #4a9eda (steel blue — links, interactive)
-   Warm off-white body: #c2bfba
-   Headings: #dedad5 (warm near-white, not stark)
-   Bold emphasis: #e75b2a (rust orange — matches accent/highlighting)
-   Links: #4d8ef7 (cobalt blue — cool contrast, clearly interactive)
-   Blockquote bg: slight warm tint of bg
-   References zone: distinct sunken zone
+   Color palette (dark leads; light is the toggle alternate)
+   Ground: warm charcoal #17130f (dark) / warm paper #faf7f0 (light)
+   Body ink: #e8dfd1 (dark) / #2a231c (light)
+   Accent / bold / wordmark: rust-copper #e75b2a
+   Links / interactive: softened cobalt #6a8fd4 (dark) / #2f58aa (light)
+   Topic accents: cobalt (AI) / plum (cognition) / gold (economics), theme-aware
+   Atmosphere: rust corner wash (--color-rust); references zone: sunken
    ───────────────────────────────────────────────────────── */
 
 /* Light theme — dormant by default (no .dark on <html>); kept intact so a
@@ -43,6 +41,7 @@
   --topic-ai: #2f58aa;
   --topic-cog: #6d4a82;
   --topic-econ: #8a5e12;
+  --color-italic: #7a5f28;         /* italic terms/names — AA-legible on paper */
   /* Top nav — macOS-style brushed silver, slightly raised */
   --nav-bg-top: #f9fafb;
   --nav-bg-bottom: #e8eaee;
@@ -68,8 +67,6 @@
 /* ── Dark theme (DEFAULT) ──────────────────────────────────
    Warm-coherent: every neutral lives on one warm hue (~28°) so the
    page, nav, borders, and body text harmonize with the rust accent.
-   (The old dark bg was cool blue-gray #1e2129, which clashed with the
-   warm nav/text/borders — that hue conflict is what read as "not smooth".)
    Surfaces step: code/refs (sunken) < page < nav/elevated.
    Applied via .dark on <html>; remove that class to fall back to light. */
 .dark {
@@ -90,6 +87,7 @@
   --topic-ai: #6a8fd4;
   --topic-cog: #bb96cb;
   --topic-econ: #d4a24e;
+  --color-italic: #d4b06a;         /* warm sand — reads bright on charcoal */
   /* Top nav — subtle raised toolbar (dark tones) */
   --nav-bg-top: #241e18;
   --nav-bg-bottom: #17130f;
@@ -184,7 +182,7 @@ body {
 
 /* Italics — warm sand for terms and names */
 .prose em {
-  color: #d4b06a;
+  color: var(--color-italic);
   font-style: italic;
 }
 
