@@ -531,8 +531,8 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(156% 120% at -5% -9%, var(--color-rust), transparent 62%),
-    radial-gradient(73% 57% at 0% -3%, var(--color-rust), transparent 60%);
+    radial-gradient(170% 131% at -5% -9%, var(--color-rust), transparent 62%),
+    radial-gradient(80% 62% at 0% -3%, var(--color-rust), transparent 60%);
 }
 /* Keep real content above the wash */
 body > * {
