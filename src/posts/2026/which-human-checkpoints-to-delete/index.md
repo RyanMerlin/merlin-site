@@ -16,7 +16,7 @@ Most of the conversation about working with agents sorts everyone onto one slide
 
 **The variable that actually moves is not how much you control.  It is where your control lives.** There are three places it can live.  Most operators recognize the climb through them, even though a mature workflow still mixes all three depending on what is at stake.
 
-![Which Human Checkpoints to Delete — permission everywhere on the left, load-bearing gates on the right](./delete-human-checkpoints.png)
+![Which Human Checkpoints to Delete: permission everywhere on the left, load-bearing gates on the right](./delete-human-checkpoints.png)
 
 *On the keyboard.* You are the runtime.  The agent proposes, you approve, line by line, because nothing else can catch a mistake before it lands.  This is the babysitter, and it is most people, including past-me.  It feels responsible and it does not scale past one agent and a short attention span.  Every gate here is manual, which means every gate competes for the same scarce resource: your attention in the moment.
 
@@ -28,7 +28,7 @@ This is the distinction that makes the Anthropic numbers stop looking paradoxica
 
 None of this makes the agent safe by magic.  It makes the safety claim inspectable.  A weak eval is a permission slip with nicer formatting, and the point was never to replace judgment with tests.  It is to reserve judgment for the failures the tests cannot see.
 
-I built this out in [*EdgePlane*](https://github.com/RyanMerlin/edgeplane), the agent orchestration layer I am shipping.  Every merge runs through nextest, Clippy with `-D warnings`, and a cargo audit pass — the agent cannot talk its way around any of them.  In this workflow, the remaining hard gate is the merge to main that triggers the container build and the production deploy.  Everything up to that boundary runs unattended, and in practice it is the only gate I have found to be load-bearing so far.
+I built this out in [*EdgePlane*](https://github.com/RyanMerlin/edgeplane), the agent orchestration layer I am shipping.  Every merge runs through nextest, Clippy with `-D warnings`, and a cargo audit pass, and the agent cannot talk its way around any of them.  In this workflow, the remaining hard gate is the merge to main that triggers the container build and the production deploy.  Everything up to that boundary runs unattended, and in practice it is the only gate I have found to be load-bearing so far.
 
 The move from the keyboard to the harness is not adding oversight, and it is not removing it.  It is relocating it, then deleting what relocation made redundant.  The immature workflow approves every file edit and then lets the architecture run wild.  The mature one auto-approves routine edits because tests catch the regressions you have taught them to catch, then gates the architecture because nothing else will.  Same operator, more trust and more intervention, aimed at different layers.
 

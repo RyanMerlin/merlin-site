@@ -22,7 +22,7 @@ const {
 	publishedTime = ''
 } = Astro.props;
 
-const fullTitle = title ? `${title} — ${SITE_TITLE}` : SITE_TITLE;
+const fullTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const url = `${SITE_URL}${path}`;
 ---
 
