@@ -481,9 +481,15 @@ pre[class*='language-'] {
   color: var(--badge-color);
 }
 
-/* ─── Top nav — macOS-style silver/raised bar ───────────── */
+/* ─── Top nav — macOS-style raised bar with frosted glass ─── */
 .site-nav {
-  background: linear-gradient(to bottom, var(--nav-bg-top), var(--nav-bg-bottom));
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--nav-bg-top) 68%, transparent),
+    color-mix(in srgb, var(--nav-bg-bottom) 68%, transparent)
+  );
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
   border-bottom: 1px solid var(--nav-border);
   box-shadow:
     inset 0 1px 0 var(--nav-highlight),
