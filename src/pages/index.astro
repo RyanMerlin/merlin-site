@@ -28,15 +28,8 @@ const visibleTopics = topics.filter((t) => postsByTopic(posts, t.slug).length > 
 	description="Ryan Merlin on production AI agent systems: control planes, persistent sessions, and the infrastructure decisions practitioners actually face."
 >
 	<main class="mx-auto max-w-3xl px-6 py-16">
-		<header class="mb-16">
+		<header class="mb-12">
 			<h1 class="text-3xl font-semibold tracking-tight" style="color: var(--color-text);">Ryan Merlin</h1>
-			<p class="mt-3 text-base leading-relaxed" style="color: var(--color-text-muted);">
-				Since 2010, deploying data systems, ML, and analytics inside enterprises across finance,
-				telecom, marketing, and credit. PhD trained in economics and organizational psychology.<br />
-				Now focused on what actually happens when AI hits production: the organizational adaptation,
-				the verification gap, and the infrastructure that determines whether deployments compound or
-				decay.
-			</p>
 		</header>
 
 		<TopicFilter client:load items={items} topics={visibleTopics} />
