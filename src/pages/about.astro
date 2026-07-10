@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 
 <Base
 	title="About"
-	description="Forward Deployed Engineering Leader and applied AI researcher focused on production agent systems and enterprise AI adoption. Based in Boulder, CO."
+	description="Forward deployed engineer building production enterprise AI and agent systems for Fortune 100 companies. Based in Boulder, CO."
 	path="/about"
 >
 	<main class="mx-auto max-w-3xl px-6 py-16">
@@ -14,71 +14,67 @@ import Base from '../layouts/Base.astro';
 
 		<div class="space-y-6 text-base leading-relaxed" style="color: var(--color-text);">
 			<p>
-				I'm Ryan. Since 2010 I've deployed data systems, machine learning, and analytics
-				inside large enterprises. The work has spanned finance, telecom, media, marketing, HR, and
-				credit at organizations including Comcast, TransUnion, DIRECTV, and AT&T. Different
-				industries, different teams, same fundamental challenge: making complex technology produce
-				actual business results in organizations with varying pain points and aspirations.
+				I'm Ryan. I build production enterprise AI systems for Fortune 100 companies. The model is
+				rarely the hard part. Production turns on two things the model can't fix: whether people can
+				trust the output, and whether the organization can climb the learning curve to use it.
 			</p>
 
 			<p>
-				That background shapes everything I do now. I embed directly with enterprise clients to
-				drive AI adoption, moving organizations from isolated experiments to production workflows
-				that compound. The deliverables are working systems: agent architectures, integration
-				patterns, automation pipelines, and deployment playbooks. The job is part engineer, part
-				translator, part operator. The hardest part is rarely the model. It is usually the
-				organizational adaptation around the model.
-			</p>
-
-			<p>
-				The domains I've worked across, analytics, business process automation, financial modeling,
-				customer operations, and engineering, give me a lens that most pure-infrastructure people
-				lack. AI adoption is not just a software development story. The same verification gap, the
-				same organizational learning curve, and the same tension between output volume and quality
-				show up everywhere AI enters production work. Code is the most instrumented version. It is
-				not the only one.
-			</p>
-
-			<p>
-				My independent research focus is <strong>production agentic systems</strong>. I'm developing
-				<strong><a href="https://github.com/RyanMerlin/edgeplane">EdgePlane</a></strong>, an
-				open-source control plane for AI agent fleets, built around the concerns that matter in
-				production: persistent identity, lifecycle ownership, inter-agent coordination, and
-				operational observability. Documentation at
+				Once those systems are live, another problem shows up that the model can't fix either:
+				seeing and controlling what the agents actually do. That is what <strong><a href="https://github.com/RyanMerlin/edgeplane">EdgePlane</a></strong>
+				is, the open-source control plane I'm developing for AI agent fleets. Run more than one agent
+				in production and the questions stop being about prompts and start being about operations:
+				persistent identity, lifecycle ownership, inter-agent coordination, and the observability to
+				reconstruct what happened when something breaks. Documentation at
 				<a
 					href="https://edgeplane.ai"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="underline decoration-1 underline-offset-2 transition-colors"
 					style="color: var(--color-accent);">edgeplane.ai</a
-				>. I also build and operate <strong>Aria</strong>, a personal AI system that handles
-				research, publishing, and analysis workflows. It is a living testbed for the agent patterns
-				I write about.
+				>.
+			</p>
+
+			<p>
+				I work as a forward deployed engineer across industries such as finance, marketing, and
+				supply-chain operations. Most teams still treat getting AI into production as a model
+				problem. It is an operating-model problem, and that is the layer I work in.
+			</p>
+
+			<p>
+				I also build and operate <strong>Aria</strong>, my personal AI agent fleet. I run it the
+				way a surgeon runs an operating room: I make the decisions, the agents handle prep, checks,
+				and the work I should not be interrupted to do. They all work from the same toolchain, a CLI
+				that acts as my fleet's agent substrate, and the logs record who did what. Aria is where I
+				test some of the patterns I write about.
 			</p>
 
 			<p>
 				The same instinct keeps showing up in adjacent work. <strong><a href="https://github.com/RyanMerlin/ayx-rs">ayx-rs</a></strong>
 				is an agentic CLI substrate that brings agent-style orchestration to a heavyweight enterprise
-				data platform: reusable operator actions, explicit state, and a lot less manual clicking.
+				data platform: reusable operator actions, explicit state, and repeatable, scriptable runs.
 				<strong><a href="https://github.com/RyanMerlin/curio">CURIO</a></strong> is git-native knowledge
-				curation for the problem every growing team pretends it does not have, knowledge that scatters
-				faster than anyone can file it, kept in plain files you actually own. Different surfaces, same
-				move as EdgePlane: give the work real structure instead of trusting it to memory and good
-				intentions.
+				curation for material that scatters across Slack, docs, and files. It keeps that material in
+				plain files you own. Different surfaces, same move as EdgePlane: give the work real structure
+				instead of trusting it to memory and good intentions.
 			</p>
 
 			<p>
-				PhD trained in Economics and Organizational Psychology from Claremont Graduate University,
-				and a BS in Business Management from CU Boulder. The social science background is not
-				decorative. It shapes how I think about AI adoption, persuasion, decision-making under
-				uncertainty, and why the hard problems in enterprise AI are almost always about people and
-				process, not models.
+				I'm PhD trained in Economics and Organizational Psychology from Claremont Graduate
+				University, with a BS in Business Management from CU Boulder. Whether an organization
+				actually adopts an AI system comes down to fundamental human decisions and behaviors, such
+				as trust, incentives, and how people act under uncertainty, not model quality. That is the
+				part most teams underestimate, and the part I was trained to read.
 			</p>
 
 			<p>
-				The writing here is for practitioners doing the actual work. Not tutorials. Field reports,
-				research synthesis, and honest assessments of what works, what does not, and why the gap
-				between AI demos and production systems persists. Follow along on
+				I write here for practitioners doing the actual work. Not tutorials. Field reports, research
+				synthesis, and honest assessments of what works, what does not, and why the gap between AI
+				demos and production systems persists. Recent pieces:
+				<a href="/posts/own-the-operation" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);"><em>Own the Operation</em></a>,
+				<a href="/posts/ai-productivity-dip-longer-deeper-diverging" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);"><em>The AI Productivity Dip Is Longer, Deeper, and Diverging</em></a>,
+				and <a href="/posts/why-agents-need-a-control-plane" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);"><em>Why Agents Need a Control Plane, Not a Pipeline</em></a>. New
+				work goes up on
 				<a
 					href="https://www.linkedin.com/in/ryanmerlin/recent-activity/all/"
 					target="_blank"
@@ -89,11 +85,9 @@ import Base from '../layouts/Base.astro';
 			</p>
 
 			<p>
-				Two ways to work together. If you are deploying enterprise AI and want someone who has actually
-				shipped it in the room, that is <a href="/connect" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">embedded work</a>.
-				If you are running agent fleets and want the infrastructure underneath them, that is
-				<a href="https://edgeplane.ai" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">EdgePlane</a>.
-				Either way, the demos are over.
+				I build in the open with <strong><a href="https://edgeplane.ai" target="_blank" rel="noopener noreferrer" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">EdgePlane</a></strong>.
+				If you're putting AI or agents into production and want to talk, that's what
+				<a href="/connect" class="underline decoration-1 underline-offset-2" style="color: var(--color-accent);">connect</a> is for.
 			</p>
 		</div>
 	</main>
