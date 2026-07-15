@@ -518,6 +518,85 @@ pre[class*='language-'] {
   display: none;
 }
 
+/* ─── Mobile hamburger + dropdown panel (Nav.astro) ──────────── */
+.nav-hamburger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+.nav-hamburger:hover {
+  color: var(--color-text);
+}
+/* Closed: show the bars. Open: show the X. Mirrors the sun/moon swap. */
+.nav-hamburger .icon-close {
+  display: none;
+}
+.nav-hamburger.is-open .icon-menu {
+  display: none;
+}
+.nav-hamburger.is-open .icon-close {
+  display: block;
+}
+
+.nav-mobile-panel {
+  display: none;
+  border-top: 1px solid var(--nav-border);
+  padding: 0.5rem 1.5rem 1rem;
+}
+.nav-mobile-panel.is-open {
+  display: block;
+  animation: nav-menu-in 0.18s ease-out;
+}
+/* Belt-and-suspenders: never leak onto desktop even if left open. */
+@media (min-width: 640px) {
+  .nav-mobile-panel {
+    display: none !important;
+  }
+}
+@keyframes nav-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nav-mobile-links {
+  display: flex;
+  flex-direction: column;
+}
+.nav-mobile-link {
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  transition: color 0.15s ease;
+}
+.nav-mobile-link:not(:last-child) {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+}
+.nav-mobile-social {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* JS-off fallback link row (only rendered inside <noscript>). */
+.nav-noscript {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--nav-border);
+  padding: 0.5rem 1.5rem 1rem;
+}
+@media (min-width: 640px) {
+  .nav-noscript {
+    display: none !important;
+  }
+}
+
 /* ─── Clickable content images (ImageZoom client script) ─────── */
 .prose img:hover {
   opacity: 0.92;
