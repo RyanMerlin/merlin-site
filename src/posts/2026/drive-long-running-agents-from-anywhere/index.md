@@ -4,6 +4,7 @@ created: "2026-06-08"
 status: "published"
 tags: ["zellij","claude-code","agents","fleet","how-to"]
 summary: "A five-layer setup for running long-lived agent sessions you can reach from your phone: persistent Zellij sessions under systemd, a self-healing Claude Code launcher, Remote Control, zellij web, and a tunnel with the WebSocket gotcha that bites everyone."
+description: "A five-layer setup for long-lived agent sessions you can reach from your phone: persistent Zellij under systemd, a self-healing launcher, and a tunnel gotcha."
 ---
 
 This morning I started a refactor on one of my agents, left the house, and approved the result from my phone while walking the dog.  The work ran on the machine at home the whole time.  What I reached from the sidewalk was not a fresh chat rebuilding context from scratch, but the same live session, still going, seen through a different window.

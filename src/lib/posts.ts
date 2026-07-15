@@ -1,4 +1,19 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { SITE_DESCRIPTION } from './config';
+
+// Resolve the SEO/social meta description for a post. Prefer an explicit,
+// hand-tuned `description` (kept <=160 chars). Fall back to the `summary` (which
+// also serves as the on-page listing excerpt), truncated at a word boundary so
+// Bing never sees an over-length tag. Never emits an empty string.
+export function metaDescription(data: { description?: string; summary?: string }): string {
+	if (data.description) return data.description;
+	const s = data.summary;
+	if (!s) return SITE_DESCRIPTION;
+	if (s.length <= 160) return s;
+	const cut = s.slice(0, 157);
+	const lastSpace = cut.lastIndexOf(' ');
+	return (lastSpace > 100 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
+}
 
 export type PostMeta = {
 	slug: string;
@@ -13,13 +28,14 @@ export type Topic = {
 	slug: string;
 	label: string;
 	color: string;
+	description: string;
 	matchTags: string[];
 };
 
 export const topics: Topic[] = [
-	{ slug: 'ai', label: 'AI & Agents', color: 'var(--topic-ai)', matchTags: ['ai', 'agents', 'ai-agents', 'llm', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
-	{ slug: 'cognitive-science', label: 'Cognitive Science', color: 'var(--topic-cog)', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'cognitive-science', 'consciousness', 'access-consciousness', 'global-workspace', 'working-memory', 'free-will', 'predictive-processing', 'behavioral-economics'] },
-	{ slug: 'economics', label: 'Economics', color: 'var(--topic-econ)', matchTags: ['economics', 'markets', 'investing', 'finance'] }
+	{ slug: 'ai', label: 'AI & Agents', color: 'var(--topic-ai)', description: 'Building production AI agents and the infrastructure around them: control planes, agent protocols, secrets, and the orchestration the model never solves.', matchTags: ['ai', 'agents', 'ai-agents', 'llm', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
+	{ slug: 'cognitive-science', label: 'Cognitive Science', color: 'var(--topic-cog)', description: 'Where cognitive science meets AI: consciousness, working memory, and decision-making, and what human minds reveal about building better artificial agents.', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'cognitive-science', 'consciousness', 'access-consciousness', 'global-workspace', 'working-memory', 'free-will', 'predictive-processing', 'behavioral-economics'] },
+	{ slug: 'economics', label: 'Economics', color: 'var(--topic-econ)', description: 'Notes on economics, markets, and investing: incentives, coordination, and how value actually moves through systems.', matchTags: ['economics', 'markets', 'investing', 'finance'] }
 ];
 
 function countWords(body: string): number {

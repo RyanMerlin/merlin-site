@@ -14,7 +14,10 @@ const posts = defineCollection({
 		created: z.string(),
 		status: z.string().default('published'),
 		tags: z.array(z.string()).default([]),
-		summary: z.string().optional()
+		summary: z.string().optional(),
+		// SEO/social meta description (<=160 chars). Falls back to a truncated
+		// `summary` when omitted — see metaDescription() in lib/posts.ts.
+		description: z.string().optional()
 	})
 });
 
@@ -31,7 +34,10 @@ const drafts = defineCollection({
 		created: z.string(),
 		status: z.string().default('draft'),
 		tags: z.array(z.string()).default([]),
-		summary: z.string().optional()
+		summary: z.string().optional(),
+		// SEO/social meta description (<=160 chars). Falls back to a truncated
+		// `summary` when omitted — see metaDescription() in lib/posts.ts.
+		description: z.string().optional()
 	})
 });
 

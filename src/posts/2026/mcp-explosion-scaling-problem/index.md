@@ -4,6 +4,7 @@ created: "2026-05-23"
 status: "published"
 tags: ["mcp","agents","architecture","infrastructure","edgeplane"]
 summary: "MCP won. In roughly a year, Model Context Protocol went from a clever interoperability idea to the default tool-connectivity layer for AI agents. That makes this a strange time to argue that many agent systems should use MCP less."
+description: "MCP became the default tool-connectivity layer for AI agents in a year. Which makes it a strange time to argue many agent systems should use MCP less."
 ---
 
 MCP won.

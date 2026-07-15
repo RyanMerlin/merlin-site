@@ -4,6 +4,7 @@ created: "2026-05-05"
 status: "published"
 tags: ["agents","architecture","edgeplane","rust"]
 summary: "Every agent platform shipping today treats a model call as a request: short-lived, stateless, RPC.  Real agents have memory, in-flight tool calls, and partial plans.  The request model makes you rebuild context on every call.  Sessions are the unit."
+description: "Every agent platform treats a model call as a stateless request. Real agents have memory, in-flight tools, and partial plans. The session is the unit of work."
 ---
 
 Every agent platform shipping today treats a model call as a request.  You send a prompt, you get a response, the interaction is over.  The platform might maintain conversation history across calls, but the agent itself is stateless; it doesn't exist between calls.  There's no process running.  There's no session.  There's a function that gets invoked.

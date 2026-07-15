@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PostCta from '../../components/PostCta.astro';
 import ImageZoom from '../../components/ImageZoom.astro';
-import { getPosts, relatedPosts, readingTime } from '../../lib/posts';
+import { getPosts, relatedPosts, readingTime, metaDescription } from '../../lib/posts';
 import { SITE_URL, SITE_AUTHOR } from '../../lib/config';
 
 export async function getStaticPaths() {
@@ -25,12 +25,13 @@ function formatDate(iso: string): string {
 }
 
 const ogImage = `${SITE_URL}/og/${meta.slug}.png`;
+const description = metaDescription(entry.data);
 
 const jsonLd = JSON.stringify({
 	'@context': 'https://schema.org',
 	'@type': 'Article',
 	headline: meta.title,
-	description: meta.summary ?? '',
+	description,
 	url: `${SITE_URL}/posts/${meta.slug}`,
 	datePublished: meta.created,
 	dateModified: meta.created,
@@ -43,7 +44,7 @@ const jsonLd = JSON.stringify({
 
 <Base
 	title={meta.title}
-	description={meta.summary ?? ''}
+	description={description}
 	path={`/posts/${meta.slug}`}
 	type="article"
 	publishedTime={meta.created}

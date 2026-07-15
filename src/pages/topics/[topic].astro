@@ -16,7 +16,7 @@ function formatDate(iso: string): string {
 }
 ---
 
-<Base path={`/topics/${topic.slug}`}>
+<Base title={topic.label} description={topic.description} path={`/topics/${topic.slug}`}>
 	<main class="mx-auto max-w-3xl px-6 py-16">
 		<header class="mb-12">
 			<a href="/" class="text-xs mb-4 block" style="color: var(--color-text-muted);">← all writing</a>

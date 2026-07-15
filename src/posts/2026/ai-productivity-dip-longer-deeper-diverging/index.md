@@ -4,6 +4,7 @@ created: "2026-05-25"
 status: "published"
 tags: ["ai","productivity","dora","enterprise","devops","engineering-leadership"]
 summary: "DORA says the AI productivity dip lasts three months. Telemetry says twelve. That one input swings ROI by $9.9M for a 500-person org. And the curve does not resolve the same way for everyone."
+description: "DORA says the AI productivity dip lasts three months. Telemetry says twelve. That one input swings ROI by $9.9M for a 500-person org, and diverges by team."
 ---
 
 One variable in DORA's AI ROI calculator changes the story from a first-year win to a first-year loss.

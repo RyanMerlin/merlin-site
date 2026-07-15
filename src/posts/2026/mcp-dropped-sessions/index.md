@@ -4,6 +4,7 @@ created: "2026-06-22"
 status: "published"
 tags: ["mcp","agents","architecture","infrastructure","sessions","edgeplane"]
 summary: "MCP's 2026-07-28 release candidate removes sessions from the protocol. That reads like an argument against persistent agents. It's the opposite: the session that matters was never the protocol's job to hold."
+description: "MCP's July 2026 release candidate removes sessions from the protocol. That reads as an argument against persistent agents. It's the opposite."
 ---
 
 The largest revision of *Model Context Protocol* since launch is now in release-candidate form, and the change everyone is reacting to is a subtraction.  The [2026-07-28 release candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/) removes sessions.  Gone is the `initialize` handshake.  Gone is the `Mcp-Session-Id` header.  Protocol version, client info, and capabilities now travel inline on every request, which means any server instance can answer any call behind a plain round-robin load balancer.  SDK support is already appearing, including on the [Python SDK's v2 alpha line](https://github.com/modelcontextprotocol/python-sdk/releases), while the stable v1 series remains the production recommendation, so this is the direction of travel rather than a design sketch.

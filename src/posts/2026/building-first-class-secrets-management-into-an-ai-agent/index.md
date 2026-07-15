@@ -4,6 +4,7 @@ created: "2026-05-22"
 status: "published"
 tags: ["infisical","secrets","rust","agents","security"]
 summary: "The .env file is a collaboration tool for human engineers. It was never meant to be a security primitive. When you run an always-on agent fleet, that distinction stops being theoretical."
+description: "The .env file is a collaboration tool for humans, never a security primitive. Run an always-on agent fleet and that distinction stops being theoretical."
 ---
 
 The `.env` file is a collaboration tool for human engineers.  It was never meant to be a security primitive.  When you run an always-on agent fleet, that distinction stops being theoretical.

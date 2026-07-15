@@ -4,6 +4,7 @@ created: "2026-06-02"
 status: "published"
 tags: ["agents","cli","mcp","tooling","infrastructure","operations","action-layer"]
 summary: "MCP is how agent capabilities travel. It should not be where your operating knowledge lives. For personal agents, the durable leverage is owning the action layer: an operations layer of CLI verbs with stable contracts, progressive discovery, honest errors, and one interface every caller can reuse."
+description: "MCP is how agent capabilities travel, not where operating knowledge should live. Durable leverage is owning the action layer: CLI verbs with stable contracts."
 ---
 
 MCP connects agents to tools.  Workflows coordinate tools.  Skills teach models how to use tools.

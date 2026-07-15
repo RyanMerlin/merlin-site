@@ -4,6 +4,7 @@ created: "2026-07-05"
 status: "published"
 tags: ["consciousness", "cognitive-science", "working-memory", "global-workspace", "access-consciousness", "ai-agents"]
 summary: "Working memory suggests the conscious self isn't the whole mind but a small, constrained access layer: the narrow beam where a few selected states become reportable and usable."
+description: "Working memory suggests the conscious self isn't the whole mind but a small access layer: the narrow beam where a few states become reportable and usable."
 ---
 
 <nav class="series-nav" aria-label="Consciousness as Architecture series">

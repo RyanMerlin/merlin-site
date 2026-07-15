@@ -4,6 +4,7 @@ created: "2026-07-05"
 status: "published"
 tags: ["ai-agents", "human-ai", "error-correction", "cognitive-science", "consciousness"]
 summary: "If both human and machine are thin, biased minds whose errors correlate by construction, the value was never oversight but composition: arranging correctors that go dark in different places so the same mistake isn't broadcast twice."
+description: "If human and machine are both thin, biased minds whose errors correlate, value was never oversight but composition: correctors that fail in different places."
 ---
 
 <nav class="series-nav" aria-label="Consciousness as Architecture series">

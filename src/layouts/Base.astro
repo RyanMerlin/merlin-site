@@ -22,7 +22,10 @@ const {
 	publishedTime = ''
 } = Astro.props;
 
-const fullTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
+// Brand the title with the site name, but drop the " · Ryan Merlin" suffix when it
+// would push the tag past Bing's 65-char limit (the standalone title is enough).
+const combinedTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
+const fullTitle = combinedTitle.length > 65 && title ? title : combinedTitle;
 const url = `${SITE_URL}${path}`;
 ---
 

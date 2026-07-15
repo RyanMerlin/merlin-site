@@ -4,6 +4,7 @@ created: "2026-05-11"
 status: "published"
 tags: ["agents","enterprise-ai","knowledge-management","open-source"]
 summary: "Enterprise AI projects don't fail because organizations lack information. They fail because that information exists in a form no system can reliably act on. Curio is built to fix that."
+description: "Enterprise AI fails not from missing information but from information in a form no system can reliably act on. Curio is git-native curation built to fix that."
 ---
 
 <img src="/images/curio-hero.png" alt="Curio: Curated Intelligence Operator" style="width: 50%; display: block; margin: 0 auto 2rem;" />
