@@ -2,7 +2,7 @@
 title: "The Loss Function Is the Product"
 created: "2026-07-09"
 status: "published"
-tags: ["ai-agents", "error-correction", "orchestration", "cybernetics"]
+tags: ["agents", "error-correction", "orchestration", "cybernetics"]
 summary: "Generation is becoming cheap. The durable advantage is the system that detects error, attributes it, and learns from it."
 ---
 
