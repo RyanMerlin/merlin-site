@@ -36,13 +36,16 @@ title: "Post title"
 created: "2026-05-10"
 status: published
 tags: ["tag1", "tag2"]
-summary: "Optional one-line summary shown on the index."
+summary: "Optional one-line summary shown on the index (also the on-page listing/RSS excerpt)."
+description: "Optional SEO/social meta description, <=160 chars."
 ---
 
 Body markdown here.
 
 ![alt](./colocated-image.png)
 ```
+
+**`summary` vs `description`:** `summary` is the visible excerpt (homepage, topic pages, RSS). `description` is the SEO/social `<meta>` (and OG/Twitter/JSON-LD) and must stay ≤160 chars for Bing. When `description` is omitted, `metaDescription()` in `src/lib/posts.ts` falls back to a word-boundary-truncated `summary`, then to the site description — it never emits an empty tag. Prefer writing an explicit `description` on any post whose `summary` exceeds 160.
 
 Relative image paths (`./img.png`) go through Astro's image pipeline (→ hashed WebP). Only posts with `status: published` (or no `status`) appear on the homepage. For a rare absolute-path image, put the file in `public/images/` and reference `/images/<file>.png`.
 
