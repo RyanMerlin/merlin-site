@@ -6,7 +6,7 @@ tags: ["ai", "vibe-coding", "security", "engineering", "agents"]
 summary: "The missing skill in AI-built software isn't syntax. It's failure literacy: knowing what can break before users discover it."
 ---
 
-![](./hero.png)
+![A dark desk with a monitor showing all-green passing tests and a clean deploy pipeline, while beside it an architecture diagram traces orange alert paths where a request routes around the auth shield and records from one account bleed into another](./hero.png)
 
 *Andrej Karpathy* coined "[vibe coding](https://x.com/karpathy/status/1886192184808149383)" in February 2025.  He later reframed the broader shift as ["agentic engineering" inside *Software 3.0*](https://analyticsdrift.com/andrej-karpathy-agentic-engineering-software-3/).  That framing made the question feel like a referendum on identity.  Are you a coder, or aren't you?
 
