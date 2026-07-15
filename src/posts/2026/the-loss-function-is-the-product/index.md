@@ -8,7 +8,7 @@ summary: "Generation is becoming cheap. The durable advantage is the system that
 
 ![A conveyor belt labeled Generation spills a mountain of discarded paper onto the floor.  A wall of four panels, labeled Detection, Attribution, Correction, and Learning, stands between it and a doorway of warm light labeled Verified Outcome, where a lone figure stands looking toward it.](./correction-loop.png)
 
-Jensen Huang, who runs Nvidia, has a rule of thumb: if your $500,000 engineer isn't burning through a quarter-million dollars a year in AI, you're underusing it.  He's right that the spend is coming.  He's just measuring the wrong side of it.
+Jensen Huang has a [rule of thumb](https://www.tomshardware.com/tech-industry/artificial-intelligence/jensen-huang-says-nvidia-engineers-should-use-ai-tokens-worth-half-their-annual-salary-every-year-to-be-fully-productive-compares-not-using-ai-to-using-paper-and-pencil-for-designing-chips): he would be, in his words, "deeply alarmed" if a $500,000 engineer didn't burn through at least a quarter-million dollars a year in AI tokens.  He's right that the spend is coming.  He's just measuring the wrong side of it.
 
 That money buys *tokens*, the small chunks of text an AI reads and writes.  It's tempting to treat them as raw fuel: more tokens means more output, and more output means more value.  But every token is really an allocation decision.  Some of it goes to generation: the forward motion, the new code, the new draft.  The rest goes to correction.  Correction means noticing the model has drifted, measuring how far off it is, and steering it back.  The ratio between those two is the number nobody is tracking.  It is the one that decides whether all that spend buys anything real.
 
@@ -38,11 +38,11 @@ We are at the Newcomen stage of AI systems.  We have containment.  We do not yet
 
 This is not a metaphor.  The claim is structural.  The evidence runs across four domains that arrived at the same answer independently.
 
-*Biology.*  DNA polymerase has a raw error rate of roughly 1 in 100,000 bases per replication step.  The finished genome lands at 1 in 10 billion.  Five orders of magnitude.  The entire gap is [correction mechanisms](https://bio.libretexts.org/): proofreading, mismatch repair, base excision repair, nucleotide excision repair.  Generation produces noise.  Correction produces stability.
+*Biology.*  DNA polymerase has a raw error rate of roughly 1 in 100,000 bases per replication step.  The finished genome lands at 1 in 10 billion.  Five orders of magnitude.  The entire gap is [correction mechanisms](https://pmc.ncbi.nlm.nih.gov/articles/PMC6153641/): proofreading, mismatch repair, base excision repair, nucleotide excision repair.  Generation produces noise.  Correction produces stability.
 
-The immune system tells the same story from a different angle.  Burnet's clonal selection theory describes a system that generates enormous receptor diversity at random.  It then applies a [correction filter](https://pubmed.ncbi.nlm.nih.gov/): negative selection in the thymus deletes any lymphocyte that would attack self.  Strip the filter and you do not get smarter immunity.  You get autoimmunity.  The intelligence is the deletion pass.
+The immune system tells the same story from a different angle.  Burnet's clonal selection theory describes a system that generates enormous receptor diversity at random.  It then applies a [correction filter](https://pubmed.ncbi.nlm.nih.gov/24830344/): negative selection in the thymus deletes any lymphocyte that would attack self.  Strip the filter and you do not get smarter immunity.  You get autoimmunity.  The intelligence is the deletion pass.
 
-Synaptic pruning completes the pattern.  The brain overproduces connections in childhood and removes the unused ones.  A [2022 PNAS study](https://www.pnas.org/) on pruning artificial neural networks replicated the same improvements in working memory and reinforcement learning seen in adolescent development.  Better performance from removal, not addition.
+Synaptic pruning completes the pattern.  The brain overproduces connections in childhood and removes the unused ones.  A [2022 PNAS study](https://www.pnas.org/doi/10.1073/pnas.2121331119) on pruning artificial neural networks replicated the same improvements in working memory and reinforcement learning seen in adolescent development.  Better performance from removal, not addition.
 
 *Information theory.*  Shannon's [noisy channel coding theorem](https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem) established that reliable communication through a noisy channel is possible only with error-correcting codes.  Reliability is not a property of the signal.  It is a property of the correction layer.  This is a mathematical theorem, not a loose analogy.  Modern [polar codes](https://en.wikipedia.org/wiki/Polar_code_(coding_theory)) operate within 0.5 to 1 dB of the Shannon limit.  5G telecommunications infrastructure is built on top of them.
 
@@ -50,7 +50,7 @@ Wiener's [Cybernetics](https://en.wikipedia.org/wiki/Cybernetics:_Or_Control_and
 
 *Markets.*  Hayek argued in [The Use of Knowledge in Society](https://en.wikipedia.org/wiki/The_Use_of_Knowledge_in_Society) that prices function as the error-correction mechanism of distributed economies.  When a resource is mispriced, the price moves.  Agents adjust behavior in response.  Market "efficiency" in the academic sense is really a claim about correction speed: how quickly prices converge on available information.
 
-*Organizations.*  Toyota's Jidoka principle requires any worker to stop the production line the moment a defect is detected.  The Andon cord is the physical mechanism.  Toyota accepted lower short-term throughput in exchange for faster error signal propagation.  American manufacturers copied the cord.  They did not copy the permission structure that made pulling it safe.  The mechanism failed because the organizational context for correction had not been built.
+*Organizations.*  Toyota's Jidoka principle lets any worker [stop the production line](https://mag.toyota.co.uk/andon-toyota-production-system/) the moment they spot a threat to quality.  The Andon cord is the physical mechanism.  Toyota accepted lower short-term throughput in exchange for faster error signal propagation.  American manufacturers copied the cord.  They did not copy the permission structure that made pulling it safe.  The mechanism failed because the organizational context for correction had not been built.
 
 Every system that demonstrates intelligence does so through the sophistication of its correction mechanisms.  Popper's [The Logic of Scientific Discovery](https://en.wikipedia.org/wiki/The_Logic_of_Scientific_Discovery) lands here.  Knowledge advances by surviving correction attempts.  It does not advance by positive generation.  Generation is cheap.  It always was.
 
@@ -73,6 +73,8 @@ Put the three together and the ratio you started with resolves into a single num
 ## The self-correction paradox
 
 Here is the uncomfortable finding.
+
+<img src="/images/loss-function-red-pen.webp" alt="A printed manuscript covered in red-pen editing marks, corrections, strike-throughs, and circled errors under a desk lamp" style="width: 55%; display: block; margin: 2rem auto;" />
 
 LLMs cannot be assumed to reliably correct their own reasoning errors from another pass over the same evidence.  A [MIT TACL survey](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00713/125177) on self-correction and a decomposition analysis of the [accuracy-correction paradox](https://arxiv.org/abs/2601.00828) established this empirically.  The result is counterintuitive.  Stronger models make fewer but deeper errors that resist self-correction.  GPT-3.5 at 66% accuracy achieves 1.6 times higher intrinsic correction rates than DeepSeek at 94%.  More capable systems produce harder-to-detect failures.
 
@@ -104,7 +106,7 @@ I made this argument about the mind itself in a three-part series that ends at [
 
 If the loss function is the product, then your trajectory is set by how you correct.  It comes down to the mode you default to the moment the loss function fires.
 
-*Retreat* is pulling back from the change.  It looks like correction.  In practice, it functions as error avoidance.  Klarna pulled humans back into customer service after chatbot failures.  Forty-two percent of enterprises in [one 2025 survey](https://www.ciodive.com/news/AI-project-fail-data-SPGlobal/742590/) abandoned most of their AI initiatives, up from 17 percent a year earlier.  In machine learning terms, this is reducing the learning rate to zero.  You stop making errors by stopping learning.  Short-term metrics stabilize.  The compounding curve is gone.
+*Retreat* is pulling back from the change.  It looks like correction.  In practice, it functions as error avoidance.  Klarna [brought human agents back into customer service](https://www.customerexperiencedive.com/news/klarna-reinvests-human-talent-customer-service-AI-chatbot/747586/) after going all-in on an AI chatbot.  Forty-two percent of enterprises in [one 2025 survey](https://www.ciodive.com/news/AI-project-fail-data-SPGlobal/742590/) abandoned most of their AI initiatives, up from 17 percent a year earlier.  In machine learning terms, this is reducing the learning rate to zero.  You stop making errors by stopping learning.  Short-term metrics stabilize.  The compounding curve is gone.
 
 *Patch* is layering correction on top of the existing structure without redesigning.  Adding AI to existing development workflows without changing code review, testing, or deployment processes.  Shannon's insight applies: patching is like increasing transmission power instead of adding redundancy to the encoding.  You get marginal gains.  You never approach channel capacity.  Metrics look acceptable.  Debt accumulates where nobody is measuring.
 
