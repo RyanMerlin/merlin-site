@@ -10,7 +10,7 @@ This morning I started a refactor on one of my agents, left the house, and appro
 
 Why do we still treat an agent session like a browser tab, bound to the device and the moment we opened it, when the work underneath is a long-lived process with no reason to care where we are standing?
 
-The unit that matters is [the session, not the request](https://ryanmerlin.com/posts/persistent-sessions-unit-of-agent-work), and definitely not the device.  Once that clicks, the rest is plumbing.  It comes in five layers: a persistent session, the agent inside it, a way to reach one agent, a way to reach the whole fleet, and the tunnel that exposes all of it without opening your house to the internet.  Here is the rig I actually run.
+The unit that matters is [the session, not the request](/posts/persistent-sessions-unit-of-agent-work), and definitely not the device.  Once that clicks, the rest is plumbing.  It comes in five layers: a persistent session, the agent inside it, a way to reach one agent, a way to reach the whole fleet, and the tunnel that exposes all of it without opening your house to the internet.  Here is the rig I actually run.
 
 ## Layer 1: a persistent session per agent
 

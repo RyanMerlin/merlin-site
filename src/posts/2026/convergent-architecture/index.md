@@ -19,7 +19,7 @@ The same diagram keeps showing up in my code.  It also shows up in the science o
 
 Here is the shape.  Most of a system runs out of view.  A small slice gets picked as what matters right now.  That slice gets pushed out to everything else, where it shapes what gets remembered, what gets said, and what gets done.
 
-Read that as a brain, and it is the leading picture of consciousness from the [first piece](https://ryanmerlin.com/posts/the-access-layer) in this series.  Scientists call it the *global workspace*: one narrow selection, broadcast to the whole system.
+Read that as a brain, and it is the leading picture of consciousness from the [first piece](/posts/the-access-layer) in this series.  Scientists call it the *global workspace*: one narrow selection, broadcast to the whole system.
 
 Read it as one of the AI systems I build, and it is the same shape.  The model takes in text.  It breaks the text into small pieces its builders call *tokens*.  It picks the few that matter most.  It pushes those through its inner workings to decide what happens next.
 

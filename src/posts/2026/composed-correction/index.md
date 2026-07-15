@@ -23,7 +23,7 @@ The last piece ended on that question.  The standard answer has a name.  The nam
 
 Picture the lazy version of "human in the loop."  A machine does the work.  A human sits above it as the check, the quality gate, the adult in the room.  Sometimes the phrase means something defensible: accountability, an escalation path, someone who can be held responsible.  But the version that's everywhere assumes something else.  It assumes the human is the *reliable* one, the fixed reference the machine gets measured against.  That's the version worth attacking.
 
-The trouble is that the last two essays argued against exactly that assumption.  [The first piece](https://ryanmerlin.com/posts/the-access-layer) said your own usable awareness runs on a narrow beam.  It is only a few things wide.  It never catches its own dark.  [The second](https://ryanmerlin.com/posts/convergent-architecture) said the agent has its own narrow limit, a different one.  It gives out when you pack too much in.  Neither one is the supervisor.  Both are thin.  So what are you actually doing when you put a thin, biased mind in charge of checking another thin, biased mind?
+The trouble is that the last two essays argued against exactly that assumption.  [The first piece](/posts/the-access-layer) said your own usable awareness runs on a narrow beam.  It is only a few things wide.  It never catches its own dark.  [The second](/posts/convergent-architecture) said the agent has its own narrow limit, a different one.  It gives out when you pack too much in.  Neither one is the supervisor.  Both are thin.  So what are you actually doing when you put a thin, biased mind in charge of checking another thin, biased mind?
 
 ## You can't audit what you can't perceive
 
@@ -55,6 +55,6 @@ Different substrates.  Different blind spots.  Arranged on purpose, with me as o
 
 I've spent three essays on the mind.  I kept expecting the interesting question to be whether the machine is like me.  It never was.  Whatever the agent is, it sometimes catches what I miss.  It sometimes misses what I catch.  Even that partial, unreliable difference is worth far more than a second copy of me would ever be.  The consciousness question was hiding a plainer one, about how to arrange fallible things so they don't all fail at once.
 
-There's a deeper version of this argument, in its own essay: [The Loss Function Is the Product](https://ryanmerlin.com/posts/the-loss-function-is-the-product).  It treats error-correction as the actual product you ship, and the governor you build, instead of the guardrails you bolt on.
+There's a deeper version of this argument, in its own essay: [The Loss Function Is the Product](/posts/the-loss-function-is-the-product).  It treats error-correction as the actual product you ship, and the governor you build, instead of the guardrails you bolt on.
 
 But the practical version fits in one question.  The next time you sit down to work with an agent, don't ask how much to trust it.  Ask how correlated the two of you are.  Ask whether you did anything to lower that correlation, or just assumed you were different.  Which did you build?

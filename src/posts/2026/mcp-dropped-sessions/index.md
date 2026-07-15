@@ -8,7 +8,7 @@ summary: "MCP's 2026-07-28 release candidate removes sessions from the protocol.
 
 The largest revision of *Model Context Protocol* since launch is now in release-candidate form, and the change everyone is reacting to is a subtraction.  The [2026-07-28 release candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/) removes sessions.  Gone is the `initialize` handshake.  Gone is the `Mcp-Session-Id` header.  Protocol version, client info, and capabilities now travel inline on every request, which means any server instance can answer any call behind a plain round-robin load balancer.  SDK support is already appearing, including on the [Python SDK's v2 alpha line](https://github.com/modelcontextprotocol/python-sdk/releases), while the stable v1 series remains the production recommendation, so this is the direction of travel rather than a design sketch.
 
-If you have read me argue that [persistent sessions are the unit of agent work](https://ryanmerlin.com/posts/persistent-sessions-unit-of-agent-work), removing sessions from the protocol looks like a contradiction.  It is the opposite.  Read closely, the stateless turn is the strongest evidence for that thesis the ecosystem has produced.
+If you have read me argue that [persistent sessions are the unit of agent work](/posts/persistent-sessions-unit-of-agent-work), removing sessions from the protocol looks like a contradiction.  It is the opposite.  Read closely, the stateless turn is the strongest evidence for that thesis the ecosystem has produced.
 
 Here is the question the whole debate turns on.  When you say your agent has a session, which session do you mean?
 

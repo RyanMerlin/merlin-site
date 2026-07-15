@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +16,14 @@ export default defineConfig({
 	// Inlining removes the external request entirely, so styling is atomic with the
 	// must-revalidate HTML and can never race. ~47KB raw / ~8KB gzipped per page.
 	build: { format: 'file', inlineStylesheets: 'always' },
+	// Open every external link in a new tab so readers never navigate away from the
+	// site. Internal links (root-relative "/..." and anchors) are left untouched, so
+	// on-site navigation stays in the same tab. rel adds noopener/noreferrer for safety.
+	markdown: {
+		rehypePlugins: [
+			[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+		]
+	},
 	integrations: [react()],
 vite: { plugins: [tailwindcss()] }
 });
