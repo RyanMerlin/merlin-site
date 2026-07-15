@@ -6,6 +6,8 @@ tags: ["ai-agents", "error-correction", "orchestration", "cybernetics", "edgepla
 summary: "Generation is becoming cheap. The durable advantage is the system that detects error, attributes it, and learns from it."
 ---
 
+![A conveyor belt labeled Generation spills a mountain of discarded paper onto the floor.  A wall of four panels, labeled Detection, Attribution, Correction, and Learning, stands between it and a doorway of warm light labeled Verified Outcome, where a lone figure stands looking toward it.](./correction-loop.png)
+
 Jensen Huang, who runs Nvidia, has a rule of thumb: if your $500,000 engineer isn't burning through a quarter-million dollars a year in AI, you're underusing it.  He's right that the spend is coming.  He's just measuring the wrong side of it.
 
 That money buys *tokens*, the small chunks of text an AI reads and writes.  It's tempting to treat them as raw fuel: more tokens means more output, and more output means more value.  But every token is really an allocation decision.  Some of it goes to generation: the forward motion, the new code, the new draft.  The rest goes to correction.  Correction means noticing the model has drifted, measuring how far off it is, and steering it back.  The ratio between those two is the number nobody is tracking.  It is the one that decides whether all that spend buys anything real.
