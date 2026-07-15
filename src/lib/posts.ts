@@ -17,8 +17,8 @@ export type Topic = {
 };
 
 export const topics: Topic[] = [
-	{ slug: 'ai', label: 'AI & Agents', color: 'var(--topic-ai)', matchTags: ['ai', 'agents', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
-	{ slug: 'cognitive-science', label: 'Cognitive Science', color: 'var(--topic-cog)', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'consciousness', 'free-will', 'predictive-processing', 'behavioral-economics'] },
+	{ slug: 'ai', label: 'AI & Agents', color: 'var(--topic-ai)', matchTags: ['ai', 'agents', 'ai-agents', 'llm', 'edgeplane', 'mcp', 'acp', 'a2a', 'infrastructure', 'architecture', 'dora', 'productivity', 'devops'] },
+	{ slug: 'cognitive-science', label: 'Cognitive Science', color: 'var(--topic-cog)', matchTags: ['psychology', 'neuroscience', 'behavior', 'decision-making', 'cognition', 'cognitive-science', 'consciousness', 'access-consciousness', 'global-workspace', 'working-memory', 'free-will', 'predictive-processing', 'behavioral-economics'] },
 	{ slug: 'economics', label: 'Economics', color: 'var(--topic-econ)', matchTags: ['economics', 'markets', 'investing', 'finance'] }
 ];
 
@@ -44,16 +44,23 @@ export async function getPosts(): Promise<PostMeta[]> {
 }
 
 export function postTopic(post: PostMeta): Topic | undefined {
+	// A post's badge is its dominant topic: the one whose matchTags it hits most.
+	// Ties resolve to the earlier topic in `topics` order (AI → cognitive-science → economics).
+	let best: Topic | undefined;
+	let bestCount = 0;
 	for (const topic of topics) {
-		if (post.tags.some((t) => topic.matchTags.includes(t))) return topic;
+		const count = post.tags.filter((t) => topic.matchTags.includes(t)).length;
+		if (count > bestCount) {
+			bestCount = count;
+			best = topic;
+		}
 	}
-	return undefined;
+	return best;
 }
 
 export function postsByTopic(posts: PostMeta[], topicSlug: string): PostMeta[] {
-	const topic = topics.find((t) => t.slug === topicSlug);
-	if (!topic) return [];
-	return posts.filter((p) => p.tags.some((t) => topic.matchTags.includes(t)));
+	// Filter by dominant topic so a post appears under exactly the topic it's badged as.
+	return posts.filter((p) => postTopic(p)?.slug === topicSlug);
 }
 
 export function relatedPosts(posts: PostMeta[], current: PostMeta, count: number): PostMeta[] {
