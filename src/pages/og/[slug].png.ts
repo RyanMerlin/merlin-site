@@ -21,7 +21,7 @@ function readingTime(wordCount: number): string {
 const GRADIENT_BASE = '#17130f';
 const GRADIENT_END = '#0d0a07';
 
-function mixHex(a: string, b: string, t: number): string {
+export function mixHex(a: string, b: string, t: number): string {
 	const pa = [1, 3, 5].map((i) => parseInt(a.slice(i, i + 2), 16));
 	const pb = [1, 3, 5].map((i) => parseInt(b.slice(i, i + 2), 16));
 	const mixed = pa.map((v, i) => Math.round(v + (pb[i] - v) * t));
@@ -30,7 +30,7 @@ function mixHex(a: string, b: string, t: number): string {
 
 // Tagged posts get a gradient tinted toward their topic accent; untagged posts
 // keep the original flat charcoal gradient unchanged.
-function cardGradient(post: PostMeta): string {
+export function cardGradient(post: PostMeta): string {
 	const topic = postTopic(post);
 	const hex = topic ? topicColorHex[topic.slug] : undefined;
 	const start = hex ? mixHex(GRADIENT_BASE, hex, 0.3) : GRADIENT_BASE;
@@ -53,7 +53,7 @@ export const GET: APIRoute = async ({ props }) => {
 
 	const hero = findHeroImage(post.slug);
 	if (hero) {
-		return new Response(hero, {
+		return new Response(new Uint8Array(hero), {
 			headers: {
 				'Content-Type': 'image/png',
 				'Cache-Control': 'public, max-age=31536000, immutable'
@@ -68,110 +68,111 @@ export const GET: APIRoute = async ({ props }) => {
 		timeZone: 'UTC'
 	});
 
-	const svg = await satori(
-		{
-			type: 'div',
-			props: {
-				style: {
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'space-between',
-					width: '100%',
-					height: '100%',
-					background: cardGradient(post),
-					padding: '60px 64px',
-					fontFamily: 'Geist'
-				},
-				children: [
-					{
-						type: 'div',
-						props: {
-							style: { display: 'flex', flexDirection: 'column', gap: '16px' },
-							children: [
-								{
-									type: 'div',
-									props: {
-										style: {
-											fontSize: '44px',
-											fontWeight: 600,
-											color: '#f6efe2',
-											lineHeight: 1.2,
-											letterSpacing: '-0.02em'
-										},
-										children: post.title
-									}
-								},
-								...(post.summary
-									? [
-											{
-												type: 'div',
-												props: {
-													style: {
-														fontSize: '22px',
-														color: '#a99c8a',
-														lineHeight: 1.4,
-														maxHeight: '90px',
-														overflow: 'hidden'
-													},
-													children: post.summary
-												}
-											}
-										]
-									: [])
-							]
-						}
-					},
-					{
-						type: 'div',
-						props: {
-							style: {
-								display: 'flex',
-								justifyContent: 'space-between',
-								alignItems: 'flex-end'
-							},
-							children: [
-								{
-									type: 'div',
-									props: {
-										style: {
-											display: 'flex',
-											gap: '16px',
-											fontSize: '18px',
-											color: '#7c7160'
-										},
-										children: [
-											{ type: 'span', props: { children: date } },
-											{ type: 'span', props: { children: '·' } },
-											{ type: 'span', props: { children: readingTime(post.wordCount) } }
-										]
-									}
-								},
-								{
-									type: 'div',
-									props: {
-										style: {
-											fontSize: '20px',
-											fontWeight: 500,
-											color: '#e75b2a'
-										},
-										children: SITE_AUTHOR
-									}
+	// satori takes a JSX-like POJO tree (not real React elements), which doesn't
+	// structurally satisfy React's ReactNode type — cast at the boundary.
+	const tree: any = {
+		type: 'div',
+		props: {
+			style: {
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-between',
+				width: '100%',
+				height: '100%',
+				background: cardGradient(post),
+				padding: '60px 64px',
+				fontFamily: 'Geist'
+			},
+			children: [
+				{
+					type: 'div',
+					props: {
+						style: { display: 'flex', flexDirection: 'column', gap: '16px' },
+						children: [
+							{
+								type: 'div',
+								props: {
+									style: {
+										fontSize: '44px',
+										fontWeight: 600,
+										color: '#f6efe2',
+										lineHeight: 1.2,
+										letterSpacing: '-0.02em'
+									},
+									children: post.title
 								}
-							]
-						}
+							},
+							...(post.summary
+								? [
+										{
+											type: 'div',
+											props: {
+												style: {
+													fontSize: '22px',
+													color: '#a99c8a',
+													lineHeight: 1.4,
+													maxHeight: '90px',
+													overflow: 'hidden'
+												},
+												children: post.summary
+											}
+										}
+									]
+								: [])
+						]
 					}
-				]
-			}
-		},
-		{
-			width: 1200,
-			height: 630,
-			fonts: [
-				{ name: 'Geist', data: fontRegular, weight: 400, style: 'normal' },
-				{ name: 'Geist', data: fontBold, weight: 600, style: 'normal' }
+				},
+				{
+					type: 'div',
+					props: {
+						style: {
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'flex-end'
+						},
+						children: [
+							{
+								type: 'div',
+								props: {
+									style: {
+										display: 'flex',
+										gap: '16px',
+										fontSize: '18px',
+										color: '#7c7160'
+									},
+									children: [
+										{ type: 'span', props: { children: date } },
+										{ type: 'span', props: { children: '·' } },
+										{ type: 'span', props: { children: readingTime(post.wordCount) } }
+									]
+								}
+							},
+							{
+								type: 'div',
+								props: {
+									style: {
+										fontSize: '20px',
+										fontWeight: 500,
+										color: '#e75b2a'
+									},
+									children: SITE_AUTHOR
+								}
+							}
+						]
+					}
+				}
 			]
 		}
-	);
+	};
+
+	const svg = await satori(tree, {
+		width: 1200,
+		height: 630,
+		fonts: [
+			{ name: 'Geist', data: fontRegular, weight: 400, style: 'normal' },
+			{ name: 'Geist', data: fontBold, weight: 600, style: 'normal' }
+		]
+	});
 
 	const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } });
 	const png = resvg.render().asPng();

@@ -7,7 +7,9 @@ const posts = defineCollection({
 	loader: glob({
 		pattern: '**/index.md',
 		base: './src/posts',
-		generateId: ({ entry }) => entry.split('/').at(-2)
+		// entry is always `<year>/<slug>/index.md`, so at(-2) is always a slug —
+		// non-null assertion, not a real optional case.
+		generateId: ({ entry }) => entry.split('/').at(-2)!
 	}),
 	schema: z.object({
 		title: z.string(),
@@ -27,7 +29,7 @@ const drafts = defineCollection({
 	loader: glob({
 		pattern: '**/index.md',
 		base: './src/drafts',
-		generateId: ({ entry }) => entry.split('/').at(-2)
+		generateId: ({ entry }) => entry.split('/').at(-2)!
 	}),
 	schema: z.object({
 		title: z.string(),
