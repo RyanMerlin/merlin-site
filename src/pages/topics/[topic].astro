@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getPosts, topics, postsByTopic, readingTime } from '../../lib/posts';
+import { getPosts, topics, postsByTopic, readingTime, postThumbnail } from '../../lib/posts';
 
 export async function getStaticPaths() {
 	return topics.map((topic) => ({ params: { topic: topic.slug }, props: { topic } }));
@@ -39,20 +39,32 @@ function formatDate(iso: string): string {
 					{topicPosts.map((post) => (
 						<li>
 							<article>
-								<a href={`/posts/${post.slug}`} class="group block">
-									<h2 class="text-lg font-medium transition-colors" style="color: var(--color-text);">
-										{post.title}
-									</h2>
-									<div class="mt-1.5 flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
-										<time datetime={post.created}>{formatDate(post.created)}</time>
-										<span>·</span>
-										<span>{readingTime(post.wordCount)}</span>
+								<a href={`/posts/${post.slug}`} class="group flex gap-4 sm:gap-5">
+									<img
+										src={postThumbnail(post).src}
+										alt=""
+										width={160}
+										height={84}
+										loading="lazy"
+										decoding="async"
+										class="w-20 h-[42px] sm:w-40 sm:h-[84px] shrink-0 rounded-md border object-cover"
+										style="border-color: var(--color-border);"
+									/>
+									<div class="min-w-0 flex-1">
+										<h2 class="text-lg font-medium transition-colors" style="color: var(--color-text);">
+											{post.title}
+										</h2>
+										<div class="mt-1.5 flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
+											<time datetime={post.created}>{formatDate(post.created)}</time>
+											<span>·</span>
+											<span>{readingTime(post.wordCount)}</span>
+										</div>
+										{post.summary && (
+											<p class="mt-2 text-sm leading-relaxed" style="color: var(--color-text-muted);">
+												{post.summary}
+											</p>
+										)}
 									</div>
-									{post.summary && (
-										<p class="mt-2 text-sm leading-relaxed" style="color: var(--color-text-muted);">
-											{post.summary}
-										</p>
-									)}
 								</a>
 							</article>
 						</li>

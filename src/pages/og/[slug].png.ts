@@ -3,7 +3,7 @@ import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { getPosts, type PostMeta } from '../../lib/posts';
+import { getPosts, postTopic, topicColorHex, type PostMeta } from '../../lib/posts';
 import { SITE_AUTHOR } from '../../lib/config';
 
 export async function getStaticPaths() {
@@ -16,6 +16,25 @@ const fontBold = readFileSync(resolve('src/lib/fonts/Geist-SemiBold.ttf'));
 
 function readingTime(wordCount: number): string {
 	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
+}
+
+const GRADIENT_BASE = '#17130f';
+const GRADIENT_END = '#0d0a07';
+
+function mixHex(a: string, b: string, t: number): string {
+	const pa = [1, 3, 5].map((i) => parseInt(a.slice(i, i + 2), 16));
+	const pb = [1, 3, 5].map((i) => parseInt(b.slice(i, i + 2), 16));
+	const mixed = pa.map((v, i) => Math.round(v + (pb[i] - v) * t));
+	return '#' + mixed.map((v) => v.toString(16).padStart(2, '0')).join('');
+}
+
+// Tagged posts get a gradient tinted toward their topic accent; untagged posts
+// keep the original flat charcoal gradient unchanged.
+function cardGradient(post: PostMeta): string {
+	const topic = postTopic(post);
+	const hex = topic ? topicColorHex[topic.slug] : undefined;
+	const start = hex ? mixHex(GRADIENT_BASE, hex, 0.3) : GRADIENT_BASE;
+	return `linear-gradient(145deg, ${start} 0%, ${GRADIENT_END} 100%)`;
 }
 
 function findHeroImage(slug: string): Buffer | null {
@@ -59,7 +78,7 @@ export const GET: APIRoute = async ({ props }) => {
 					justifyContent: 'space-between',
 					width: '100%',
 					height: '100%',
-					background: 'linear-gradient(145deg, #17130f 0%, #0d0a07 100%)',
+					background: cardGradient(post),
 					padding: '60px 64px',
 					fontFamily: 'Geist'
 				},

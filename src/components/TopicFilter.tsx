@@ -11,6 +11,7 @@ export type FilterItem = {
 	topicSlug: string | null;
 	topicLabel: string | null;
 	topicColor: string | null;
+	thumbnailSrc: string;
 };
 
 function formatDate(iso: string): string {
@@ -57,37 +58,49 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 					{filtered.map((post) => (
 						<li key={post.slug}>
 							<article>
-								<a href={`/posts/${post.slug}`} className="group block">
-									{post.topicLabel && (
-										<span
-											className="topic-badge"
-											style={{ ['--badge-color' as string]: post.topicColor } as React.CSSProperties}
+								<a href={`/posts/${post.slug}`} className="group flex gap-4 sm:gap-5">
+									<img
+										src={post.thumbnailSrc}
+										alt=""
+										width={160}
+										height={84}
+										loading="lazy"
+										decoding="async"
+										className="w-20 h-[42px] sm:w-40 sm:h-[84px] shrink-0 rounded-md border object-cover"
+										style={{ borderColor: 'var(--color-border)' }}
+									/>
+									<div className="min-w-0 flex-1">
+										{post.topicLabel && (
+											<span
+												className="topic-badge"
+												style={{ ['--badge-color' as string]: post.topicColor } as React.CSSProperties}
+											>
+												{post.topicLabel}
+											</span>
+										)}
+										<h2
+											className="text-lg font-medium transition-colors"
+											style={{ color: 'var(--color-text)' }}
 										>
-											{post.topicLabel}
-										</span>
-									)}
-									<h2
-										className="text-lg font-medium transition-colors"
-										style={{ color: 'var(--color-text)' }}
-									>
-										{post.title}
-									</h2>
-									<div
-										className="mt-1.5 flex items-center gap-2.5 text-xs"
-										style={{ color: 'var(--color-text-muted)' }}
-									>
-										<time dateTime={post.created}>{formatDate(post.created)}</time>
-										<span>·</span>
-										<span>{readingTime(post.wordCount)}</span>
-									</div>
-									{post.summary && (
-										<p
-											className="mt-2 text-sm leading-relaxed"
+											{post.title}
+										</h2>
+										<div
+											className="mt-1.5 flex items-center gap-2.5 text-xs"
 											style={{ color: 'var(--color-text-muted)' }}
 										>
-											{post.summary}
-										</p>
-									)}
+											<time dateTime={post.created}>{formatDate(post.created)}</time>
+											<span>·</span>
+											<span>{readingTime(post.wordCount)}</span>
+										</div>
+										{post.summary && (
+											<p
+												className="mt-2 text-sm leading-relaxed"
+												style={{ color: 'var(--color-text-muted)' }}
+											>
+												{post.summary}
+											</p>
+										)}
+									</div>
 								</a>
 							</article>
 						</li>

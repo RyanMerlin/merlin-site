@@ -38,6 +38,16 @@ export const topics: Topic[] = [
 	{ slug: 'economics', label: 'Economics', color: 'var(--topic-econ)', description: 'Notes on economics, markets, and investing: incentives, coordination, and how value actually moves through systems.', matchTags: ['economics', 'markets', 'investing', 'finance'] }
 ];
 
+// Literal hex mirror of the dark-theme --topic-* custom properties in global.css.
+// Satori (the OG-card renderer) runs server-side with no CSS cascade, so it can't
+// resolve CSS variables — this is the single source of truth for build-time image
+// generation. The live browser badge/tab colors keep reading the CSS vars directly.
+export const topicColorHex: Record<string, string> = {
+	ai: '#6a8fd4',
+	'cognitive-science': '#bb96cb',
+	economics: '#d4a24e'
+};
+
 function countWords(body: string): number {
 	const stripped = body.replace(/^---[\s\S]*?---/, '');
 	return stripped.trim().split(/\s+/).filter(Boolean).length;
@@ -92,4 +102,11 @@ export function relatedPosts(posts: PostMeta[], current: PostMeta, count: number
 
 export function readingTime(wordCount: number): string {
 	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
+}
+
+// Every post gets an image at this URL — real colocated hero art if present,
+// otherwise the satori-generated title card. Centralized so both list surfaces
+// (and anything else that wants a thumbnail later) resolve it the same way.
+export function postThumbnail(post: PostMeta): { src: string; alt: string } {
+	return { src: `/og/${post.slug}.png`, alt: post.title };
 }

@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopicFilter, { type FilterItem } from '../components/TopicFilter.tsx';
-import { getPosts, topics, postTopic, postsByTopic } from '../lib/posts';
+import { getPosts, topics, postTopic, postsByTopic, postThumbnail } from '../lib/posts';
 
 const posts = await getPosts();
 
@@ -15,7 +15,8 @@ const items: FilterItem[] = posts.map((p) => {
 		wordCount: p.wordCount,
 		topicSlug: topic?.slug ?? null,
 		topicLabel: topic?.label ?? null,
-		topicColor: topic?.color ?? null
+		topicColor: topic?.color ?? null,
+		thumbnailSrc: postThumbnail(p).src
 	};
 });
 
