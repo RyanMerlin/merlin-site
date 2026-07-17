@@ -1,6 +1,6 @@
 ---
 title: "Composed Correction"
-created: "2026-07-05"
+created: "2026-07-05T20:00:00Z"
 status: "published"
 tags: ["ai-agents", "human-ai", "error-correction", "cognitive-science", "consciousness"]
 summary: "If both human and machine are thin, biased minds whose errors correlate by construction, the value was never oversight but composition: arranging correctors that go dark in different places so the same mistake isn't broadcast twice."

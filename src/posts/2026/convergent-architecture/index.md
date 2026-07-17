@@ -1,6 +1,6 @@
 ---
 title: "Convergent Architecture"
-created: "2026-07-05"
+created: "2026-07-05T10:00:00Z"
 status: "published"
 tags: ["consciousness", "ai-agents", "global-workspace", "llm", "model-welfare", "cognitive-science"]
 summary: "The engine behind today's AI and the leading theory of consciousness break at the same undescribed part, the workspace, which is evidence of shared constraints, not shared experience."
