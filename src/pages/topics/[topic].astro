@@ -21,7 +21,7 @@ const topicPosts = postsByTopic(allPosts, topic.slug);
 			</h1>
 			<p class="mt-2 text-sm" style="color: var(--color-text-muted);">
 				{topicPosts.length} post{topicPosts.length !== 1 ? 's' : ''}
-				· <a href={`/topics/${topic.slug}/feed.xml`} style="color: var(--color-accent);">RSS</a>
+				· <a href={`/topics/${topic.slug}/feed.xml`} data-astro-prefetch="false" style="color: var(--color-accent);">RSS</a>
 			</p>
 		</header>
 

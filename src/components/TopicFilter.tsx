@@ -276,7 +276,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 			{activeTopic && (
 				<p className="mt-8 text-xs" style={{ color: 'var(--color-text-muted)' }}>
 					📡{' '}
-					<a href={`/topics/${activeTopic}/feed.xml`} style={{ color: 'var(--color-accent)' }}>
+					<a href={`/topics/${activeTopic}/feed.xml`} data-astro-prefetch="false" style={{ color: 'var(--color-accent)' }}>
 						RSS feed for this topic
 					</a>
 				</p>
