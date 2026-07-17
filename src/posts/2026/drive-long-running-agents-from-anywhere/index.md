@@ -7,6 +7,8 @@ summary: "A five-layer setup for running long-lived agent sessions you can reach
 description: "A five-layer setup for long-lived agent sessions you can reach from your phone: persistent Zellij under systemd, a self-healing launcher, and a tunnel gotcha."
 ---
 
+![A cutaway watercolor illustration of a house labeled Agent Workshop, Always On, Always Working, with six small robots at desks across two floors under signs reading Research, Code, Test, Review, Write, and Publish, while a man walks a dog outside checking the same workflow on his phone, under a banner reading One Session, Same Team, Anywhere](./og.png)
+
 This morning I started a refactor on one of my agents, left the house, and approved the result from my phone while walking the dog.  The work ran on the machine at home the whole time.  What I reached from the sidewalk was not a fresh chat rebuilding context from scratch, but the same live session, still going, seen through a different window.
 
 Why do we still treat an agent session like a browser tab, bound to the device and the moment we opened it, when the work underneath is a long-lived process with no reason to care where we are standing?

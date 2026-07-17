@@ -7,6 +7,8 @@ summary: "Every agent platform shipping today treats a model call as a request: 
 description: "Every agent platform treats a model call as a stateless request. Real agents have memory, in-flight tools, and partial plans. The session is the unit of work."
 ---
 
+![A split scene: a whiteboard on the left labeled MCP Transport Session, What Was Removed, showing a client-server handshake with State Lived Here, Now Gone, beside a second panel labeled Agent Session, What Remains, circling Goals, Memory, Context, Tools, and Progress with State Lives Here, This Is The Unit Of Work; on the right, a steampunk machine labeled Agent Runtime, Persistent Session, with tanks marked Memory, Context, and Tools feeding a Reasoning gearbox that produces Planning, Actions, and Results, watched by a man at a desk beneath a sign reading Work Is Not A Request, It Is A Commitment](./og.png)
+
 Every agent platform shipping today treats a model call as a request.  You send a prompt, you get a response, the interaction is over.  The platform might maintain conversation history across calls, but the agent itself is stateless; it doesn't exist between calls.  There's no process running.  There's no session.  There's a function that gets invoked.
 
 This works for simple use cases.  **It's the wrong model for agents that do real work.**

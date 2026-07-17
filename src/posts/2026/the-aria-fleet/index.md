@@ -6,6 +6,8 @@ tags: ["agents","edgeplane","infrastructure","aria"]
 summary: "Several persistent Claude Code sessions, scoped to different domains, coordinating through EdgePlane. Here's what it looks like in practice."
 ---
 
+![A glowing hub-and-spoke diagram of icons for a book, a magnifying glass, a terminal prompt, a clipboard checkmark, a bar chart, and a chat bubble, all wired into a radiant central core, with a man watching the same network on his phone and laptop from the side while structured data streams outward on the right](./og.png)
+
 The most common question I get about EdgePlane isn't about the architecture.  It's "what does it actually look like to run it?"  Fair question.  So here's the concrete answer: what I'm running, how it's wired, what it replaced, and what the migration to a proper control plane looks like from the inside.
 
 ---
