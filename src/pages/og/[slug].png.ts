@@ -33,7 +33,7 @@ export function mixHex(a: string, b: string, t: number): string {
 export function cardGradient(post: PostMeta): string {
 	const topic = postTopic(post);
 	const hex = topic ? topicColorHex[topic.slug] : undefined;
-	const start = hex ? mixHex(GRADIENT_BASE, hex, 0.3) : GRADIENT_BASE;
+	const start = hex ? mixHex(GRADIENT_BASE, hex, 0.55) : GRADIENT_BASE;
 	return `linear-gradient(145deg, ${start} 0%, ${GRADIENT_END} 100%)`;
 }
 

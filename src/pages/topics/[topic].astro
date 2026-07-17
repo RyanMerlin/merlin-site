@@ -43,15 +43,15 @@ function formatDate(iso: string): string {
 									<img
 										src={postThumbnail(post).src}
 										alt=""
-										width={160}
-										height={84}
+										width={256}
+										height={135}
 										loading="lazy"
 										decoding="async"
-										class="w-20 h-[42px] sm:w-40 sm:h-[84px] shrink-0 rounded-md border object-cover"
+										class="w-32 h-[67px] sm:w-64 sm:h-[135px] shrink-0 rounded-md border object-cover object-top"
 										style="border-color: var(--color-border);"
 									/>
 									<div class="min-w-0 flex-1">
-										<h2 class="text-lg font-medium transition-colors" style="color: var(--color-text);">
+										<h2 class="text-lg font-medium transition-colors line-clamp-1" style="color: var(--color-text);">
 											{post.title}
 										</h2>
 										<div class="mt-1.5 flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
@@ -60,7 +60,7 @@ function formatDate(iso: string): string {
 											<span>{readingTime(post.wordCount)}</span>
 										</div>
 										{post.summary && (
-											<p class="mt-2 text-sm leading-relaxed" style="color: var(--color-text-muted);">
+											<p class="mt-2 text-sm leading-relaxed line-clamp-2" style="color: var(--color-text-muted);">
 												{post.summary}
 											</p>
 										)}

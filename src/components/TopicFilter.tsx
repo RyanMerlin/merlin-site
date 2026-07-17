@@ -62,11 +62,11 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 									<img
 										src={post.thumbnailSrc}
 										alt=""
-										width={160}
-										height={84}
+										width={256}
+										height={135}
 										loading="lazy"
 										decoding="async"
-										className="w-20 h-[42px] sm:w-40 sm:h-[84px] shrink-0 rounded-md border object-cover"
+										className="w-32 h-[67px] sm:w-64 sm:h-[135px] shrink-0 rounded-md border object-cover object-top"
 										style={{ borderColor: 'var(--color-border)' }}
 									/>
 									<div className="min-w-0 flex-1">
@@ -79,7 +79,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 											</span>
 										)}
 										<h2
-											className="text-lg font-medium transition-colors"
+											className="text-lg font-medium transition-colors line-clamp-1"
 											style={{ color: 'var(--color-text)' }}
 										>
 											{post.title}
@@ -94,7 +94,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 										</div>
 										{post.summary && (
 											<p
-												className="mt-2 text-sm leading-relaxed"
+												className="mt-2 text-sm leading-relaxed line-clamp-2"
 												style={{ color: 'var(--color-text-muted)' }}
 											>
 												{post.summary}
