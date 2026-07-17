@@ -7,6 +7,8 @@ summary: "Gartner says agentic AI puts $234 billion of enterprise application sp
 description: "Agentic AI reprices software from access to accountability. When an agent acts, who answers? The warranted change is the new unit of software value."
 ---
 
+![A vast, dim hall where an endless stream of identical glowing blue documents flows into the distance like a river of cheap, anonymous output.  At a lone stone counter, a single figure works a heavy brass embossing press, sealing one document that glows warm gold beneath it, the one change someone will stand behind.](./og.png)
+
 Gartner just told the enterprise software industry that [$234 billion of enterprise application spending is "at risk"](https://www.gartner.com/en/newsroom/press-releases/2026-07-01-gartner-says-us-dollars-234-billion-in-enterprise-application-software-spend-is-at-risk-from-agentic-artificial-intelligence) from agentic AI by 2030, roughly one in five dollars of application SaaS spending.  The room read it as an obituary.  But an obituary for whom, and for what, if the money doesn't disappear so much as change hands and change shape?
 
 Let me put my cards on the table up front, because it shapes how I read this.  I build agent systems where every action has to be attributable, reviewable, and recoverable, so I'm primed to see accountability as valuable.  What follows is a practitioner's bet, not a market forecast.  Here's the bet: most of that $234 billion relocates, and the thing the winners end up competing on isn't the software at all.
