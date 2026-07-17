@@ -532,6 +532,32 @@ pre[class*='language-'] {
 }
 .tag-hit .search-hit { background: none; color: var(--color-accent); font-weight: 600; }
 
+/* Listing pager. Everything it reveals is already in memory — this is a slice,
+   not a fetch, so it stays visually quiet rather than looking like a CTA. */
+.show-more {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+.show-more:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+}
+.show-more-count {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
 /* Escape hatch out of an empty topic-scoped result set. */
 .search-widen {
   margin-top: 0.75rem;

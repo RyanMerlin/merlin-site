@@ -35,11 +35,20 @@ function Highlighted({ text, query }: { text: string; query: string }) {
 	);
 }
 
+// How many posts the listing renders before asking. Everything past this is one
+// click away, never a second request — the whole corpus is already in memory, so
+// "show more" is a slice, not a fetch.
+//
+// Note this is inert below 31 posts. It exists so the home page degrades
+// gracefully as the archive grows, not because 20 posts is too many.
+const PAGE_SIZE = 30;
+
 export default function TopicFilter({ items, topics }: { items: FilterItem[]; topics: Topic[] }) {
 	const [activeTopic, setActiveTopic] = useState<string | null>(null);
 	const [query, setQuery] = useState('');
 	const [searchFocused, setSearchFocused] = useState(false);
 	const [announcement, setAnnouncement] = useState('');
+	const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 	const searchRef = useRef<HTMLInputElement>(null);
 
 	const trimmedQuery = query.trim();
@@ -71,6 +80,16 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 			.sort((a, b) => b.score - a.score || b.post.created.localeCompare(a.post.created))
 			.map(({ post }) => post);
 	}, [items, activeTopic, trimmedQuery]);
+
+	// A new topic or query is a new result set, so paging starts over. Without
+	// this, narrowing to 3 results after expanding to 60 would leave the reader
+	// looking at a stale "show more".
+	useEffect(() => {
+		setVisibleCount(PAGE_SIZE);
+	}, [activeTopic, trimmedQuery]);
+
+	const visible = filtered.slice(0, visibleCount);
+	const remaining = filtered.length - visible.length;
 
 	// The live region must not narrate every keystroke: typing "infrastructure"
 	// would queue "1 post…", "3 posts…", once per letter, and a screen reader reads
@@ -171,7 +190,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 				</div>
 			) : (
 				<ul className="space-y-10">
-					{filtered.map((post) => (
+					{visible.map((post) => (
 						<li key={post.slug}>
 							<article>
 								<a href={`/posts/${post.slug}`} className="group flex gap-4 sm:gap-5">
@@ -238,6 +257,20 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 						</li>
 					))}
 				</ul>
+			)}
+
+			{remaining > 0 && (
+				<div className="mt-10">
+					<button
+						className="show-more"
+						onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+					>
+						Show more
+						<span className="show-more-count">
+							{remaining} more {remaining === 1 ? 'post' : 'posts'}
+						</span>
+					</button>
+				</div>
 			)}
 
 			{activeTopic && (
