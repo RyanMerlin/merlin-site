@@ -7,6 +7,8 @@ summary: "The .env file is a collaboration tool for human engineers. It was neve
 description: "The .env file is a collaboration tool for humans, never a security primitive. Run an always-on agent fleet and that distinction stops being theoretical."
 ---
 
+![Two bridge-connected structures: on the left, a room labeled Insecure cluttered with notes reading API Keys, Passwords, Tokens, Secrets.txt, Credentials, and .env; on the right, a vault labeled First-Class Secrets Management with controls for Store, Encrypt, Access Control, Audit, and Rotate, connected by a glowing stream of locks to a room labeled AI Agent Runtime where a robot works at a terminal under a sign reading Secrets Available On-Demand](./og.png)
+
 The `.env` file is a collaboration tool for human engineers.  It was never meant to be a security primitive.  When you run an always-on agent fleet, that distinction stops being theoretical.
 
 *Aria* is the Rust CLI that runs my personal agent stack.  It compiles to a single binary, runs as a persistent service across multiple persistent profiles, and handles the substrate for each one: calling external APIs, spawning subprocess workers, managing [MCP servers](https://modelcontextprotocol.io), running browser automation, and coordinating with a fleet orchestrator.

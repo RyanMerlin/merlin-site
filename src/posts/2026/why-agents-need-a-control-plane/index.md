@@ -6,6 +6,8 @@ tags: ["agents","architecture","edgeplane","orchestration","control-plane"]
 summary: "Every serious attempt to build a multi-agent system converges on the same shape. Then you try to run two workers in parallel, and everything breaks."
 ---
 
+![A figure stands on a platform beside a control plane tower labeled Governance, Coordination, Control, with panels for Identity, Permissions, Policies, Routing, Observability, and Audit, an Agent Overview graph, System Health at 98%, and a checklist of Outcomes That Matter, overlooking a chasm where dozens of small robots wander a fractured field marked Duplicate Work, Lost Context, Conflicts, Policy Drift, Unused Tools, and No Visibility](./og.png)
+
 Every serious attempt to build a multi-agent system converges on the same shape.  You have a coordinator agent that breaks down work, a set of worker agents that execute it, and a reviewer agent that checks the output.  The coordinator hands off to a worker, the worker hands off to the reviewer, the reviewer hands back corrections.  It looks clean on a diagram.
 
 Then you try to run two workers in parallel.  And everything breaks.

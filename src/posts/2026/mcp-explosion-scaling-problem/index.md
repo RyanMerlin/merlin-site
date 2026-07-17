@@ -7,6 +7,8 @@ summary: "MCP won. In roughly a year, Model Context Protocol went from a clever 
 description: "MCP became the default tool-connectivity layer for AI agents in a year. Which makes it a strange time to argue many agent systems should use MCP less."
 ---
 
+![A dense wall of tangled, wired MCP Servers crosses a bridge labeled Context Window toward a figure working at a terminal, beside a sign reading The Scaling Problem listing Discovery, Selection, Context, Coordination, and Cost, overlooking a river valley city at sunset](./og.png)
+
 MCP won.
 
 In roughly a year, *Model Context Protocol* went from a clever interoperability idea to the default tool-connectivity layer for AI agents.  In December 2025, Anthropic [donated MCP to the Agentic AI Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation), a directed fund under the Linux Foundation co-founded with Block and OpenAI.  MCP is no longer an Anthropic product.  It is vendor-neutral infrastructure, with AWS, Google, Microsoft, and Cloudflare among its backers.  At the time of the donation the project reported [more than 97 million monthly SDK downloads and roughly 10,000 active servers](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/), and the curve has only steepened since.

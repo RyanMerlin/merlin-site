@@ -7,7 +7,7 @@ summary: "Enterprise AI projects don't fail because organizations lack informati
 description: "Enterprise AI fails not from missing information but from information in a form no system can reliably act on. Curio is git-native curation built to fix that."
 ---
 
-<img src="/images/curio-hero.png" alt="Curio: Curated Intelligence Operator" style="width: 50%; display: block; margin: 0 auto 2rem;" />
+![Curio mascot: a small white robot holding a magnifying glass over a document, flanked by report icons labeled R1 and R2, warning triangles, a checklist tablet, and a globe, above the wordmark Curio, Curated Intelligence Operator](./og.png)
 
 Every enterprise AI project I've worked on eventually hits the same wall.  Not a model wall.  Not a data wall.  A knowledge wall.
 

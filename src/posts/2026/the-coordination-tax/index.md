@@ -7,6 +7,8 @@ summary: "Multi-agent systems don't fail because the agents are stupid. They fai
 description: "Multi-agent systems fail on coordination cost, not dumb agents. Identity, overlap, governance, and audit are taxes that compound until an incident."
 ---
 
+![A tower labeled The Coordination Tax, listing Context Switches, Waiting and Blockers, Status Checks, Approval Chains, and Redundant Work, rises beside cubicle floors labeled Handoffs, Meetings, Approvals, and Updates full of working figures, while a solitary figure walks a cliffside path toward a sign reading Outcomes That Matter overlooking a sunlit valley](./og.png)
+
 Multi-agent systems don't fail because the agents are stupid.  The models are good.  The tools work.  The individual agent, given a well-scoped task and clean context, will produce reasonable output most of the time.
 
 They fail because the *coordination cost* wasn't budgeted for.

@@ -7,6 +7,8 @@ summary: "2026 is the year the agent protocol stack started to look real. MCP, A
 description: "MCP, A2A, ACP, and AGNTCY define how agents communicate. None define what a persistent agent is at the infrastructure layer. That's the runtime gap."
 ---
 
+![A figure stands at the edge of a cliff labeled Protocol Stack, facing a gap toward a lit construction tower labeled Agent Runtime, The Missing Infrastructure Layer, with stations for Launch, Supervise, Steer, Persist, Recover, and Audit, and a sign reading The Runtime Gap between four protocol placards, MCP, A2A, ACP, and AGNTCY, and the tower](./og.png)
+
 2026 is the year the agent protocol stack started to look real.
 
 *MCP* has become the connective layer between models, tools, data, and applications.  Anthropic [moved MCP into the Linux Foundation's Agentic AI Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation), reporting [more than 97 million monthly SDK downloads and 10,000 active servers](https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/).  [Microsoft Agent Framework 1.0](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/) went generally available with support for multi-agent orchestration and interoperability through MCP and A2A.  [A2A has matured](https://a2a-protocol.org/latest/announcing-1.0/) into a serious protocol for agent-to-agent task exchange, including streaming, asynchronous updates, push notifications, and long-running task handling.  [AGNTCY](https://agntcy.org) is pushing even further into discovery, identity, messaging, observability, and trust across agent ecosystems.

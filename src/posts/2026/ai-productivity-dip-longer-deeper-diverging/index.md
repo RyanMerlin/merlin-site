@@ -7,6 +7,8 @@ summary: "DORA says the AI productivity dip lasts three months. Telemetry says t
 description: "DORA says the AI productivity dip lasts three months. Telemetry says twelve. That one input swings ROI by $9.9M for a 500-person org, and diverges by team."
 ---
 
+![A figure stands before a chasm labeled Productivity Dip, Longer, Deeper, Diverging, on a road marked AI Productivity Journey passing signs for Early Hype and Pilot Wins, with a bridge crossing to a rising path signed Integrate, Invest, Adapt toward a sunlit peak labeled Compounding Productivity, while a second path below litters into wreckage marked Fragment, Underinvest, Resist](./og.png)
+
 One variable in DORA's AI ROI calculator changes the story from a first-year win to a first-year loss.
 
 Not model cost.  Not salary.  Not adoption rate.
