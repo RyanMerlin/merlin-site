@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { scoreItem, highlightSegments, matchedTags, type Searchable } from './search';
+import { scoreItem, highlightSegments, matchedTags, snippet, type Searchable } from './search';
 
 function make(overrides: Partial<Searchable> = {}): Searchable {
 	return { title: 'Test Post', summary: 'A summary.', tags: [], ...overrides };
@@ -168,6 +168,49 @@ describe('highlightSegments', () => {
 		const t0 = performance.now();
 		highlightSegments('a'.repeat(1000), Array(1000).fill('a').join(' '));
 		expect(performance.now() - t0).toBeLessThan(50);
+	});
+});
+
+describe('snippet', () => {
+	it('returns text unchanged when there is no query', () => {
+		expect(snippet('hello world', '')).toBe('hello world');
+	});
+
+	it('leaves an early match alone', () => {
+		expect(snippet('hello world', 'hello')).toBe('hello world');
+	});
+
+	it('returns text unchanged when nothing matches', () => {
+		expect(snippet('hello world', 'zzz')).toBe('hello world');
+	});
+
+	it('windows around a deep match so it survives a line clamp', () => {
+		const s = 'the quick brown fox jumps over the lazy dog needle here';
+		expect(snippet(s, 'needle', { threshold: 10, lead: 10 })).toBe('…lazy dog needle here');
+	});
+
+	it('does not cut a word at the snippet start', () => {
+		const s = 'the quick brown fox jumps over the lazy dog needle here';
+		const out = snippet(s, 'needle', { threshold: 10, lead: 10 });
+		expect(out.startsWith('…')).toBe(true);
+		expect(out[1]).not.toBe(' ');
+	});
+
+	it('keeps the deep match highlightable in the windowed text', () => {
+		const s = 'x'.repeat(200) + ' needle';
+		const out = snippet(s, 'needle');
+		expect(out.startsWith('…')).toBe(true);
+		expect(out).toContain('needle');
+		expect(out.length).toBeLessThan(s.length);
+		expect(highlightSegments(out, 'needle').some((seg) => seg.hit)).toBe(true);
+	});
+
+	// 'İ' lowercases to two code units, so a lowercased-index window would slice
+	// the original at the wrong offset — same offset-drift class as highlighting.
+	it('indexes the original string when lowercasing changes length', () => {
+		const s = 'İ'.repeat(100) + ' needle';
+		const out = snippet(s, 'needle', { threshold: 10, lead: 10 });
+		expect(out.endsWith('needle')).toBe(true);
 	});
 });
 

@@ -123,3 +123,37 @@ export function matchedTags(tags: string[], query: string): string[] {
 		return terms.some((term) => t.includes(term));
 	});
 }
+
+/**
+ * Window `text` around its first query match so the match survives a line clamp.
+ *
+ * A summary is rendered clamped to a few lines. When the only match sits past
+ * that clamp, the <mark> exists but is scrolled out of the visible box, and the
+ * result looks like it matched nothing. If the earliest match is deeper than
+ * `threshold`, return a "…"-prefixed window starting `lead` chars before it (at a
+ * word boundary) so the highlight lands near the top. Matches within `threshold`,
+ * and text with no match, are returned untouched.
+ *
+ * Like highlightSegments, the match index comes from a RegExp over the original
+ * string, so offsets never drift when lowercasing changes length.
+ */
+export function snippet(
+	text: string,
+	query: string,
+	{ threshold = 90, lead = 40 }: { threshold?: number; lead?: number } = {}
+): string {
+	const terms = queryTerms(query);
+	if (terms.length === 0) return text;
+
+	let earliest = -1;
+	for (const term of terms) {
+		const m = new RegExp(escapeRegExp(term), 'i').exec(text);
+		if (m && (earliest === -1 || m.index < earliest)) earliest = m.index;
+	}
+	if (earliest <= threshold) return text; // already near the top; the clamp shows it
+
+	let start = earliest - lead;
+	const spaceBefore = text.lastIndexOf(' ', start);
+	if (spaceBefore > 0) start = spaceBefore + 1;
+	return '…' + text.slice(start);
+}

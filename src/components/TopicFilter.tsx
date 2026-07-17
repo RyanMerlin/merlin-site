@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { scoreItem, highlightSegments, matchedTags } from '../lib/search';
+import { scoreItem, highlightSegments, matchedTags, snippet } from '../lib/search';
 import { formatDate, readingTime } from '../lib/format';
 
 type Topic = { slug: string; label: string; color: string; matchTags: string[] };
@@ -235,7 +235,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 												className="mt-2 text-sm leading-relaxed line-clamp-3"
 												style={{ color: 'var(--color-text-muted)' }}
 											>
-												<Highlighted text={post.summary} query={trimmedQuery} />
+												<Highlighted text={snippet(post.summary, trimmedQuery)} query={trimmedQuery} />
 											</p>
 										)}
 
