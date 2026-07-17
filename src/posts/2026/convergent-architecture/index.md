@@ -7,6 +7,8 @@ summary: "The engine behind today's AI and the leading theory of consciousness b
 description: "Today's AI engine and the leading theory of consciousness break at the same part, the workspace. Evidence of shared constraints, not shared experience."
 ---
 
+![A solitary figure stands between two converging structures in a dim chamber, one wall labeled AI System built from glowing circuit conduits, the other labeled Mind built from branching neuron-like filaments, both feeding into a single dark unlit doorway between them](./hero.png)
+
 <nav class="series-nav" aria-label="Consciousness as Architecture series">
 <p class="series-nav__label">Consciousness as Architecture · a three-part series</p>
 <ol class="series-nav__list">

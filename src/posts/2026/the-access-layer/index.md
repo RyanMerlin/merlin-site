@@ -7,6 +7,8 @@ summary: "Working memory suggests the conscious self isn't the whole mind but a 
 description: "Working memory suggests the conscious self isn't the whole mind but a small access layer: the narrow beam where a few states become reportable and usable."
 ---
 
+![A solitary figure stands on a small lit platform inside a vast dark archive of countless memory boxes, illuminated by a single narrow beam of light from above, with drawers labeled Memory, Archive, Possibilities, and Unseen surrounding the space](./hero.png)
+
 <nav class="series-nav" aria-label="Consciousness as Architecture series">
 <p class="series-nav__label">Consciousness as Architecture · a three-part series</p>
 <ol class="series-nav__list">

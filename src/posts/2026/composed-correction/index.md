@@ -7,6 +7,8 @@ summary: "If both human and machine are thin, biased minds whose errors correlat
 description: "If human and machine are both thin, biased minds whose errors correlate, value was never oversight but composition: correctors that fail in different places."
 ---
 
+![A solitary figure studies four tall perforated screens with different hole patterns standing side by side in a dim gallery, light passing through the gaps in each screen toward a glowing landscape image on the far wall](./hero.png)
+
 <nav class="series-nav" aria-label="Consciousness as Architecture series">
 <p class="series-nav__label">Consciousness as Architecture · a three-part series</p>
 <ol class="series-nav__list">
