@@ -53,6 +53,13 @@ describe('scoreItem', () => {
 	it('tolerates a missing summary', () => {
 		expect(scoreItem({ title: 'Agents', tags: [] }, 'agents')).toBeGreaterThan(0);
 	});
+
+	// A repeated term is one constraint, not two — otherwise "agent agent" outranks
+	// "agent" for no reason a reader could explain.
+	it('does not let a duplicated term inflate the score', () => {
+		const item = make({ title: 'Agents' });
+		expect(scoreItem(item, 'agent agent')).toBe(scoreItem(item, 'agent'));
+	});
 });
 
 describe('highlightSegments', () => {
@@ -127,6 +134,40 @@ describe('highlightSegments', () => {
 			{ text: 'cost is $5 ', hit: false },
 			{ text: '(net)', hit: true }
 		]);
+	});
+
+	// 'İ'.toLowerCase() is two code units, so indexing a lowercased copy and
+	// slicing the original drifts by one and emits an empty <mark>. Offsets must
+	// come from the original string.
+	it('keeps offsets correct when lowercasing changes length', () => {
+		expect(highlightSegments('İx', 'x')).toEqual([
+			{ text: 'İ', hit: false },
+			{ text: 'x', hit: true }
+		]);
+	});
+
+	it('never emits an empty segment', () => {
+		for (const [text, query] of [
+			['İx', 'x'],
+			['ẞtraße', 'traße'],
+			['agent', 'age gent'],
+			['aaa', 'aa']
+		]) {
+			for (const seg of highlightSegments(text, query)) {
+				expect(seg.text.length).toBeGreaterThan(0);
+			}
+		}
+	});
+
+	// Occurrences at 0 and 1 overlap and merge, so the whole run marks.
+	it('still marks overlapping occurrences of one term', () => {
+		expect(highlightSegments('aaa', 'aa')).toEqual([{ text: 'aaa', hit: true }]);
+	});
+
+	it('stays fast on a pathological repeated-term query', () => {
+		const t0 = performance.now();
+		highlightSegments('a'.repeat(1000), Array(1000).fill('a').join(' '));
+		expect(performance.now() - t0).toBeLessThan(50);
 	});
 });
 

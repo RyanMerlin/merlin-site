@@ -1,3 +1,7 @@
+// Server/build-time only. The node:fs import below means this module cannot be
+// imported from a `client:*` component — doing so breaks the client bundle. Put
+// anything an island needs in lib/format.ts or lib/search.ts, which are kept
+// free of `node:` imports for exactly that reason.
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -118,10 +122,6 @@ export function relatedPosts(posts: PostMeta[], current: PostMeta, count: number
 		}))
 		.sort((a, b) => b.score - a.score || b.post.created.localeCompare(a.post.created));
 	return scored.slice(0, count).map((s) => s.post);
-}
-
-export function readingTime(wordCount: number): string {
-	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 }
 
 // Every post gets an image at this URL — real colocated hero art (served as

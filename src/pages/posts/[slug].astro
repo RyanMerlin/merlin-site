@@ -3,7 +3,8 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PostCta from '../../components/PostCta.astro';
 import ImageZoom from '../../components/ImageZoom.astro';
-import { getPosts, relatedPosts, readingTime, metaDescription, postThumbnail } from '../../lib/posts';
+import { getPosts, relatedPosts, metaDescription, postThumbnail } from '../../lib/posts';
+import { formatDate, readingTime } from '../../lib/format';
 import { SITE_URL, SITE_AUTHOR } from '../../lib/config';
 
 export async function getStaticPaths() {
@@ -18,11 +19,6 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 const allPosts = await getPosts();
 const meta = allPosts.find((p) => p.slug === entry.id)!;
 const otherPosts = relatedPosts(allPosts, meta, 2);
-
-function formatDate(iso: string): string {
-	const d = new Date(iso);
-	return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
-}
 
 const ogImage = `${SITE_URL}${postThumbnail(meta).src}`;
 const description = metaDescription(entry.data);
@@ -63,7 +59,7 @@ const jsonLd = JSON.stringify({
 				{meta.title}
 			</h1>
 			<div class="mt-3 flex items-center gap-2.5 text-xs" style="color: var(--color-text-muted);">
-				<time datetime={meta.created}>{formatDate(meta.created)}</time>
+				<time datetime={meta.created}>{formatDate(meta.created, 'long')}</time>
 				<span>·</span>
 				<span>{readingTime(meta.wordCount)}</span>
 				{

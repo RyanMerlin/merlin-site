@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { scoreItem, highlightSegments, matchedTags } from '../lib/search';
+import { formatDate, readingTime } from '../lib/format';
 
 type Topic = { slug: string; label: string; color: string; matchTags: string[] };
 
@@ -15,15 +16,6 @@ export type FilterItem = {
 	topicColor: string | null;
 	thumbnailSrc: string;
 };
-
-function formatDate(iso: string): string {
-	const d = new Date(iso);
-	return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
-}
-
-function readingTime(wordCount: number): string {
-	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
-}
 
 // Render `text` with the query's hits wrapped, so a result shows why it matched.
 function Highlighted({ text, query }: { text: string; query: string }) {
@@ -47,6 +39,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 	const [activeTopic, setActiveTopic] = useState<string | null>(null);
 	const [query, setQuery] = useState('');
 	const [searchFocused, setSearchFocused] = useState(false);
+	const [announcement, setAnnouncement] = useState('');
 	const searchRef = useRef<HTMLInputElement>(null);
 
 	const trimmedQuery = query.trim();
@@ -78,6 +71,21 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 			.sort((a, b) => b.score - a.score || b.post.created.localeCompare(a.post.created))
 			.map(({ post }) => post);
 	}, [items, activeTopic, trimmedQuery]);
+
+	// The live region must not narrate every keystroke: typing "infrastructure"
+	// would queue "1 post…", "3 posts…", once per letter, and a screen reader reads
+	// the backlog. Announce the result count only once typing settles, and don't
+	// echo the query back — the reader just typed it.
+	useEffect(() => {
+		if (!trimmedQuery) {
+			setAnnouncement('');
+			return;
+		}
+		const id = setTimeout(() => {
+			setAnnouncement(`${filtered.length} ${filtered.length === 1 ? 'post' : 'posts'} found`);
+		}, 500);
+		return () => clearTimeout(id);
+	}, [trimmedQuery, filtered.length]);
 
 	const activeTopicLabel = topics.find((t) => t.slug === activeTopic)?.label;
 
@@ -122,6 +130,9 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 						placeholder="Search…"
 						value={query}
 						autoComplete="off"
+						// Longer than any real query, and it bounds the highlighter's
+						// worst case rather than trusting a pasted wall of text.
+						maxLength={64}
 						onChange={(e) => setQuery(e.target.value)}
 						onFocus={() => setSearchFocused(true)}
 						onBlur={() => setSearchFocused(false)}
@@ -140,9 +151,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 			</div>
 
 			<p className="sr-only" role="status" aria-live="polite">
-				{trimmedQuery
-					? `${filtered.length} ${filtered.length === 1 ? 'post' : 'posts'} matching ${trimmedQuery}`
-					: ''}
+				{announcement}
 			</p>
 
 			{filtered.length === 0 ? (

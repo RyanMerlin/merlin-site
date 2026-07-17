@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { metaDescription, postTopic, relatedPosts, readingTime, postThumbnail, topics, type PostMeta } from './posts';
+import { metaDescription, postTopic, relatedPosts, postThumbnail, topics, type PostMeta } from './posts';
 import { SITE_DESCRIPTION } from './config';
 
 function makePost(overrides: Partial<PostMeta> = {}): PostMeta {
@@ -90,15 +90,6 @@ describe('relatedPosts', () => {
 	it('respects the count limit', () => {
 		const result = relatedPosts(all, current, 2);
 		expect(result.map((p) => p.slug)).toEqual(['b', 'a']);
-	});
-});
-
-describe('readingTime', () => {
-	it('rounds up and floors at 1 minute', () => {
-		expect(readingTime(0)).toBe('1 min read');
-		expect(readingTime(1)).toBe('1 min read');
-		expect(readingTime(200)).toBe('1 min read');
-		expect(readingTime(201)).toBe('2 min read');
 	});
 });
 

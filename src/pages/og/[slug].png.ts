@@ -4,6 +4,7 @@ import { Resvg } from '@resvg/resvg-js';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { getPosts, hasRealHero, postTopic, topicColorHex, type PostMeta } from '../../lib/posts';
+import { readingTime } from '../../lib/format';
 import { SITE_AUTHOR } from '../../lib/config';
 
 export const OG_WIDTH = 1200;
@@ -19,10 +20,6 @@ export async function getStaticPaths() {
 
 const fontRegular = readFileSync(resolve('src/lib/fonts/Geist-Regular.ttf'));
 const fontBold = readFileSync(resolve('src/lib/fonts/Geist-SemiBold.ttf'));
-
-function readingTime(wordCount: number): string {
-	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
-}
 
 const GRADIENT_BASE = '#17130f';
 const GRADIENT_END = '#0d0a07';
