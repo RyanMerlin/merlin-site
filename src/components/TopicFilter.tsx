@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { scoreItem } from '../lib/search';
 
 type Topic = { slug: string; label: string; color: string; matchTags: string[] };
 
@@ -7,6 +8,7 @@ export type FilterItem = {
 	title: string;
 	created: string;
 	summary?: string;
+	tags: string[];
 	wordCount: number;
 	topicSlug: string | null;
 	topicLabel: string | null;
@@ -25,12 +27,28 @@ function readingTime(wordCount: number): string {
 
 export default function TopicFilter({ items, topics }: { items: FilterItem[]; topics: Topic[] }) {
 	const [activeTopic, setActiveTopic] = useState<string | null>(null);
+	const [query, setQuery] = useState('');
 
-	const filtered = activeTopic ? items.filter((p) => p.topicSlug === activeTopic) : items;
+	const trimmedQuery = query.trim();
+
+	// Topic and search compose: the tabs scope the corpus, the query ranks within
+	// it. `items` arrives date-descending, which stays the order until a query
+	// gives us something better to sort on.
+	const filtered = useMemo(() => {
+		const inTopic = activeTopic ? items.filter((p) => p.topicSlug === activeTopic) : items;
+		if (!trimmedQuery) return inTopic;
+		return inTopic
+			.map((post) => ({ post, score: scoreItem(post, trimmedQuery) }))
+			.filter(({ score }) => score > 0)
+			.sort((a, b) => b.score - a.score || b.post.created.localeCompare(a.post.created))
+			.map(({ post }) => post);
+	}, [items, activeTopic, trimmedQuery]);
+
+	const activeTopicLabel = topics.find((t) => t.slug === activeTopic)?.label;
 
 	return (
 		<>
-			<div className="mb-8 flex gap-0 border-b" style={{ borderColor: 'var(--color-border)' }}>
+			<div className="mb-8 flex flex-wrap items-center gap-x-0 gap-y-3 border-b" style={{ borderColor: 'var(--color-border)' }}>
 				<button
 					className={`tab${activeTopic === null ? ' active' : ''}`}
 					onClick={() => setActiveTopic(null)}
@@ -47,11 +65,37 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 						{topic.label}
 					</button>
 				))}
+
+				<div className="search-field ml-auto">
+					<label className="sr-only" htmlFor="post-search">
+						Search posts
+					</label>
+					<input
+						id="post-search"
+						type="search"
+						className="search-input"
+						placeholder="Search…"
+						value={query}
+						autoComplete="off"
+						onChange={(e) => setQuery(e.target.value)}
+						onKeyDown={(e) => {
+							if (e.key === 'Escape') setQuery('');
+						}}
+					/>
+				</div>
 			</div>
+
+			<p className="sr-only" role="status" aria-live="polite">
+				{trimmedQuery
+					? `${filtered.length} ${filtered.length === 1 ? 'post' : 'posts'} matching ${trimmedQuery}`
+					: ''}
+			</p>
 
 			{filtered.length === 0 ? (
 				<p style={{ color: 'var(--color-text-muted)' }} className="italic">
-					No posts in this topic yet.
+					{trimmedQuery
+						? `No posts match “${trimmedQuery}”${activeTopicLabel ? ` in ${activeTopicLabel}` : ''}.`
+						: 'No posts in this topic yet.'}
 				</p>
 			) : (
 				<ul className="space-y-10">

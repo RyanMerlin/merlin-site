@@ -12,6 +12,7 @@ const items: FilterItem[] = posts.map((p) => {
 		title: p.title,
 		created: p.created,
 		summary: p.summary,
+		tags: p.tags,
 		wordCount: p.wordCount,
 		topicSlug: topic?.slug ?? null,
 		topicLabel: topic?.label ?? null,
