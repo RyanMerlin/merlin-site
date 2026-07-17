@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { scoreItem, type Searchable } from './search';
+import { scoreItem, highlightSegments, matchedTags, type Searchable } from './search';
 
 function make(overrides: Partial<Searchable> = {}): Searchable {
 	return { title: 'Test Post', summary: 'A summary.', tags: [], ...overrides };
@@ -52,5 +52,102 @@ describe('scoreItem', () => {
 
 	it('tolerates a missing summary', () => {
 		expect(scoreItem({ title: 'Agents', tags: [] }, 'agents')).toBeGreaterThan(0);
+	});
+});
+
+describe('highlightSegments', () => {
+	it('returns one unhit segment when the query is empty', () => {
+		expect(highlightSegments('Building Agents', '')).toEqual([{ text: 'Building Agents', hit: false }]);
+	});
+
+	it('returns an empty list for empty text', () => {
+		expect(highlightSegments('', 'agents')).toEqual([]);
+	});
+
+	it('returns one unhit segment when nothing matches', () => {
+		expect(highlightSegments('Building Agents', 'economics')).toEqual([
+			{ text: 'Building Agents', hit: false }
+		]);
+	});
+
+	it('splits a mid-string match into three segments', () => {
+		expect(highlightSegments('Building Agents Now', 'agents')).toEqual([
+			{ text: 'Building ', hit: false },
+			{ text: 'Agents', hit: true },
+			{ text: ' Now', hit: false }
+		]);
+	});
+
+	it('preserves the original casing of a hit', () => {
+		const segs = highlightSegments('Building AGENTS', 'agents');
+		expect(segs.find((s) => s.hit)?.text).toBe('AGENTS');
+	});
+
+	it('marks a hit at the very start with no leading empty segment', () => {
+		expect(highlightSegments('Agents rule', 'agents')).toEqual([
+			{ text: 'Agents', hit: true },
+			{ text: ' rule', hit: false }
+		]);
+	});
+
+	it('marks a hit at the very end with no trailing empty segment', () => {
+		expect(highlightSegments('We love agents', 'agents')).toEqual([
+			{ text: 'We love ', hit: false },
+			{ text: 'agents', hit: true }
+		]);
+	});
+
+	it('marks every occurrence of a term', () => {
+		const segs = highlightSegments('agents and agents', 'agents');
+		expect(segs.filter((s) => s.hit).length).toBe(2);
+	});
+
+	it('highlights each of several terms', () => {
+		const segs = highlightSegments('agents and infra', 'agents infra');
+		expect(segs.filter((s) => s.hit).map((s) => s.text)).toEqual(['agents', 'infra']);
+	});
+
+	it('merges overlapping term matches into one segment', () => {
+		// 'age' and 'gent' overlap inside 'agent' — must not double-wrap.
+		const segs = highlightSegments('agent', 'age gent');
+		expect(segs).toEqual([{ text: 'agent', hit: true }]);
+	});
+
+	it('rejoins to exactly the original text', () => {
+		const text = 'Building Agents on infrastructure';
+		expect(
+			highlightSegments(text, 'agents infra')
+				.map((s) => s.text)
+				.join('')
+		).toBe(text);
+	});
+
+	it('treats regex metacharacters as literal text', () => {
+		expect(highlightSegments('cost is $5 (net)', '(net)')).toEqual([
+			{ text: 'cost is $5 ', hit: false },
+			{ text: '(net)', hit: true }
+		]);
+	});
+});
+
+describe('matchedTags', () => {
+	it('returns only the tags a term hits', () => {
+		expect(matchedTags(['ai', 'agents', 'economics'], 'agent')).toEqual(['agents']);
+	});
+
+	it('returns an empty list for an empty query', () => {
+		expect(matchedTags(['ai'], '')).toEqual([]);
+	});
+
+	it('returns an empty list when no tag matches', () => {
+		expect(matchedTags(['ai'], 'economics')).toEqual([]);
+	});
+
+	it('is case-insensitive but returns the original tag casing', () => {
+		expect(matchedTags(['Agents'], 'AGENT')).toEqual(['Agents']);
+	});
+
+	it('does not duplicate a tag hit by two terms', () => {
+		expect(matchedTags(['agents'], 'age agent')).toEqual(['agents']);
 	});
 });

@@ -470,6 +470,7 @@ pre[class*='language-'] {
   border-bottom-color: var(--topic-color, var(--color-accent));
 }
 .search-field {
+  position: relative;
   padding-bottom: 0.4rem;
 }
 .search-input {
@@ -491,6 +492,59 @@ pre[class*='language-'] {
 /* The type=search clear affordance ships as a UA-styled cross that ignores our
    palette and goes near-invisible in dark mode. Escape clears the field. */
 .search-input::-webkit-search-cancel-button { appearance: none; }
+
+/* The "/" shortcut hint, parked inside the right edge of the idle field. */
+.search-kbd {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+  padding: 0 0.3rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+  background: color-mix(in srgb, var(--color-text) 8%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Query hits inside a title or summary. The UA default for <mark> is a yellow
+   block that belongs to neither palette, so both colors are set explicitly. */
+.search-hit {
+  padding: 0 1px;
+  border-radius: 2px;
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-accent) 28%, transparent);
+}
+
+/* Shown only when the query hit a tag — the one match reason the listing has no
+   other way to display. */
+.tag-hit {
+  display: inline-block;
+  padding: 1px 7px;
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+}
+.tag-hit .search-hit { background: none; color: var(--color-accent); font-weight: 600; }
+
+/* Escape hatch out of an empty topic-scoped result set. */
+.search-widen {
+  margin-top: 0.75rem;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.search-widen:hover { border-bottom-color: var(--color-accent); }
 
 .topic-badge {
   display: inline-block;

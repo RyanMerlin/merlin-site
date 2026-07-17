@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { scoreItem } from '../lib/search';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { scoreItem, highlightSegments, matchedTags } from '../lib/search';
 
 type Topic = { slug: string; label: string; color: string; matchTags: string[] };
 
@@ -25,11 +25,46 @@ function readingTime(wordCount: number): string {
 	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 }
 
+// Render `text` with the query's hits wrapped, so a result shows why it matched.
+function Highlighted({ text, query }: { text: string; query: string }) {
+	if (!query) return <>{text}</>;
+	return (
+		<>
+			{highlightSegments(text, query).map((seg, i) =>
+				seg.hit ? (
+					<mark key={i} className="search-hit">
+						{seg.text}
+					</mark>
+				) : (
+					<span key={i}>{seg.text}</span>
+				)
+			)}
+		</>
+	);
+}
+
 export default function TopicFilter({ items, topics }: { items: FilterItem[]; topics: Topic[] }) {
 	const [activeTopic, setActiveTopic] = useState<string | null>(null);
 	const [query, setQuery] = useState('');
+	const [searchFocused, setSearchFocused] = useState(false);
+	const searchRef = useRef<HTMLInputElement>(null);
 
 	const trimmedQuery = query.trim();
+
+	// "/" focuses search, the convention every code-hosting and docs site trained
+	// this audience on. Ignored while typing somewhere else, so it never swallows a
+	// literal slash.
+	useEffect(() => {
+		function onKeyDown(e: KeyboardEvent) {
+			if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+			const el = e.target as HTMLElement | null;
+			if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
+			e.preventDefault();
+			searchRef.current?.focus();
+		}
+		window.addEventListener('keydown', onKeyDown);
+		return () => window.removeEventListener('keydown', onKeyDown);
+	}, []);
 
 	// Topic and search compose: the tabs scope the corpus, the query ranks within
 	// it. `items` arrives date-descending, which stays the order until a query
@@ -45,6 +80,15 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 	}, [items, activeTopic, trimmedQuery]);
 
 	const activeTopicLabel = topics.find((t) => t.slug === activeTopic)?.label;
+
+	// A query with hits elsewhere but none in the active topic is a dead end, and
+	// the reader can't see the way out. Every post is already in memory, so count
+	// the wider corpus and offer to widen to it. Only computed when we're actually
+	// looking at an empty result set.
+	const matchesOutsideTopic = useMemo(() => {
+		if (!trimmedQuery || !activeTopic || filtered.length > 0) return 0;
+		return items.filter((p) => scoreItem(p, trimmedQuery) > 0).length;
+	}, [items, activeTopic, trimmedQuery, filtered.length]);
 
 	return (
 		<>
@@ -72,16 +116,26 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 					</label>
 					<input
 						id="post-search"
+						ref={searchRef}
 						type="search"
 						className="search-input"
 						placeholder="Search…"
 						value={query}
 						autoComplete="off"
 						onChange={(e) => setQuery(e.target.value)}
+						onFocus={() => setSearchFocused(true)}
+						onBlur={() => setSearchFocused(false)}
 						onKeyDown={(e) => {
 							if (e.key === 'Escape') setQuery('');
 						}}
 					/>
+					{/* A shortcut nobody can see is a shortcut nobody uses. The hint gets
+					    out of the way as soon as the field is in use. */}
+					{!searchFocused && !query && (
+						<kbd className="search-kbd" aria-hidden="true">
+							/
+						</kbd>
+					)}
 				</div>
 			</div>
 
@@ -92,11 +146,20 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 			</p>
 
 			{filtered.length === 0 ? (
-				<p style={{ color: 'var(--color-text-muted)' }} className="italic">
-					{trimmedQuery
-						? `No posts match “${trimmedQuery}”${activeTopicLabel ? ` in ${activeTopicLabel}` : ''}.`
-						: 'No posts in this topic yet.'}
-				</p>
+				<div>
+					<p style={{ color: 'var(--color-text-muted)' }} className="italic">
+						{trimmedQuery
+							? `No posts match “${trimmedQuery}”${activeTopicLabel ? ` in ${activeTopicLabel}` : ''}.`
+							: 'No posts in this topic yet.'}
+					</p>
+					{matchesOutsideTopic > 0 && (
+						<button className="search-widen" onClick={() => setActiveTopic(null)}>
+							{matchesOutsideTopic === 1
+								? 'Show the 1 match in all writing'
+								: `Show all ${matchesOutsideTopic} matches in all writing`}
+						</button>
+					)}
+				</div>
 			) : (
 				<ul className="space-y-10">
 					{filtered.map((post) => (
@@ -118,7 +181,7 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 											className="text-lg font-medium transition-colors line-clamp-1"
 											style={{ color: 'var(--color-text)' }}
 										>
-											{post.title}
+											<Highlighted text={post.title} query={trimmedQuery} />
 										</h2>
 										<div
 											className="mt-1.5 flex items-center gap-2.5 text-xs"
@@ -144,7 +207,20 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 												className="mt-2 text-sm leading-relaxed line-clamp-3"
 												style={{ color: 'var(--color-text-muted)' }}
 											>
-												{post.summary}
+												<Highlighted text={post.summary} query={trimmedQuery} />
+											</p>
+										)}
+
+										{/* Tags are searchable but never otherwise rendered, so a tag-only
+										    hit would show a result with nothing in it matching the query.
+										    Surfacing the tag that matched is what makes the ranking legible. */}
+										{trimmedQuery && matchedTags(post.tags, trimmedQuery).length > 0 && (
+											<p className="mt-2 flex flex-wrap items-center gap-1.5">
+												{matchedTags(post.tags, trimmedQuery).map((tag) => (
+													<span key={tag} className="tag-hit">
+														<Highlighted text={tag} query={trimmedQuery} />
+													</span>
+												))}
 											</p>
 										)}
 									</div>

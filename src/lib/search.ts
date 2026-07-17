@@ -46,3 +46,66 @@ export function scoreItem(item: Searchable, query: string): number {
 	}
 	return score;
 }
+
+export type Segment = { text: string; hit: boolean };
+
+/**
+ * Split `text` into consecutive matched/unmatched runs for `query`, so a result
+ * can show *why* it matched. Segments rejoin to exactly the original text, and
+ * hits keep their original casing.
+ *
+ * Matching uses indexOf rather than a RegExp, so a query full of metacharacters
+ * is literal text and can never throw.
+ */
+export function highlightSegments(text: string, query: string): Segment[] {
+	if (!text) return [];
+	const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+	if (terms.length === 0) return [{ text, hit: false }];
+
+	const haystack = text.toLowerCase();
+	const ranges: Array<[number, number]> = [];
+	for (const term of terms) {
+		let from = 0;
+		for (;;) {
+			const at = haystack.indexOf(term, from);
+			if (at === -1) break;
+			ranges.push([at, at + term.length]);
+			from = at + 1; // +1, not +term.length: overlapping hits still count
+		}
+	}
+	if (ranges.length === 0) return [{ text, hit: false }];
+
+	// Terms can overlap ('age' and 'gent' inside 'agent'). Merge before slicing so
+	// a character is never wrapped twice.
+	ranges.sort((a, b) => a[0] - b[0]);
+	const merged: Array<[number, number]> = [ranges[0]];
+	for (const [start, end] of ranges.slice(1)) {
+		const last = merged[merged.length - 1];
+		if (start <= last[1]) last[1] = Math.max(last[1], end);
+		else merged.push([start, end]);
+	}
+
+	const segments: Segment[] = [];
+	let cursor = 0;
+	for (const [start, end] of merged) {
+		if (start > cursor) segments.push({ text: text.slice(cursor, start), hit: false });
+		segments.push({ text: text.slice(start, end), hit: true });
+		cursor = end;
+	}
+	if (cursor < text.length) segments.push({ text: text.slice(cursor), hit: false });
+	return segments;
+}
+
+/**
+ * The tags `query` hits, in their original casing. Tags are searchable but not
+ * otherwise rendered in the listing, so a tag-only match would look like a
+ * result with nothing in it matching. Callers surface these to close that gap.
+ */
+export function matchedTags(tags: string[], query: string): string[] {
+	const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+	if (terms.length === 0) return [];
+	return tags.filter((tag) => {
+		const t = tag.toLowerCase();
+		return terms.some((term) => t.includes(term));
+	});
+}

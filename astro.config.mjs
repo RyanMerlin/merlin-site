@@ -43,6 +43,14 @@ export default defineConfig({
 			rehypeEagerFirstImage
 		]
 	},
+	// Prefetch a page's HTML when the reader hovers its link, so the click lands on
+	// an already-fetched document. This is the one place the site ships JS to pages
+	// that otherwise ship none (~1KB, deferred, on any page with an internal link).
+	// The trade is deliberate: navigation between posts is the main interaction on
+	// a blog, and prefetch is the cheapest way to make it instant. 'hover' (Astro's
+	// default) fetches on intent rather than eagerly, so it never speculatively
+	// pulls all 20 posts on the home page.
+	prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
 	integrations: [react()],
 vite: { plugins: [tailwindcss()] }
 });
