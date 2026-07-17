@@ -1,14 +1,20 @@
 import type { APIRoute } from 'astro';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { getPosts, postTopic, topicColorHex, type PostMeta } from '../../lib/posts';
+import { getPosts, hasRealHero, postTopic, topicColorHex, type PostMeta } from '../../lib/posts';
 import { SITE_AUTHOR } from '../../lib/config';
 
+export const OG_WIDTH = 1200;
+export const OG_HEIGHT = 630;
+
+// Only posts WITHOUT real hero art get a route here — the ones with real art
+// are served by [slug].jpg.ts instead (see hasRealHero() in lib/posts.ts,
+// the single source of truth postThumbnail() also reads).
 export async function getStaticPaths() {
 	const posts = await getPosts();
-	return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+	return posts.filter((post) => !hasRealHero(post.slug)).map((post) => ({ params: { slug: post.slug }, props: { post } }));
 }
 
 const fontRegular = readFileSync(resolve('src/lib/fonts/Geist-Regular.ttf'));
@@ -37,29 +43,8 @@ export function cardGradient(post: PostMeta): string {
 	return `linear-gradient(145deg, ${start} 0%, ${GRADIENT_END} 100%)`;
 }
 
-function findHeroImage(slug: string): Buffer | null {
-	// Check for og.png first, then hero.png, in src/posts/**/<slug>/
-	for (const year of ['2025', '2026', '2027']) {
-		for (const name of ['og.png', 'hero.png']) {
-			const p = resolve(`src/posts/${year}/${slug}/${name}`);
-			if (existsSync(p)) return readFileSync(p);
-		}
-	}
-	return null;
-}
-
 export const GET: APIRoute = async ({ props }) => {
 	const post = props.post as PostMeta;
-
-	const hero = findHeroImage(post.slug);
-	if (hero) {
-		return new Response(new Uint8Array(hero), {
-			headers: {
-				'Content-Type': 'image/png',
-				'Cache-Control': 'public, max-age=31536000, immutable'
-			}
-		});
-	}
 
 	const date = new Date(post.created).toLocaleDateString('en-US', {
 		year: 'numeric',
@@ -166,8 +151,8 @@ export const GET: APIRoute = async ({ props }) => {
 	};
 
 	const svg = await satori(tree, {
-		width: 1200,
-		height: 630,
+		width: OG_WIDTH,
+		height: OG_HEIGHT,
 		fonts: [
 			{ name: 'Geist', data: fontRegular, weight: 400, style: 'normal' },
 			{ name: 'Geist', data: fontBold, weight: 600, style: 'normal' }

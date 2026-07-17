@@ -2,6 +2,24 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import rehypeExternalLinks from 'rehype-external-links';
+import { visit } from 'unist-util-visit';
+
+// The first image in a post is almost always the hero art and the page's LCP
+// (Largest Contentful Paint) element. Astro's default markdown image pipeline
+// lazy-loads every image uniformly, which actively delays the LCP element's
+// fetch. Mark only the first <img> per document eager + high priority; every
+// image after it keeps the default lazy behavior.
+function rehypeEagerFirstImage() {
+	return (tree) => {
+		let found = false;
+		visit(tree, 'element', (node) => {
+			if (found || node.tagName !== 'img') return;
+			found = true;
+			node.properties.loading = 'eager';
+			node.properties.fetchpriority = 'high';
+		});
+	};
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,7 +39,8 @@ export default defineConfig({
 	// on-site navigation stays in the same tab. rel adds noopener/noreferrer for safety.
 	markdown: {
 		rehypePlugins: [
-			[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+			[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+			rehypeEagerFirstImage
 		]
 	},
 	integrations: [react()],

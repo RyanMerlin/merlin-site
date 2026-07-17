@@ -1,5 +1,25 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { SITE_DESCRIPTION } from './config';
+
+// Real hero art lives at src/posts/<year>/<slug>/{og,hero}.png. Single source of
+// truth for the search pattern — hasRealHero() (read by postThumbnail() and both
+// OG routes' getStaticPaths()) and the .jpg route's file read both go through
+// this, so they can never drift apart and disagree about which posts have art.
+export function findHeroImagePath(slug: string): string | null {
+	for (const year of ['2025', '2026', '2027']) {
+		for (const name of ['og.png', 'hero.png']) {
+			const p = resolve(`src/posts/${year}/${slug}/${name}`);
+			if (existsSync(p)) return p;
+		}
+	}
+	return null;
+}
+
+export function hasRealHero(slug: string): boolean {
+	return findHeroImagePath(slug) !== null;
+}
 
 // Resolve the SEO/social meta description for a post. Prefer an explicit,
 // hand-tuned `description` (kept <=160 chars). Fall back to the `summary` (which
@@ -104,9 +124,11 @@ export function readingTime(wordCount: number): string {
 	return `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 }
 
-// Every post gets an image at this URL — real colocated hero art if present,
-// otherwise the satori-generated title card. Centralized so both list surfaces
-// (and anything else that wants a thumbnail later) resolve it the same way.
+// Every post gets an image at this URL — real colocated hero art (served as
+// compressed JPEG) if present, otherwise the satori-generated title card (PNG).
+// Centralized so both list surfaces (and anything else that wants a thumbnail
+// later) resolve it, and its extension, the same way.
 export function postThumbnail(post: PostMeta): { src: string; alt: string } {
-	return { src: `/og/${post.slug}.png`, alt: post.title };
+	const ext = hasRealHero(post.slug) ? 'jpg' : 'png';
+	return { src: `/og/${post.slug}.${ext}`, alt: post.title };
 }

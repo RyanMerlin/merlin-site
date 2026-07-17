@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PostCta from '../../components/PostCta.astro';
 import ImageZoom from '../../components/ImageZoom.astro';
-import { getPosts, relatedPosts, readingTime, metaDescription } from '../../lib/posts';
+import { getPosts, relatedPosts, readingTime, metaDescription, postThumbnail } from '../../lib/posts';
 import { SITE_URL, SITE_AUTHOR } from '../../lib/config';
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ function formatDate(iso: string): string {
 	return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 }
 
-const ogImage = `${SITE_URL}/og/${meta.slug}.png`;
+const ogImage = `${SITE_URL}${postThumbnail(meta).src}`;
 const description = metaDescription(entry.data);
 
 const jsonLd = JSON.stringify({
