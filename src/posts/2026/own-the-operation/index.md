@@ -7,6 +7,8 @@ summary: "MCP is how agent capabilities travel. It should not be where your oper
 description: "MCP is how agent capabilities travel, not where operating knowledge should live. Durable leverage is owning the action layer: CLI verbs with stable contracts."
 ---
 
+![A figure looks out over a glowing industrial floor where labeled stations reading Data, Evals, Deploy, Monitor, and Feedback connect in a continuous loop of conveyor tracks and screens, beside a sign reading Own the Operation](./og.png)
+
 MCP connects agents to tools.  Workflows coordinate tools.  Skills teach models how to use tools.
 
 None of those automatically owns the operation.

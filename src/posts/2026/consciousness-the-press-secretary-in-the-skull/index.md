@@ -7,6 +7,8 @@ summary: "Consciousness is not usually the first mover in moment-to-moment choic
 description: "Consciousness isn't the first mover in moment-to-moment choice. It's a late-binding narrative layer converting action into reasons, and reasons into identity."
 ---
 
+![A cross-section of a head rendered as a functioning press briefing room, a figure labeled Press Secretary speaks at a podium under a sign reading Narrative, flanked by flags and a press corps, with corridors leading down to compartments labeled Memory, Reasoning, Filters, Emotion, and Perception, a city skyline visible through the silhouette of the face](./og.png)
+
 Think about the last decision you made today.  What to eat.  Whether to answer that text now or later.  Which tab to open first.
 
 Do you remember the moment you decided?
