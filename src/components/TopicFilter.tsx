@@ -70,14 +70,6 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 										style={{ borderColor: 'var(--color-border)' }}
 									/>
 									<div className="min-w-0 flex-1">
-										{post.topicLabel && (
-											<span
-												className="topic-badge"
-												style={{ ['--badge-color' as string]: post.topicColor } as React.CSSProperties}
-											>
-												{post.topicLabel}
-											</span>
-										)}
 										<h2
 											className="text-lg font-medium transition-colors line-clamp-1"
 											style={{ color: 'var(--color-text)' }}
@@ -89,12 +81,23 @@ export default function TopicFilter({ items, topics }: { items: FilterItem[]; to
 											style={{ color: 'var(--color-text-muted)' }}
 										>
 											<time dateTime={post.created}>{formatDate(post.created)}</time>
+											{post.topicLabel && (
+												<>
+													<span>·</span>
+													<span
+														className="topic-badge"
+														style={{ ['--badge-color' as string]: post.topicColor } as React.CSSProperties}
+													>
+														{post.topicLabel}
+													</span>
+												</>
+											)}
 											<span>·</span>
 											<span>{readingTime(post.wordCount)}</span>
 										</div>
 										{post.summary && (
 											<p
-												className="mt-2 text-sm leading-relaxed line-clamp-2"
+												className="mt-2 text-sm leading-relaxed line-clamp-3"
 												style={{ color: 'var(--color-text-muted)' }}
 											>
 												{post.summary}

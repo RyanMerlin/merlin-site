@@ -476,7 +476,6 @@ pre[class*='language-'] {
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.03em;
-  margin-bottom: 0.25rem;
   background: color-mix(in srgb, var(--badge-color) 15%, transparent);
   color: var(--badge-color);
 }
