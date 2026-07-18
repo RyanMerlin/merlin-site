@@ -426,6 +426,78 @@ body {
   color: var(--color-text-muted);
 }
 
+/* ─── The argument in brief — editorial abstract after the opener ─── */
+.prose .argument-brief {
+  margin: 2.25rem 0 2.75rem;
+  padding: 1.25rem 1.5rem 1.35rem;
+  background-color: var(--color-ref-bg);
+  border: 1px solid var(--color-ref-border);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+}
+.prose .argument-brief__label {
+  margin: 0 0 1rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.prose .argument-brief__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: argument-point;
+}
+.prose .argument-brief__list li {
+  position: relative;
+  margin: 0;
+  padding: 0.85rem 0 0.85rem 2.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  counter-increment: argument-point;
+}
+.prose .argument-brief__list li + li {
+  border-top: 1px solid var(--color-border);
+}
+.prose .argument-brief__list li::before {
+  content: counter(argument-point);
+  position: absolute;
+  left: 0;
+  top: 0.78rem;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+}
+.prose .argument-brief__list li:first-child {
+  padding-top: 0.15rem;
+}
+.prose .argument-brief__list li:first-child::before {
+  top: 0.1rem;
+}
+.prose .argument-brief__list li:last-child {
+  padding-bottom: 0.1rem;
+}
+@media (max-width: 640px) {
+  .prose .argument-brief {
+    margin: 1.75rem 0 2.2rem;
+    padding: 1.05rem 1.15rem 1.15rem;
+  }
+  .prose .argument-brief__list li {
+    padding-left: 2.15rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+}
+
 /* ─── Prism syntax highlighting ──────────────────────────── */
 pre[class*='language-'],
 code[class*='language-'] {

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 470" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif">
+<defs>
+  <radialGradient id="vwash" cx="100%" cy="0%" r="60%">
+    <stop offset="0%" stop-color="#e75b2a" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#e75b2a" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="vsoft" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2a231c" flood-opacity="0.06"/>
+  </filter>
+</defs>
+<rect x="3" y="3" width="1474" height="464" rx="20" fill="#faf7f0" stroke="#e4ddcf" stroke-width="2"/><rect x="3" y="3" width="1474" height="464" rx="20" fill="url(#vwash)"/>
+<text x="72" y="80" font-size="15" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="3.2">FIGURE 2  ·  THE MACHINE-ATTENTION VOTE</text>
+<text x="72" y="122" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="32" fill="#1b1611" font-weight="700" text-anchor="start">Four events, only one is the machine's</text>
+<rect x="72" y="140" width="54" height="3" rx="1.5" fill="#e75b2a"/>
+<text x="72" y="178" font-size="18" fill="#6c6252" font-weight="400" text-anchor="start">An install is a permission a human granted.  An invocation is a choice the system made.</text>
+
+<!-- Card 1: INSTALL (human vote) -->
+<rect x="72" y="248" width="280" height="152" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#vsoft)"/>
+<text x="94" y="288" font-size="17" fill="#8a5e12" font-weight="700" text-anchor="start" letter-spacing="1">01</text>
+<rect x="94" y="298" width="26" height="2.5" rx="1" fill="#8a5e12" opacity="0.55"/>
+<text x="212" y="332" font-size="21" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">INSTALL</text>
+<text x="212" y="362" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="17" fill="#8a5e12" font-weight="700" text-anchor="middle" style="font-style:italic">The human vote</text>
+<text x="212" y="388" font-size="14.5" fill="#6c6252" font-weight="400" text-anchor="middle">A person enables it</text>
+
+<!-- Card 2: INVOCATION (machine vote), the point -->
+<rect x="424" y="248" width="280" height="152" rx="13" fill="#fefcf6" stroke="#e75b2a" stroke-width="2" filter="url(#vsoft)"/>
+<text x="446" y="288" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">02</text>
+<rect x="446" y="298" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.6"/>
+<text x="564" y="332" font-size="21" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">INVOCATION</text>
+<text x="564" y="362" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="middle" style="font-style:italic">The machine vote</text>
+<text x="564" y="388" font-size="14.5" fill="#6c6252" font-weight="400" text-anchor="middle">The agent reaches for it</text>
+
+<!-- Card 3: EXECUTION (delivery) -->
+<rect x="776" y="248" width="280" height="152" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#vsoft)"/>
+<text x="798" y="288" font-size="17" fill="#a99878" font-weight="700" text-anchor="start" letter-spacing="1">03</text>
+<rect x="798" y="298" width="26" height="2.5" rx="1" fill="#a99878" opacity="0.6"/>
+<text x="916" y="332" font-size="21" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">EXECUTION</text>
+<text x="916" y="362" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="17" fill="#6c6252" font-weight="700" text-anchor="middle" style="font-style:italic">Delivery</text>
+<text x="916" y="388" font-size="14.5" fill="#6c6252" font-weight="400" text-anchor="middle">The call completes</text>
+
+<!-- Card 4: OUTCOME (receipt) -->
+<rect x="1128" y="248" width="280" height="152" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#vsoft)"/>
+<text x="1150" y="288" font-size="17" fill="#a99878" font-weight="700" text-anchor="start" letter-spacing="1">04</text>
+<rect x="1150" y="298" width="26" height="2.5" rx="1" fill="#a99878" opacity="0.6"/>
+<text x="1268" y="332" font-size="21" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">OUTCOME</text>
+<text x="1268" y="362" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="17" fill="#6c6252" font-weight="700" text-anchor="middle" style="font-style:italic">The receipt</text>
+<text x="1268" y="388" font-size="14.5" fill="#6c6252" font-weight="400" text-anchor="middle">Did it actually help?</text>
+
+<!-- Arrows -->
+<path d="M366,324 L378,334 L366,344" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M718,324 L730,334 L718,344" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1070,324 L1082,334 L1070,344" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="72" y="440" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="start" style="font-style:italic">Only the second event is the machine choosing on its own.</text>
+<text x="1408" y="440" font-family="'Liberation Mono', monospace" font-size="15" fill="#b3a894" font-weight="400" text-anchor="end">P(invoked | installed, eligible, relevant)</text>
+</svg>

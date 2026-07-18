@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 640" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif">
+<defs>
+  <radialGradient id="cwash" cx="100%" cy="0%" r="60%">
+    <stop offset="0%" stop-color="#e75b2a" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#e75b2a" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="cfunnel" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#b8a582" stop-opacity="0.28"/>
+    <stop offset="100%" stop-color="#8a5e12" stop-opacity="0.16"/>
+  </linearGradient>
+  <filter id="csoft" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2a231c" flood-opacity="0.06"/>
+  </filter>
+</defs>
+<rect x="3" y="3" width="1474" height="634" rx="20" fill="#faf7f0" stroke="#e4ddcf" stroke-width="2"/><rect x="3" y="3" width="1474" height="634" rx="20" fill="url(#cwash)"/>
+<text x="72" y="80" font-size="15" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="3.2">FIGURE 4  ·  THE CORRELATED WITNESS</text>
+<text x="72" y="122" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="32" fill="#1b1611" font-weight="700" text-anchor="start">A hundred witnesses, one point of view</text>
+<rect x="72" y="140" width="54" height="3" rx="1.5" fill="#e75b2a"/>
+<text x="72" y="178" font-size="18" fill="#6c6252" font-weight="400" text-anchor="start">Independent instances, one shared substrate.  Agreement inherits the substrate's blind spots.</text>
+
+<!-- Agent processes -->
+<text x="740" y="216" font-size="14" fill="#6c6252" font-weight="700" text-anchor="middle" letter-spacing="2.4">100 AGENT PROCESSES</text>
+<circle cx="320" cy="250" r="6" fill="#b8a582"/><circle cx="380" cy="250" r="6" fill="#b8a582"/><circle cx="440" cy="250" r="6" fill="#b8a582"/><circle cx="500" cy="250" r="6" fill="#b8a582"/><circle cx="560" cy="250" r="6" fill="#b8a582"/><circle cx="620" cy="250" r="6" fill="#b8a582"/><circle cx="680" cy="250" r="6" fill="#b8a582"/><circle cx="740" cy="250" r="6" fill="#b8a582"/><circle cx="800" cy="250" r="6" fill="#b8a582"/><circle cx="860" cy="250" r="6" fill="#b8a582"/><circle cx="920" cy="250" r="6" fill="#b8a582"/><circle cx="980" cy="250" r="6" fill="#b8a582"/><circle cx="1040" cy="250" r="6" fill="#b8a582"/><circle cx="1100" cy="250" r="6" fill="#b8a582"/><circle cx="1160" cy="250" r="6" fill="#b8a582"/>
+
+<!-- Compression funnel -->
+<path d="M300,272 L1180,272 L858,338 L622,338 Z" fill="url(#cfunnel)"/>
+<text x="740" y="362" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="16" fill="#8a5e12" font-weight="400" text-anchor="middle" style="font-style:italic">one compressed view of the world</text>
+
+<!-- Shared substrate cards -->
+<line x1="740" y1="372" x2="320" y2="392" stroke="#d8ccb4" stroke-width="1.5"/>
+<line x1="740" y1="372" x2="598" y2="392" stroke="#d8ccb4" stroke-width="1.5"/>
+<line x1="740" y1="372" x2="882" y2="392" stroke="#d8ccb4" stroke-width="1.5"/>
+<line x1="740" y1="372" x2="1160" y2="392" stroke="#d8ccb4" stroke-width="1.5"/>
+<rect x="195" y="392" width="250" height="86" rx="12" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#csoft)"/>
+<text x="320" y="443" font-size="17" fill="#1b1611" font-weight="700" text-anchor="middle">One foundation model</text>
+<rect x="473" y="392" width="250" height="86" rx="12" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#csoft)"/>
+<text x="598" y="443" font-size="17" fill="#1b1611" font-weight="700" text-anchor="middle">One search index</text>
+<rect x="757" y="392" width="250" height="86" rx="12" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#csoft)"/>
+<text x="882" y="443" font-size="17" fill="#1b1611" font-weight="700" text-anchor="middle">One registry</text>
+<rect x="1035" y="392" width="250" height="86" rx="12" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#csoft)"/>
+<text x="1160" y="443" font-size="17" fill="#1b1611" font-weight="700" text-anchor="middle">One capability</text>
+
+<!-- Converge to shared blind spot -->
+<line x1="320" y1="478" x2="740" y2="520" stroke="#e75b2a" stroke-width="1.5" opacity="0.55"/>
+<line x1="598" y1="478" x2="740" y2="520" stroke="#e75b2a" stroke-width="1.5" opacity="0.55"/>
+<line x1="882" y1="478" x2="740" y2="520" stroke="#e75b2a" stroke-width="1.5" opacity="0.55"/>
+<line x1="1160" y1="478" x2="740" y2="520" stroke="#e75b2a" stroke-width="1.5" opacity="0.55"/>
+<rect x="400" y="520" width="680" height="66" rx="13" fill="#fdf0e9" stroke="#e75b2a" stroke-width="1.8"/>
+<text x="740" y="551" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="0.4">One shared blind spot</text>
+<text x="740" y="573" font-size="14.5" fill="#8a4a26" font-weight="400" text-anchor="middle">the same things left out of every compression</text>
+
+<text x="72" y="616" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="start" style="font-style:italic">Independently instantiated, never independently informed.</text>
+<text x="1408" y="616" font-family="'Liberation Mono', monospace" font-size="15" fill="#b3a894" font-weight="400" text-anchor="end">100 processes  ≈  4.8 independent observers   (at 0.2 correlation)</text>
+</svg>
