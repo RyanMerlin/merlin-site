@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1840 700" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif">
+<defs>
+  <radialGradient id="wash" cx="100%" cy="0%" r="60%">
+    <stop offset="0%" stop-color="#e75b2a" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#e75b2a" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="funnel" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#e75b2a" stop-opacity="0.42"/>
+    <stop offset="100%" stop-color="#8a5e12" stop-opacity="0.14"/>
+  </linearGradient>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#e75b2a"/>
+  </marker>
+  <marker id="arrowg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#8a5e12"/>
+  </marker>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2a231c" flood-opacity="0.06"/>
+  </filter>
+</defs>
+<rect x="3" y="3" width="1834" height="694" rx="20" fill="#faf7f0" stroke="#e4ddcf" stroke-width="2"/><rect x="3" y="3" width="1834" height="694" rx="20" fill="url(#wash)"/>
+<text x="72" y="80" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="3.2">FIGURE 1  ·  THE MACHINE-ATTENTION LEDGER</text>
+<text x="72" y="122" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="32" fill="#1b1611" font-weight="700" text-anchor="start">Seven gates from eligible to executed</text>
+<rect x="72" y="140" width="54" height="3" rx="1.5" fill="#e75b2a"/>
+<text x="72" y="178" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="18" fill="#6c6252" font-weight="400" text-anchor="start">A capability clears every gate before it can act.</text>
+<text x="72" y="205" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="18" fill="#6c6252" font-weight="400" text-anchor="start">Every boundary can exclude, monetize, or audit.</text>
+<rect x="72.0" y="290" width="206" height="190" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="94.0" y="332" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">01</text>
+<rect x="94.0" y="342" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.5"/>
+<text x="175.0" y="396" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">ELIGIBLE</text>
+<text x="175.0" y="428" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">Allowed to enter</text>
+<path d="M293.2,375.0 L305.2,385.0 L293.2,395.0" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="320.3" y="290" width="206" height="190" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="342.33333333333337" y="332" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">02</text>
+<rect x="342.33333333333337" y="342" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.5"/>
+<text x="423.33333333333337" y="396" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">RETRIEVED</text>
+<text x="423.33333333333337" y="428" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">Enters the</text>
+<text x="423.33333333333337" y="449" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">shortlist</text>
+<path d="M541.5,375.0 L553.5,385.0 L541.5,395.0" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="568.7" y="290" width="206" height="190" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="590.6666666666667" y="332" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">03</text>
+<rect x="590.6666666666667" y="342" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.5"/>
+<text x="671.6666666666667" y="396" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">VERIFIED</text>
+<text x="671.6666666666667" y="428" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">Trust and identity</text>
+<text x="671.6666666666667" y="449" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">checked</text>
+<path d="M789.8,375.0 L801.8,385.0 L789.8,395.0" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="817.0" y="290" width="206" height="190" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="839.0" y="332" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">04</text>
+<rect x="839.0" y="342" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.5"/>
+<text x="920.0" y="396" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">CONSIDERED</text>
+<text x="920.0" y="428" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">Actually evaluated</text>
+<path d="M1038.2,375.0 L1050.2,385.0 L1038.2,395.0" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1065.3" y="290" width="206" height="190" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="1087.3333333333335" y="332" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">05</text>
+<rect x="1087.3333333333335" y="342" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.5"/>
+<text x="1168.3333333333335" y="396" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">RECOMMENDED</text>
+<text x="1168.3333333333335" y="428" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">Offered as</text>
+<text x="1168.3333333333335" y="449" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">preferred</text>
+<path d="M1286.5,375.0 L1298.5,385.0 L1286.5,395.0" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1313.7" y="290" width="206" height="190" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="1335.6666666666667" y="332" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">06</text>
+<rect x="1335.6666666666667" y="342" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.5"/>
+<text x="1416.6666666666667" y="396" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">INVOKED</text>
+<text x="1416.6666666666667" y="428" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">The agent calls it</text>
+<path d="M1534.8,375.0 L1546.8,385.0 L1534.8,395.0" fill="none" stroke="#e75b2a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1562.0" y="290" width="206" height="190" rx="13" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="1584.0" y="332" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="17" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="1">07</text>
+<rect x="1584.0" y="342" width="26" height="2.5" rx="1" fill="#e75b2a" opacity="0.5"/>
+<text x="1665.0" y="396" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="19" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1.2">EXECUTED</text>
+<text x="1665.0" y="428" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">The action</text>
+<text x="1665.0" y="449" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="middle">completes</text>
+<path d="M72,503 L1768,517 L1768,523 L72,537 Z" fill="url(#funnel)"/>
+<text x="72" y="572" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="15.5" fill="#6c6252" font-weight="400" text-anchor="start" style="font-style:italic">Fewer survive each gate.  A small edge at every one compounds into a large advantage.</text>
+<text x="1768" y="572" font-family="'Liberation Mono', monospace" font-size="15" fill="#b3a894" font-weight="400" text-anchor="end">P(act) = ∏ gate</text>
+</svg>

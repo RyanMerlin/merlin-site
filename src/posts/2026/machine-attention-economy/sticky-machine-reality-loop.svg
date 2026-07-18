@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 1250" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif">
+<defs>
+  <radialGradient id="wash" cx="100%" cy="0%" r="60%">
+    <stop offset="0%" stop-color="#e75b2a" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#e75b2a" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="funnel" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#e75b2a" stop-opacity="0.42"/>
+    <stop offset="100%" stop-color="#8a5e12" stop-opacity="0.14"/>
+  </linearGradient>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#e75b2a"/>
+  </marker>
+  <marker id="arrowg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#8a5e12"/>
+  </marker>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2a231c" flood-opacity="0.06"/>
+  </filter>
+</defs>
+<rect x="3" y="3" width="1294" height="1244" rx="20" fill="#faf7f0" stroke="#e4ddcf" stroke-width="2"/><rect x="3" y="3" width="1294" height="1244" rx="20" fill="url(#wash)"/>
+<text x="72" y="80" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15" fill="#e75b2a" font-weight="700" text-anchor="start" letter-spacing="3.2">FIGURE 2  ·  ATTENTION CAPITAL</text>
+<text x="72" y="122" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="32" fill="#1b1611" font-weight="700" text-anchor="start">The compounding loop</text>
+<rect x="72" y="140" width="54" height="3" rx="1.5" fill="#e75b2a"/>
+<text x="72" y="178" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="18" fill="#6c6252" font-weight="400" text-anchor="start">Selection creates records. Records make the next selection cheaper.</text>
+<text x="72" y="205" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="18" fill="#6c6252" font-weight="400" text-anchor="start">The boost can vanish while the advantage stays.</text>
+<path d="M807.8,454.4 A 360 300 0 0 1 973.6,592.5" fill="none" stroke="#e75b2a" stroke-width="3.2" marker-end="url(#arrow)"/>
+<path d="M973.6,855.5 A 360 300 0 0 1 807.8,993.6" fill="none" stroke="#e75b2a" stroke-width="3.2" marker-end="url(#arrow)"/>
+<path d="M492.2,993.6 A 360 300 0 0 1 326.4,855.5" fill="none" stroke="#e75b2a" stroke-width="3.2" marker-end="url(#arrow)"/>
+<path d="M326.4,592.5 A 360 300 0 0 1 492.2,454.4" fill="none" stroke="#e75b2a" stroke-width="3.2" marker-end="url(#arrow)"/>
+<rect x="498.0" y="668.0" width="304" height="112" rx="16" fill="#e75b2a" filter="url(#soft)"/>
+<text x="650" y="716" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="22" fill="#fff" font-weight="700" text-anchor="middle" letter-spacing="1">FUTURE ADMISSION</text>
+<text x="650" y="748" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="22" fill="#fff" font-weight="700" text-anchor="middle" letter-spacing="1">BECOMES EASIER</text>
+<rect x="492.0" y="360.0" width="316" height="128" rx="15" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="650.0" y="415.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="20" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1">ADMISSION</text>
+<text x="650.0" y="446.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">An option enters the trusted</text>
+<text x="650.0" y="469.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">set</text>
+<rect x="852.0" y="660.0" width="316" height="128" rx="15" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="1010.0" y="715.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="20" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1">ACTION</text>
+<text x="1010.0" y="746.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">The agent recommends, invokes,</text>
+<text x="1010.0" y="769.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">executes</text>
+<rect x="492.0" y="960.0" width="316" height="128" rx="15" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="649.9999999999999" y="1015.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="20" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1">RECORDS</text>
+<text x="649.9999999999999" y="1046.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">Logs, reviews, integrations,</text>
+<text x="649.9999999999999" y="1069.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">revenue</text>
+<rect x="132.0" y="660.0" width="316" height="128" rx="15" fill="#fefdf9" stroke="#e4ddcf" stroke-width="1.5" filter="url(#soft)"/>
+<text x="290.0" y="715.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="20" fill="#1b1611" font-weight="700" text-anchor="middle" letter-spacing="1">LOWER VERIFICATION COST</text>
+<text x="290.0" y="746.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">More evidence, trust,</text>
+<text x="290.0" y="769.0" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle">familiarity</text>
+<text x="650" y="286" font-family="'Inter', system-ui, -apple-system, 'Segoe UI', 'Liberation Sans', Arial, sans-serif" font-size="15" fill="#8a5e12" font-weight="700" text-anchor="middle" letter-spacing="2">THE INITIAL BOOST</text>
+<text x="650" y="312" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="16" fill="#6c6252" font-weight="400" text-anchor="middle" style="font-style:italic">a default, a feature, a first pick</text>
+<path d="M650,326 L650,357" fill="none" stroke="#8a5e12" stroke-width="3" stroke-dasharray="8 6" stroke-linecap="round" marker-end="url(#arrowg)"/>
+<text x="72" y="1194" font-family="Georgia, 'Liberation Serif', 'Times New Roman', serif" font-size="17" fill="#6c6252" font-weight="400" text-anchor="start" style="font-style:italic">Repeated selection doesn&#x27;t make an option more true.  It makes the next selection cheaper.</text>
+</svg>
