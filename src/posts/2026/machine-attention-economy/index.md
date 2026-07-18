@@ -28,11 +28,11 @@ So here's the bet this piece is making.  **The scarce thing in an agent economy 
 <section class="argument-brief" aria-labelledby="argument-brief-title">
 <p class="argument-brief__label" id="argument-brief-title">The argument in brief</p>
 <ol class="argument-brief__list">
-<li>**Scarcity:** AI agents create a new allocation layer between supply and human demand.  The scarce position is no longer visibility alone, but admission into the set an agent is willing and authorized to consider.</li>
-<li>**Conversion:** The economically important transitions are not listing or mention, but eligibility, retrieval, verification, recommendation, invocation, execution, and measured outcome.</li>
-<li>**Compounding:** Repeated machine selection leaves residue.  Successful tools become easier to retrieve, trust, authorize, and select again, creating a form of compounding attention capital.</li>
-<li>**Correlation:** Apparent agreement across many agents may reflect shared models, registries, indexes, defaults, or infrastructure rather than genuinely independent judgment.</li>
-<li>**Control:** Market power will increasingly belong to whoever controls candidate sets, permissions, defaults, and the evidence agents use to justify action.</li>
+<li><strong>Scarcity:</strong> AI agents create a new allocation layer between supply and human demand.  The scarce position is no longer visibility alone, but admission into the set an agent is willing and authorized to consider.</li>
+<li><strong>Conversion:</strong> The economically important transitions are not listing or mention, but eligibility, retrieval, verification, recommendation, invocation, execution, and measured outcome.</li>
+<li><strong>Compounding:</strong> Repeated machine selection leaves residue.  Successful tools become easier to retrieve, trust, authorize, and select again, creating a form of compounding attention capital.</li>
+<li><strong>Correlation:</strong> Apparent agreement across many agents may reflect shared models, registries, indexes, defaults, or infrastructure rather than genuinely independent judgment.</li>
+<li><strong>Control:</strong> Market power will increasingly belong to whoever controls candidate sets, permissions, defaults, and the evidence agents use to justify action.</li>
 </ol>
 </section>
 
