@@ -46,7 +46,7 @@ I don't mean the *attention* mechanism inside a transformer, the math that lets 
 
 Call it *allocative machine attention*: the bounded consideration an AI system spreads across competing sources, tools, and counterparties when that choice changes what gets represented or acted on.
 
-The definition earns its keep through three words.  *Bounded* means the system can't evaluate everything at equal depth, because it runs out of tokens, retrieval slots, latency budget, money, or human patience first.  *Competing* means one option gets an opening another doesn't.  *Changes representation or action* means the choice leaves a mark, something gets surfaced, invoked, purchased, routed, or quietly dropped.
+The definition earns its keep through three words.  *Bounded* means the system can't evaluate everything at equal depth, because it runs out of tokens, retrieval slots, latency budget, money, or human patience first.  *Competing* means one option gets an opening another doesn't.  *Consequential* means the choice changes what gets represented or acted on: something gets surfaced, invoked, purchased, routed, or quietly dropped.
 
 Does the machine need to be conscious for any of this?  No, and that's the point that trips people up.  A compiler rejects your program without feelings about it.  A credit system denies a loan without wanting to.  An agent drops a vendor from the candidate set without caring who wins.  The property that matters isn't experience.  It's *delegated discretion under constraint*.  Give a system a budget and permission to act, and it's already allocating attention whether or not anyone's home.
 
