@@ -7,11 +7,15 @@ summary: "Skills marketplaces are becoming the first visible exchanges for a new
 description: "AI agents create an attention economy upstream of the human one, where the scarce resource is not notice but admission to their trusted decision loop."
 ---
 
-![A vast, dim marble hall with no people in it.  A tall, faceless machine sentinel with no eyes holds a glowing ledger beside a low turnstile, reaching toward a single capability-card that glows warm rust-orange, the only real light in the room, while a long line of identical dim cards waits its turn in the shadows.](./og.png)
+![A vast, dim marble hall.  A faceless machine sentinel with no eyes holds a ledger and reaches toward a low gate, where a single capability-card glows warm rust-orange, the brightest thing in the room.  Stretching away into the fog stands a huge silent field of other cards, each stamped with a different sigil, waiting unchosen, while beside the gate a stack of already-admitted cards glows as it accumulates.](./og.png)
 
-Companies have spent thirty years learning how to be seen.  Search rankings, ad budgets, the perfect headline, all of it a fight over one scarce thing: a person's attention.  The next fight is already under way, and it's stranger, because the buyer you have to win over now has no eyes.  When an AI agent books the trip, picks the vendor, or assembles the software stack, it settles on a few options to trust and drops the rest before any human sees a screen.  I build the systems where that choice gets made, and after watching it run a few thousand times, I can tell you it looks a lot like the old attention economy, moved to a room the customer never enters.
+Companies have spent thirty years learning how to be seen.  Sometimes they buy attention with ad budgets.  Sometimes they earn it through search rankings, reputation, word of mouth, and the perfect headline.  Both routes aim at the same target: a human nervous system that feels social proof, fears missing out, trusts a familiar name, and follows a crowd.
 
-That old economy ran on a simple loop.  Turn notice into traffic, traffic into data, and data into money.  AI agents are opening a second attention economy upstream of the first, and it begins before a person sees any options at all.
+The next fight is already under way, and it is stranger, because the buyer you now have to win over has no eyes.  The old signals can still matter, but the nervous system they were built to move is gone.  When an AI agent books the trip, picks the vendor, or assembles the software stack, it narrows the field to a few trusted options and drops the rest before any human sees a screen.
+
+I build the systems where that choice gets made.  After watching it happen a few thousand times, I can tell you it looks a lot like the old attention economy, moved to a room the customer never enters.
+
+That old economy turned notice into traffic, traffic into data, and data into money.  AI agents are opening a second attention economy upstream of the first.  It begins before a person sees any options at all.
 
 The first exchanges in this new economy don't look like ad exchanges.  They look like plugin directories.
 
