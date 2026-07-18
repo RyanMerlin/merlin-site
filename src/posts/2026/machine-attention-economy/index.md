@@ -7,6 +7,8 @@ summary: "Skills marketplaces are becoming the first visible exchanges for a new
 description: "AI agents create an attention economy upstream of the human one, where the scarce resource is not notice but admission to their trusted decision loop."
 ---
 
+![A vast, dim marble hall with no people in it.  A tall, faceless machine sentinel with no eyes holds a glowing ledger beside a low turnstile, reaching toward a single capability-card that glows warm rust-orange, the only real light in the room, while a long line of identical dim cards waits its turn in the shadows.](./og.png)
+
 Companies have spent thirty years learning how to be seen.  Search rankings, ad budgets, the perfect headline, all of it a fight over one scarce thing: a person's attention.  The next fight is already under way, and it's stranger, because the buyer you have to win over now has no eyes.  When an AI agent books the trip, picks the vendor, or assembles the software stack, it settles on a few options to trust and drops the rest before any human sees a screen.  I build the systems where that choice gets made, and after watching it run a few thousand times, I can tell you it looks a lot like the old attention economy, moved to a room the customer never enters.
 
 That old economy ran on a simple loop.  Turn notice into traffic, traffic into data, and data into money.  AI agents are opening a second attention economy upstream of the first, and it begins before a person sees any options at all.
@@ -164,7 +166,7 @@ That reframes what transparency even means.  We'll be tempted to audit the gener
 
 A real decision receipt would tell you not just what evidence backed the winner, but which universe of alternatives was searched, which gates removed candidates, and which commercial relationships shaped those gates.  The payment world is already building half of that receipt.  Google's [Agent Payments Protocol](https://ap2-protocol.org/) wraps each agent purchase in signed *Mandates* that record who authorized it and within what limits, and in April 2026 the [FIDO Alliance](https://fidoalliance.org/fido-alliance-to-develop-standards-for-trusted-ai-agent-interactions/) began standards work on trusted agent interactions, folding in approaches like AP2.  The authorization receipt is arriving.  The candidate-set receipt, the one that would show you what got excluded, is the harder half still missing.  In the old economy the ad auction sold impressions.  In this one, **the agent auction sells eligibility, and the most valuable placement may never appear on a screen at all.  It's the default permission nobody thought to inspect.**
 
-This is a live question I have to answer in my own systems, and I don't get to hand-wave it.  When my agents build a candidate set, can I show, after the fact, what got excluded and why?  Most of the time the honest answer is "only if I designed for it up front," which tells you how easy this is to leave out.
+This is a live question I have to answer in my own systems, and I don't get to ignore it.  When my agents build a candidate set, can I show, after the fact, what got excluded and why?  Most of the time the honest answer is "only if I designed for it up front," which tells you how easy this is to leave out.
 
 ## What would make me drop the whole argument?
 
