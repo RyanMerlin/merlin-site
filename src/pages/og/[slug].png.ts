@@ -4,8 +4,6 @@ import { Resvg } from '@resvg/resvg-js';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { getPosts, hasRealHero, postTopic, topicColorHex, type PostMeta } from '../../lib/posts';
-import { readingTime } from '../../lib/format';
-import { SITE_AUTHOR } from '../../lib/config';
 
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
@@ -20,6 +18,12 @@ export async function getStaticPaths() {
 
 const fontRegular = readFileSync(resolve('src/lib/fonts/Geist-Regular.ttf'));
 const fontBold = readFileSync(resolve('src/lib/fonts/Geist-SemiBold.ttf'));
+
+// Brand mark embedded as a data URI so satori can draw it (satori resolves no
+// external hosts). Single source: src/lib/brand/falcon-mark.png, generated from
+// public/brand/merlin-falcon.svg.
+const falconMark = readFileSync(resolve('src/lib/brand/falcon-mark.png'));
+const falconUri = `data:image/png;base64,${falconMark.toString('base64')}`;
 
 const GRADIENT_BASE = '#17130f';
 const GRADIENT_END = '#0d0a07';
@@ -43,12 +47,18 @@ export function cardGradient(post: PostMeta): string {
 export const GET: APIRoute = async ({ props }) => {
 	const post = props.post as PostMeta;
 
-	const date = new Date(post.created).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-		timeZone: 'UTC'
-	});
+	const topic = postTopic(post);
+	const topicHex = topic ? topicColorHex[topic.slug] : '#e75b2a';
+	const kicker = topic ? topic.label.toUpperCase() : null;
+
+	// Topic-coloured dark field so cards are colour-coded and legible at the
+	// 128–256px thumbnail size the writing list renders them at.
+	const bg = `linear-gradient(135deg, ${mixHex(topicHex, '#000000', 0.28)} 0%, #0b0906 80%)`;
+
+	// The title is the load-bearing element at thumbnail scale, so it must be
+	// large; shrink it for longer titles so it never wraps into mush.
+	const len = post.title.length;
+	const titleSize = len <= 20 ? 112 : len <= 30 ? 92 : len <= 42 ? 74 : len <= 56 ? 62 : 52;
 
 	// satori takes a JSX-like POJO tree (not real React elements), which doesn't
 	// structurally satisfy React's ReactNode type — cast at the boundary.
@@ -59,44 +69,47 @@ export const GET: APIRoute = async ({ props }) => {
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'space-between',
+				position: 'relative',
+				overflow: 'hidden',
 				width: '100%',
 				height: '100%',
-				background: cardGradient(post),
+				background: bg,
 				padding: '60px 64px',
 				fontFamily: 'Geist'
 			},
 			children: [
+				// Supporting brand mark — large enough to still read as a falcon in
+				// a 128px thumbnail, offset right so the title owns the left.
+				{
+					type: 'img',
+					props: {
+						src: falconUri,
+						width: 440,
+						height: 436,
+						style: { position: 'absolute', right: '-28px', top: '150px', opacity: 0.9 }
+					}
+				},
+				// Header: wordmark + topic label.
 				{
 					type: 'div',
 					props: {
-						style: { display: 'flex', flexDirection: 'column', gap: '16px' },
+						style: { display: 'flex', alignItems: 'center', gap: '14px' },
 						children: [
 							{
 								type: 'div',
 								props: {
-									style: {
-										fontSize: '44px',
-										fontWeight: 600,
-										color: '#f6efe2',
-										lineHeight: 1.2,
-										letterSpacing: '-0.02em'
-									},
-									children: post.title
+									style: { fontSize: '26px', fontWeight: 600, letterSpacing: '0.14em', color: '#f6efe2' },
+									children: 'RYAN MERLIN'
 								}
 							},
-							...(post.summary
+							...(kicker
 								? [
+										{ type: 'div', props: { style: { width: '2px', height: '26px', background: topicHex } } },
 										{
 											type: 'div',
 											props: {
-												style: {
-													fontSize: '22px',
-													color: '#a99c8a',
-													lineHeight: 1.4,
-													maxHeight: '90px',
-													overflow: 'hidden'
-												},
-												children: post.summary
+												style: { fontSize: '22px', fontWeight: 600, letterSpacing: '0.14em', color: topicHex },
+												children: kicker
 											}
 										}
 									]
@@ -104,43 +117,22 @@ export const GET: APIRoute = async ({ props }) => {
 						]
 					}
 				},
+				// Title — huge and high-contrast; clamped so long titles can't overflow.
 				{
 					type: 'div',
 					props: {
 						style: {
 							display: 'flex',
-							justifyContent: 'space-between',
-							alignItems: 'flex-end'
+							fontSize: `${titleSize}px`,
+							fontWeight: 600,
+							color: '#f6efe2',
+							lineHeight: 1.0,
+							letterSpacing: '-0.03em',
+							maxWidth: '840px',
+							maxHeight: '400px',
+							overflow: 'hidden'
 						},
-						children: [
-							{
-								type: 'div',
-								props: {
-									style: {
-										display: 'flex',
-										gap: '16px',
-										fontSize: '18px',
-										color: '#7c7160'
-									},
-									children: [
-										{ type: 'span', props: { children: date } },
-										{ type: 'span', props: { children: '·' } },
-										{ type: 'span', props: { children: readingTime(post.wordCount) } }
-									]
-								}
-							},
-							{
-								type: 'div',
-								props: {
-									style: {
-										fontSize: '20px',
-										fontWeight: 500,
-										color: '#e75b2a'
-									},
-									children: SITE_AUTHOR
-								}
-							}
-						]
+						children: post.title
 					}
 				}
 			]
