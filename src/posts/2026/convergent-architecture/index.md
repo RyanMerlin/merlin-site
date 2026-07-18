@@ -30,6 +30,17 @@ One diagram.  Wet or dry.
 
 I did not invent that comparison.  I want to say so up front, because it is tempting to present it like a discovery.
 
+<section class="argument-brief" aria-labelledby="argument-brief-title">
+<p class="argument-brief__label" id="argument-brief-title">The argument in brief</p>
+<ol class="argument-brief__list">
+<li>Minds and AI systems both compress large amounts of mostly hidden activity into a narrow working state that can guide memory, communication, and action.  Bounded systems repeatedly converge on this architecture because coordination is expensive.</li>
+<li>That architectural resemblance is not evidence that current AI agents are conscious.  A system can reproduce something like access, selection, and broadcast without establishing that anything is being experienced.</li>
+<li>The most informative part of the comparison is where it breaks.  The leading theories of the brain and the AI systems we build both struggle at the workspace, but they struggle there for different reasons.</li>
+<li>Architecture and behavior may never settle the consciousness question if subjective experience depends on the physical material implementing the system.  That substrate question remains unresolved, and model self-reports cannot answer it.</li>
+<li>The practical implication is not to ask whether the machine is awake.  It is to ask how two narrow, biased systems can be combined when their blind spots may overlap more than either system can detect.</li>
+</ol>
+</section>
+
 ## The rhyme everyone already noticed
 
 The idea is already out there.  The *transformer* is the basic design behind modern chatbots.  People have noticed for a while that it looks like a global workspace.

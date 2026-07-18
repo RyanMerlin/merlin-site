@@ -20,6 +20,16 @@ The industry is optimizing generation.  But the part that actually decides wheth
 
 You could object that this is just control theory with new nouns, or MLOps, or the error budgets that site-reliability teams have run for years.  Fair, and half the point: the same shape keeps getting rediscovered because it holds weight.  What's actually new is where it now has to live.  Not around one model or one service, but across a fleet of agents handing work to each other, where the failure hides in the handoff and nothing ever throws an error.  That is the part the old playbooks don't cover, and it's where this is headed.
 
+<section class="argument-brief" aria-labelledby="argument-brief-title">
+<p class="argument-brief__label" id="argument-brief-title">The argument in brief</p>
+<ol class="argument-brief__list">
+<li>AI generation is becoming abundant and inexpensive.  The scarce capability is turning generated work into outcomes you can verify and trust.</li>
+<li>In this essay, the &ldquo;loss function&rdquo; means the full correction loop: the instrumentation that detects error, the evidence that measures it, the trace that attributes it, and the mechanism that changes what happens next.</li>
+<li>More review does not automatically produce more reliability.  A model cannot reliably correct itself using the same information and blind spots that produced the mistake, and a human-AI team adds little when both fail in the same places.</li>
+<li>The useful economic measure is not tokens consumed or outputs produced.  It is total cost per verified outcome, including evaluation, retries, human review, remediation, and the failures that escape.</li>
+<li>As agents begin working in fleets, correction has to move above the individual run.  The system must trace failures across handoffs and determine whether the right response is to retreat, patch the local error, or redesign the assumptions that produced it.</li>
+</ol>
+</section>
 
 ## The governor
 

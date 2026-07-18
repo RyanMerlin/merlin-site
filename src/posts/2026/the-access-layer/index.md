@@ -26,6 +26,17 @@ Here's a way to picture it.  Your mind is a dark warehouse, vast and mostly stor
 
 That's the claim I want to sit with.  The warehouse isn't empty.  But the *you* who feels continuously, richly aware is working from the moving beam.  And the beam is narrow.
 
+<section class="argument-brief" aria-labelledby="argument-brief-title">
+<p class="argument-brief__label" id="argument-brief-title">The argument in brief</p>
+<ol class="argument-brief__list">
+<li>This essay is about access consciousness: what becomes available for report, reasoning, memory, and deliberate action.  It does not attempt to explain why experience feels like anything from the inside.</li>
+<li>The usable part of awareness appears to be narrow.  Only a small number of selected states can occupy the mental workspace at once, while most of the machinery producing and selecting them remains inaccessible.</li>
+<li>Awareness feels much wider because attention illuminates whatever we turn toward.  The act of checking what is present brings it into the beam, making it difficult to perceive the beam's own limits.</li>
+<li>Global workspace theory offers a plausible account of how selected information becomes widely usable, but important predictions of the theory remain contested.  The architectural idea is useful without being settled science.</li>
+<li>AI systems encounter a similar functional problem.  They must select a small working context from far more information than they can use at once.  That resemblance reflects shared constraints, not evidence that the systems share consciousness.</li>
+</ol>
+</section>
+
 ## First, a boundary
 
 Before this goes anywhere, one distinction has to be on the table.  The word "consciousness" quietly does two different jobs.  If you let them blur, the argument cheats.
