@@ -175,7 +175,7 @@ Only the first measures quality directly.  The other two correlate with it on a 
 
 ### If a hundred agents agree, how many witnesses is that?
 
-This is where the argument turns from economic to epistemic, and it's the part I'd defend.
+This is where the argument turns from economic to epistemic, and a key part I'd defend.
 
 Picture a hundred agents evaluating the same supplier, and they all agree.  Sounds like overwhelming evidence, until you ask what they share.  They may run the same foundation model, hit the same search index, trust the same registry, and call the same underlying MCP server.  They're a hundred separate processes querying one compressed view of the world.  And that phrase is more literal than it sounds.  There's a serious case, laid out in 3Blue1Brown's recent [*Compression and Intelligence*](https://3blue1brown.substack.com/p/reinventing-entropy) series, that a model gets smart precisely by compressing the world.  Predicting the next word well and compressing text turn out to be the same math, so a trained model works like an aggressive compression of its data, keeping the patterns that predict and letting the rest fall away.  Run a hundred agents on that model and they don't just share what it learned.  They share what it dropped.  Prompts and tools and sampling make their surface answers vary, but their gaps still point the same way.  They were independently instantiated.  They are not independent observers, because they were never independently informed.
 
