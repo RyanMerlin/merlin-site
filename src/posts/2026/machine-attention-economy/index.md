@@ -9,7 +9,7 @@ description: "AI agents create an attention economy upstream of the human one, w
 
 ![A vast, dim marble hall.  A faceless machine sentinel with no eyes holds a ledger and reaches toward a low gate, where a single capability-card glows warm rust-orange, the brightest thing in the room.  Stretching away into the fog stands a huge silent field of other cards, each stamped with a different sigil, waiting unchosen, while beside the gate a stack of already-admitted cards glows as it accumulates.](./og.png)
 
-Companies have spent thirty years fighting for the pixels on your screen.  Sometimes they buy attention with ad budgets.  Sometimes they earn it through search rankings, reputation, word of mouth, and the perfect headline.  Both routes aim at the same target: a human nervous system that feels social proof, fears missing out, trusts a familiar name, and follows a crowd.
+Companies have spent the last thirty years fighting for the pixels on your screen.  Sometimes they buy attention with ad budgets.  Sometimes they earn it through search rankings, reputation, word of mouth, and the perfect headline.  Both routes aim at the same target: a human nervous system that feels social proof, fears missing out, trusts a familiar name, and follows a crowd.
 
 The next fight is already under way, and it's stranger, because the buyer you now have to win over has no eyes.  The old signals can still matter, but the nervous system they were built to move is gone.  When an AI agent books the trip, picks the vendor, or assembles the software stack, it narrows the field to a few trusted options and drops the rest before any human sees a screen.
 
