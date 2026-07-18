@@ -229,7 +229,7 @@ There's a competition-policy question hiding in the architecture, and it's worth
 
 ## The point
 
-The human attention economy learned to turn notice into money.  The machine attention economy will turn admission into action.  **The listing was never the asset.  Eligibility is.**  The recommendation was never the outcome. Execution is.
+The human attention economy learned to turn notice into money.  The machine attention economy will turn admission into action.  **The listing was never the asset.  Eligibility is.**  The recommendation was never the outcome. Execution is.  Visibility gets you mentioned.  Admission gets you work.
 
 > The old web competed to be clicked.  The agentic web competes to be admitted.
 
