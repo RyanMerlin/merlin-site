@@ -4,6 +4,7 @@ created: "2026-04-21"
 status: "published"
 tags: ["agents","edgeplane","infrastructure","aria"]
 summary: "Several persistent Claude Code sessions, scoped to different domains, coordinating through EdgePlane. Here's what it looks like in practice."
+description: "Several persistent Claude Code sessions, each scoped to a domain, coordinating through an EdgePlane control plane. What running an agent fleet looks like."
 ---
 
 ![A glowing hub-and-spoke diagram of icons for a book, a magnifying glass, a terminal prompt, a clipboard checkmark, a bar chart, and a chat bubble, all wired into a radiant central core, with a man watching the same network on his phone and laptop from the side while structured data streams outward on the right](./og.png)

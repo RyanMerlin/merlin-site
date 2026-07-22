@@ -4,6 +4,7 @@ created: "2026-07-09"
 status: "published"
 tags: ["agents", "error-correction", "orchestration", "cybernetics"]
 summary: "Generation is becoming cheap. The durable advantage is the system that detects error, attributes it, and learns from it."
+description: "Generation is getting cheap. The durable advantage is the correction system around it: the loop that senses error, attributes it, and learns from failure."
 ---
 
 ![A conveyor belt labeled Generation spills a mountain of discarded paper onto the floor.  A wall of four panels, labeled Detection, Attribution, Correction, and Learning, stands between it and a doorway of warm light labeled Verified Outcome, where a lone figure stands looking toward it.](./correction-loop.png)

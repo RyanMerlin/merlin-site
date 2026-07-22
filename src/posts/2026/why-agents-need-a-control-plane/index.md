@@ -4,6 +4,7 @@ created: "2026-04-07"
 status: "published"
 tags: ["agents","architecture","edgeplane","orchestration","control-plane"]
 summary: "Every serious attempt to build a multi-agent system converges on the same shape. Then you try to run two workers in parallel, and everything breaks."
+description: "Every multi-agent system converges on the same pipeline shape. Then you run two workers in parallel and it breaks. Why agents need a control plane instead."
 ---
 
 ![A figure stands on a platform beside a control plane tower labeled Governance, Coordination, Control, with panels for Identity, Permissions, Policies, Routing, Observability, and Audit, an Agent Overview graph, System Health at 98%, and a checklist of Outcomes That Matter, overlooking a chasm where dozens of small robots wander a fractured field marked Duplicate Work, Lost Context, Conflicts, Policy Drift, Unused Tools, and No Visibility](./og.png)

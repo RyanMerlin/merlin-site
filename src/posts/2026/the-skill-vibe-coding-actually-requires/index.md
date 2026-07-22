@@ -4,6 +4,7 @@ created: "2026-06-28"
 status: "published"
 tags: ["ai", "vibe-coding", "security", "engineering", "agents"]
 summary: "The missing skill in AI-built software isn't syntax. It's failure literacy: knowing what can break before users discover it."
+description: "Vibe coding made code generation cheap, not failure understanding. The scarce skill isn't syntax; it's failure literacy: knowing what breaks before users do."
 ---
 
 ![A dark desk with a monitor showing all-green passing tests and a clean deploy pipeline, while beside it an architecture diagram traces orange alert paths where a request routes around the auth shield and records from one account bleed into another](./hero.png)

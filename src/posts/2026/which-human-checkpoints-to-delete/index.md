@@ -4,6 +4,7 @@ created: "2026-06-26"
 status: "published"
 tags: ["agents", "ai", "engineering"]
 summary: "Getting better at agents is not watching less.  It is relocating your checkpoints into the harness and deleting the ones that relocation made redundant."
+description: "Getting better at agents isn't watching less. It's relocating your checkpoints into the harness, then deleting the ones that relocation made redundant."
 ---
 
 ![A figure holding a ring of keys walks past a row of staffed checkpoint booths labeled Policy Check, Risk Review, Data Approval, and Exceptions Review toward an empty booth marked Closed, where a glowing blue conduit runs from the ground into a distant machine labeled Agent Harness, Checks Built In](./og.png)
