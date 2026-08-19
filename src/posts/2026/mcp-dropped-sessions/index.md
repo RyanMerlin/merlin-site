@@ -3,13 +3,13 @@ title: "MCP Went Stateless. Agents Did Not."
 created: "2026-06-22"
 status: "published"
 tags: ["mcp","agents","architecture","infrastructure","sessions","edgeplane"]
-summary: "MCP's 2026-07-28 release candidate removes sessions from the protocol. That reads like an argument against persistent agents. It's the opposite: the session that matters was never the protocol's job to hold."
-description: "MCP's July 2026 release candidate removes sessions from the protocol. That reads as an argument against persistent agents. It's the opposite."
+summary: "MCP's ratified 2026-07-28 spec removes sessions from the protocol. That reads like an argument against persistent agents. It's the opposite: the session that matters was never the protocol's job to hold."
+description: "MCP's ratified July 2026 spec removes sessions from the protocol. That reads as an argument against persistent agents. It's the opposite."
 ---
 
 ![A wall of pipes labeled MCP crumbles apart where a placard reading Session breaks into rubble, while a solitary figure at a desk with books, coffee, and a laptop faces an intact, softly lit archive tower labeled Agent Runtime filled with organized file boxes](./og.png)
 
-The largest revision of *Model Context Protocol* since launch is now in release-candidate form, and the change everyone is reacting to is a subtraction.  The [2026-07-28 release candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/) removes sessions.  Gone is the `initialize` handshake.  Gone is the `Mcp-Session-Id` header.  Protocol version, client info, and capabilities now travel inline on every request, which means any server instance can answer any call behind a plain round-robin load balancer.  SDK support is already appearing, including on the [Python SDK's v2 alpha line](https://github.com/modelcontextprotocol/python-sdk/releases), while the stable v1 series remains the production recommendation, so this is the direction of travel rather than a design sketch.
+The largest revision of *Model Context Protocol* since launch has now shipped, and the change everyone is reacting to is a subtraction.  The [2026-07-28 specification](https://blog.modelcontextprotocol.io/posts/2026-07-28/) removes sessions.  Gone is the `initialize` handshake.  Gone is the `Mcp-Session-Id` header.  Protocol version, client info, and capabilities now travel inline on every request, which means any server instance can answer any call behind a plain round-robin load balancer.  This is not a proposal anymore.  All four Tier 1 SDKs, TypeScript, Python, Go, and C#, spoke the new version [on release day](https://blog.modelcontextprotocol.io/posts/2026-07-28/), with the Rust SDK following in beta.
 
 If you have read me argue that [persistent sessions are the unit of agent work](/posts/persistent-sessions-unit-of-agent-work), removing sessions from the protocol looks like a contradiction.  It is the opposite.  Read closely, the stateless turn is the strongest evidence for that thesis the ecosystem has produced.
 
@@ -37,7 +37,7 @@ Early web applications kept user state in the application server's memory and us
 
 MCP just had that moment.  Transport stickiness solved a real problem and then became one.  It pushed implementers toward shared session stores and sticky routing to keep a tool interaction resumable, when the state people actually needed to resume, a browser, a cart, a cursor, a multi-step workflow, was better held as an explicit application handle than smuggled into a transport session.  **The protocol got more scalable by admitting that the durable state was never its to keep.**
 
-Notice what the same release candidate does on the other side of that boundary.  It promotes a [tasks extension](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/): a server can hand back a task handle and let the client drive it with `tasks/get`, `tasks/update`, and `tasks/cancel`.  Long-running work does not need a sticky socket held open.  It needs a durable handle the client can come back to from anywhere.  That is the shape of the whole revision.  Make the connection disposable so the work can be durable.
+Notice what the same release does on the other side of that boundary.  It moves tasks out of the core protocol and into an official [tasks extension](https://modelcontextprotocol.io/extensions/tasks/overview): a server can hand back a task handle and let the client drive it with `tasks/get`, `tasks/update`, and `tasks/cancel`.  Long-running work does not need a sticky socket held open.  It needs a durable handle the client can come back to from anywhere.  That is the shape of the whole revision.  Make the connection disposable so the work can be durable.
 
 ## Why the boundary is the point
 
