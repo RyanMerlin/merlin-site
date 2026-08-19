@@ -3,6 +3,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import rehypeExternalLinks from 'rehype-external-links';
 import { visit } from 'unist-util-visit';
+import { unified } from '@astrojs/markdown-remark';
 
 // The first image in a post is almost always the hero art and the page's LCP
 // (Largest Contentful Paint) element. Astro's default markdown image pipeline
@@ -37,11 +38,16 @@ export default defineConfig({
 	// Open every external link in a new tab so readers never navigate away from the
 	// site. Internal links (root-relative "/..." and anchors) are left untouched, so
 	// on-site navigation stays in the same tab. rel adds noopener/noreferrer for safety.
+	// v7 default markdown pipeline (Sätteri) doesn't run remark/rehype plugins —
+	// explicit unified() processor restores it. Top-level markdown.rehypePlugins is
+	// deprecated now that a processor is set; pass plugins into unified() instead.
 	markdown: {
-		rehypePlugins: [
-			[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
-			rehypeEagerFirstImage
-		]
+		processor: unified({
+			rehypePlugins: [
+				[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+				rehypeEagerFirstImage
+			]
+		})
 	},
 	// Prefetch a page's HTML when the reader hovers its link, so the click lands on
 	// an already-fetched document. This is the one place the site ships JS to pages
