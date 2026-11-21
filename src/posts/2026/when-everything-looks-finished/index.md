@@ -11,7 +11,7 @@ description: "AI made polished work cheap, so effort no longer signals quality. 
 
 *AI made polished work cheap.  The approval systems built for a world where effort meant something are losing their signal.*
 
-Between May and September 2026, the code changes landing each day in Anthropic's main repository went [from about 2,500 to more than 30,000](https://www.anthropic.com/engineering/redesigning-source-control).  Claude, [writes about 90%](https://claude.dev/blog/solving-code-review-at-anthropic/) of the code behind Claude Code.  So who checks 30K changes a day?  Not 12x the reviewers.  The Claude Code team, under the same flood in its own repo, moved most of the approval downstream, onto the points where a change can actually be checked.
+Between May and September 2026, the code changes landing each day in Anthropic's main repository went [from about 2,500 to more than 30,000](https://www.anthropic.com/engineering/redesigning-source-control).  Claude [writes about 90%](https://claude.dev/blog/solving-code-review-at-anthropic/) of the code behind Claude Code.  So who checks 30K changes a day?  Not 12x the reviewers.  The Claude Code team, under the same flood in its own repo, moved most of the approval downstream, onto the points where a change can actually be checked.
 
 Every approval gate in an org is a rate limit, a cap on how much work gets through.  Someone put it where they thought the scarce thing was, and for most of corporate history the scarce thing was building.
 
@@ -43,7 +43,7 @@ Making collapsed, at least for a plausible first version, which is how you get 3
 
 Quality split.  Looking finished got as cheap as making.  Being right didn't get cheaper per item, and now there's far more to check, all of it polished.  In a randomized trial with early-2025 tools, experienced devs working in their own codebases [took 19% longer](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) while believing they'd been 20% faster.  METR itself now says those results no longer reflect current tools, but that gap between feeling fast and being fast is the tell.  Outside engineering, a Stanford and BetterUp survey of 1,150 desk workers found [40% had received *workslop*](https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity) in the prior month: AI output that looks finished and dumps the real work on whoever receives it, at nearly two hours a pop.[^2]
 
-*Christian Catalini*, *Xiang Hui* and *Jane Wu* [model it](https://arxiv.org/abs/2602.20946) as two cost curves racing.  The cost to automate keeps falling while the cost to verify stays stuck at human speed, so "the binding constraint on growth is no longer intelligence but human verification bandwidth."  The shorthand going around is the [*verification economy*](https://www.unite.ai/transitioning-to-the-verification-economy).  It's the thread I keep pulling on here, first as the [verification tax](https://ryanmerlin.com/posts/ai-productivity-dip-longer-deeper-diverging) and then as [verification becoming the scarce step](https://ryanmerlin.com/posts/machine-attention-economy).
+*Christian Catalini*, *Xiang Hui* and *Jane Wu* [model it](https://arxiv.org/abs/2602.20946) as two cost curves racing.  The cost to automate keeps falling while the cost to verify stays stuck at human speed, so "the binding constraint on growth is no longer intelligence but human verification bandwidth."  The shorthand going around is the [*verification economy*](https://www.unite.ai/transitioning-to-the-verification-economy).  It's an emerging paradigm I've been highlighting, first as the [verification tax](https://ryanmerlin.com/posts/ai-productivity-dip-longer-deeper-diverging) and then as [verification becoming the scarce step](https://ryanmerlin.com/posts/machine-attention-economy).
 
 Adaptation barely moved.  The MIT report that put [95% of enterprise AI pilots](https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/) at little to no measurable return blamed a learning gap in both the tools, which didn't "learn from or adapt to workflows," and the orgs around them.  Take the exact number with a grain of salt, since it's a snapshot of pilots.  The pattern is the useful part: the payoff stalled at the learning.
 
@@ -53,7 +53,7 @@ If finish is cheap, what should a gate react to?  The Claude Code team's [redesi
 
 **Human sign-off scales with consequence, not volume.**  "The change sets the tier, not the author."  Every change gets a machine review.  A low-risk change, say an addition tucked behind a *feature flag* (a switch someone can flip later), needs no human once the automated checks pass, as long as its author is on the repo's trusted list.  The riskiest code needs two.
 
-**The checker never sees the builder's pitch.**  A second *agent*, an AI model given tools and a job, reviews each change "in a fresh context," meaning without the builder's argument for why it's right.  It's still the same model underneath, so it shares the builder's blind spots, the failure I described in [Composed Correction](https://ryanmerlin.com/posts/composed-correction).  Hence the blunt rule: "An agent's approval never counts as a person's."  Whoever prompted the agent is on the hook as a reviewer.
+**The checker never sees the builder's pitch.**  A second *agent* reviews each change in a fresh context, without the builder's argument for why it's right.  It's still the same model underneath, so it shares the builder's blind spots, the failure I described in [Composed Correction](https://ryanmerlin.com/posts/composed-correction).  Hence the blunt rule: "An agent's approval never counts as a person's."  Whoever prompted the agent is on the hook as a reviewer.
 
 **Findings get checked before a human reads them.**  A separate group of agents votes on each finding, and it only posts if enough agree it's real.  When the reviewer launched as a research preview, the share of internal changes getting a substantive review comment went from 16% to 54%.  From June to September, alongside other process changes, merged changes (ones accepted into the product) more than doubled while the share that had to be backed out fell by more than 40%.[^3]
 
@@ -74,7 +74,7 @@ That gives a placement rule.
 
 ## Where the gate lands second: the lesson
 
-Most teams now budget for generating and for reviewing.  Few I've seen budget for what comes after, which is keeping what worked and resetting the default so the next round starts there.
+Most teams now budget for generating and for reviewing.  Few budget for what comes after, which is **keeping what worked and resetting the default so the next round starts there.**
 
 The Claude Code team's version is small.  When a change causes an incident, something breaking for real users, it becomes a test case, and the reviewing agent gets scored against the whole set every day.  The org's best current understanding sits where a machine reads it daily, and every new change gets checked against it.  Isn't that what it means for a company to remember?
 
@@ -82,9 +82,7 @@ There's a catch.  Lock the lesson in as the default and every team copies it.  *
 
 ## What stays at the front
 
-Does the front gate go away, then?  I assumed so until I tested it while writing this post.  Three models drafted it independently from the same notes, and I expected three essays I could check against each other.  They came back nearly identical, because my brief contained the outline.  The call that mattered was made before any of them wrote a word, and no amount of checking afterward could bring back the essays I'd already ruled out.
-
-The Claude Code team keeps that call human too.  First on its list of what people still own: "Deciding whether to build it."
+Does the front gate go away, then?  The Claude Code team keeps one call human, and puts it first on its list of what people still own: "Deciding whether to build it."
 
 The front gate's question changed.  It used to ration effort: is this worth six weeks?  Now it sets the test: is this worth anyone's attention, and what counts as right?  Point a flawless review process at the wrong test and it'll confirm, reliably and at scale, that you built the wrong thing correctly.
 
