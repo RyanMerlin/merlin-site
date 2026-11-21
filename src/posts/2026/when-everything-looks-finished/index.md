@@ -7,9 +7,11 @@ summary: "AI made polished work cheap.  The approval systems built for a world w
 description: "AI made polished work cheap, so effort no longer signals quality. Approval gates have to move to where work gets checked and where the lessons get kept."
 ---
 
+![A red running track with white lane lines and a checkered finish strip ends at the sheer edge of a concrete block floating in the sky, with a red finish ribbon strung between two brass posts and nothing beyond it](./og.png)
+
 *AI made polished work cheap.  The approval systems built for a world where effort meant something are losing their signal.*
 
-Between May and September 2026, the code changes landing each day in Anthropic's main repository went [from about 2,500 to more than 30,000](https://www.anthropic.com/engineering/redesigning-source-control).  Claude, the company's AI model, [writes about 90%](https://claude.dev/blog/solving-code-review-at-anthropic/) of the code behind Claude Code, its own coding assistant.  So who checks 30K changes a day?  Not 12x the reviewers.  The Claude Code team, under the same flood in its own repo, moved most of the approval downstream, onto the points where a change can actually be checked.
+Between May and September 2026, the code changes landing each day in Anthropic's main repository went [from about 2,500 to more than 30,000](https://www.anthropic.com/engineering/redesigning-source-control).  Claude, [writes about 90%](https://claude.dev/blog/solving-code-review-at-anthropic/) of the code behind Claude Code.  So who checks 30K changes a day?  Not 12x the reviewers.  The Claude Code team, under the same flood in its own repo, moved most of the approval downstream, onto the points where a change can actually be checked.
 
 Every approval gate in an org is a rate limit, a cap on how much work gets through.  Someone put it where they thought the scarce thing was, and for most of corporate history the scarce thing was building.
 
