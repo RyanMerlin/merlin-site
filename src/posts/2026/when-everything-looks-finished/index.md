@@ -7,7 +7,7 @@ summary: "AI made polished work cheap.  The approval systems built for a world w
 description: "AI made polished work cheap, so effort no longer signals quality. Approval gates have to move to where work gets checked and where the lessons get kept."
 ---
 
-![A red running track with white lane lines and a checkered finish strip ends at the sheer edge of a concrete block floating in the sky, with a red finish ribbon strung between two brass posts and nothing beyond it](./og.png)
+![A man in a suit with a briefcase stands outside a glass-walled, empty conference room and rests a hand on his chin, while one small robot shows him a tablet picture of the room, another cheers with raised arms, and a third polishes the glass from a stepladder](./og.png)
 
 *AI made polished work cheap.  The approval systems built for a world where effort meant something are losing their signal.*
 
